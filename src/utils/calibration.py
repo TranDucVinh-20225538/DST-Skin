@@ -1,0 +1,27 @@
+import numpy as np
+
+def compute_ece(probs, labels, n_bins=15):
+    """
+    probs: numpy array of predicted probabilities for class 1
+    labels: numpy array of true labels (0/1)
+    """
+
+    preds = (probs > 0.5).astype(int)
+    confidences = np.maximum(probs, 1 - probs)
+
+    bin_boundaries = np.linspace(0, 1, n_bins + 1)
+    ece = 0.0
+
+    for i in range(n_bins):
+        bin_lower = bin_boundaries[i]
+        bin_upper = bin_boundaries[i + 1]
+
+        in_bin = (confidences > bin_lower) & (confidences <= bin_upper)
+        prop_in_bin = np.mean(in_bin)
+
+        if prop_in_bin > 0:
+            accuracy_in_bin = np.mean(labels[in_bin] == preds[in_bin])
+            avg_confidence_in_bin = np.mean(confidences[in_bin])
+            ece += np.abs(avg_confidence_in_bin - accuracy_in_bin) * prop_in_bin
+
+    return ece

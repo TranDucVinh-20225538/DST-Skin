@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.venv/
+venv/
+env/
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# datasets
+data/
+reader_images_96/
+
+# outputs
+outputs/
+logs/
+experiments/
+checkpoints/
+
+# notebooks
+.ipynb_checkpoints/
+
+# model weights
+*.pth
+*.pt
+*.ckpt
+
+# temporary
+*.tmp
