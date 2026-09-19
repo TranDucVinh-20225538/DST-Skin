@@ -1,0 +1,148 @@
+DST-Skin narrative locks — 2026-09-17 (after FM 59665 + skin×5 59643).
+Rebuild tables must not overwrite this file.
+
+Phao A — CLOSED permanently
+- GigaPath-Camelyon MSP 0.664 and Phikon-Camelyon MSP 0.605: both >0.5, neither inverts.
+- Pre-commit stop rule met: both non-invert → keep MIDOG-only footnote. No extra interpretation. File closed.
+- Optional discussion one-liner (not a pillar): FM Maha ~0.995–1.0 > R50-CNN Maha 0.839/0.896 — feature>logit survives frozen-FM + linear probe (training-paradigm change). Supports cửa 2 only.
+
+Skin-8 — two claims, do not merge
+- Broad (OK as cửa-2 evidence, not as a paper): Maha rank 1 on 8/8 (0.924–0.972). Cleaner than Camelyon (Camelyon has EffB3 kNN>Maha). Increment vs OpenMIBOOD is **rank-1 across 8 backbones**, not Maha>MSP itself.
+- Narrow (does NOT replicate): Camelyon founding MSP jump (R50 0.515 → EffB3 0.803) is a Camelyon case study, not a cross-domain law. Skin MSP is 0.68–0.82 with no analogous jump. Do not write "MSP-jump is general".
+- Do not write "what generalizes is Maha>MSP / feature>logit" as our finding. OpenMIBOOD §5 already published that on medical. Our increment is architecture-stability of that pattern, when it holds.
+
+Skin Kendall W = 0.690 — NOT for the paper yet
+- Drop from n=3 W=0.873 was one cell: EffV2-S kNN rank 7 (AUROC 0.810) at native 384.
+- @224 (59686): MSP 0.737, Maha 0.890 rank 1, kNN 0.849 rank 2. Rank-7 is gone. Still do **not** quote official W until Camelyon EffV2-S@224 exists and rebuild drops native-384.
+
+Still open (cơm/cứt)
+- Camelyon-8 job 59493 remains the decision door. FM + skin-8 are same-direction only; they do not close cửa 2.
+
+Already closed (do not reopen)
+- Cửa 1 geometry; H4 n_train; CIFAR-10-C supplementary; MIDOG in-house R50 checkpoint confound; EffB3 Camelyon MSP jump is architecture not 300px (0.787@224).
+- Do not start 50×50 image-resolution hunt. Do not expand CIFAR multi-backbone. Do not build LogitGap switching.
+
+--- 2026-09-18 addendum (OpenMIBOOD read + calendar) ---
+
+Maha>MSP is dead as an independent claim at every tier
+- OpenMIBOOD CVPR 2025 §5 already: feature-space post-hoc consistently beats logit/probability methods on medical. Public before this manuscript.
+- CMPB desk-reject "no novelty vs SOTA" now has a named paper, not a vibe.
+- Forbidden at workshop, CMPB-resubmit, and main-track: a paper whose load-bearing claim is Maha>MSP / feature>logit.
+- Skin Maha 8/8 rank-1 and FM Maha~1.0 may appear as replication + architecture-stability evidence under cửa 2. They are not a backup thesis.
+
+No floor that skips cửa 2 + Phao B
+- The only remaining paper is rank instability across backbones (cửa 2) plus domain-dependent AUROC↔coverage unpredictability (Phao B).
+- Old frame "cứt = negative/benchmark paper on Maha>MSP" is revoked.
+- If Camelyon-8 is C (Maha/kNN dragged past FEATURE_DRAG): no retreat. Activate Direction #1 (train recipe) and/or #3 (ensemble) as the rescue, or there is no paper. Do not queue a Maha>MSP writeup.
+
+Venue pin
+- NeurIPS **2027** Evaluations & Datasets is the E&D backup (CFP not out; historically ~May 2027, after CVPR 2027).
+- NeurIPS 2026 E&D: closed 2026-05-06; notify 2026-09-24. Do not plan against it.
+- CVPR 2027 paper 2026-11-16 remains the November shot.
+
+Methods disclosure (not a footnote)
+- In methods, not only related work: "we build on OpenMIBOOD's public MIDOG split and ResNet-50 checkpoint as an external reference."
+- Toolkit: credit OpenMIBOOD for MIDOG split/checkpoint/eval protocol; package only zoo + FID-severity + OOD-triage as ours. Do not re-sell their 24-method R50 table.
+
+Related-work paragraph in OPENMIBOOD_DIFFERENTIATION.md is locked. Do not widen it.
+
+Canonical A/B/C + floor + venue file (read this when 8/8 lands):
+`decision_precommit_camelyon8_skin8.md` at repo root. Rebuild must not overwrite it.
+
+--- 2026-09-18 02:00 addendum (Camelyon-8 landed scenario=A; recipe probe) ---
+
+Camelyon-8 code label is **A** (rebuild). Maha/kNN ranks 1–2 on all 8. MSP jump on 6/8 (not ResNets). Official W still waits EffV2-S@224 (do not quote native-384 mix).
+
+Job A — CLOSED 2026-09-18. Scale/calibration does **not** explain MSP-jump.
+- Kill test n=8: Pearson r(T*, jump vs ResNet mean)=0.268, p=0.52. |r|>0.6 not met. Spearman=0.
+- Mean logit-norm (not kill): r=0.174, p=0.68.
+- T* on ID-val NLL is 1.08–1.46; no hot model. DenseNet T*=1.09, R18 T*=1.16 — largest jump is not the largest T*.
+- DenseNet−R18 MSP gap raw=0.308, after T*=0.308. Temperature scaling does not shrink the gap.
+- Artifact: `outputs/reports/camelyon_temp_jump_corr.{txt,csv,json}`.
+- Do not hunt feature-norm / entropy. Do not put T-scale in the training recipe.
+
+FORBIDDEN theorem (do not write in the paper):
+- KEEP (narrow): AUROC is invariant to a **strictly increasing f applied to the same scalar score** for every sample. CDF / rank / log(MSP) cannot change AUROC. Use only to dismiss those transforms if asked.
+- DROP entirely: “T-scaling is theoretically dead via monotonicity” and “therefore we must hybridize.” T-scaling is g_T(logits), not f(MSP). Job A already shows AUROC can move (EffV2 0.726→0.744, RegNet 0.784→0.791). Dense−R18 gap 0.308 is T*≈1.09/1.16, not a theorem. Motivation for a hybrid detector from that argument is **revoked**.
+
+Direction #2 — CLOSED 2026-09-18 02:29 (job 59689). Does **not** rescue Maha. Not a detector.
+- Precommit ρ<0.5 → Maha else MSP. Artifact: `outputs/reports/id_only_maha_msp_gate.{csv,txt}`.
+- Camelyon Maha **2/8** (R18 ρ=0.499, R50 ρ=0.408). Skin **0/8**.
+- Camelyon mean AUROC gate=0.837 vs Maha=0.940 vs ViM=0.791. Spread gate=0.080 vs Maha=0.040 vs MSP=0.129.
+- Beating MSP / slightly beating ViM-mean does not count. Bar was Maha **and** ViM; Maha lost. Do not retune 0.5. Do not name a detector. Do not open a convex mix to “fix” this.
+
+Skin EffV2-S@224 — job 59686 done. **Do not mix into official W** until Camelyon EffV2-S@224 lands.
+- MSP 0.737 (native-384 was 0.823). No MSP-jump at 224. Cell sits in the skin MSP band 0.68–0.82.
+- Maha 0.890 rank 1. kNN 0.849 rank 2 (native-384 kNN 0.810 was rank 7 — resolution, not architecture).
+- Keep tagged `efficientnet_v2_s_224_*`. Official skin W waits Camelyon @224 + rebuild without native-384.
+
+Job B — only remaining method candidate. Running `59688`. Kill unchanged: Dense−R18 MSP gap ≤0.154. R18 epoch 3/10 acc 0.991 vs CE 0.995 — floor not broken yet; do not read OOD until both backbones analyze.
+
+Camelyon EffV2-S@224 `59687` decides official Camelyon W. Still training.
+
+--- 2026-09-18 02:46 #4/#5 ---
+
+Execution risk. Hard stop 2026-10-02. File: `decision_precommit_vit9_iwildcam.md`.
+#5 iWildCam R18/R50/DenseNet > #4 in CVPR weight. Negative iWildCam = biomedical bound, not a flop.
+#4 9th backbone = ViT-B/16 @224 Camelyon. Meta-feature OLS on n=8 is invalid (LOO R² −5.15). Precommit: MSP ≥ 0.6947 (non-resnet_like jumped 6/6). Do not quote a depth/param/RF prediction. Queue GPU behind 59688/59687; do not steal those A100s.
+
+--- 2026-09-18 02:54 #4/#5 launched ---
+
+CPU: `scripts/submit_iwildcam_download.sh` → `dst-iwild-dl`, then auto-queue `dst-iwild`.
+GPU queued: `scripts/submit_camelyon_vit.sh` → `dst-vit-cam` (Camelyon ViT-B/16 @224, skip official 8-CNN W).
+Rebuild already skips `vit_b_16`. Hard stop 2026-10-02 unchanged.
+
+--- 2026-09-18 10:50 numbers frozen ---
+
+Official W rebuilt without native-384. File: `OFFICIAL_W_FREEZE.txt`.
+scenario=A. Camelyon W=0.694 (n=8). Skin W=0.791 (n=8). MIDOG W=0.857 (n=3).
+EffV2-S@224 Camelyon MSP 0.778 still jumps (+0.233 vs ResNet mean). Skin EffV2@224 MSP 0.737, no jump; kNN rank-7 at 384 was resolution.
+
+#4 ViT-B/16 HIT. MSP 0.884 ≥ 0.6947. Not a W column. Separate prediction evidence.
+
+#5 iWildCam MISS. DenseNet vs ResNet mean jump −0.029. Bound: may be biomedical-specific. One limitations sentence. No fourth domain. No FMoW.
+
+Job B DEAD. Gap 0.308→0.238 (23%, bar ≤0.154). R18 MSP 0.574→0.515: part of the “shrink” is R18 getting worse, not DenseNet improving. Kill is mechanism, not only the 50% miss. Write-only. No coverage-loss stretch. No center-loss/triplet.
+
+No method candidate. Paper = cửa 2 + Phao B + ViT prediction + iWildCam bound + robustness appendix (resolution×2, T*, ID-gate, SupCon). No more jobs, including MIDOG zoo.
+
+--- 2026-09-18 11:00 related-work search + limitations ---
+
+Dedicated natural-image question: ranking vs backbone was already measured (OpenOOD v1.5 Fig. 3; Szyc et al. UAI 2023; Datko et al. ESWA 2026; arXiv 2511.11934). Do not claim uniqueness of that observation. OpenMIBOOD paragraph still locked. Increment = medical covariate split × 8-family zoo × Kendall W × structured MSP jump × skin/iWildCam bounds.
+Limitations item 6: architecture confounded with standard recipe; ablation is `decision_precommit_matched_recipe.md` (not mixed into W).
+Prose §4.1: 6/6 non-ResNet across 4 families beyond EfficientNet, not “≥1”.
+
+--- 2026-09-18 11:06 seed-variance locked ---
+
+Replaces MIDOG zoo. File: `decision_precommit_seed_variance.md`.
+Anchors R18/R50/DenseNet/EffB3@300 × seeds 43–46 (16 runs). Seed 42 not overwritten.
+Jump scored per seed vs that seed’s ResNet mean. Middle branch: report variance, add clause to §4.1 later, do not rewrite A.
+Leave-one-backbone W is structural, not a 95% CI. Official W stays single-seed 0.694.
+
+--- 2026-09-18 11:20 shift-type locked ---
+
+File: `decision_precommit_shift_type.md`. Same 8 Camelyon seed-42 classifiers; ID = Camelyon id_val.
+Arm T = MIDOG 1a only (task-shift H&E). Arm F = CIFAR-10 test (far-OOD). Extract only.
+Saturation kill: median MSP ≥ 0.95 or min ≥ 0.90 → arm dropped, jump≈0 is not “no effect.”
+HIT only if informative arm is 0/6 non-ResNet jump while hospital-2 stays 6/6.
+Do not claim discovery that ranking depends on shift type (2511.11934). Official W untouched.
+
+--- 2026-09-18 11:25 matched-recipe locked ---
+
+File: `decision_precommit_matched_recipe.md`.
+DenseNet/EffB3 already share ResNet Adam — do not retrain them.
+M1: ConvNeXt, MobileNet, RegNet, EffV2@224 × Adam 1e-4 wd=1e-4 bs=64 → `frac1/matched_adam/seed42/`.
+M2: R18/R50 × AdamW wd=0.05 → `frac1/matched_adamw/seed42/`.
+ID-acc < 0.97 = dirty, do not count. 0/4 M1 jump drops the “4 families” sentence; A lives on DenseNet.
+M2: ResNet entering MSP≥0.6947 means the split is not pure architecture.
+Never call rebuild on these tags.
+
+--- 2026-09-18 11:42 Viên 1 stain-cov locked ---
+
+File: `decision_precommit_stain_cov.md`.
+R18/R50/DenseNet × HED jitter σ=0.20 p=1.0 train-only → `frac1/stain_cov/seed42/`.
+Bar: R18 MSP≥0.695 or gap≤0.154 with R18≥0.574; DenseNet MSP≥0.80; id_val≥0.97; coverage@10% R18≥0.135.
+Held-out hospital 1. Strong hit (both ResNets + hospital-1) is the only branch that reopens Viên 2 / 8-CNN.
+CVPR 2027 is **not** dropped today. Decide after Viên 1 (~5 weeks left).
+
+

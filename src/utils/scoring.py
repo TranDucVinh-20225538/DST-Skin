@@ -88,7 +88,6 @@ class OODScorer:
         msp = self.score_msp(logits)
         energy = self.score_energy(logits, T)
         logit_norm = np.linalg.norm(logits, axis=1)
-        cvid_logit_norm = np.std(logit_norm) / (np.abs(np.mean(logit_norm)) + 1e-8)
 
         maha = self.score_mahalanobis(feats_n)
         knn = self.score_knn(feats_n)
@@ -99,7 +98,6 @@ class OODScorer:
             "logit_norm": logit_norm,
             "mahalanobis": maha,
             "knn": knn,
-            "cvid_logit_norm": cvid_logit_norm,
         }
 
         if self.use_react and self.react_params is not None:
@@ -122,8 +120,12 @@ class OODScorer:
     def score_msp(logits: np.ndarray) -> np.ndarray:
         """
         Maximum Softmax Probability (higher = more ID/confident).
+
+        Softmax is computed in float64. F.softmax subtracts the per-row max
+        before exp, so this stays finite even when logits are huge.
         """
-        probs = F.softmax(torch.from_numpy(logits), dim=1).numpy()
+        z = torch.as_tensor(np.asarray(logits, dtype=np.float64))
+        probs = F.softmax(z, dim=1).numpy()
         return probs.max(axis=1)
 
     @staticmethod
@@ -132,7 +134,7 @@ class OODScorer:
         Energy-based score (Liu et al. 2020).
         Trả về: higher = more ID/confident.
         """
-        z = torch.from_numpy(logits) / T
+        z = torch.as_tensor(np.asarray(logits, dtype=np.float64)) / T
         energy = -T * torch.logsumexp(z, dim=1)
         return (-energy).numpy()
 
@@ -141,10 +143,22 @@ class OODScorer:
         if self.mu is None or self.precision is None:
             raise RuntimeError("Mahalanobis hasn't been fit. Call fit() first.")
 
-        diff = feats_norm - self.mu
-        left = diff @ self.precision
+        # Quadratic form in float64. Ledoit-Wolf precision is PSD in theory,
+        # but float32 (diff @ precision) can yield tiny negative d², and
+        # np.sqrt then produces NaN that crash roc_auc_score.
+        diff = np.asarray(feats_norm, dtype=np.float64) - np.asarray(
+            self.mu, dtype=np.float64
+        )
+        left = diff @ np.asarray(self.precision, dtype=np.float64)
         d2 = np.sum(left * diff, axis=1)
-        dist = np.sqrt(d2)
+        n_neg = int(np.count_nonzero(d2 < 0.0))
+        if n_neg:
+            print(
+                f"  mahalanobis: clipped {n_neg}/{d2.size} negative d² "
+                f"(min={float(d2.min()):.3e}) to 0",
+                flush=True,
+            )
+        dist = np.sqrt(np.maximum(d2, 0.0))
         return -dist
 
     # ---- k-NN ----

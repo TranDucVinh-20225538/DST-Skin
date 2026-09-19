@@ -1,0 +1,29 @@
+method,held_out,mean_spread,n_domains,warning
+Energy,(none — mean of per-domain spreads),0.08037355259363364,3,NOT a method property; Camelyon-driven at n=3
+Energy,camelyon17,0.05266529630367649,2,leave-one-domain diagnostic only
+Energy,midog,0.08331169184124358,2,leave-one-domain diagnostic only
+Energy,skin_isic_pad,0.10514366963598085,2,leave-one-domain diagnostic only
+kNN,(none — mean of per-domain spreads),0.058801094288551646,3,NOT a method property; Camelyon-driven at n=3
+kNN,camelyon17,0.06764826375730593,2,leave-one-domain diagnostic only
+kNN,midog,0.03672334053980837,2,leave-one-domain diagnostic only
+kNN,skin_isic_pad,0.07203167856854062,2,leave-one-domain diagnostic only
+ELogitNorm,(none — mean of per-domain spreads),0.07939847967191334,3,NOT a method property; Camelyon-driven at n=3
+ELogitNorm,camelyon17,0.05376956370127864,2,leave-one-domain diagnostic only
+ELogitNorm,midog,0.07662902663730227,2,leave-one-domain diagnostic only
+ELogitNorm,skin_isic_pad,0.10779684867715912,2,leave-one-domain diagnostic only
+Mahalanobis,(none — mean of per-domain spreads),0.06486606950870599,3,NOT a method property; Camelyon-driven at n=3
+Mahalanobis,camelyon17,0.07502696596494392,2,leave-one-domain diagnostic only
+Mahalanobis,midog,0.03600490478224697,2,leave-one-domain diagnostic only
+Mahalanobis,skin_isic_pad,0.0835663377789271,2,leave-one-domain diagnostic only
+MSP,(none — mean of per-domain spreads),0.06419088974433247,3,NOT a method property; Camelyon-driven at n=3
+MSP,camelyon17,0.03145791146594408,2,leave-one-domain diagnostic only
+MSP,midog,0.07693847010561762,2,leave-one-domain diagnostic only
+MSP,skin_isic_pad,0.08417628766143573,2,leave-one-domain diagnostic only
+ReAct,(none — mean of per-domain spreads),0.07278499788822101,3,NOT a method property; Camelyon-driven at n=3
+ReAct,camelyon17,0.06974117447007296,2,leave-one-domain diagnostic only
+ReAct,midog,0.07310786791725146,2,leave-one-domain diagnostic only
+ReAct,skin_isic_pad,0.07550595127733861,2,leave-one-domain diagnostic only
+ViM,(none — mean of per-domain spreads),0.05847017059556022,3,NOT a method property; Camelyon-driven at n=3
+ViM,camelyon17,0.050651674273477776,2,leave-one-domain diagnostic only
+ViM,midog,0.055605173400898884,2,leave-one-domain diagnostic only
+ViM,skin_isic_pad,0.069153664112304,2,leave-one-domain diagnostic only

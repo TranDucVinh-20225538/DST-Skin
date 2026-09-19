@@ -1,0 +1,13 @@
+METRIC LOCK (same working tree as MIDOG chat — git pull not required)
+
+commit: e4c7ed1c5faab5ac1365f2f34edb7529f4d9ac5b
+verify:  git log -1 --format='%H %s' -- src/utils/benchmark_metrics.py
+expected: lock LogitGap (trim 1%) as primary dispersion metric, demote CVID to appendix after estimator-sensitivity check
+
+Primary: LogitGap, 1% tail-trimmed mean
+CVID: appendix only (do not use for main narrative)
+
+Verified: git log -1 -- src/utils/benchmark_metrics.py → e4c7ed1
+Job 59477 CANCELLED.
+Crop+extract+analyze DONE on 59480 (started 04:15:07, after e4c7ed1 04:14:34).
+pilot_summary.csv has logit_gap_estimator=trim_1pct, cvid_status=appendix

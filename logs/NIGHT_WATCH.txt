@@ -1,0 +1,15 @@
+Night watch 2026-09-17 04:18 +07
+
+MIDOG 59480 DONE
+  R50  ID=test 1a (251)  OOD=1b+1c (5902)
+  Maha AUROC 0.588  MSP 0.534  Δ 0.054
+  LogitGap -0.148  CI [-0.287, -0.022]  same sign as other domains
+  CVID +0.021 appendix
+
+Camelyon FULL 59482 RUNNING  (node002, 48h wall)
+  seeds 42 43 44  train_frac=1.0  n_train=302436
+  outputs under outputs/{features,reports}/camelyon17/frac1/seedN
+  5% pilot at seed42 left untouched
+
+Primary table: outputs/reports/pilot_primary_delta_logitgap.csv
+Metric lock: e4c7ed1

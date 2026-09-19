@@ -1,0 +1,36 @@
+Natural-image OOD ranking vs architecture — related-work search (2026-09-18).
+
+Question: has anyone already shown that post-hoc OOD *method ranking* moves with the backbone on natural images?
+
+Hit — yes, qualitatively, not at zoo+Kendall-W scale.
+
+1. OpenOOD v1.5 (Zhang et al., arXiv:2306.09301, TMLR 2024).
+   § "Vision transformers do not outperform ResNets" + Figure 3:
+   ImageNet-1K, torchvision checkpoints, n=3 architectures (ResNet-50, ViT-B/16, Swin-T).
+   "Different post-processor may favor different architecture."
+   ASH and ReAct are top-2 on ResNet-50 and degrade on transformers; RMDS does the reverse.
+   Caption: "Some methods are sensitive to model architecture while some are not."
+   Also: ranking moves across *datasets* (ReAct/ASH strong on ImageNet, weak on CIFAR;
+   kNN/RotPred the other way). No Kendall W. Semantic / full-spectrum ImageNet, not
+   hospital covariate shift. Three models, not an 8-CNN family zoo.
+
+2. OpenOOD v1 (Yang et al.) is ResNet-centric; v1.5 added ViT/Swin specifically because
+   architecture was an unmeasured axis.
+
+3. Galil, Dabbah, El-Yaniv (ICLR 2023, "What can we learn from the selective prediction
+   and uncertainty estimation performance of 523 ImageNet classifiers") and related
+   ImageNet-21K difficulty-spectrum work: 5 post-hoc methods × many classifiers, but
+   the benchmark is diagnostic of (classifier, post-processor) jointly; not a fixed
+   covariate-shift split with concordance of ranks.
+
+What is *not* published (as of this search):
+- 8 CNN-family backbones, one medical covariate-shift split held fixed, Kendall W
+  as the primary metric.
+- A structured MSP jump (ResNet vs the other six) with feature methods remaining rank 1–2.
+- A second medical domain that does *not* replicate the jump (skin).
+- A natural-image negative bound on the same jump rule (iWildCam).
+
+§2 sentence: OpenOOD v1.5 Fig. 3 already shows architecture-sensitive post-hoc
+ranking on ImageNet with three models. Ours is concordance under hospital shift
+at zoo scale, plus the skin non-replication and iWildCam miss — not the existence
+of architecture-sensitive ranking.

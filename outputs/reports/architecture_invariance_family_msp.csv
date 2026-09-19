@@ -1,0 +1,25 @@
+domain,backbone,family,family_label,msp_auroc
+camelyon17,convnext_tiny,modern_cnn,modern-CNN (ConvNeXt-Tiny),0.8456347543899265
+camelyon17,densenet121,dense_connection,dense-connection (DenseNet121),0.8826714444722252
+camelyon17,effb3,efficientnet_like,"compound-scaled / EfficientNet-like (EffB3, EffV2-S)",0.8025890589300444
+camelyon17,efficientnet_v2_s,efficientnet_like,"compound-scaled / EfficientNet-like (EffB3, EffV2-S)",0.7782816365375451
+camelyon17,mobilenet_v3_large,lightweight,lightweight (MobileNetV3-Large),0.7705243528524107
+camelyon17,regnet_y_3_2gf,nas_designed,NAS-designed (RegNetY-3.2GF),0.7835737659603085
+camelyon17,resnet18,resnet_like,ResNet-like (R18/R50),0.5743335363500264
+camelyon17,resnet50,resnet_like,ResNet-like (R18/R50),0.5149744715920921
+midog,convnext_tiny,modern_cnn,modern-CNN (ConvNeXt-Tiny),0.5206071680745672
+midog,densenet121,dense_connection,dense-connection (DenseNet121),0.4465772963719503
+midog,effb3,efficientnet_like,"compound-scaled / EfficientNet-like (EffB3, EffV2-S)",0.4856791066840736
+midog,efficientnet_v2_s,efficientnet_like,"compound-scaled / EfficientNet-like (EffB3, EffV2-S)",0.4931213809620886
+midog,mobilenet_v3_large,lightweight,lightweight (MobileNetV3-Large),0.4692541254838321
+midog,regnet_y_3_2gf,nas_designed,NAS-designed (RegNetY-3.2GF),0.5531857659163415
+midog,resnet18,resnet_like,ResNet-like (R18/R50),0.437998936142924
+midog,resnet50,resnet_like,ResNet-like (R18/R50),0.5124496929260255
+skin_isic_pad,convnext_tiny,modern_cnn,modern-CNN (ConvNeXt-Tiny),0.7548397570313451
+skin_isic_pad,densenet121,dense_connection,dense-connection (DenseNet121),0.6801814598862719
+skin_isic_pad,effb3,efficientnet_like,"compound-scaled / EfficientNet-like (EffB3, EffV2-S)",0.70330925292099
+skin_isic_pad,efficientnet_v2_s,efficientnet_like,"compound-scaled / EfficientNet-like (EffB3, EffV2-S)",0.7367287165681354
+skin_isic_pad,mobilenet_v3_large,lightweight,lightweight (MobileNetV3-Large),0.714444188909482
+skin_isic_pad,regnet_y_3_2gf,nas_designed,NAS-designed (RegNetY-3.2GF),0.7202692586930739
+skin_isic_pad,resnet18,resnet_like,ResNet-like (R18/R50),0.7358076633432089
+skin_isic_pad,resnet50,resnet_like,ResNet-like (R18/R50),0.6975676077869019

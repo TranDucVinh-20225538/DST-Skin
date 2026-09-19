@@ -1,0 +1,79 @@
+=== Camelyon17 ANALYZE submit Thu Sep 17 10:32:14 +07 2026 seed=42 train_frac=1.0 ===
+     JOBID    PARTITION                 NAME    STATE       TIME NODELIST(REASON)
+     59485         defq         dst-cifar10c  RUNNING      41:40 node002
+=== Camelyon17 ANALYZE start $(date) ===
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+             59489      defq dst-came   toandq  R       0:04      1 node002
+             59485      defq dst-cifa   toandq  R      41:44      1 node002
+✅ OODScorer fitted với 302436 mẫu (k=50).
+
+=== resnet18 Camelyon17 pilot summary ===
+  backbone: resnet18
+  seed: 42
+  train_frac: 1.0000
+  ood_split: test
+  mahalanobis_auroc: 0.9558
+  msp_auroc: 0.5743
+  auroc_delta_maha_minus_msp: 0.3814
+  cvid_gap_vs_id: 0.0520
+  cvid_gap_vs_id_CI_low: 0.0486
+  cvid_gap_vs_id_CI_high: 0.0553
+  logit_gap_mean_gap_vs_id: -0.7249
+  logit_gap_mean_gap_vs_id_CI_low: -0.7619
+  logit_gap_mean_gap_vs_id_CI_high: -0.6862
+  feature_silhouette_cosine: 0.3390
+  silhouette_perm_p_value: 0.0010
+  n_id: 33560
+  n_ood: 85054
+  logit_gap_estimator: trim_1pct
+  cvid_status: appendix
+✅ OODScorer fitted với 302436 mẫu (k=50).
+  mahalanobis: clipped 2/33560 negative d² (min=-8.562e+02) to 0
+
+=== resnet50 Camelyon17 pilot summary ===
+  backbone: resnet50
+  seed: 42
+  train_frac: 1.0000
+  ood_split: test
+  mahalanobis_auroc: 0.8955
+  msp_auroc: 0.5150
+  auroc_delta_maha_minus_msp: 0.3806
+  cvid_gap_vs_id: 0.2495
+  cvid_gap_vs_id_CI_low: 0.2456
+  cvid_gap_vs_id_CI_high: 0.2532
+  logit_gap_mean_gap_vs_id: 0.2796
+  logit_gap_mean_gap_vs_id_CI_low: 0.2250
+  logit_gap_mean_gap_vs_id_CI_high: 0.3378
+  feature_silhouette_cosine: 0.3120
+  silhouette_perm_p_value: 0.0010
+  n_id: 33560
+  n_ood: 85054
+  logit_gap_estimator: trim_1pct
+  cvid_status: appendix
+✅ OODScorer fitted với 302436 mẫu (k=50).
+  mahalanobis: clipped 90/33560 negative d² (min=-4.892e+03) to 0
+  mahalanobis: clipped 2395/85054 negative d² (min=-3.506e+03) to 0
+
+=== effb3 Camelyon17 pilot summary ===
+  backbone: effb3
+  seed: 42
+  train_frac: 1.0000
+  ood_split: test
+  mahalanobis_auroc: 0.8852
+  msp_auroc: 0.8026
+  auroc_delta_maha_minus_msp: 0.0826
+  cvid_gap_vs_id: 0.3469
+  cvid_gap_vs_id_CI_low: 0.3430
+  cvid_gap_vs_id_CI_high: 0.3510
+  logit_gap_mean_gap_vs_id: -5.5742
+  logit_gap_mean_gap_vs_id_CI_low: -5.6259
+  logit_gap_mean_gap_vs_id_CI_high: -5.5240
+  feature_silhouette_cosine: 0.2169
+  silhouette_perm_p_value: 0.0010
+  n_id: 33560
+  n_ood: 85054
+  logit_gap_estimator: trim_1pct
+  cvid_status: appendix
+
+Wrote outputs/reports/camelyon17/frac1/seed42/pilot_summary.csv
+=== Camelyon17 ANALYZE done $(date) ===

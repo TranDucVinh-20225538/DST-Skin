@@ -10,3 +10,4 @@ tqdm>=4.65
 umap-learn>=0.5
 Pillow>=9.0
 opencv-python>=4.7
+wilds>=2.0

@@ -1,0 +1,28 @@
+{
+  "domain": "camelyon17",
+  "fm": "gigapath",
+  "repo": "prov-gigapath/prov-gigapath",
+  "n_train": 302436,
+  "feat_dim": 1536,
+  "linear_train_acc": 0.9947063180309222,
+  "mahalanobis_auroc": 0.9949458137833657,
+  "msp_auroc": 0.6638724264999649,
+  "knn_auroc": 0.9887655037872174,
+  "cnn_r50_mahalanobis_auroc": 0.8955319391777833,
+  "cnn_r50_msp_auroc": 0.5149744715920921,
+  "verdict": "camelyon17/gigapath: REPLICATE \u2014 FM Maha 0.995 MSP 0.664 kNN 0.989 | R50 CNN Maha 0.896 MSP 0.515",
+  "mismatch": {
+    "domain": "camelyon17",
+    "fm": "gigapath",
+    "native_patch_hw": 96,
+    "fm_input_hw": 224,
+    "fm_pretrain_tile_hw": 256,
+    "upsample_factor": 2.333,
+    "mismatch_severity": "moderate",
+    "note": "WILDS Camelyon17 patches are 96\u00d796 (typically 10x); prov-gigapath/prov-gigapath expects ~256\u00b2 tiles at 20x. Upsample is milder than MIDOG.",
+    "normalize": "imagenet",
+    "midog_mean_std_used": false
+  },
+  "cnn_baseline_csv": "outputs/reports/camelyon17/frac1/seed42/resnet50_score_comparison.csv",
+  "cnn_r50_note": "camelyon full-train frac1 seed42 R50"
+}

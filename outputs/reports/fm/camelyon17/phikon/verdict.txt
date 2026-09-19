@@ -1,0 +1,1 @@
+camelyon17/phikon: REPLICATE — FM Maha 1.000 MSP 0.605 kNN 1.000 | R50 CNN Maha 0.896 MSP 0.515

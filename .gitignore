@@ -1,3 +1,7 @@
+# local env and raw dataset dumps — never commit
+.conda-env/
+*.zip
+
 # Python
 __pycache__/
 *.py[cod]
@@ -17,13 +21,15 @@ env/
 data/
 reader_images_96/
 
-# outputs
-outputs/
+# outputs (features/checkpoints stay local; reports are the freeze)
+outputs/*
+!outputs/reports/
+!outputs/reports/**
 # Metric-lock appendix (force-tracked): estimator-sensitivity for CVID vs LogitGap
 !outputs/reports/robust_dispersion_ablation.csv
 !outputs/reports/robust_dispersion_ablation_mad_median.csv
-logs/
-experiments/
+logs/watchdog.pid
+
 checkpoints/
 
 # notebooks

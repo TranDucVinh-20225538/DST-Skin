@@ -1,0 +1,26 @@
+OpenMIBOOD R50 / MIDOG cs-ID reproduce-check (2026-09-18).
+
+Cell: ID = domain 1a test; OOD = cs-ID 1b+1c. Frozen OpenMIBOOD ResNet-50 checkpoint
+(data/models/midog/midog_classifier.pth), same imglists as Gutbrod et al. CVPR 2025.
+
+Their numbers (arxiv 2503.16247v2, appendix MIDOG AUROC table):
+  MSP  1b=51.71  1c=55.02  cs-ID mean=53.37
+  MDS  1b=56.89  1c=60.31  cs-ID mean=58.60
+Main Table 1 MSP MIDOG cs-ID = 53.37 (same cell).
+
+Ours, same checkpoint, pooled 1b+1c (outputs/reports/midog/seed42/resnet50_openmibood_score_comparison.csv):
+  MSP  0.5336
+  Maha 0.5877   (class-agnostic LedoitWolf on L2-normalized penultimate; not Lee MDS)
+  kNN  0.5839
+
+Verdict:
+  MSP matches to 0.01 pp (0.5336 vs 0.5337). The 0.01 pp is pooled-sample AUROC vs
+  unweighted mean of two per-domain AUROCs. Pipeline is not off on this cell.
+  Draft sentence: "On the public OpenMIBOOD ResNet-50 checkpoint and official
+  1a vs 1b+1c split we recover MSP AUROC 0.534, matching their reported 53.37."
+
+Do not write "~0.59" as MSP. 0.588 is our Maha on that checkpoint, which happens
+to sit next to their MDS 58.60; the estimators differ (pooled LW vs class-conditional
+MDS), so MSP is the load-bearing reproduce, Maha is supporting.
+
+Never mix this cell with in-house R50 MSP 0.512.

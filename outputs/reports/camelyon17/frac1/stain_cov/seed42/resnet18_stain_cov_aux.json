@@ -1,0 +1,7 @@
+{
+  "backbone": "resnet18",
+  "hospital2_msp": 0.7720438858193798,
+  "hospital1_msp": 0.7647516992461802,
+  "hospital2_msp_coverage_at_risk10": 1.0,
+  "n_ood_h2": 85054
+}

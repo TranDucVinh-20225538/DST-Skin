@@ -1,0 +1,2 @@
+backbone,mahalanobis_auroc,msp_auroc,auroc_delta_maha_minus_msp
+efficientnet_v2_s,0.8899764156261132,0.7367287165681354,0.15324769905797775

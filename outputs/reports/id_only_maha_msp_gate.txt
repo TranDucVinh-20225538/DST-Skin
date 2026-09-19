@@ -1,0 +1,23 @@
+ID-only Maha/MSP gate. Precommit ρ<0.5 → Maha else MSP.
+Bar = Maha and ViM. Beating MSP does not count.
+
+       domain           backbone  n_id_val  n_calib  n_eval  spearman_msp_maha_calib  rho_thresh gate_choice  auroc_msp_eval  auroc_maha_eval  auroc_vim_eval  auroc_gate_eval  cov10_msp_ood  cov10_maha_ood  cov10_gate_ood
+   camelyon17      convnext_tiny     33560    16780   16780                 0.809319         0.5         msp        0.846287         0.928699        0.811277         0.846287       0.369894        0.305018        0.369894
+   camelyon17        densenet121     33560    16780   16780                 0.616357         0.5         msp        0.883967         0.988491        0.880895         0.883967       0.078421        0.388471        0.078421
+   camelyon17              effb3     33560    16780   16780                 0.568120         0.5         msp        0.804046         0.976623        0.865815         0.804046       0.106521        0.512463        0.106521
+   camelyon17  efficientnet_v2_s     33560    16780   16780                 0.797043         0.5         msp        0.727254         0.908888        0.839065         0.727254       0.351729        0.586369        0.351729
+   camelyon17 mobilenet_v3_large     33560    16780   16780                 0.816218         0.5         msp        0.771520         0.870487        0.696469         0.771520       0.903520        0.831601        0.903520
+   camelyon17     regnet_y_3_2gf     33560    16780   16780                 0.794243         0.5         msp        0.785746         0.964334        0.778849         0.785746       0.440261        0.564488        0.440261
+   camelyon17           resnet18     33560    16780   16780                 0.499029         0.5 mahalanobis        0.575389         0.961389        0.718250         0.961389       0.144567        0.304160        0.304160
+   camelyon17           resnet50     33560    16780   16780                 0.408198         0.5 mahalanobis        0.515966         0.919137        0.737457         0.919137       0.149141        0.157923        0.157923
+skin_isic_pad           resnet18       193       96      97                 0.752048         0.5         msp        0.725790         0.930217        0.784183         0.725790       0.000435             NaN        0.000435
+skin_isic_pad           resnet50       193       96      97                 0.826411         0.5         msp        0.704658         0.934452        0.835599         0.704658            NaN             NaN             NaN
+skin_isic_pad              effb3       193       96      97                 0.798114         0.5         msp        0.697909         0.944999        0.761011         0.697909            NaN        0.006092             NaN
+skin_isic_pad        densenet121       193       96      97                 0.725610         0.5         msp        0.684383         0.970678        0.758867         0.684383       0.000870        0.022628        0.000870
+skin_isic_pad      convnext_tiny       193       96      97                 0.534224         0.5         msp        0.748001         0.942783        0.808426         0.748001       0.000435        0.001741        0.000435
+skin_isic_pad mobilenet_v3_large       193       96      97                 0.725298         0.5         msp        0.710744         0.926655        0.763546         0.710744       0.000435        0.001741        0.000435
+skin_isic_pad     regnet_y_3_2gf       193       96      97                 0.708397         0.5         msp        0.713588         0.958785        0.731932         0.713588       0.004787        0.005657        0.004787
+skin_isic_pad  efficientnet_v2_s       193       96      97                 0.665586         0.5         msp        0.811216         0.926036        0.862655         0.811216            NaN        0.214534             NaN
+
+camelyon17: gate chose Maha 2/8. mean AUROC gate=0.837 Maha=0.940 ViM=0.791. spread gate=0.080 Maha=0.040 MSP=0.129.
+skin_isic_pad: gate chose Maha 0/8. mean AUROC gate=0.725 Maha=0.942 ViM=0.788. spread gate=0.040 Maha=0.016 MSP=0.040.

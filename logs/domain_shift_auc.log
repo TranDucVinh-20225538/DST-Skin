@@ -1,0 +1,10 @@
+skin_isic_pad    resnet18   AUC=0.9975 ± 0.0021
+skin_isic_pad    resnet50   AUC=0.9999 ± 0.0002
+skin_isic_pad    effb3      AUC=0.9994 ± 0.0004
+camelyon17       resnet18   AUC=0.9999 ± 0.0000
+camelyon17       resnet50   AUC=1.0000 ± 0.0000
+camelyon17       effb3      AUC=0.9998 ± 0.0001
+midog            resnet18   AUC=1.0000 ± 0.0000
+midog            resnet50   AUC=0.9985 ± 0.0011
+midog            effb3      AUC=0.9995 ± 0.0002
+Wrote outputs/reports/domain_classifier_auc.csv

@@ -326,6 +326,15 @@ def build_score_comparison_df(
         if not _is_per_sample(id_s) or not _is_per_sample(ood_s):
             continue
 
+        n_nan = int(np.isnan(id_s).sum() + np.isnan(ood_s).sum())
+        n_inf = int(np.isinf(id_s).sum() + np.isinf(ood_s).sum())
+        if n_nan or n_inf:
+            raise ValueError(
+                f"{method} scores contain nan={n_nan} inf={n_inf} "
+                f"(id nan={int(np.isnan(id_s).sum())} "
+                f"ood nan={int(np.isnan(ood_s).sum())})"
+            )
+
         auroc = calc_auroc(id_s, ood_s)
         fpr95, thr = calc_fpr95(id_s, ood_s)
         row = {

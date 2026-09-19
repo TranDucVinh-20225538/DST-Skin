@@ -1,0 +1,50 @@
+=== temp-jump submit Fri Sep 18 02:05:33 +07 2026 ===
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+=== temp-jump start $(date) ===
+=== resnet18 ===
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+             59685      defq dst-temp   toandq  R       0:04      1 node002
+  MSP=0.5743 T*=1.1563 ||z||=7.656 MSP@T*=0.5743
+=== resnet50 ===
+  MSP=0.5150 T*=1.0811 ||z||=8.038 MSP@T*=0.5137
+=== effb3 ===
+  MSP=0.8026 T*=1.1454 ||z||=8.848 MSP@T*=0.8029
+=== densenet121 ===
+  MSP=0.8827 T*=1.0895 ||z||=7.739 MSP@T*=0.8827
+=== convnext_tiny ===
+  MSP=0.8456 T*=1.3971 ||z||=8.083 MSP@T*=0.8456
+=== mobilenet_v3_large ===
+  MSP=0.7705 T*=1.4009 ||z||=15.580 MSP@T*=0.7721
+=== regnet_y_3_2gf ===
+  MSP=0.7836 T*=1.1724 ||z||=14.542 MSP@T*=0.7906
+=== efficientnet_v2_s ===
+  MSP=0.7260 T*=1.4650 ||z||=14.235 MSP@T*=0.7444
+
+Wrote outputs/reports/camelyon_temp_jump_corr.csv
+          backbone  msp_auroc  msp_auroc_recomputed   t_star  mean_logit_norm_id_val  nll_at_1  nll_at_tstar  msp_auroc_tstar  msp_jump_vs_resnet  msp_jump_tstar_vs_resnet
+          resnet18   0.574334              0.574334 1.156285                7.656189  0.013790      0.013499         0.574324            0.029680                  0.030321
+          resnet50   0.514974              0.514974 1.081100                8.037864  0.013795      0.013715         0.513682           -0.029680                 -0.030321
+             effb3   0.802589              0.802589 1.145439                8.847742  0.012019      0.011797         0.802909            0.257935                  0.258906
+       densenet121   0.882671              0.882671 1.089497                7.738521  0.010590      0.010510         0.882669            0.338017                  0.338665
+     convnext_tiny   0.845635              0.845635 1.397132                8.083021  0.011449      0.010146         0.845635            0.300981                  0.301632
+mobilenet_v3_large   0.770524              0.770524 1.400876               15.580111  0.012165      0.011093         0.772076            0.225870                  0.228072
+    regnet_y_3_2gf   0.783574              0.783574 1.172434               14.541981  0.010740      0.010523         0.790593            0.238920                  0.246590
+ efficientnet_v2_s   0.725985              0.725985 1.464999               14.234568  0.009581      0.008439         0.744394            0.181331                  0.200390
+{
+  "n": 8,
+  "resnet_mean_msp": 0.5446540039710592,
+  "primary_test": "pearson_r(T_star, msp_jump_vs_resnet)",
+  "r_tstar_jump": 0.267622463952541,
+  "p_tstar_jump": 0.5216525711255136,
+  "spearman_tstar_jump": 0.0,
+  "p_spearman_tstar_jump": 1.0,
+  "r_logitnorm_jump_not_kill_test": 0.1743607636021479,
+  "p_logitnorm_jump_not_kill_test": 0.6796392093945862,
+  "threshold": 0.6,
+  "notable": false,
+  "verdict": "LOW |r(T*,jump)|=0.268<=0.6. Scale/calibration confound dismissed. Do not hunt feature-norm or entropy. Pilot B = CE+SupCon only (no extra T-scale in the training recipe).",
+  "dense_minus_r18_msp": 0.30833790812219886,
+  "dense_minus_r18_msp_tstar": 0.30834454941939293
+}
+LOW |r(T*,jump)|=0.268<=0.6. Scale/calibration confound dismissed. Do not hunt feature-norm or entropy. Pilot B = CE+SupCon only (no extra T-scale in the training recipe).
+=== temp-jump done $(date) ===

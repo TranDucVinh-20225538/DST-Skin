@@ -1,0 +1,8 @@
+method,mean_spread,spread_ci_lo,spread_ci_hi,n_boot,n_backbones,n_domains,ci_source,p_maha_spread_lt
+MSP,0.0734235382813276,0.0648261459986904,0.08762656503399324,1000,3,3,AUROC 95% CI (gaussian) where present; else point,1.0
+Energy,0.09636981634379428,0.08440178825931764,0.10867416236487298,1000,3,3,AUROC 95% CI (gaussian) where present; else point,1.0
+ELogitNorm,0.09571710495278651,0.09571710495278651,0.09571710495278651,1000,3,3,AUROC 95% CI (gaussian) where present; else point,1.0
+ViM,0.039732292365769105,0.039732292365769105,0.039732292365769105,1000,3,3,AUROC 95% CI (gaussian) where present; else point,
+ReAct,0.05872117432128899,0.05872117432128899,0.05872117432128899,1000,3,3,AUROC 95% CI (gaussian) where present; else point,
+Mahalanobis,0.04229985240375398,0.03487416707977901,0.050752588912430084,1000,3,3,AUROC 95% CI (gaussian) where present; else point,
+kNN,0.03701996009317759,0.02863880045931541,0.04766562873594047,1000,3,3,AUROC 95% CI (gaussian) where present; else point,0.207

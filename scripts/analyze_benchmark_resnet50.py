@@ -4,8 +4,17 @@ import torch
 import numpy as np
 import pandas as pd
 from sklearn.metrics import roc_auc_score
-from torch.serialization import add_safe_globals
+try:
+    from torch.serialization import add_safe_globals
+except ImportError:
+    def add_safe_globals(_):
+        pass
 
+from src.utils.benchmark_metrics import (
+    BOOTSTRAP_METHODS,
+    build_dispersion_vs_separability_table,
+    build_score_comparison_df,
+)
 from src.utils.scoring import OODScorer
 
 
@@ -110,10 +119,15 @@ def main():
     os.makedirs("outputs/reports", exist_ok=True)
 
     # Cho PyTorch 2.6 load được file .pt chứa numpy
-    add_safe_globals([np.core.multiarray._reconstruct])
+    reconstruct = getattr(np.core.multiarray, "_reconstruct", None)
+    if reconstruct is not None:
+        add_safe_globals([reconstruct])
 
     # 1. Load features/logits đã extract sẵn
-    data = torch.load(FEATURE_FILE, map_location=DEVICE, weights_only=False)
+    try:
+        data = torch.load(FEATURE_FILE, map_location=DEVICE, weights_only=False)
+    except TypeError:
+        data = torch.load(FEATURE_FILE, map_location=DEVICE)
 
     train_logits = to_numpy(data["train_logits"])
     train_feats = to_numpy(data["train_feats"])
@@ -172,33 +186,39 @@ def main():
     ]
     methods = [m for m in base_methods if m in scores_id_full]
 
-    rows = []
+    df_scores = build_score_comparison_df(
+        scores_id_full, scores_ood_full, methods, seed=SEED
+    )
+    df_scores.to_csv("outputs/reports/resnet50_score_comparison.csv", index=False)
 
-    for method in methods:
-        id_s = scores_id_full[method]
-        ood_s = scores_ood_full[method]
-
-        auroc = calc_auroc(id_s, ood_s)
-        fpr95, thr = calc_fpr95(id_s, ood_s)
+    for _, row in df_scores.iterrows():
+        method = row["Method"]
+        msg = f"{method:18s} | AUROC={row['AUROC']:.4f} | FPR95={row['FPR95']:.4f}"
+        if method in BOOTSTRAP_METHODS:
+            msg += (
+                f" | AUROC CI [{row['AUROC_CI_low']:.4f}, {row['AUROC_CI_high']:.4f}]"
+                f" | FPR95 CI [{row['FPR95_CI_low']:.4f}, {row['FPR95_CI_high']:.4f}]"
+            )
+        print(msg)
 
         if method == "mahalanobis":
+            id_s = scores_id_full[method]
+            ood_s = scores_ood_full[method]
+            thr = row["Threshold"]
             tp = (id_s > thr).sum()
             fp = (ood_s > thr).sum()
             precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
             print(f"Mahalanobis: tp={tp}, fp={fp}, precision={precision:.6f}")
             print(f"len(id_scores)={len(id_s)}, len(ood_scores)={len(ood_s)}")
 
-        rows.append({
-            "Method": method,
-            "AUROC": float(auroc),
-            "FPR95": float(fpr95),
-            "Threshold": float(thr),
-        })
-
-        print(f"{method:18s} | AUROC={auroc:.4f} | FPR95={fpr95:.4f}")
-
-    df_scores = pd.DataFrame(rows)
-    df_scores.to_csv("outputs/reports/resnet50_score_comparison.csv", index=False)
+    df_disp = build_dispersion_vs_separability_table(
+        val_logits, ood_logits, val_feats, ood_feats
+    )
+    df_disp.to_csv(
+        "outputs/reports/resnet50_dispersion_vs_separability.csv", index=False
+    )
+    print("\n=== Dispersion vs separability (ResNet-50) ===")
+    print(df_disp.to_string(index=False))
 
     # =========================
     # 5.6.2 ABLATION: N TRAIN (Mahalanobis gốc)
@@ -263,7 +283,7 @@ def main():
 
     df_rc_summary = pd.DataFrame(summary_rc)
     df_rc_summary.to_csv(
-        "outputs/reports/resne50_risk_coverage_summary.csv", index=False
+        "outputs/reports/resnet50_risk_coverage_summary.csv", index=False
     )
 
     print("\n=== Coverage @ Target Risk (Mahalanobis) ===")
@@ -276,6 +296,7 @@ def main():
 
     print("\n✅ Saved files:")
     print(" - outputs/reports/resnet50_score_comparison.csv")
+    print(" - outputs/reports/resnet50_dispersion_vs_separability.csv")
     print(" - outputs/reports/resnet50_mahalanobis_ablation_N.csv")
     print(" - outputs/reports/resnet50_risk_coverage_mahalanobis.csv")
     print(" - outputs/reports/resnet50_risk_coverage_summary.csv")

@@ -1,0 +1,10 @@
+held_out,n_backbones,kendall_w,delta_vs_full,note
+(none — official W),8,0.6941964285714286,0.0,single-seed point estimate; not a CI
+convnext_tiny,7,0.7376093294460642,0.04341290087463556,"leave-one-backbone; structural, not seed-CI"
+densenet121,7,0.685131195335277,-0.009065233236151604,"leave-one-backbone; structural, not seed-CI"
+effb3,7,0.7157434402332361,0.021547011661807502,"leave-one-backbone; structural, not seed-CI"
+efficientnet_v2_s,7,0.6763848396501457,-0.017811588921282873,"leave-one-backbone; structural, not seed-CI"
+mobilenet_v3_large,7,0.6822157434402333,-0.011980685131195323,"leave-one-backbone; structural, not seed-CI"
+regnet_y_3_2gf,7,0.6763848396501457,-0.017811588921282873,"leave-one-backbone; structural, not seed-CI"
+resnet18,7,0.7244897959183674,0.03029336734693877,"leave-one-backbone; structural, not seed-CI"
+resnet50,7,0.7055393586005831,0.011342930029154541,"leave-one-backbone; structural, not seed-CI"

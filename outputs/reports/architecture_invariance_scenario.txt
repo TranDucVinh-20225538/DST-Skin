@@ -1,0 +1,7 @@
+scenario=A
+camelyon_n_backbones=8
+skin_n_backbones=8
+MSP-style jump appears in >=1 family besides EfficientNet (jumped=['convnext_tiny', 'densenet121', 'effb3', 'efficientnet_v2_s', 'mobilenet_v3_large', 'regnet_y_3_2gf']); check that feature-based ranks stay flat.
+Official W uses EffV2-S@224 on Camelyon and skin; native-384 dropped. EffB3 Camelyon official cell remains native 300; EffB3@224 is appendix. ViT-B/16 and SupCon are not W columns.
+Phao A CLOSED: FM GigaPath/Phikon Camelyon MSP 0.664/0.605 both >0.5; MIDOG-only footnote; no invert debate.
+See decision_precommit_camelyon8_skin8.md (A/B/C + floor revoked). See outputs/reports/NARRATIVE_LOCKS.txt (rebuild must not overwrite).

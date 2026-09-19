@@ -1,0 +1,65 @@
+CUDA: True NVIDIA A100-SXM4-80GB
+========== train_resnet18_robust Wed Sep 16 17:02:18 +07 2026 ==========
+/data2/cmdir/home/toandq/.conda/envs/torch-env/lib/python3.11/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/data2/cmdir/home/toandq/.conda/envs/torch-env/lib/python3.11/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet18_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet18_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Training ResNet-18 CE-Robust on cuda.
+[Epoch 01/10] LR: 9.76e-05 | Train Loss: 0.3831 | Val Acc: 0.8705 | Val AUC: 0.9071
+Saved best model to data/models/resnet18_robust_best.pth (Val AUC 0.9071).
+[Epoch 02/10] LR: 9.05e-05 | Train Loss: 0.3321 | Val Acc: 0.8705 | Val AUC: 0.9411
+Saved best model to data/models/resnet18_robust_best.pth (Val AUC 0.9411).
+[Epoch 03/10] LR: 7.94e-05 | Train Loss: 0.3158 | Val Acc: 0.8394 | Val AUC: 0.9350
+[Epoch 04/10] LR: 6.55e-05 | Train Loss: 0.3035 | Val Acc: 0.8601 | Val AUC: 0.9312
+[Epoch 05/10] LR: 5.00e-05 | Train Loss: 0.2904 | Val Acc: 0.8860 | Val AUC: 0.9516
+Saved best model to data/models/resnet18_robust_best.pth (Val AUC 0.9516).
+[Epoch 06/10] LR: 3.45e-05 | Train Loss: 0.2770 | Val Acc: 0.8860 | Val AUC: 0.9547
+Saved best model to data/models/resnet18_robust_best.pth (Val AUC 0.9547).
+[Epoch 07/10] LR: 2.06e-05 | Train Loss: 0.2632 | Val Acc: 0.8860 | Val AUC: 0.9481
+[Epoch 08/10] LR: 9.55e-06 | Train Loss: 0.2479 | Val Acc: 0.8964 | Val AUC: 0.9431
+[Epoch 09/10] LR: 2.45e-06 | Train Loss: 0.2396 | Val Acc: 0.8964 | Val AUC: 0.9426
+[Epoch 10/10] LR: 0.00e+00 | Train Loss: 0.2372 | Val Acc: 0.8964 | Val AUC: 0.9471
+Saved final model to data/models/resnet18_robust_epoch_last.pth.
+========== train_resnet50_robust Wed Sep 16 17:27:08 +07 2026 ==========
+🚀 Training ResNet-50 CE-Robust on cuda
+[Epoch 01/10] LR: 9.76e-05 | Train Loss: 0.3586 | Val Acc: 0.8549 | Val AUC: 0.9059
+✅ Saved best model to data/models/resnet50_robust_best.pth (Val AUC 0.9059)
+[Epoch 02/10] LR: 9.05e-05 | Train Loss: 0.3091 | Val Acc: 0.8912 | Val AUC: 0.9411
+✅ Saved best model to data/models/resnet50_robust_best.pth (Val AUC 0.9411)
+[Epoch 03/10] LR: 7.94e-05 | Train Loss: 0.2942 | Val Acc: 0.8497 | Val AUC: 0.9387
+[Epoch 04/10] LR: 6.55e-05 | Train Loss: 0.2586 | Val Acc: 0.8705 | Val AUC: 0.9352
+[Epoch 05/10] LR: 5.00e-05 | Train Loss: 0.2416 | Val Acc: 0.8860 | Val AUC: 0.9460
+✅ Saved best model to data/models/resnet50_robust_best.pth (Val AUC 0.9460)
+[Epoch 06/10] LR: 3.45e-05 | Train Loss: 0.2101 | Val Acc: 0.9016 | Val AUC: 0.9645
+✅ Saved best model to data/models/resnet50_robust_best.pth (Val AUC 0.9645)
+[Epoch 07/10] LR: 2.06e-05 | Train Loss: 0.1792 | Val Acc: 0.8964 | Val AUC: 0.9510
+[Epoch 08/10] LR: 9.55e-06 | Train Loss: 0.1518 | Val Acc: 0.9119 | Val AUC: 0.9584
+[Epoch 09/10] LR: 2.45e-06 | Train Loss: 0.1283 | Val Acc: 0.8964 | Val AUC: 0.9593
+[Epoch 10/10] LR: 0.00e+00 | Train Loss: 0.1140 | Val Acc: 0.9067 | Val AUC: 0.9625
+💾 Saved final model to data/models/resnet50_robust_epoch_last.pth
+========== train_efficientnet_b3_robust Wed Sep 16 17:54:22 +07 2026 ==========
+Downloading: "https://download.pytorch.org/models/efficientnet_b3_rwightman-b3899882.pth" to /data2/cmdir/home/toandq/.cache/torch/hub/checkpoints/efficientnet_b3_rwightman-b3899882.pth
+🚀 Training EfficientNet-B3 CE-Robust on cuda
+  0%|          | 0.00/47.2M [00:00<?, ?B/s] 19%|█▉        | 9.12M/47.2M [00:00<00:00, 90.0MB/s] 45%|████▍     | 21.0M/47.2M [00:00<00:00, 106MB/s]  70%|███████   | 33.0M/47.2M [00:00<00:00, 115MB/s] 93%|█████████▎| 44.1M/47.2M [00:00<00:00, 114MB/s]100%|██████████| 47.2M/47.2M [00:00<00:00, 111MB/s]
+[Epoch 01/10] LR: 9.76e-05 | Train Loss: 0.3632 | Val Acc: 0.8653 | Val AUC: 0.9417
+✅ Saved best model to data/models/efficientnet_b3_robust_best.pth (Val AUC 0.9417)
+[Epoch 02/10] LR: 9.05e-05 | Train Loss: 0.2946 | Val Acc: 0.8808 | Val AUC: 0.9506
+✅ Saved best model to data/models/efficientnet_b3_robust_best.pth (Val AUC 0.9506)
+[Epoch 03/10] LR: 7.94e-05 | Train Loss: 0.2631 | Val Acc: 0.8964 | Val AUC: 0.9593
+✅ Saved best model to data/models/efficientnet_b3_robust_best.pth (Val AUC 0.9593)
+[Epoch 04/10] LR: 6.55e-05 | Train Loss: 0.2314 | Val Acc: 0.8964 | Val AUC: 0.9550
+[Epoch 05/10] LR: 5.00e-05 | Train Loss: 0.2073 | Val Acc: 0.8860 | Val AUC: 0.9516
+[Epoch 06/10] LR: 3.45e-05 | Train Loss: 0.1789 | Val Acc: 0.8756 | Val AUC: 0.9555
+[Epoch 07/10] LR: 2.06e-05 | Train Loss: 0.1503 | Val Acc: 0.8860 | Val AUC: 0.9568
+[Epoch 08/10] LR: 9.55e-06 | Train Loss: 0.1376 | Val Acc: 0.8860 | Val AUC: 0.9568
+[Epoch 09/10] LR: 2.45e-06 | Train Loss: 0.1250 | Val Acc: 0.8860 | Val AUC: 0.9562
+[Epoch 10/10] LR: 0.00e+00 | Train Loss: 0.1196 | Val Acc: 0.8860 | Val AUC: 0.9565
+💾 Saved final model to data/models/efficientnet_b3_robust_epoch_last.pth
+=== done Wed Sep 16 18:33:21 +07 2026 ===
+total 349M
+-rw-rw-r-- 1 toandq toandq 42M Sep 16 18:06 efficientnet_b3_robust_best.pth
+-rw-rw-r-- 1 toandq toandq 42M Sep 16 18:33 efficientnet_b3_robust_epoch_last.pth
+-rw-rw-r-- 1 toandq toandq 43M Sep 16 17:17 resnet18_robust_best.pth
+-rw-rw-r-- 1 toandq toandq 43M Sep 16 17:27 resnet18_robust_epoch_last.pth
+-rw-rw-r-- 1 toandq toandq 90M Sep 16 17:43 resnet50_robust_best.pth
+-rw-rw-r-- 1 toandq toandq 91M Sep 16 17:54 resnet50_robust_epoch_last.pth

@@ -1,0 +1,41 @@
+=== SLURM queue snapshot Thu Sep 17 04:15:07 +07 2026 ===
+     JOBID    PARTITION                 NAME    STATE       TIME  NODES NODELIST(REASON)
+=== MIDOG extract/analyze start $(date) ===
+CUDA True NVIDIA A100-SXM4-80GB
+waiting for download (/data2/cmdir/home/toandq/DST-Skin/data/raw/midog/RELEASE_id_csid.txt)...
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+             59480      defq dst-mido   toandq  R       0:04      1 node002
+             59481      defq dst-mido   toandq  R       0:04      1 node002
+Waiting for MIDOG ID+cs-ID at data/raw/midog/RELEASE_id_csid.txt...
+MIDOG ready: data/raw/midog/RELEASE_id_csid.txt
+/data2/cmdir/home/toandq/.conda/envs/torch-env/lib/python3.11/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+
+=== Extract ResNet-50 (num_classes=3) on cuda ===
+--- train (1896 samples) ---
+--- id_test (251 samples) ---
+--- ood (5902 samples) ---
+Extracting:   0%|          | 0/15 [00:00<?, ?it/s]Extracting:   7%|▋         | 1/15 [00:01<00:15,  1.10s/it]Extracting:  67%|██████▋   | 10/15 [00:01<00:00, 10.61it/s]Extracting:  93%|█████████▎| 14/15 [00:01<00:00, 14.13it/s]                                                           Extracting:   0%|          | 0/2 [00:00<?, ?it/s]Extracting:  50%|█████     | 1/2 [00:00<00:00,  5.29it/s]                                                         Extracting:   0%|          | 0/47 [00:00<?, ?it/s]Extracting:   2%|▏         | 1/47 [00:00<00:16,  2.80it/s]Extracting:  11%|█         | 5/47 [00:00<00:04, 10.00it/s]Extracting:  19%|█▉        | 9/47 [00:00<00:02, 13.39it/s]Extracting:  28%|██▊       | 13/47 [00:01<00:02, 14.85it/s]Extracting:  36%|███▌      | 17/47 [00:01<00:01, 15.77it/s]Extracting:  45%|████▍     | 21/47 [00:01<00:01, 16.69it/s]Extracting:  53%|█████▎    | 25/47 [00:01<00:01, 17.28it/s]ExtractSaved outputs/features/midog/seed42/resnet50_features.pt
+✅ OODScorer fitted với 1896 mẫu (k=50).
+
+=== ResNet-50 MIDOG gap summary (ID=test 1a, OOD=1b+1c) ===
+  backbone: resnet50
+  seed: 42
+  id_split: test_1a
+  ood_split: csid_1b+1c
+  mahalanobis_auroc: 0.5877
+  msp_auroc: 0.5336
+  auroc_delta_maha_minus_msp: 0.0541
+  cvid_gap_vs_id: 0.0214
+  cvid_gap_vs_id_CI_low: 0.0002
+  cvid_gap_vs_id_CI_high: 0.0397
+  logit_gap_mean_gap_vs_id: -0.1477
+  logit_gap_mean_gap_vs_id_CI_low: -0.2875
+  logit_gap_mean_gap_vs_id_CI_high: -0.0218
+  feature_silhouette_cosine: 0.0600
+  silhouette_perm_p_value: 0.0010
+  n_id: 251
+  n_ood: 5902
+Wrote outputs/reports/midog/seed42/pilot_summary.csv
+=== MIDOG pilot done $(date) ===
+ing:  62%|██████▏   | 29/47 [00:01<00:01, 17.84it/s]Extracting:  70%|███████   | 33/47 [00:02<00:00, 18.04it/s]Extracting:  79%|███████▊  | 37/47 [00:02<00:00, 17.87it/s]Extracting:  87%|████████▋ | 41/47 [00:02<00:00, 17.67it/s]Extracting:  96%|█████████▌| 45/47 [00:02<00:00, 18.11it/s]Extracting: 100%|██████████| 47/47 [00:02<00:00, 17.20it/s]                                                           

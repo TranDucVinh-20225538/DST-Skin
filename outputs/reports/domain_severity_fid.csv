@@ -1,0 +1,4 @@
+domain,fid_score,encoder,n_id,n_ood
+skin_isic_pad,184.43568589147316,imagenet_resnet50_avgpool_v1,193,2000
+camelyon17,68.73357134964454,imagenet_resnet50_avgpool_v1,2000,2000
+midog,69.09702581606882,imagenet_resnet50_avgpool_v1,251,2000

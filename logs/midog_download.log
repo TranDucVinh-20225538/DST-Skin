@@ -1,0 +1,65 @@
+=== MIDOG download start $(date) ===
+Downloading MIDOG ResNet-50 checkpoint → data/models/midog/midog_classifier.pth
+Saved data/models/midog/midog_classifier.pth (94375294 bytes)
+Downloading MIDOG domains 1a/1b/1c only (not full 65GB)...
+Downloading MIDOGpp.json ...
+MIDOG ID+cs-ID: 150 WSIs (not full 503 / 65GB)
+[1/150] 001.tiff (figshare 40282099)
+[2/150] 002.tiff (figshare 40282102)
+[3/150] 003.tiff (figshare 40282111)
+[4/150] 004.tiff (figshare 40282138)
+[5/150] 005.tiff (figshare 40282120)
+[6/150] 006.tiff (figshare 40282126)
+[7/150] 007.tiff (figshare 40282135)
+[8/150] 008.tiff (figshare 40282105)
+[9/150] 009.tiff (figshare 40282141)
+[10/150] 010.tiff (figshare 40282108)
+[11/150] 011.tiff (figshare 40282129)
+[12/150] 012.tiff (figshare 40282132)
+[13/150] 013.tiff (figshare 40282117)
+[14/150] 014.tiff (figshare 40282114)
+[15/150] 015.tiff (figshare 40282123)
+[16/150] 016.tiff (figshare 40282096)
+srun: Force Terminated job 59476
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 59476.0 ON node002 CANCELLED AT 2026-09-17T03:34:08 ***
+srun: error: node002: task 0: Terminated
+=== restart parallel download Thu Sep 17 03:34:11 +07 2026 ===
+=== MIDOG parallel download start Thu Sep 17 03:34:12 +07 2026 ===
+Checkpoint already present: data/models/midog/midog_classifier.pth (94375294 bytes)
+Downloading MIDOG domains 1a/1b/1c only (not full 65GB)...
+MIDOG ID+cs-ID: 150 WSIs (not full 503 / 65GB)
+WSIs already present: 15; to download: 135
+Traceback (most recent call last):
+  File "/data2/cmdir/home/toandq/DST-Skin/scripts/midog_pilot.py", line 296, in <module>
+    main()
+  File "/data2/cmdir/home/toandq/DST-Skin/scripts/midog_pilot.py", line 282, in main
+    download_id_csid(keep_wsi=args.keep_wsi)
+  File "/data2/cmdir/home/toandq/DST-Skin/src/datasets/midog_ood.py", line 278, in download_id_csid
+    print(f"[{done}/{len(pending)}] {fname} ({size / 1e6:.1f} MB)", flush=True)
+                                              ~~~~~^~~~~
+TypeError: unsupported operand type(s) for /: 'tuple' and 'float'
+srun: error: node002: task 0: Exited with exit code 1
+=== MIDOG download start $(date) ===
+Checkpoint already present: data/models/midog/midog_classifier.pth (94375294 bytes)
+Downloading MIDOG domains 1a/1b/1c only (not full 65GB)...
+MIDOG ID+cs-ID: 150 WSIs (not full 503 / 65GB)
+WSIs already present: 150; to download: 0
+Cropping domain 1a ...
+Cropping domain 1b ...
+Cropping domain 1c ...
+Removing raw WSIs to save ~20GB ...
+MIDOG ID+cs-ID ready: data/raw/midog/RELEASE_id_csid.txt
+
+=== MIDOG split summary (OpenMIBOOD imglists) ===
+  id_eval: test_1a
+  ood: csid_1b+1c
+  num_classes: 3
+  train: 1896
+  id_val: 181
+  id_test: 251
+  csid_1b: 2956
+  csid_1c: 2946
+  ood_n: 5902
+Wrote outputs/reports/midog/split_summary.csv
+=== MIDOG download done $(date) ===

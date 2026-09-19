@@ -1,0 +1,4 @@
+domain,n_backbones,n_methods,kendall_w,primary_metric,note
+camelyon17,8,7,0.6941964285714286,kendall_w,W=1 identical method ranking across backbones; W=0 no concordance. Do not pool W across domains.
+midog,8,7,0.8660714285714286,kendall_w,W=1 identical method ranking across backbones; W=0 no concordance. Do not pool W across domains.
+skin_isic_pad,8,7,0.7912946428571429,kendall_w,W=1 identical method ranking across backbones; W=0 no concordance. Do not pool W across domains.

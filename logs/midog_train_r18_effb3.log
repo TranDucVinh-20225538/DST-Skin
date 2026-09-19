@@ -1,0 +1,109 @@
+=== MIDOG R18/EffB3 train submit Thu Sep 17 09:42:12 +07 2026 ===
+     JOBID    PARTITION                 NAME    STATE       TIME NODELIST(REASON)
+     59482         defq    dst-camelyon-full  RUNNING    5:24:17 node002
+=== MIDOG R18/EffB3 start $(date) ===
+CUDA True NVIDIA A100-SXM4-80GB
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+             59483      defq dst-mido   toandq  R       0:04      1 node002
+             59482      defq dst-came   toandq  R    5:24:21      1 node002
+Waiting for MIDOG ID+cs-ID at data/raw/midog/RELEASE_id_csid.txt...
+MIDOG ready: data/raw/midog/RELEASE_id_csid.txt
+/data2/cmdir/home/toandq/.conda/envs/torch-env/lib/python3.11/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/data2/cmdir/home/toandq/.conda/envs/torch-env/lib/python3.11/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet18_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet18_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+
+=== Train resnet18 on cuda (seed=42, n_train=1896, num_classes=3) ===
+[Epoch 01/10] LR=9.76e-05 loss=0.5446 id_val_acc=0.8619
+  saved data/models/midog/seed42/resnet18_best.pth (acc=0.8619)
+[Epoch 02/10] LR=9.05e-05 loss=0.3046 id_val_acc=0.8840
+  saved data/models/midog/seed42/resnet18_best.pth (acc=0.8840)
+[Epoch 03/10] LR=7.94e-05 loss=0.2350 id_val_acc=0.8619
+[Epoch 04/10] LR=6.55e-05 loss=0.1899 id_val_acc=0.8895
+  saved data/models/midog/seed42/resnet18_best.pth (acc=0.8895)
+[Epoch 05/10] LR=5.00e-05 loss=0.1602 id_val_acc=0.8619
+[Epoch 06/10] LR=3.45e-05 loss=0.1092 id_val_acc=0.8895
+[Epoch 07/10] LR=2.06e-05 loss=0.0858 id_val_acc=0.8895
+[Epoch 08/10] LR=9.55e-06 loss=0.0696 id_val_acc=0.8840
+[Epoch 09/10] LR=2.45e-06 loss=0.0630 id_val_acc=0.8895
+[Epoch 10/10] LR=0.00e+00 loss=0.0603 id_val_acc=0.8840
+/data2/cmdir/home/toandq/.conda/envs/torch-env/lib/python3.11/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+
+=== Extract resnet18 (num_classes=3) on cuda ===
+--- train (1896 samples) ---
+--- id_val (181 samples) ---
+--- id_test (251 samples) ---
+--- ood (5902 samples) ---
+Extracting:   0%|          | 0/30 [00:00<?, ?it/s]Extracting:   3%|▎         | 1/30 [00:00<00:11,  2.50it/s]Extracting:  17%|█▋        | 5/30 [00:00<00:02, 10.38it/s]Extracting:  30%|███       | 9/30 [00:00<00:01, 14.45it/s]Extracting:  43%|████▎     | 13/30 [00:00<00:00, 17.31it/s]Extracting:  57%|█████▋    | 17/30 [00:01<00:00, 19.03it/s]Extracting:  70%|███████   | 21/30 [00:01<00:00, 20.09it/s]Extracting:  83%|████████▎ | 25/30 [00:01<00:00, 20.56it/s]Extracting:  97%|█████████▋| 29/30 [00:01<00:00, 21.95it/s]                                                           Extracting:   0%|          | 0/3 [00:00<?, ?it/s]Extracting:  33%|███▎      | 1/3 [00:00<00:00,  2.75it/s]                                                         Extracting:   0%|          | 0/4 [00:00<?, ?it/s]Extracting:  25%|██▌       | 1/4 [00:00<00:01,  2.68it/s]                                                         Extracting:   0%|          | 0/93 [00:00<?, ?it/s]Extracting:   1%|          | 1/93 [00:00<00:35,  2.62it/s]Extracting:   5%|▌         | 5/93 [00:00<00:08, 10.84it/s]Extracting:  10%|▉         | 9/93 [00:00<00:05, 15.24it/s]Extracting:  14%|█▍        | 13/93 [00:00<00:04, 18.36it/s]Extracting:  18%|█▊        | 17/93 [00:01<00:03, 19.38it/s]Extracting:  23%|██▎       | 21/93 [00:01<00:03, 20.16it/s]Extracting:  27%|██▋       | 25/93 [00:01<00:03, 19.88it/s]Extracting:  31%|███       | 29/93 [00:01<00:02, 21.46it/s]Extracting:  35%|███▌      | 33/93 [00:01<00:02, 20.89it/s]Extracting:  40%|███▉      | 37/93 [00:02<00:02, 21.18it/s]Extracting:  44%|████▍     | 41/93 [00:02<00:02, 22.26it/s]Extracting:  48%|████▊     | 45/93 [00:02<00:02, 21.57it/s]Extracting:  53%|█████▎    | 49/93 [00:02<00:01, 22.04it/s]Extracting:  57%|█████▋    | 53/93 [00:02<00:01, 22.69it/s]Extracting:  61%|██████▏   | 57/Saved outputs/features/midog/seed42/resnet18_features.pt
+✅ OODScorer fitted với 1896 mẫu (k=50).
+
+=== resnet18 MIDOG gap summary (ID=test 1a, OOD=1b+1c) ===
+  backbone: resnet18
+  seed: 42
+  id_split: test_1a
+  ood_split: csid_1b+1c
+  source: trained_imagenet_init
+  mahalanobis_auroc: 0.7327
+  msp_auroc: 0.4380
+  auroc_delta_maha_minus_msp: 0.2947
+  cvid_gap_vs_id: -0.0637
+  cvid_gap_vs_id_CI_low: -0.0967
+  cvid_gap_vs_id_CI_high: -0.0313
+  logit_gap_mean_gap_vs_id: 0.6639
+  logit_gap_mean_gap_vs_id_CI_low: 0.4053
+  logit_gap_mean_gap_vs_id_CI_high: 0.9114
+  feature_silhouette_cosine: 0.1649
+  silhouette_perm_p_value: 0.0010
+  n_id: 251
+  n_ood: 5902
+  logit_gap_estimator: trim_1pct
+  cvid_status: appendix
+
+=== Train effb3 on cuda (seed=42, n_train=1896, num_classes=3) ===
+[Epoch 01/10] LR=9.76e-05 loss=0.9253 id_val_acc=0.8287
+  saved data/models/midog/seed42/effb3_best.pth (acc=0.8287)
+[Epoch 02/10] LR=9.05e-05 loss=0.5194 id_val_acc=0.8674
+  saved data/models/midog/seed42/effb3_best.pth (acc=0.8674)
+[Epoch 03/10] LR=7.94e-05 loss=0.3934 id_val_acc=0.8895
+  saved data/models/midog/seed42/effb3_best.pth (acc=0.8895)
+[Epoch 04/10] LR=6.55e-05 loss=0.3289 id_val_acc=0.8785
+[Epoch 05/10] LR=5.00e-05 loss=0.2715 id_val_acc=0.8729
+[Epoch 06/10] LR=3.45e-05 loss=0.2273 id_val_acc=0.8785
+[Epoch 07/10] LR=2.06e-05 loss=0.2153 id_val_acc=0.8895
+[Epoch 08/10] LR=9.55e-06 loss=0.2085 id_val_acc=0.8619
+[Epoch 09/10] LR=2.45e-06 loss=0.1893 id_val_acc=0.8674
+[Epoch 10/10] LR=0.00e+00 loss=0.2009 id_val_acc=0.8785
+
+=== Extract effb3 (num_classes=3) on cuda ===
+--- train (1896 samples) ---
+93 [00:02<00:01, 22.64it/s]Extracting:  66%|██████▌   | 61/93 [00:03<00:01, 22.79it/s]Extracting:  70%|██████▉   | 65/93 [00:03<00:01, 22.96it/s]Extracting:  74%|███████▍  | 69/93 [00:03<00:01, 22.77it/s]Extracting:  78%|███████▊  | 73/93 [00:03<00:00, 22.76it/s]Extracting:  83%|████████▎ | 77/93 [00:03<00:00, 22.63it/s]Extracting:  87%|████████▋ | 81/93 [00:03<00:00, 22.57it/s]Extracting:  91%|█████████▏| 85/93 [00:04<00:00, 22.94it/s]Extracting:  96%|█████████▌| 89/93 [00:04<00:00, 22.41it/s]                                                           Extracting:   0%|          | 0/30 [00:00<?, ?it/s]Extracting:   3%|▎         | 1/30 [00:00<00:15,  1.92it/s]Extracting:  10%|█         | 3/30 [00:00<00:04,  5.67it/s]Extracting:  17%|█▋        | 5/30 [00:00<00:03,  8.33it/s]Extracting:  23%|██▎       | 7/30 [00:00<00:02, 10.17it/s]Extracting:  30%|�--- id_val (181 samples) ---
+--- id_test (251 samples) ---
+��██       | 9/30 [00:01<00:01, 12.26it/s]Extracting:  37%|███▋      | 11/30 [00:01<00:01, 12.85it/s]Extracting:  43%|████▎     | 13/30 [00:01<00:01, 14.52it/s]Extracting:  50%|█████     | 15/30 [00:01<00:01, 14.55it/s]Extracting:  57%|█████▋    | 17/30 [00:01<00:00, 15.49it/s]Extracting:  63%|██████▎   | 19/30 [00:01<00:00, 14.85it/s]Extracting:  70%|███████   | 21/30 [00:01<00:00, 15.50it/s]Extracting:  77%|███████▋  | 23/30 [00:01<00:00, 16.01it/s]Extracting:  83%|████████▎ | 25/30 [00:02<00:00, 15.30it/s]Extracting:  90%|█████████ | 27/30 [00:02<00:00, 16.24it/s]Extracting:  97%|█████████▋| 29/30 [00:02<00:00, 15.07it/s]                                                           Extracting:   0%|          | 0/3 [00:00<?, ?it/s]Extracting:  33%|███▎      | 1/3 [00:00<00:00,  2.00it/s]                                                         E--- ood (5902 samples) ---
+xtracting:   0%|          | 0/4 [00:00<?, ?it/s]Extracting:  25%|██▌       | 1/4 [00:00<00:01,  2.09it/s]Extracting:  75%|███████▌  | 3/4 [00:00<00:00,  6.05it/s]                                                         Extracting:   0%|          | 0/93 [00:00<?, ?it/s]Extracting:   1%|          | 1/93 [00:00<00:42,  2.17it/s]Extracting:   3%|▎         | 3/93 [00:00<00:14,  6.37it/s]Extracting:   5%|▌         | 5/93 [00:00<00:09,  9.77it/s]Extracting:   8%|▊         | 7/93 [00:00<00:07, 11.26it/s]Extracting:  10%|▉         | 9/93 [00:00<00:06, 13.43it/s]Extracting:  12%|█▏        | 11/93 [00:01<00:05, 15.14it/s]Extracting:  14%|█▍        | 13/93 [00:01<00:04, 16.38it/s]Extracting:  16%|█▌        | 15/93 [00:01<00:04, 17.29it/s]Extracting:  18%|█▊        | 17/93 [00:01<00:04, 18.02it/s]Extracting:  20%|██        | 19/93 [00:01<00:03, 18.58it/s]Extracting:  23%|██▎       | 21/93 [00:01<00:03, 18.91it/s]Extracting:  25%|██▍       | 23/93 [00:01<00:03, 19.20it/s]Extracting:  27%|██▋       | 25/93 [00:01<00:03, 19.43it/s]Extracting:  29%|██▉       | 27/93 [00:01<00:03, 19.02it/s]Extracting:  31%|███       | 29/93 [00:01<00:03, 19.30it/s]Extracting:  33%|███▎      | 31/93 [00:02<00:03, 18.38it/s]Extracting:  35%|███▌      | 33/93 [00:02<00:03, 18.84it/s]Extracting:  39%|███▊      | 36/93 [00:02<00:02, 19.28it/s]Extracting:  41%|████      | 38/93 [00:02<00:02, 18.82it/s]Extracting:  43%|████▎     | 40/93 [00:02<00:02, 19.10it/s]Extracting:  45%|████▌     | 42/93 [00:02<00:02, 18.57it/s]Extracting:  48%|████▊     | 45/93 [00:02<00:02, 19.08it/s]Extracting:  51%|█████     | 47/93 [00:02<00:02, 19.17it/s]Extracting:  54%|█████▍    | 50/93 [00:03<00:02, 18.40it/s]Extracting:  56%|█████▌    | 52/93 [00:03<00:02, 18.78it/s]Extracting:  58%|█████▊    | 54/93 [00:03<00:02, 18.25it/s]Extracting:  61%|██████▏   | 57/93 [00:03<00:01, 18.86it/s]Extracting:  63%|██████▎   | 59/93 [00:03<00:01, 18.27it/s]Extracting:  66%|██████▌   | 61/93 [00:03<00:01, 18.58it/s]Extracting:  68%|██████▊   | 63/93 [00:03<00:01, 18.66it/s]Extracting:  70%|██████▉   | 65/93 [00:03<00:01, 19.01it/s]Extracting:  72%|███████▏  | 67/93 [00:03<00:01, 19.26it/s]Extracting:  74%|███████▍  | 69/93 [00:04<00:01, 19.45it/s]Extracting:  76%|███████▋  | 71/93 [00:04<00:01, 18.72it/s]Extracting:  78%|███████▊  | 73/93 [00:04<00:01, 18.98it/s]Extracting:  81%|████████  | 75/93 [00:04<00:00, 18.91it/s]Extracting:  83%|████████▎ | 77/93 [00:04<00:00, 19.22it/s]Extracting:  85%|████████▍ | 79/93 [00:04<00:00, 17.68it/s]Extracting:  87%|████████▋ | 81/93 [00:04<00:00, 18.30it/s]Extracting:  89%|████████▉ | 83/93 [00:04<00:00, 18.Saved outputs/features/midog/seed42/effb3_features.pt
+✅ OODScorer fitted với 1896 mẫu (k=50).
+
+=== effb3 MIDOG gap summary (ID=test 1a, OOD=1b+1c) ===
+  backbone: effb3
+  seed: 42
+  id_split: test_1a
+  ood_split: csid_1b+1c
+  source: trained_imagenet_init
+  mahalanobis_auroc: 0.6731
+  msp_auroc: 0.4857
+  auroc_delta_maha_minus_msp: 0.1874
+  cvid_gap_vs_id: 0.0036
+  cvid_gap_vs_id_CI_low: -0.0318
+  cvid_gap_vs_id_CI_high: 0.0396
+  logit_gap_mean_gap_vs_id: -0.1934
+  logit_gap_mean_gap_vs_id_CI_low: -0.3981
+  logit_gap_mean_gap_vs_id_CI_high: 0.0161
+  feature_silhouette_cosine: 0.0380
+  silhouette_perm_p_value: 0.0010
+  n_id: 251
+  n_ood: 5902
+  logit_gap_estimator: trim_1pct
+  cvid_status: appendix
+Wrote outputs/reports/midog/seed42/pilot_summary.csv
+=== MIDOG R18/EffB3 done $(date) ===
+66it/s]Extracting:  92%|█████████▏| 86/93 [00:04<00:00, 18.95it/s]Extracting:  96%|█████████▌| 89/93 [00:05<00:00, 19.32it/s]Extracting:  98%|█████████▊| 91/93 [00:05<00:00, 18.94it/s]Extracting: 100%|██████████| 93/93 [00:05<00:00, 17.09it/s]                                                           

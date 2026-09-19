@@ -1,0 +1,2 @@
+id_eval,ood,num_classes,train,id_val,id_test,csid_1b,csid_1c,ood_n
+test_1a,csid_1b+1c,3,1896,181,251,2956,2946,5902

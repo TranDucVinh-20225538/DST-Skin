@@ -1,0 +1,17 @@
+Matched-recipe readout. Official W stays standard-recipe seed 42.
+Frozen ResNet mean=0.544654  jump line=0.6947  ID floor=0.97
+
+== M1 jumpers → ResNet Adam ==
+  convnext_tiny            MSP=0.820 jump=+0.275 id_val=0.9944 JUMP
+  mobilenet_v3_large       MSP=0.737 jump=+0.193 id_val=0.9949 JUMP
+  regnet_y_3_2gf           MSP=0.805 jump=+0.261 id_val=0.9966 JUMP
+  efficientnet_v2_s_224    MSP=0.873 jump=+0.328 id_val=0.9961 JUMP
+clean hits=4/4
+→ ≥3/4 still jump — recipe does not explain 6/6; keep 4-family sentence
+
+== M2 ResNet → ConvNeXt AdamW ==
+  resnet18                 MSP=0.773 id_val=0.9957 JUMP-BAND
+  resnet50                 MSP=0.581 id_val=0.9958 no-jump-band
+→ ResNet can jump under AdamW — cannot write pure architecture split
+
+Do not mix matched CSVs into rebuild_architecture_invariance.py.

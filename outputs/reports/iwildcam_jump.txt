@@ -1,0 +1,5 @@
+iWildCam ResNet mean MSP=0.604. DenseNet=0.575. jump=-0.029 (thr 0.15). MISS — bound: may be biomedical-specific. Not a failed paper.
+backbone,msp,maha
+resnet18,0.6046013006844473,0.6318334974399451
+resnet50,0.6026767088499996,0.6952570029168041
+densenet121,0.5746540343077235,0.6195187965095075

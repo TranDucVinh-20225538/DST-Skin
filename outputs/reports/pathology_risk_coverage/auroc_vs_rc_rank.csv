@@ -1,0 +1,13 @@
+domain,protocol,method,rank_by_ood_auroc,rank_by_coverage@10,rank_by_aurc_lower_better,auroc_vs_coverage10_disagree,auroc_vs_aurc_disagree
+camelyon17,id_selective,energy,effb3>effb3_224>resnet18>resnet50,resnet18>resnet50>effb3>effb3_224,effb3>effb3_224>resnet18>resnet50,True,False
+camelyon17,id_selective,mahalanobis,effb3>effb3_224>resnet18>resnet50,resnet18>resnet50>effb3>effb3_224,resnet50>resnet18>effb3>effb3_224,True,True
+camelyon17,id_selective,msp,effb3>effb3_224>resnet18>resnet50,resnet18>resnet50>effb3>effb3_224,effb3>effb3_224>resnet18>resnet50,True,False
+camelyon17,ood_triage,energy,effb3>effb3_224>resnet18>resnet50,resnet50>resnet18>effb3>effb3_224,effb3_224>effb3>resnet18>resnet50,True,True
+camelyon17,ood_triage,mahalanobis,effb3>effb3_224>resnet18>resnet50,effb3>effb3_224>resnet18>resnet50,effb3_224>effb3>resnet18>resnet50,False,True
+camelyon17,ood_triage,msp,effb3>effb3_224>resnet18>resnet50,resnet50>resnet18>effb3>effb3_224,effb3_224>effb3>resnet18>resnet50,True,True
+midog,id_selective,energy,effb3>resnet50>resnet18,resnet50>effb3>resnet18,resnet50>effb3>resnet18,True,True
+midog,id_selective,mahalanobis,resnet50>resnet18>effb3,resnet18>resnet50>effb3,resnet50>resnet18>effb3,True,False
+midog,id_selective,msp,resnet50>effb3>resnet18,resnet50>resnet18>effb3,resnet50>resnet18>effb3,True,True
+midog,ood_triage,energy,effb3>resnet50>resnet18,effb3>resnet18>resnet50,effb3>resnet18>resnet50,True,True
+midog,ood_triage,mahalanobis,resnet50>resnet18>effb3,resnet18>resnet50>effb3,resnet18>resnet50>effb3,True,True
+midog,ood_triage,msp,resnet50>effb3>resnet18,effb3>resnet18>resnet50,effb3>resnet18>resnet50,True,True

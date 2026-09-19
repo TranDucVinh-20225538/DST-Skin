@@ -1,0 +1,27 @@
+Official Kendall W freeze — 2026-09-18 10:50 +07
+
+Numbers frozen. No more GPU jobs. No MIDOG zoo. No FMoW. No extra backbones.
+Rebuild: scripts/rebuild_architecture_invariance.py
+  EffV2-S = @224 on Camelyon and skin (native-384 dropped).
+  EffB3 Camelyon official = native 300; EffB3@224 appendix only.
+  Not in W: vit_b_16, *_supcon, iWildCam, FM.
+
+scenario=A  (code label; JUMP_DELTA=0.15 FEATURE_DRAG=0.10)
+Camelyon MSP jump 6/8: convnext_tiny, densenet121, effb3, efficientnet_v2_s, mobilenet_v3_large, regnet_y_3_2gf
+ResNet mean MSP = 0.544654. EffV2-S@224 MSP = 0.778 (+0.233).
+
+Kendall W (per domain, never pooled):
+  camelyon17     n=8  W=0.694
+  skin_isic_pad  n=8  W=0.791
+  midog          n=3  W=0.857   (in-house R18/R50/EffB3; not a zoo)
+
+Camelyon feature ranks: Maha or kNN is 1–2 on all 8.
+  Maha rank-1 on 6/8; kNN rank-1 on EffB3 and MobileNetV3 (Maha 2).
+Skin: Maha rank-1 and kNN rank-2 on all 8. MSP band 0.68–0.74. Not scenario A.
+
+Held-out (not W columns):
+  ViT-B/16 Camelyon MSP=0.884 (precommit ≥0.6947 HIT). Maha=0.958 kNN=0.941.
+  iWildCam R18/R50/DenseNet MSP 0.605/0.603/0.575. jump=-0.029 MISS = biomedical bound.
+  Job B CE+SupCon: gap 0.308→0.238 (23%). R18 MSP 0.574→0.515 (worse). Direction #1 DEAD.
+
+Do not reopen. Write from manuscript/cvpr2027_outline.md.

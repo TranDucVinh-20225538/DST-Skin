@@ -1,0 +1,7 @@
+{
+  "backbone": "densenet121",
+  "hospital2_msp": 0.7804995351687534,
+  "hospital1_msp": 0.7959704330857298,
+  "hospital2_msp_coverage_at_risk10": 1.0,
+  "n_ood_h2": 85054
+}

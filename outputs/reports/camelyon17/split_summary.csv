@@ -1,0 +1,2 @@
+ood_split,train,id_val,val,test,train_hospitals,id_val_hospitals,val_hospitals,test_hospitals
+test,302436,33560,34904,85054,"0,3,4","0,3,4",1,2

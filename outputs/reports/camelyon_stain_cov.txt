@@ -1,0 +1,19 @@
+Viên 1 stain-covariate readout. Official W stays no-stain seed 42.
+decision_precommit_stain_cov.md
+dirty=True  Dense-R18 gap(h2)=0.008  R18 cov@10=1.0
+
+hospital-2 (test):
+  resnet18       MSP=0.772 (off 0.574) id_val=0.9953 cov=1.0
+  resnet50       MSP=0.593 (off 0.515) id_val=0.9946 cov=1.0
+  densenet121    MSP=0.780 (off 0.883) id_val=0.9959 cov=1.0
+
+hospital-1 (val, held-out):
+  resnet18       MSP=0.765
+  resnet50       MSP=0.685
+  densenet121    MSP=0.796
+
+R18 h2 bar=True  R50 h2 bar=False  R18 h1 bar=True  cov_ok=True
+→ DIRTY — Job-B-class fail. Appendix kill. No Viên 2. CVPR still on the table.
+
+Do not mix stain_cov CSVs into rebuild_architecture_invariance.py.
+Do not skip CVPR today; decide after this readout.

@@ -1,0 +1,21 @@
+ViM / ReAct / ELogitNorm vs Maha / MSP / kNN protocol (Camelyon full, seed=42)
+
+- Mahalanobis, kNN, MSP, Energy: fit/score on full Camelyon train n=302436
+  (OODScorer.fit in camelyon17_pilot.py analyze_backbone).
+- ELogitNorm (Camelyon fill): point AUROC from full ID-val / OOD logits; no
+  train subsample. Not missing a sample-size step; only missing bootstrap CI
+  in the filled cells.
+- ReAct (Camelyon fill): tau from full train features; scores on full val/OOD.
+  Protocol-matched to train size; filled cells are point AUROC only (no CI).
+- ViM (Camelyon fill): covariance / residual subspace fit on a 30k train
+  subsample (architecture_invariance.py fill_missing, seed=42). Maha/MSP/kNN
+  used the full 302436. FLAG: ViM Camelyon AUROC is NOT protocol-matched to
+  Mahalanobis/MSP. Do not treat Camelyon ViM as commensurate in the n=3 table.
+- Skin ViM/ReAct: full ISIC train (CSV + original analyze_benchmark_*).
+- MIDOG ViM: full (small) train.
+
+New Camelyon/skin CNN jobs score all 7 methods via OODScorer on the same
+train split as Maha/MSP (no 30k cap), so those future cells are matched.
+
+MobileNetV3-Large: classifier replaced with Linear(960, C) so avgpool
+features match ViM/ReAct W. Stock torchvision head is 960→1280→C.

@@ -1,0 +1,1 @@
+camelyon17/gigapath: REPLICATE — FM Maha 0.995 MSP 0.664 kNN 0.989 | R50 CNN Maha 0.896 MSP 0.515

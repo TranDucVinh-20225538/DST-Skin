@@ -1,0 +1,16 @@
+{
+  "n": 8,
+  "resnet_mean_msp": 0.5446540039710592,
+  "primary_test": "pearson_r(T_star, msp_jump_vs_resnet)",
+  "r_tstar_jump": 0.267622463952541,
+  "p_tstar_jump": 0.5216525711255136,
+  "spearman_tstar_jump": 0.0,
+  "p_spearman_tstar_jump": 1.0,
+  "r_logitnorm_jump_not_kill_test": 0.1743607636021479,
+  "p_logitnorm_jump_not_kill_test": 0.6796392093945862,
+  "threshold": 0.6,
+  "notable": false,
+  "verdict": "LOW |r(T*,jump)|=0.268<=0.6. Scale/calibration confound dismissed. Do not hunt feature-norm or entropy. Pilot B = CE+SupCon only (no extra T-scale in the training recipe).",
+  "dense_minus_r18_msp": 0.30833790812219886,
+  "dense_minus_r18_msp_tstar": 0.30834454941939293
+}

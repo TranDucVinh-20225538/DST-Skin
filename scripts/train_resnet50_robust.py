@@ -1,4 +1,7 @@
 import os
+import random
+
+import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -99,6 +102,11 @@ def evaluate(model, loader, device):
 
 
 def train_resnet50_robust():
+    torch.manual_seed(42)
+    np.random.seed(42)
+    random.seed(42)
+    torch.backends.cudnn.deterministic = True
+
     os.makedirs("data/models", exist_ok=True)
 
     device = torch.device("mps" if torch.backends.mps.is_available()

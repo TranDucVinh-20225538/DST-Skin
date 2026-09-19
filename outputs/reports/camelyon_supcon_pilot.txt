@@ -1,0 +1,4 @@
+CE gap Dense−R18=0.308. SupCon gap=0.238 (shrink 23%, target ≥50% i.e. gap≤0.154). Direction #1 DEAD. Write-only. No center-loss/triplet.
+backbone,msp_supcon,maha_supcon,msp_ce
+resnet18,0.51541487276554,0.9434264167463071,0.5743335363500264
+densenet121,0.7533932894710401,0.9817804862692152,0.8826714444722252

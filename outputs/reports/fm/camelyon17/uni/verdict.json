@@ -1,0 +1,28 @@
+{
+  "domain": "camelyon17",
+  "fm": "uni",
+  "repo": "MahmoodLab/UNI",
+  "n_train": 302436,
+  "feat_dim": 1024,
+  "linear_train_acc": 0.995198984247907,
+  "mahalanobis_auroc": 0.998817955426088,
+  "msp_auroc": 0.5988236594024695,
+  "knn_auroc": 0.996699291760324,
+  "cnn_r50_mahalanobis_auroc": 0.8955319391777833,
+  "cnn_r50_msp_auroc": 0.5149744715920921,
+  "verdict": "camelyon17/uni: REPLICATE \u2014 FM Maha 0.999 MSP 0.599 kNN 0.997 | R50 CNN Maha 0.896 MSP 0.515",
+  "mismatch": {
+    "domain": "camelyon17",
+    "fm": "uni",
+    "native_patch_hw": 96,
+    "fm_input_hw": 224,
+    "fm_pretrain_tile_hw": 224,
+    "upsample_factor": 2.333,
+    "mismatch_severity": "moderate",
+    "note": "WILDS Camelyon17 patches are 96\u00d796 (typically 10x); MahmoodLab/UNI expects ~224\u00b2 tiles at 20x. Upsample is milder than MIDOG.",
+    "normalize": "imagenet",
+    "midog_mean_std_used": false
+  },
+  "cnn_baseline_csv": "outputs/reports/camelyon17/frac1/seed42/resnet50_score_comparison.csv",
+  "cnn_r50_note": "camelyon full-train frac1 seed42 R50"
+}

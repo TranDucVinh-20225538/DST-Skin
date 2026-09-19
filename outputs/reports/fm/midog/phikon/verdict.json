@@ -1,0 +1,28 @@
+{
+  "domain": "midog",
+  "fm": "phikon",
+  "repo": "owkin/phikon",
+  "n_train": 1896,
+  "feat_dim": 768,
+  "linear_train_acc": 1.0,
+  "mahalanobis_auroc": 0.9986931298864183,
+  "msp_auroc": 0.49962501738218257,
+  "knn_auroc": 0.9932921651246589,
+  "cnn_r50_mahalanobis_auroc": 0.8386670194855953,
+  "cnn_r50_msp_auroc": 0.5124496929260255,
+  "verdict": "midog/phikon: REPLICATE \u2014 FM Maha 0.999 MSP 0.500 kNN 0.993 | R50 CNN Maha 0.839 MSP 0.512",
+  "mismatch": {
+    "domain": "midog",
+    "fm": "phikon",
+    "native_patch_hw": 50,
+    "fm_input_hw": 224,
+    "fm_pretrain_tile_hw": 224,
+    "upsample_factor": 4.48,
+    "mismatch_severity": "severe",
+    "note": "MIDOG OpenMIBOOD crops are 50\u00d750 mitosis patches; owkin/phikon expects ~224\u00b2 WSI tiles. A weak MIDOG result may be a resolution artifact, not an FM reversal.",
+    "normalize": "imagenet",
+    "midog_mean_std_used": false
+  },
+  "cnn_baseline_csv": "outputs/reports/midog/seed42/resnet50_score_comparison.csv",
+  "cnn_r50_note": "midog uses in-house R50 score CSV (not OpenMIBOOD 0.59 freeze)"
+}

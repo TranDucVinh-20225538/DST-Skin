@@ -1,0 +1,8 @@
+PRIMARY: Pearson r(T*, MSP-jump vs ResNet mean), n=8, |r|>0.6 notable.
+Logit-norm r is reported as the listed alternative, not a second hunt.
+r(T*,jump)=0.2676 p=0.5217
+Spearman(T*,jump)=0.0000 p=1.0000
+r(||z||,jump)=0.1744 p=0.6796 (not kill test)
+DenseNet-R18 MSP gap raw=0.3083 T*=0.3083
+
+LOW |r(T*,jump)|=0.268<=0.6. Scale/calibration confound dismissed. Do not hunt feature-norm or entropy. Pilot B = CE+SupCon only (no extra T-scale in the training recipe).

@@ -1,0 +1,1 @@
+REAL backbone-dependent effect: R18 LogitGap stays positive in the bulk (median +0.691; trim 1/5/10% all same sign; OOD beyond 3×IQR = 0.00%). Locked trim=1% is +0.6639. Not a tail artifact — do not change benchmark_metrics.py; report R18 as backbone-dependent (ΔAUROC also largest at R18).

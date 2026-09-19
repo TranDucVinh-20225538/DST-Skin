@@ -1,0 +1,45 @@
+=== ID-only gate submit Fri Sep 18 02:20:16 +07 2026 ===
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+             59688      defq dst-supc   toandq  R       9:32      1 node002
+             59687      defq dst-effv   toandq  R      14:31      1 node004
+=== ID-only gate start Fri Sep 18 02:20:16 +07 2026
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+             59689      defq dst-id-g   toandq  R       0:04      1 node002
+             59688      defq dst-supc   toandq  R       9:36      1 node002
+             59687      defq dst-effv   toandq  R      14:35      1 node004
+=== camelyon17 convnext_tiny outputs/features/camelyon17/frac1/seed42/convnext_tiny_features.pt ===
+  ρ=0.809 → msp; AUROC MSP=0.846 Maha=0.929 gate=0.846 ViM=0.811
+=== camelyon17 densenet121 outputs/features/camelyon17/frac1/seed42/densenet121_features.pt ===
+  ρ=0.616 → msp; AUROC MSP=0.884 Maha=0.988 gate=0.884 ViM=0.881
+=== camelyon17 effb3 outputs/features/camelyon17/frac1/seed42/effb3_features.pt ===
+  ρ=0.568 → msp; AUROC MSP=0.804 Maha=0.977 gate=0.804 ViM=0.866
+=== camelyon17 efficientnet_v2_s outputs/features/camelyon17/frac1/seed42/efficientnet_v2_s_features.pt ===
+  ρ=0.797 → msp; AUROC MSP=0.727 Maha=0.909 gate=0.727 ViM=0.839
+=== camelyon17 mobilenet_v3_large outputs/features/camelyon17/frac1/seed42/mobilenet_v3_large_features.pt ===
+  ρ=0.816 → msp; AUROC MSP=0.772 Maha=0.870 gate=0.772 ViM=0.696
+=== camelyon17 regnet_y_3_2gf outputs/features/camelyon17/frac1/seed42/regnet_y_3_2gf_features.pt ===
+  ρ=0.794 → msp; AUROC MSP=0.786 Maha=0.964 gate=0.786 ViM=0.779
+=== camelyon17 resnet18 outputs/features/camelyon17/frac1/seed42/resnet18_features.pt ===
+  ρ=0.499 → mahalanobis; AUROC MSP=0.575 Maha=0.961 gate=0.961 ViM=0.718
+=== camelyon17 resnet50 outputs/features/camelyon17/frac1/seed42/resnet50_features.pt ===
+  ρ=0.408 → mahalanobis; AUROC MSP=0.516 Maha=0.919 gate=0.919 ViM=0.737
+=== skin_isic_pad resnet18 outputs/features/resnet18_isic_pad_features.pt ===
+  ρ=0.752 → msp; AUROC MSP=0.726 Maha=0.930 gate=0.726 ViM=0.784
+=== skin_isic_pad resnet50 outputs/features/resnet50_isic_pad_features.pt ===
+  ρ=0.826 → msp; AUROC MSP=0.705 Maha=0.934 gate=0.705 ViM=0.836
+=== skin_isic_pad effb3 outputs/features/effb3_isic_pad_features.pt ===
+  ρ=0.798 → msp; AUROC MSP=0.698 Maha=0.945 gate=0.698 ViM=0.761
+=== skin_isic_pad densenet121 outputs/features/skin/densenet121_isic_pad_features.pt ===
+  ρ=0.726 → msp; AUROC MSP=0.684 Maha=0.971 gate=0.684 ViM=0.759
+=== skin_isic_pad convnext_tiny outputs/features/skin/convnext_tiny_isic_pad_features.pt ===
+  ρ=0.534 → msp; AUROC MSP=0.748 Maha=0.943 gate=0.748 ViM=0.808
+=== skin_isic_pad mobilenet_v3_large outputs/features/skin/mobilenet_v3_large_isic_pad_features.pt ===
+  ρ=0.725 → msp; AUROC MSP=0.711 Maha=0.927 gate=0.711 ViM=0.764
+=== skin_isic_pad regnet_y_3_2gf outputs/features/skin/regnet_y_3_2gf_isic_pad_features.pt ===
+  ρ=0.708 → msp; AUROC MSP=0.714 Maha=0.959 gate=0.714 ViM=0.732
+=== skin_isic_pad efficientnet_v2_s outputs/features/skin/efficientnet_v2_s_isic_pad_features.pt ===
+  ρ=0.666 → msp; AUROC MSP=0.811 Maha=0.926 gate=0.811 ViM=0.863
+camelyon17: gate chose Maha 2/8. mean AUROC gate=0.837 Maha=0.940 ViM=0.791. spread gate=0.080 Maha=0.040 MSP=0.129.
+skin_isic_pad: gate chose Maha 0/8. mean AUROC gate=0.725 Maha=0.942 ViM=0.788. spread gate=0.040 Maha=0.016 MSP=0.040.
+Wrote outputs/reports/id_only_maha_msp_gate.csv outputs/reports/id_only_maha_msp_gate.txt
+=== ID-only gate done Fri Sep 18 02:29:00 +07 2026
