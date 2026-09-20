@@ -40,7 +40,23 @@ from src.utils.benchmark_metrics import (
 from src.utils.feature_extractor import extract_features_and_logits
 from src.utils.scoring import OODScorer
 
-BACKBONES = ("resnet18", "resnet50", "densenet121")
+BACKBONES = (
+    "resnet18",
+    "resnet50",
+    "densenet121",
+    "convnext_tiny",
+    "mobilenet_v3_large",
+    "regnet_y_3_2gf",
+    "effb3",
+    "efficientnet_v2_s",
+)
+EXTRA_BACKBONES = (
+    "convnext_tiny",
+    "mobilenet_v3_large",
+    "regnet_y_3_2gf",
+    "effb3",
+    "efficientnet_v2_s",
+)
 JUMP_DELTA = 0.15
 SEED = 42
 
@@ -226,8 +242,10 @@ def main() -> None:
         for bb in names:
             extract_one(bb, args.num_workers, device)
     if args.stage in ("analyze", "all"):
-        for bb in names:
-            rows.append(analyze_one(bb))
+        analyze_list = list(dict.fromkeys([*names, "resnet18", "resnet50", "densenet121"]))
+        for bb in analyze_list:
+            if paths(bb)["features"].exists():
+                rows.append(analyze_one(bb))
     if rows:
         df = pd.DataFrame(rows)
         r18 = float(df.loc[df.backbone == "resnet18", "msp"].iloc[0]) if "resnet18" in df.backbone.values else float("nan")
@@ -235,19 +253,32 @@ def main() -> None:
         den = float(df.loc[df.backbone == "densenet121", "msp"].iloc[0]) if "densenet121" in df.backbone.values else float("nan")
         mean = np.nanmean([r18, r50])
         jumped = (not np.isnan(den)) and (den - mean >= JUMP_DELTA)
-        verdict = (
+        lines = [
             f"iWildCam ResNet mean MSP={mean:.3f}. DenseNet={den:.3f}. "
-            f"jump={den - mean:+.3f} (thr {JUMP_DELTA}). "
-        )
-        verdict += (
-            "HIT — architecture-instability is not medical-only."
-            if jumped
-            else "MISS — bound: may be biomedical-specific. Not a failed paper."
-        )
+            f"jump={den - mean:+.3f} (thr {JUMP_DELTA}).",
+            (
+                "HIT — architecture-instability is not medical-only."
+                if jumped
+                else "MISS — bound: may be biomedical-specific. Not a failed paper."
+            ),
+            "DenseNet 3-backbone bound is locked. Extra CNNs do not rewrite that sentence.",
+        ]
+        if set(EXTRA_BACKBONES).issubset(set(df.backbone.values)):
+            lines.append("")
+            lines.append("== extra 5 vs this domain's ResNet mean ==")
+            n_hit = 0
+            for bb in EXTRA_BACKBONES:
+                msp = float(df.loc[df.backbone == bb, "msp"].iloc[0])
+                jump = msp - mean
+                hit = jump >= JUMP_DELTA
+                n_hit += int(hit)
+                lines.append(f"  {bb:24s} MSP={msp:.3f} jump={jump:+.3f} {'JUMP' if hit else 'no'}")
+            lines.append(f"extra hits={n_hit}/5. Do not pool with Camelyon W.")
         out = Path("outputs/reports/iwildcam_jump.txt")
         out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(verdict + "\n" + df.to_csv(index=False))
-        print(verdict)
+        text = "\n".join(lines) + "\n\n" + df.to_csv(index=False)
+        out.write_text(text)
+        print(text)
         print(f"Wrote {out}")
 
 

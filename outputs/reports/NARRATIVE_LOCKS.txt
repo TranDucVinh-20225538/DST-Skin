@@ -145,4 +145,23 @@ Bar: R18 MSP≥0.695 or gap≤0.154 with R18≥0.574; DenseNet MSP≥0.80; id_va
 Held-out hospital 1. Strong hit (both ResNets + hospital-1) is the only branch that reopens Viên 2 / 8-CNN.
 CVPR 2027 is **not** dropped today. Decide after Viên 1 (~5 weeks left).
 
+--- 2026-09-20 seed-extra + shift-type + Phao B n=8 + iWildCam extra (ceiling-raise GPU done) ---
+
+Official W unchanged: Camelyon 0.694 / skin 0.791 / MIDOG n=3 0.857. Seed 42 not overwritten.
+
+Seed-variance extra 4 (same jump vs that seed's ResNet mean; seeds 42–46):
+- DenseNet 5/5 still not a seed-42 fluke (0.265 ± 0.065).
+- EffB3 2/5 still seed-fragile; official A cannot stay unqualified.
+- convnext_tiny 4/5 (0.207 ± 0.067) → not a seed-42 fluke.
+- efficientnet_v2_s_224 4/5 (0.210 ± 0.089) → not a seed-42 fluke.
+- mobilenet_v3_large 3/5 (0.175 ± 0.081) → effect present, variance high; report, do not hide.
+- regnet_y_3_2gf 3/5 (0.198 ± 0.089) → same: report, do not hide.
+Seed-robust core remains DenseNet (and now ConvNeXt / EffV2@224 at 4/5). MobileNet/RegNet are not 4/5. Artifact: `camelyon_seed_jump.txt`.
+
+Shift-type (seed-42 extract, not official W): C 6/6; T 0/6 HIT; F 2/6 mixed. Joint: no law. Per-arm W C 0.731 T 0.692 F 0.846 — never pooled. Do not mix T/F CSVs into rebuild.
+
+Phao B leftover n=8: disagree=True. DenseNet AUROC-high coverage-low (0.883 / 0.078); MobileNet coverage 0.904. Sign-flip unpredictability, not a law.
+
+iWildCam extra 0/5 jump. Bound sentence stays. Do not pool with Camelyon W.
+
 

@@ -1,5 +1,21 @@
-iWildCam ResNet mean MSP=0.604. DenseNet=0.575. jump=-0.029 (thr 0.15). MISS — bound: may be biomedical-specific. Not a failed paper.
+iWildCam ResNet mean MSP=0.604. DenseNet=0.575. jump=-0.029 (thr 0.15).
+MISS — bound: may be biomedical-specific. Not a failed paper.
+DenseNet 3-backbone bound is locked. Extra CNNs do not rewrite that sentence.
+
+== extra 5 vs this domain's ResNet mean ==
+  convnext_tiny            MSP=0.601 jump=-0.003 no
+  mobilenet_v3_large       MSP=0.558 jump=-0.046 no
+  regnet_y_3_2gf           MSP=0.580 jump=-0.024 no
+  effb3                    MSP=0.577 jump=-0.027 no
+  efficientnet_v2_s        MSP=0.650 jump=+0.047 no
+extra hits=0/5. Do not pool with Camelyon W.
+
 backbone,msp,maha
+convnext_tiny,0.6006777720330931,0.619762983415963
+densenet121,0.5746540343077235,0.6195187965095075
+effb3,0.5768171799815789,0.6517916648717856
+efficientnet_v2_s,0.6504870826487623,0.7347827933758991
+mobilenet_v3_large,0.558071832973242,0.626269503360372
+regnet_y_3_2gf,0.579657443958795,0.6759049765044869
 resnet18,0.6046013006844473,0.6318334974399451
 resnet50,0.6026767088499996,0.6952570029168041
-densenet121,0.5746540343077235,0.6195187965095075

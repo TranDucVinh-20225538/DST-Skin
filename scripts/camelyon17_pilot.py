@@ -615,6 +615,11 @@ def run_stage(
                 "do not mix with official seed-42 W)",
                 flush=True,
             )
+        elif seed != SEED_DEFAULT:
+            print(
+                f"skip invariance rebuild (seed={seed}; official W is seed 42 only)",
+                flush=True,
+            )
         elif input_size is None:
             try:
                 import runpy

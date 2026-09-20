@@ -186,31 +186,71 @@ def main() -> None:
         choices=("all", "camelyon17", "midog"),
         default="all",
     )
+    parser.add_argument(
+        "--official-zoo",
+        action="store_true",
+        help="Official 8 CNN stems only. Skips supcon/vit/native-384.",
+    )
     args = parser.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
+    official = {
+        "resnet18",
+        "resnet50",
+        "densenet121",
+        "convnext_tiny",
+        "mobilenet_v3_large",
+        "regnet_y_3_2gf",
+        "effb3",
+        "efficientnet_v2_s_224",
+    }
     jobs = []
     if args.domain in ("all", "camelyon17"):
         for path in sorted(CAMELYON.glob("*_features.pt")):
-            jobs.append(("camelyon17", path.name.replace("_features.pt", ""), path))
+            name = path.name.replace("_features.pt", "")
+            if args.official_zoo and name not in official:
+                continue
+            jobs.append(("camelyon17", name, path))
     if args.domain in ("all", "midog"):
         for path in sorted(MIDOG.glob("*_features.pt")):
             name = path.name.replace("_features.pt", "")
             if "openmibood" in name or "native50" in name:
+                continue
+            if args.official_zoo and name not in official:
                 continue
             jobs.append(("midog", name, path))
     rows = []
     for domain, model, path in jobs:
         rows.extend(process_cnn(domain, model, path))
     df = pd.DataFrame(rows)
-    out_csv = OUT / ("rc_by_model.csv" if args.domain == "all" else f"rc_by_model_{args.domain}.csv")
+    tag = args.domain
+    if args.official_zoo:
+        tag = f"{args.domain}_n8"
+    out_csv = OUT / ("rc_by_model.csv" if tag == "all" else f"rc_by_model_{tag}.csv")
     df.to_csv(out_csv, index=False)
     msp = df[(df["protocol"] == "ood_triage") & (df["method"] == "msp")]
-    msp_out = OUT / f"msp_ood_triage_{args.domain}.csv"
+    msp_out = OUT / f"msp_ood_triage_{tag}.csv"
     msp[["domain", "model", "ood_auroc", "coverage_at_risk10", "aurc", "full_risk", "n"]].to_csv(
         msp_out, index=False
     )
     disagreement = rank_disagreement(df)
-    disagreement.to_csv(OUT / f"auroc_vs_rc_rank_{args.domain}.csv", index=False)
+    disagreement.to_csv(OUT / f"auroc_vs_rc_rank_{tag}.csv", index=False)
+    if args.official_zoo and args.domain == "camelyon17":
+        note = OUT.parent / "camelyon_phao_b_n8.txt"
+        cam = msp[msp["domain"] == "camelyon17"].sort_values("ood_auroc", ascending=False)
+        by_auroc = list(cam["model"])
+        by_cov = list(cam.sort_values("coverage_at_risk10", ascending=False)["model"])
+        lines = [
+            "Camelyon OOD-triage coverage@risk10% MSP, official n=8. Not a new official W.",
+            "Locked Phao B n=4 table is unchanged. This is the leftover family span.",
+            f"AUROC order: {' > '.join(by_auroc)}",
+            f"coverage@risk10% order: {' > '.join(by_cov)}",
+            f"disagree={by_auroc != by_cov}",
+            "Do not write AUROC-winner=utility-loser as a law.",
+            "",
+            cam.to_csv(index=False),
+        ]
+        note.write_text("\n".join(lines))
+        print(f"Wrote {note}")
     print("\n=== MSP OOD-triage ===")
     print(msp[["domain", "model", "ood_auroc", "coverage_at_risk10"]].to_string(index=False))
     print(f"\nWrote {out_csv}")

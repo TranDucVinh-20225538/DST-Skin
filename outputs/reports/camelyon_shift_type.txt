@@ -1,0 +1,53 @@
+Camelyon shift-type readout. Official W stays hospital-2 seed 42.
+decision_precommit_shift_type.md
+Arm C 6/6 is the seed-42 count, not a multi-seed confirmed block.
+
+== arm C covariate (frozen) ==
+median MSP=0.781 min=0.515 ResNet mean=0.545
+non-ResNet mean jump=0.266  hits=6/6
+→ 6/6 jump — not covariate-specific; do not claim shift-conditional law
+  resnet18                 MSP=0.574  jump=+0.030  no
+  resnet50                 MSP=0.515  jump=-0.030  no
+  densenet121              MSP=0.883  jump=+0.338  JUMP
+  convnext_tiny            MSP=0.846  jump=+0.301  JUMP
+  mobilenet_v3_large       MSP=0.771  jump=+0.226  JUMP
+  regnet_y_3_2gf           MSP=0.784  jump=+0.239  JUMP
+  effb3                    MSP=0.803  jump=+0.258  JUMP
+  efficientnet_v2_s_224    MSP=0.778  jump=+0.234  JUMP
+
+== arm T task-shift MIDOG 1a ==
+median MSP=0.760 min=0.588 ResNet mean=0.803
+non-ResNet mean jump=-0.089  hits=0/6
+→ 0/6 jump — HIT vs hospital-2 if this arm is T or F
+  resnet18                 MSP=0.847  jump=+0.044  no
+  resnet50                 MSP=0.758  jump=-0.044  no
+  densenet121              MSP=0.647  jump=-0.156  no
+  convnext_tiny            MSP=0.784  jump=-0.019  no
+  mobilenet_v3_large       MSP=0.781  jump=-0.021  no
+  regnet_y_3_2gf           MSP=0.762  jump=-0.040  no
+  effb3                    MSP=0.721  jump=-0.082  no
+  efficientnet_v2_s_224    MSP=0.588  jump=-0.214  no
+
+== arm F far-OOD CIFAR-10 test ==
+median MSP=0.497 min=0.170 ResNet mean=0.430
+non-ResNet mean jump=0.100  hits=2/6
+→ 2/6 jump — mixed; report, not a law
+  resnet18                 MSP=0.690  jump=+0.260  JUMP
+  resnet50                 MSP=0.170  jump=-0.260  no
+  densenet121              MSP=0.696  jump=+0.267  JUMP
+  convnext_tiny            MSP=0.779  jump=+0.349  JUMP
+  mobilenet_v3_large       MSP=0.515  jump=+0.085  no
+  regnet_y_3_2gf           MSP=0.273  jump=-0.157  no
+  effb3                    MSP=0.434  jump=+0.005  no
+  efficientnet_v2_s_224    MSP=0.479  jump=+0.049  no
+
+Joint:
+mixed or leftover (0/6 T, mixed F). No law. Official A unchanged.
+
+Per-arm Kendall W (8 backbones × 7 methods). Not official W. Never pooled.
+  arm C: W=0.731
+  arm T: W=0.692
+  arm F: W=0.846
+Wrote outputs/reports/camelyon_shift_type_kendall_w.csv
+
+Do not mix these CSVs into rebuild_architecture_invariance.py.
