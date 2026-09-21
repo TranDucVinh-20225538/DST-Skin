@@ -1,6 +1,6 @@
 # Detector ranking is not architecture-invariant under medical covariate shift
 
-**CVPR 2027 draft** (paper 2026-11-16 AoE). Numbers from `outputs/reports/OFFICIAL_W_FREEZE.txt` and locked readouts. Official Kendall $W$ is never recomputed in this file.
+**CVPR 2027 LaTeX (review PDF):** `manuscript/cvpr2027/main.tex` → `main.pdf`. Supplement: `suppl.tex`. Numbers from `outputs/reports/OFFICIAL_W_FREEZE.txt`. Official Kendall $W$ is never recomputed in this file.
 
 ---
 

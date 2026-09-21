@@ -2,6 +2,16 @@
 .conda-env/
 *.zip
 
+# CVPR latex build (keep source + figures; not the 170MB TeX tree)
+manuscript/cvpr2027/texmf/
+manuscript/cvpr2027/*.aux
+manuscript/cvpr2027/*.bbl
+manuscript/cvpr2027/*.blg
+manuscript/cvpr2027/*.log
+manuscript/cvpr2027/*.out
+manuscript/cvpr2027/*.synctex.gz
+
+
 # Python
 __pycache__/
 *.py[cod]
