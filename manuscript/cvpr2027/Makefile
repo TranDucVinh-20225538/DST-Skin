@@ -11,7 +11,7 @@ figures:
 	../../.conda-env/bin/python make_figures.py
 
 main: main.pdf
-main.pdf: main.tex refs.bib cvpr.sty fig/fig1_msp_bars.pdf fig/fig2_rank_heatmaps.pdf fig/fig3_coverage_signflip.pdf
+main.pdf: main.tex refs.bib cvpr.sty fig/fig1_hook.pdf fig/fig2_rank_heatmaps.pdf fig/fig3_coverage_signflip.pdf
 	$(LATEX) main
 	$(BIBTEX) main
 	$(LATEX) main

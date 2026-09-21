@@ -108,46 +108,57 @@ def _save(fig, name: str) -> None:
     plt.close(fig)
 
 
-def fig_msp_bars() -> None:
-    names = BB_ORDER + ["vit_b_16"]
-    vals = [MSP_CAM[k] for k in names]
-    colors = []
-    hatches = []
-    for k in names:
-        if k in ("resnet18", "resnet50"):
-            colors.append(GREY)
-            hatches.append("")
-        elif k == "vit_b_16":
-            colors.append(ORANGE)
-            hatches.append("///")
-        else:
-            colors.append(BLUE)
-            hatches.append("")
-    fig, ax = plt.subplots(figsize=(6.75, 2.15))
-    x = np.arange(len(names))
-    bars = ax.bar(x, vals, color=colors, edgecolor="black", linewidth=0.4, width=0.72)
-    for b, h in zip(bars, hatches):
-        b.set_hatch(h)
-        if h:
-            b.set_facecolor("#f6c28b")
-    ax.axhline(RESNET_MEAN, color="black", ls="--", lw=0.9, zorder=2)
-    ax.axhline(JUMP_THR, color=RED, ls="--", lw=0.9, zorder=2)
-    ax.set_xticks(x)
-    ax.set_xticklabels([BB_LABEL[k] for k in names])
-    ax.set_ylabel("MSP AUROC")
-    ax.set_ylim(0.45, 1.0)
+def fig1_hook() -> None:
+    """Slopegraph R50→DenseNet + coverage cost of copying the AUROC ranking."""
+    ranks = pd.read_csv(REP / "architecture_invariance_ranks.csv")
+    cam = ranks[ranks.domain == "camelyon17"]
+    wide = cam.pivot(index="method", columns="backbone", values="auroc")
+    method_style = {
+        "Mahalanobis": (GREEN, 2.0, "o"),
+        "kNN": ("#2ca25f", 2.0, "s"),
+        "MSP": (BLUE, 1.8, "D"),
+        "Energy": ("#74add1", 1.2, "^"),
+        "ELogitNorm": ("#abd9e9", 1.2, "v"),
+        "ReAct": (ORANGE, 1.6, "P"),
+        "ViM": (GREY, 1.2, "X"),
+    }
+    fig, axes = plt.subplots(1, 2, figsize=(6.85, 2.55), gridspec_kw={"width_ratios": [1.35, 1.0]})
+    ax = axes[0]
+    x0, x1 = 0.0, 1.0
+    for m, (c, lw, mk) in method_style.items():
+        y0, y1 = float(wide.loc[m, "resnet50"]), float(wide.loc[m, "densenet121"])
+        ax.plot([x0, x1], [y0, y1], color=c, lw=lw, marker=mk, ms=5, label=m)
+        if m in ("Mahalanobis", "kNN", "MSP", "ReAct"):
+            ax.text(-0.04, y0, f"{y0:.3f}", ha="right", va="center", fontsize=6, color=c)
+            dy = 0.018 if m == "Mahalanobis" else (-0.018 if m == "kNN" else 0.0)
+            ax.text(1.04, y1 + dy, f"{y1:.3f}", ha="left", va="center", fontsize=6, color=c)
+    ax.set_xlim(-0.28, 1.28)
+    ax.set_ylim(0.48, 1.02)
+    ax.set_xticks([0, 1])
+    ax.set_xticklabels(["ResNet-50", "DenseNet-121"])
+    ax.set_ylabel("Camelyon hospital-2 AUROC")
+    ax.set_title("(a) Same split, same scores")
+    ax.legend(frameon=False, loc="lower right", fontsize=6, ncol=1)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
-    legend = [
-        Patch(facecolor=GREY, edgecolor="black", label="ResNet (no jump)"),
-        Patch(facecolor=BLUE, edgecolor="black", label="CNN zoo jumper"),
-        Patch(facecolor="#f6c28b", edgecolor="black", hatch="///", label="ViT-B/16 (held out of $W$)"),
-        mpl.lines.Line2D([0], [0], color="black", ls="--", lw=0.9, label="ResNet mean 0.545"),
-        mpl.lines.Line2D([0], [0], color=RED, ls="--", lw=0.9, label="jump 0.695"),
-    ]
-    ax.legend(handles=legend, loc="upper left", frameon=False, ncol=2, borderaxespad=0.15)
-    ax.set_title("Camelyon17 hospital-2, seed 42")
-    _save(fig, "fig1_msp_bars")
+
+    cov = pd.read_csv(REP / "pathology_risk_coverage/msp_ood_triage_camelyon17_n8.csv")
+    order = ["densenet121", "mobilenet_v3_large"]
+    labels = ["Select by\nAUROC\n(DenseNet)", "Select by\ncoverage@risk\n(MobileNet)"]
+    vals = [float(cov.loc[cov.model == k, "coverage_at_risk10"].iloc[0]) for k in order]
+    aurocs = [float(cov.loc[cov.model == k, "ood_auroc"].iloc[0]) for k in order]
+    ax = axes[1]
+    bars = ax.bar([0, 1], vals, color=[RED, GREEN], edgecolor="black", lw=0.4, width=0.62)
+    ax.set_xticks([0, 1])
+    ax.set_xticklabels(labels, fontsize=6.5)
+    ax.set_ylabel("OOD coverage @ 10% risk")
+    ax.set_ylim(0, 1.05)
+    ax.set_title("(b) Cost of copying AUROC rank")
+    for i, (v, a) in enumerate(zip(vals, aurocs)):
+        ax.text(i, v + 0.03, f"{v:.3f}\nAUROC {a:.3f}", ha="center", va="bottom", fontsize=6.5)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    _save(fig, "fig1_hook")
 
 
 def _rank_matrix(df: pd.DataFrame, domain: str) -> np.ndarray:
@@ -257,7 +268,7 @@ def fig_seed_jumps() -> None:
 
 
 if __name__ == "__main__":
-    fig_msp_bars()
+    fig1_hook()
     fig_rank_heatmaps()
     fig_coverage()
     fig_seed_jumps()

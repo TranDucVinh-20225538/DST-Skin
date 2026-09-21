@@ -24,90 +24,98 @@ Paper ID \paperID
 
 \begin{abstract}
 Post-hoc out-of-distribution (OOD) detectors are almost always ranked on a single backbone.
-Holding a medical covariate split fixed, that ranking is not architecture-invariant.
+\textbf{Holding a medical covariate split fixed, detector ranking is governed more by representation family than by detector identity.}
 On Camelyon17 hospital-2 (WILDS), Kendall's $W=0.694$ across eight CNN families and seven scores (seed~42).
-MSP AUROC spans $0.515$ (ResNet-50) to $0.883$ (DenseNet-121); the DenseNet jump versus the ResNet mean is seed-robust ($0.265{\pm}0.065$, $5/5$ seeds ${\ge}0.15$).
-ConvNeXt-Tiny and EfficientNetV2-S@224 hold on $4/5$ seeds, MobileNetV3 and RegNetY on $3/5$; EfficientNet-B3's seed-42 jump is not seed-stable ($2/5$).
-Feature-space scores (Mahalanobis, $k$NN) occupy ranks 1--2 on every official backbone.
-The same eight-family protocol on skin ISIC$\to$PAD does \emph{not} reproduce the MSP jump ($W=0.791$; Maha rank-1 on $8/8$).
-AUROC rank and OOD-triage coverage@risk\,$10\%$ disagree on Camelyon and on MIDOG, and the \emph{sign} of that disagreement flips.
-A pre-registered ViT-B/16 Camelyon MSP of $0.884$ met a locked threshold of $0.6947$.
-We introduce no new detector:
-do not copy an OOD ranking across backbones, and do not pick a backbone for triage from an AUROC table.
+MSP AUROC spans $0.515$ (ResNet-50) to $0.883$ (DenseNet-121)---a $0.37$ swing, as large as Mahalanobis${-}$MSP on that ResNet.
+Copying ResNet-50's best logit score (ReAct) onto {ConvNeXt} costs $0.185$ AUROC versus {ConvNeXt}'s own best logit.
+Selecting the AUROC-winning backbone for OOD triage yields coverage@risk\,$10\%=0.078$; selecting by coverage itself yields $0.904$.
+Feature-space scores occupy ranks 1--2 on every official backbone.
+Skin ISIC$\to$PAD does not reproduce the MSP jump ($W=0.791$).
+AUROC versus coverage@risk disagreement \emph{flips sign} between Camelyon and MIDOG.
+A pre-registered ViT-B/16 MSP of $0.884$ met a locked threshold of $0.6947$.
+The protocol: do not copy an OOD ranking across backbones, and do not pick a backbone for triage from an AUROC table.
 \end{abstract}
 
 \section{Introduction}
 
-On the Camelyon17 hospital-2 split, with the same seven post-hoc scores, ResNet-18/50 MSP AUROC is $0.574$/$0.515$ while DenseNet-121 is $0.883$ and EfficientNet-B3 (seed~42) is $0.803$ (Fig.~\ref{fig:msp}).
-A practitioner who copies an OpenMIBOOD-style ResNet-50 recipe on this shift and one who uses DenseNet are not looking at the same detector ranking.
-
-That observation is \emph{not} a claim that detector ranking was previously assumed architecture-invariant.
-On natural-image \emph{semantic} OOD, ranking already moves with architecture~\cite{zhang2023openoodv15,szyc2023uai,datko2026eswa,claros2025arxiv}.
-OpenMIBOOD~\cite{openmibood2025} already showed that ImageNet method ranking does not transfer to medical data and that feature-space scores outperform logit scores under a \emph{frozen} classifier per domain.
-Our question is orthogonal: \textbf{holding a medical covariate-shift dataset fixed, how much does detector ranking move when the backbone changes?}
-
-We measure that movement at zoo scale on Camelyon17, show that it does not replicate as an MSP jump on skin ISIC$\to$PAD, and show that AUROC versus operational coverage@risk\,$10\%$ disagrees with a \emph{domain-dependent sign}.
-We pre-registered a ViT-B/16 MSP threshold before training that model.
-We do not claim a new detector, a Maha${>}$MSP discovery, or a two-domain MSP-jump law.
-
-\paragraph{Contributions.}
-\begin{enumerate}
-\item \textbf{Camelyon-17, zoo-scale concordance.}
-Official Kendall $W=0.694$ ($n{=}8$, 7 methods, seed~42).
-The seed-robust MSP jump is DenseNet-121 versus ResNet ($0.265{\pm}0.065$, $5/5$).
-ConvNeXt-Tiny and EfficientNetV2-S@224 are $4/5$; MobileNetV3 and RegNetY are $3/5$; EfficientNet-B3 is $2/5$.
-Matching the four non-Adam zoo members to ResNet-Adam does not remove those seed-42 jumps.
-Feature-space scores stay in the top two ranks.
-This is not a claim that architecture-sensitive ranking is new.
-\item \textbf{Domain asymmetry.}
-Skin ISIC$\to$PAD ($n{=}8$, $W{=}0.791$): Maha rank-1 and $k$NN rank-2 on all eight; MSP stays in a narrow band without a Camelyon-style ResNet-vs-rest jump.
-\item \textbf{Utility mismatch is unpredictable.}
-Not that AUROC and coverage-based ranking can disagree (AURC/AUGRC already assume that~\cite{geifman2019selectivenet,traub2024augrc}).
-The \emph{sign} of AUROC versus coverage@risk\,$10\%$ disagreement flips between Camelyon and MIDOG, with no rule to predict which backbone wins.
-\item \textbf{A locked prediction.}
-Before training: ViT-B/16 Camelyon MSP ${\ge}0.6947$. Observed $0.884$. Held out of the 8-CNN $W$ on purpose.
-\end{enumerate}
-
 \begin{figure*}[t]
 \centering
-\includegraphics[width=\textwidth]{fig/fig1_msp_bars.pdf}
-\caption{\textbf{Camelyon hospital-2 MSP AUROC, seed~42.}
-Dashed lines: frozen ResNet mean ($0.545$) and jump threshold ($0.695$).
-ViT-B/16 was pre-registered and is not a ninth column of Kendall $W$.
-DenseNet, ConvNeXt, MobileNet, RegNet, EffB3, and EffV2-S@224 all clear the bar at this seed; ResNets do not.}
+\includegraphics[width=\textwidth]{fig/fig1_hook.pdf}
+\caption{\textbf{The claim in one figure.}
+(a)~Same Camelyon hospital-2 split, same seven scores: switching ResNet-50$\to$DenseNet-121 lifts logit AUROC by ${\sim}0.37$ while Mahalanobis and $k$NN stay on top.
+(b)~If a practitioner copies the AUROC ranking and deploys DenseNet for OOD triage, coverage@risk\,$10\%$ is $0.078$; measuring coverage itself selects MobileNet at $0.904$.}
 \label{fig:msp}
 \end{figure*}
 
+We test one hypothesis: \emph{under a fixed medical covariate shift, post-hoc detector ranking is an architecture property}.
+On Camelyon17 hospital-2, ResNet-50 MSP AUROC is $0.515$ while DenseNet-121 is $0.883$ (Fig.~\ref{fig:msp}a).
+A lab that copies an OpenMIBOOD-style ResNet-50 recipe and a lab that uses DenseNet are not ranking the same detectors---and if they then pick a backbone from that AUROC table for triage, they can throw away $0.83$ of OOD coverage at a $10\%$ risk budget (Fig.~\ref{fig:msp}b).
+
+That hypothesis is \emph{not} that ranking was previously assumed architecture-invariant.
+On natural-image semantic OOD, ranking already moves with architecture~\cite{zhang2023openoodv15,szyc2023uai,datko2026eswa,claros2025arxiv}.
+OpenMIBOOD~\cite{openmibood2025} already showed that ImageNet method ranking does not transfer to medical data and that feature-space scores outperform logit scores under a frozen classifier per domain.
+The orthogonal question is: \textbf{holding one medical covariate-shift dataset fixed, how much does ranking move when only the backbone changes?}
+
+The rest of the paper is that test, in order.
+Camelyon discovers the shift (Kendall $W=0.694$, MSP jump).
+Five seeds verify the DenseNet pole ($5/5$).
+Matched-recipe training asks whether the pole is architecture or optimizer.
+Skin falsifies a universal MSP-jump law, while feature ranks stay 1--2.
+MIDOG is the deployment readout: the \emph{sign} of AUROC versus coverage@risk disagreement flips.
+A pre-registered ViT-B/16 tests whether the Camelyon pole extends past CNNs.
+The contribution is a protocol, not a detector.
+
+\paragraph{Contributions.}
+\begin{enumerate}
+\item \textbf{Camelyon discovers architecture-governed ranking.}
+Official Kendall $W=0.694$ ($n{=}8$, 7 methods, seed~42).
+MSP AUROC span $0.515$--$0.883$ matches the Maha${-}$MSP gap on ResNet-50.
+Copying ResNet-50's winning logit (ReAct) onto ConvNeXt costs $0.185$ AUROC.
+Feature-space scores stay in ranks 1--2.
+The seed-robust MSP jump is DenseNet-121 ($0.265{\pm}0.065$, $5/5$); ConvNeXt and EffV2-S@224 are $4/5$, MobileNet/RegNet $3/5$, EffB3 $2/5$.
+\item \textbf{Skin falsifies universality.}
+ISIC$\to$PAD ($n{=}8$, $W{=}0.791$): Maha rank-1 and $k$NN rank-2 on all eight; MSP stays in a narrow band. Not a second Camelyon jump.
+\item \textbf{Deployment cost is unpredictable from AUROC.}
+The sign of AUROC versus coverage@risk\,$10\%$ disagreement flips between Camelyon and MIDOG~\cite{geifman2019selectivenet,traub2024augrc}.
+On Camelyon $n{=}8$, copying the AUROC ranking costs $0.826$ coverage at a $10\%$ risk budget.
+\item \textbf{A locked prediction.}
+Before training: ViT-B/16 Camelyon MSP ${\ge}0.6947$. Observed $0.884$. Held out of the 8-CNN $W$.
+\end{enumerate}
+
 \section{Related work}
 
-OpenMIBOOD~\cite{openmibood2025} ranks 24 post-hoc detectors on three medical benchmarks with a \textbf{single frozen classifier per domain} (ResNet-50 on MIDOG, ResNet-18 on PhaKIR, R(2+1)D on OASIS-3).
-It shows that ImageNet method ranking does not transfer to medical data and that feature-space scores outperform logit scores under that fixed-architecture protocol.
-It does not measure whether the detector ranking itself is stable across architectures.
-We keep their MIDOG split and public ResNet-50 checkpoint as an external reference, and ask the orthogonal question: holding the dataset fixed, how much does detector ranking move when the backbone changes?
+\begin{table}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.2pt}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Work & \#arch. & Shift & Rank stat. & Utility \\
+\midrule
+OpenOOD v1~\cite{yang2022openood} & 1/set & semantic & --- & AUROC \\
+OpenOOD v1.5~\cite{zhang2023openoodv15} & 3 & semantic & qualitative & AUROC \\
+Szyc \etal~\cite{szyc2023uai} & 3 var. & CIFAR sem. & rank $\Delta$ & AUROC \\
+Datko \etal~\cite{datko2026eswa} & per line & natural & claimed stable & AUROC \\
+OpenMIBOOD~\cite{openmibood2025} & 1/domain & medical & --- & AUROC \\
+\textbf{Ours} & \textbf{8+ViT} & \textbf{covar.} & \textbf{Kendall $W$} & \textbf{AUROC+cov.} \\
+\bottomrule
+\end{tabular}
+\caption{Closest ranking-vs-backbone papers. Architecture-sensitive ranking exists on natural-image semantic OOD; the increment here is a held-fixed medical covariate split, zoo-scale $W$, and operational coverage.}
+\label{tab:related}
+\end{table}
 
-OpenOOD v1~\cite{yang2022openood} \emph{fixes architecture on purpose} (LeNet / ResNet-18 / ResNet-50).
-That design choice is about v1, not about the later literature.
+OpenMIBOOD~\cite{openmibood2025} ranks 24 post-hoc detectors with a \textbf{single frozen classifier per medical domain}.
+It shows that ImageNet method ranking does not transfer to medical data and that feature-space scores outperform logit scores under that protocol.
+Table~\ref{tab:related} locates the increment: we hold the dataset fixed and change the backbone.
 
-Architecture-sensitive post-hoc ranking \emph{has} been measured on natural images.
-OpenOOD v1.5~\cite{zhang2023openoodv15} evaluates ImageNet-1K post-hoc methods on ResNet-50, ViT-B/16, and Swin-T.
-Figure~3 of that paper reports that ``different post-processor may favor different architecture'': ASH/ReAct degrade on transformers, while RMDS suits them.
-That study uses three models, semantic near/far OOD, and a qualitative comparison.
-It does not compute Kendall's $W$, does not sweep eight CNN families, and is not a covariate hospital shift.
-It is the closest natural-image cousin; we do not treat v1.5 as an architecture-fixed protocol.
+OpenOOD v1~\cite{yang2022openood} fixes architecture on purpose.
+OpenOOD v1.5~\cite{zhang2023openoodv15} compares three ImageNet models on semantic near/far OOD and reports that ``different post-processor may favor different architecture,'' without Kendall's $W$ and without a covariate hospital split.
+Szyc \etal~\cite{szyc2023uai} show rankings change across three ResNet CIFAR implementation variants.
+Datko \etal~\cite{datko2026eswa} claim an architecture-specific winner that transfers across natural-image OOD---the opposite of a single-split concordance statistic.
+Claros Olivares and Brockmeier~\cite{claros2025arxiv} rank confidence scores with AURC/AUGRC on CIFAR / TinyImageNet; they do not report a sign-flip of AUROC versus coverage@risk\,$10\%$ across medical covariate domains.
 
-Szyc \etal~\cite{szyc2023uai} show that detector rankings change across three ResNet-101/110 CIFAR implementation variants with matched closed-set accuracy, and across random seeds, with feature-space methods especially unstable.
-That is a reliability result about uncontrolled experimental details on CIFAR semantic OOD, not an eight-family zoo that holds one medical covariate split fixed.
-Datko \etal~\cite{datko2026eswa} report a preferred post-hoc detector \emph{per CNN/ViT line}, claimed to be stable across OOD benchmarks for that model---the opposite of a single-split concordance statistic.
-Claros Olivares and Brockmeier~\cite{claros2025arxiv} compare a scratch CNN to a fine-tuned ViT and organize confidence-score rankings into cliques by shift severity on CIFAR / TinyImageNet.
-Their released results rank scores with AURC/AUGRC; they do not report an AUROC-rank versus coverage@risk\,$10\%$ disagreement whose sign flips across medical covariate domains.
-
-What remains is not the existence of architecture-sensitive ranking.
-That existence is published on natural-image semantic OOD.
-This paper measures one medical covariate-shift split, held fixed; an eight CNN-family zoo plus a precommitted ViT; Kendall's $W$ per domain; a structured MSP jump whose seed-robust core is DenseNet versus ResNet, with feature methods in ranks 1--2; skin non-replication of the MSP jump; an iWildCam miss on natural-image covariate shift; and the coverage sign-flip below.
-iWildCam is the natural-image covariate check we actually ran; OpenOOD v1.5 Fig.~3 is semantic ImageNet, not a substitute.
-
-OoD-Bench~\cite{ye2022oodbench} quantifies OOD \emph{generalization}, not post-hoc detection; we cite it as venue precedent for a two-axis evaluation paper.
-WILDS Camelyon17 and iWildCam~\cite{koh2021wilds} supply the hospital / camera-trap covariate splits; iWildCam is a negative bound, not a third main domain.
+OoD-Bench~\cite{ye2022oodbench} is OOD generalization, not detection.
+WILDS~\cite{koh2021wilds} supplies Camelyon17 and iWildCam; iWildCam is a negative bound, not a third main domain.
 
 \section{Setup}
 
@@ -143,7 +151,7 @@ None is a clean account (Sec.~\ref{sec:failed} and the supplement).
 
 \section{Results}
 
-\subsection{Camelyon-17: official table and five-seed MSP}
+\subsection{Camelyon-17 discovers the ranking shift}
 \label{sec:camelyon}
 
 Official Kendall $W=\mathbf{0.694}$ ($n{=}8$, 7 methods).
@@ -204,15 +212,19 @@ Official $W$ is seed~42 only.}
 \label{tab:seeds}
 \end{table*}
 
-Table~\ref{tab:seeds} reports the full five-seed MSP matrix.
+Table~\ref{tab:seeds} reports the full five-seed MSP matrix: seeds verify the DenseNet pole.
 DenseNet-121 is the confirmed seed-robust jump ($5/5$).
-ConvNeXt-Tiny and EfficientNetV2-S@224 are not seed-42 flukes ($4/5$); we do not promote them to $5/5$.
-MobileNetV3 and RegNetY are $3/5$.
-EfficientNet-B3 is $2/5$: its seed-42 jump ($+0.258$) is a favorable draw relative to $0.142{\pm}0.125$.
+ConvNeXt-Tiny and EfficientNetV2-S@224 are not seed-42 flukes ($4/5$) and are not promoted to $5/5$.
+MobileNetV3 and RegNetY are $3/5$; EfficientNet-B3 is $2/5$ (its seed-42 jump $+0.258$ is a favorable draw relative to $0.142{\pm}0.125$).
 The seed-42 matrix still shows a jump without feature drag.
-The prose claim is narrower than ``$6/6$ non-ResNet, confirmed.''
+The claim is narrower than ``$6/6$ non-ResNet, confirmed.''
 
-\subsection{Skin ISIC$\to$PAD is not a second A}
+Copying a logit ranking is not free.
+ResNet-50's best logit is ReAct ($0.722$); on ConvNeXt the same score is $0.692$ against Energy $0.877$---a $0.185$ AUROC transfer cost.
+Feature-space transfer regret is ${\le}0.05$ because Maha/$k$NN stay in ranks 1--2.
+Architecture moves the logit leaderboard; it does not unseat the feature default.
+
+\subsection{Skin falsifies a universal MSP jump}
 
 Official $W=\mathbf{0.791}$ ($n{=}8$).
 Maha is rank-1 and $k$NN rank-2 on \textbf{all eight} (Fig.~\ref{fig:ranks}).
@@ -230,7 +242,7 @@ Logit ranks move on Camelyon ($W{=}0.694$) and much less on skin ($W{=}0.791$), 
 \label{fig:ranks}
 \end{figure*}
 
-\subsection{Resolution, then optimizer}
+\subsection{Optimizer challenges a clean architecture reading}
 \label{sec:m1m2}
 
 Resolution is not the Camelyon DenseNet / seed-42 pattern.
@@ -256,7 +268,7 @@ ResNet \emph{can} jump under a non-default recipe.
 Architecture is not a clean variable, independent of optimizer.
 These two results point in opposite directions; we report both.
 
-\subsection{Held-out prediction: ViT-B/16}
+\subsection{ViT-B/16: a locked prediction}
 
 Locked \emph{before} training, from the seed-42 zoo rule that non-ResNet-like cells jumped: MSP ${\ge}0.6947$.
 Linear depth/parameter/receptive-field predictors are invalid on this $n{=}8$ and are not quoted.
@@ -264,7 +276,7 @@ Observed MSP $\mathbf{0.884}$, Maha $0.958$, $k$NN $0.941$.
 The prediction holds.
 Not a ninth $W$ column.
 
-\subsection{Coverage@risk: the sign flips}
+\subsection{Coverage@risk: the deployment cost}
 
 Protocol: OOD-triage coverage@risk\,$10\%$ with MSP, not ID-selective coverage.
 
@@ -285,17 +297,16 @@ The sign of the disagreement flips.}
 \label{fig:cov}
 \end{figure*}
 
-We do not write ``AUROC-winner ${=}$ utility-loser'' as a law, and we do not claim to have discovered that AUROC and coverage-based ranking can disagree---AURC/AUGRC exist because that is already assumed.
-The increment is narrower: the \emph{sign} of the disagreement flips between two medical covariate-shift domains under the same protocol, with no rule to predict which backbone wins.
-Do not choose a backbone for triage from an AUROC leaderboard; measure coverage@risk on the deployment domain.
-The Camelyon $n{=}8$ family span still disagrees (DenseNet AUROC $0.883$ / coverage $0.078$; MobileNet coverage $0.904$); that is the same sign-flip claim, not a new official $W$.
+AURC/AUGRC already assume that AUROC and coverage-based ranking can disagree~\cite{geifman2019selectivenet,traub2024augrc}.
+The increment is the \emph{sign} of that disagreement flipping between two medical covariate domains under the same protocol, with no rule for which backbone wins.
+On the Camelyon $n{=}8$ zoo, copying the AUROC ranking (DenseNet, coverage $0.078$) instead of measuring coverage (MobileNet, $0.904$) costs $0.826$ OOD mass at a $10\%$ risk budget (Fig.~\ref{fig:msp}b).
+Measure coverage@risk on the deployment domain.
 
 \subsection{Frozen foundation models}
 
-We do not claim a foundation-model invert on Camelyon.
-Linear-probe MSP: GigaPath~\cite{xu2024gigapath} $0.664$, Phikon~\cite{filiot2023phikon} $0.605$, UNI~\cite{chen2024uni} $0.599$, all ${>}0.5$.
-MIDOG UNI / GigaPath MSP $0.445$ / $0.470$ in a sign audit is a MIDOG-only footnote, not a Camelyon invert.
-FM Maha ${\sim}0.995$--$1.0$ is discussion support that feature${>}$logit can survive a training-paradigm change, under the ranking-stability question, not a pillar.
+Camelyon linear-probe MSP does not invert: GigaPath~\cite{xu2024gigapath} $0.664$, Phikon~\cite{filiot2023phikon} $0.605$, UNI~\cite{chen2024uni} $0.599$, all ${>}0.5$.
+MIDOG UNI / GigaPath MSP $0.445$ / $0.470$ is a MIDOG-only footnote.
+FM Maha ${\sim}0.995$--$1.0$ is discussion support that feature${>}$logit can survive a training-paradigm change, not a pillar.
 
 \section{Failed alternatives}
 \label{sec:failed}
@@ -310,7 +321,6 @@ Not a pixel-size explanation of Table~\ref{tab:cam}.
 Correlation of $T^\ast$ with the MSP jump: $r{=}0.268$, $p{=}0.52$.
 DenseNet${-}$ResNet-18 MSP gap $0.308{\to}0.308$ after $T^\ast$.
 Calibration/temperature is not the mechanism.
-We do not write a monotonicity theorem relating temperature scaling to MSP AUROC.
 
 \textbf{ID-only Maha/MSP gate.}
 Selecting a score from ID-only statistics is a \emph{selector}, not a detector.
@@ -325,50 +335,49 @@ Dirty; not a recipe.
 
 HED stain jitter, an in-house MIDOG $n{=}8$ zoo, and a shift-type extract (covariate / task / far-OOD) are in the supplement.
 Joint readout: no shift-type law, no stain mitigation, no Camelyon-style MSP jump on MIDOG.
-We do not open center-loss, triplet, a coverage surrogate, or an ensemble.
 
 \section{Discussion and limitations}
 
-Under this histopathology hospital shift, logit OOD scores move with the backbone: seed-robust for DenseNet ($5/5$), present on most seeds for ConvNeXt and EffV2-S@224 ($4/5$), weaker for MobileNet and RegNet ($3/5$), and seed-fragile for EfficientNet-B3 ($2/5$).
-Feature-space scores are the stable default \emph{when the shift looks like Camelyon}.
-That is a protocol warning, not a new detector.
-
-On skin, feature rank-stability holds \emph{without} an MSP jump.
-Architecture-instability of MSP is not a cross-medical law.
-OpenMIBOOD's feature${>}$logit finding is replicated here under a zoo; the increment is ranking movement, when it happens, plus the operational AUROC${\leftrightarrow}$coverage mismatch.
+The hypothesis holds on Camelyon and fails as a cross-medical MSP-jump law.
+Representation family---ResNet versus the rest, feature space versus logits---moves ranking and utility more than swapping MSP for Energy or ReAct on a frozen classifier.
+Feature-space scores remain the stable default when the shift looks like Camelyon \emph{and} when it does not (skin).
+M1 preserves the seed-42 jumps under ResNet-Adam; M2 lets ResNet-18 enter the MSP band under ConvNeXt-AdamW: architecture is the dominant axis, not a clean one.
 ViT-B/16 was a locked prediction, not a post-hoc ninth CNN.
-M1 and M2 disagree about how cleanly that movement is ``architecture'' versus optimizer; both stand.
+
+The practical cost is not abstract.
+Copying an AUROC ranking on Camelyon discards $0.83$ of OOD coverage at a $10\%$ risk budget.
+Copying ResNet-50's logit winner onto ConvNeXt costs $0.185$ AUROC.
+Those are deployment errors from transferring a ranking, not from picking a weak detector in isolation.
 
 \paragraph{Limitations.}
 (1)~\textbf{iWildCam bound.}
 Locked 3-backbone cell: DenseNet MSP $0.575$ vs.\ ResNet mean $0.604$, jump $-0.029$.
 Extra five CNNs vs.\ that domain's ResNet mean: ConvNeXt $0.601$, MobileNet $0.558$, RegNet $0.580$, EffB3 $0.577$, EffV2-S $0.650$; $0/5$ jump.
-We do not see the Camelyon MSP-jump on this non-medical covariate shift.
-The phenomenon may be biomedical-specific.
-We did not hunt a fourth medical domain and do not pool iWildCam with Camelyon $W$.
+The Camelyon MSP-jump is absent on this non-medical covariate shift and may be biomedical-specific.
+iWildCam is not pooled with Camelyon $W$.
 (2)~\textbf{No clean mitigation.}
 CE{+}SupCon is dirty (ResNet-18 MSP worse).
-HED stain jitter is dirty (DenseNet MSP $0.780{<}0.80$ precommit floor).
+HED stain jitter is dirty (DenseNet MSP $0.780{<}0.80$).
 The ID-only gate is a selector.
-(3)~\textbf{MIDOG official $W$ is $n{=}3$} (in-house R18/R50/EffB3, $W{=}0.857$).
-An in-house $n{=}8$ zoo shows no MSP jump and does not replace official $W$.
-(4)~$W$ is per-domain; do not average $0.694$ / $0.791$ / $0.857$.
+(3)~\textbf{MIDOG official $W$ is $n{=}3$} ($W{=}0.857$); the in-house $n{=}8$ zoo shows no MSP jump and does not replace it.
+(4)~$W$ is per-domain; $0.694$ / $0.791$ / $0.857$ are not averaged.
 (5)~No reader study: the operational claim stops at coverage@risk.
-(6)~Architecture is confounded with its standard training recipe.
+Coverage@risk itself is a point estimate here; per-sample bootstrap CIs are left to the toolkit release (features are not re-extracted in this draft).
+(6)~Architecture is confounded with its standard recipe.
 $5/5$ seed-robustness is DenseNet only.
 Official $W$ stays seed~42.
-We did not isolate staining vs.\ scanner vs.\ tissue prep inside the hospital shift.
+Staining vs.\ scanner vs.\ tissue prep inside the hospital shift is not isolated.
 
-We will release the architecture-zoo evaluation and coverage@risk code, crediting OpenMIBOOD for MIDOG imglists, the public ResNet-50 checkpoint, and the 1a / cs-ID / near-OOD protocol.
+Code for the architecture-zoo evaluation and coverage@risk will be released, crediting OpenMIBOOD for MIDOG imglists, the public ResNet-50 checkpoint, and the 1a / cs-ID / near-OOD protocol.
 
 \section{Conclusion}
 
-Under Camelyon hospital shift, post-hoc detector choice is backbone-dependent: a seed-robust DenseNet MSP jump, weaker but directionally present jumps on ConvNeXt/EffV2 ($4/5$) and MobileNet/RegNet ($3/5$), and a seed-fragile EfficientNet-B3 cell.
-Feature-space ranks stay in the top two whether that jump is present (Camelyon) or absent (skin).
-A pre-registered ViT hit shows the Camelyon logit instability is not only a CNN-zoo accident; it did not appear on iWildCam.
-AUROC and coverage@risk can rank backbones in opposite orders, and which way the disagreement points depends on the domain.
-There is no new method in this paper.
-The result is the protocol: do not copy an OOD ranking across backbones, and do not pick a backbone for triage from an AUROC table.
+Detector ranking under medical covariate shift is governed more by representation family than by detector identity.
+On Camelyon that is a seed-robust DenseNet MSP pole, stable feature ranks, and a $0.83$ coverage penalty for copying AUROC into triage.
+Skin keeps the feature ranks and drops the MSP jump.
+MIDOG flips the sign of the AUROC--coverage disagreement.
+A pre-registered ViT hit shows the Camelyon logit instability is not a CNN-zoo accident; iWildCam does not reproduce it.
+The protocol is the result: rank detectors on the backbone you will deploy, and pick that backbone from coverage@risk on the deployment shift.
 
 {\small
 \bibliographystyle{ieeenat_fullname}
