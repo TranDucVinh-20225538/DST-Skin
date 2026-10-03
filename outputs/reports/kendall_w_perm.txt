@@ -1,0 +1,32 @@
+Official-seed Kendall W permutation null. Official W files unchanged.
+n_perm=10000 seed=42
+unconstrained: random ranks per backbone. p(W>=obs)<<0.05 = concordance exists.
+feature_locked: Maha/kNN ranks fixed; other 5 shuffled in their slots.
+If W_obs sits in the locked null, most of W is the Maha/kNN lock.
+
+=== camelyon17 n=8 methods=7 ===
+W_obs=0.694196
+W_feature_only (Maha,kNN)=0.250000
+W_logit_only (MSP,Energy,ELogitNorm)=0.015625
+Friedman chi2=k(n-1)W=33.321 df=6
+unconstrained null: mean=0.1253 sd=0.0680 p(W>=obs)=9.999e-05
+feature_locked null: mean=0.6740 sd=0.0293 p(W>=obs)=0.2217 p(W<=obs)=0.7859
+backbones=convnext_tiny,densenet121,effb3,efficientnet_v2_s,mobilenet_v3_large,regnet_y_3_2gf,resnet18,resnet50
+
+=== midog n=8 methods=7 ===
+W_obs=0.866071
+W_feature_only (Maha,kNN)=1.000000
+W_logit_only (MSP,Energy,ELogitNorm)=0.437500
+Friedman chi2=k(n-1)W=41.571 df=6
+unconstrained null: mean=0.1253 sd=0.0680 p(W>=obs)=9.999e-05
+feature_locked null: mean=0.6641 sd=0.0310 p(W>=obs)=0.0002 p(W<=obs)=0.9999
+backbones=convnext_tiny,densenet121,effb3,efficientnet_v2_s,mobilenet_v3_large,regnet_y_3_2gf,resnet18,resnet50
+
+=== skin_isic_pad n=8 methods=7 ===
+W_obs=0.791295
+W_feature_only (Maha,kNN)=1.000000
+W_logit_only (MSP,Energy,ELogitNorm)=0.062500
+Friedman chi2=k(n-1)W=37.982 df=6
+unconstrained null: mean=0.1253 sd=0.0680 p(W>=obs)=9.999e-05
+feature_locked null: mean=0.6874 sd=0.0297 p(W>=obs)=0.005599 p(W<=obs)=0.9949
+backbones=convnext_tiny,densenet121,effb3,efficientnet_v2_s,mobilenet_v3_large,regnet_y_3_2gf,resnet18,resnet50

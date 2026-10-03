@@ -1,139 +1,175 @@
 # DST-Skin — Detector Ranking Is Not Architecture-Invariant Under Medical Covariate Shift
 
-Research codebase and CVPR 2027 submission for a study of post-hoc out-of-distribution
-(OOD) detectors under **medical covariate shift**. The question: holding one shift fixed,
-how much does the ranking of OOD detectors move when only the backbone changes?
+Code, frozen results and the MIDL 2027 submission for a study of **post-hoc
+out-of-distribution (OOD) detectors** on medical images.
 
-**Started as** a single-domain skin-lesion triage project (ISIC 2018 → PAD-UFES-20,
-3 backbones, Mahalanobis-centric). **Now** a four-domain, eight-backbone characterization
-study — the original skin pipeline is one of the four domains below, not the whole repo.
-`docs/REPOSITORY_GUIDE.md` is a full audit of that original single-domain codebase and
-predates the domains and backbones described here.
+## The question, in plain terms
 
----
+A classifier trained on images from some hospitals will see images from a new
+hospital that look different (stain, scanner, camera). An *OOD detector* flags
+inputs that look unlike the training data, so they can be sent to a human
+instead of trusted. "Post-hoc" detectors (MSP, Energy, Mahalanobis, kNN, ...)
+are scores computed from an already-trained network, and papers usually rank
+them on **one** backbone network.
 
-## Headline results (frozen — do not recompute without a precommit)
+We hold one medical shift fixed and ask: **if only the backbone changes, does the
+detector ranking change too — and does that matter for deployment?**
 
-Primary rank-concordance statistic is **Kendall's $W$, computed per domain and never
-pooled**. Numbers below are frozen in `outputs/reports/OFFICIAL_W_FREEZE.txt`.
+## What we found (short version)
 
-| Domain | Role | Backbones | Official $W$ |
-|---|---|---|---|
-| Camelyon17 (WILDS), hospital-2 | founding cell | 8 CNN families, seed 42 | **0.694** |
-| Skin ISIC → PAD-UFES-20 | tests replication | 8 CNN families | **0.791** |
-| MIDOG (OpenMIBOOD 1a → 1b+1c) | deployment / utility readout | 3 (in-house R18/R50/EffB3) | **0.857** |
-| iWildCam (WILDS), camera-trap | negative bound, natural-image | 8 CNN families | not pooled — 0/8 jump |
+1. **Logit-based scores (MSP, Energy, ...) reorder a lot across backbones** on
+   Camelyon17. MSP AUROC goes from 0.515 (ResNet-50) to 0.883 (DenseNet-121);
+   the DenseNet jump holds on 5/5 training seeds.
+2. **But they also reorder across training seeds of the same backbone.** The
+   ranking agreement across seeds (Kendall's W 0.600–0.931) is about the same as
+   across backbones (0.694), so "the architecture decides the ranking" is *not*
+   supported for the full ranking.
+3. **Feature-space scores (Mahalanobis, kNN) are the stable default.** One of
+   them is the best detector on every backbone and every seed tested, on
+   Camelyon and on skin.
+4. **AUROC is a poor guide to deployment.** Choosing a backbone by AUROC instead
+   of by *coverage@risk* (how much of the new hospital's data can be
+   auto-accepted while keeping error ≤ 10%) loses 0.215 coverage on held-out
+   patients.
+5. The Camelyon pattern does not generalise as a law: skin images show no MSP
+   jump, and on MIDOG the AUROC-vs-coverage disagreement points the other way.
 
-Other locked findings: a seed-robust MSP jump versus the frozen ResNet mean on
-Camelyon (DenseNet-121 $5/5$ seeds, ConvNeXt-Tiny / EfficientNetV2-S@224 $4/5$,
-MobileNetV3 / RegNetY $3/5$, EfficientNet-B3 $2/5$ — not seed-stable); feature-space
-scores (Mahalanobis, $k$NN) hold ranks 1–2 on nearly every backbone on every domain;
-the *sign* of the AUROC-vs-coverage@risk$10\%$ disagreement flips between Camelyon and
-MIDOG; a pre-registered ViT-B/16 Camelyon MSP threshold ($\ge 0.6947$) was met
-($0.884$, HIT), held out of the official $W$. No new detector is proposed — the
-contribution is a protocol warning about copying a ranking across backbones.
+No new detector is proposed. The contribution is the evaluation protocol:
+default to feature-space scores, don't copy a logit-score ranking across
+backbones or seeds, and pick a triage backbone from coverage@risk measured on a
+validation split of the target hospital.
 
----
+## Glossary
 
-## Manuscript
+| Term | Meaning here |
+|---|---|
+| ID / OOD | in-distribution (training hospitals) / out-of-distribution (new hospital) |
+| AUROC | how well a detector score separates ID from OOD images (0.5 = chance) |
+| Kendall's W | agreement between several rankings of the same 7 detectors (1 = identical, 0 = none). Computed **per dataset, never averaged across datasets** |
+| MSP jump | a backbone's MSP AUROC minus the ResNet mean on the same split; ≥ 0.15 counts as a jump |
+| coverage@risk 10% | largest fraction of OOD images that can be accepted, most-confident first, while classifier error stays ≤ 10% |
+| precommit | a `decision_precommit_*.md` file that fixes the experiment and how each outcome will be written up **before** running it |
 
-The CVPR 2027 submission lives in `manuscript/cvpr2027/`:
+## Datasets and numbers
+
+Primary statistic: Kendall's W over 7 scores (MSP, Energy, ELogitNorm, ViM,
+ReAct, Mahalanobis, kNN). Frozen in `outputs/reports/OFFICIAL_W_FREEZE.txt`.
+
+| Dataset | Shift | Role | Backbones | Official W |
+|---|---|---|---|---|
+| Camelyon17 (WILDS) | hospitals 0,3,4 → hospital 2 | main result | 8 CNNs, seed 42 | **0.694** |
+| Skin ISIC 2018 → PAD-UFES-20 | dermoscopy → smartphone photos | replication test | 8 CNNs | **0.791** |
+| MIDOG (OpenMIBOOD 1a → 1b+1c) | scanner/tumour type | deployment readout | 3 (R18/R50/EffB3) | **0.857** |
+| iWildCam (WILDS) | camera traps, non-medical | negative control | 8 CNNs | not pooled; 0/8 jump |
+
+The 8 CNNs: ResNet-18/50, DenseNet-121, ConvNeXt-Tiny, MobileNetV3-L,
+RegNetY-3.2GF, EfficientNet-B3 (300 px), EfficientNetV2-S (224 px). A ViT-B/16
+was a pre-registered prediction (MSP ≥ 0.6947; observed 0.884) and is kept out
+of W.
+
+Controls added 2026-10-03 (precommits locked 2026-10-02):
+
+| Control | Result | File |
+|---|---|---|
+| Cross-seed W, fixed architecture | R50 0.931, R18 0.800, DenseNet 0.789, EffB3 0.600 | `outputs/reports/camelyon_cross_seed_w.txt` |
+| Coverage selection on patient-disjoint split | AUROC-pick 0.539 vs coverage-pick 0.754 held-out | `outputs/reports/camelyon_coverage_val_split.txt` |
+| Bootstrap CIs on coverage | DenseNet 0.078 [0.067, 0.086], MobileNet 0.904 [0.898, 0.909] | `outputs/reports/pathology_risk_coverage/coverage_bootstrap_ci.txt` |
+
+## Paper
+
+The submission is **MIDL 2027** (full paper, deadline 2026-12-04), in
+`manuscript/midl2027/`:
 
 ```
-manuscript/cvpr2027/
-├── main.tex        # 7-page main paper (review-mode CVPR template)
-├── suppl.tex        # supplementary material (compiled separately)
-├── main.pdf, suppl.pdf
-├── fig/              # figures, built by make_figures.py from frozen CSVs
-├── make_figures.py
-└── refs.bib
+manuscript/midl2027/
+├── main.tex, main.pdf   # 10-page main text + references + appendix
+├── refs.bib, midl.cls   # bibliography, official MIDL class (needs jmlr.cls)
+├── make_figures.py      # rebuilds fig/ from the frozen CSVs; never recomputes W
+├── fig/
+└── Makefile
 ```
-
-Build:
 
 ```bash
-cd manuscript/cvpr2027
-pdflatex -interaction=nonstopmode main && bibtex main && pdflatex main && pdflatex main
-pdflatex -interaction=nonstopmode suppl
-# or: make
+cd manuscript/midl2027
+make figures   # optional: regenerate fig/ (uses ../../.conda-env)
+make main      # pdflatex + bibtex + 2x pdflatex
 ```
 
-`manuscript/draft_v1.md` is the markdown twin kept in sync with `main.tex` — read it
-for the same content without a LaTeX toolchain. Both are generated **from**
-`outputs/reports/OFFICIAL_W_FREEZE.txt` and the other frozen CSVs below; neither
-recomputes a number itself.
+`make` sets `TEXMFHOME=./texmf`, a local TeX tree used on our HPC (not in git).
+Elsewhere, a full TeX Live with `texlive-publishers` (for `jmlr.cls`) and
+`texlive-science` (for `algorithm2e`) is enough.
 
-**Target venue:** CVPR 2027, deadline 2026-11-16 AoE (fixed, no extension).
-
----
-
-## Setup
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-export PYTHONPATH=.
-```
-
-`requirements.txt` covers all four domains (adds `wilds` for Camelyon17/iWildCam on
-top of the original skin-pipeline dependencies).
-
----
+An earlier CVPR 2027 version was dropped on 2026-10-03; its sources are in git
+history (commit `18cbd2c`, `manuscript/cvpr2027/`).
 
 ## Repository layout
 
 ```
 DST-Skin/
-├── README.md                          # this file
-├── docs/REPOSITORY_GUIDE.md           # audit of the original single-domain (skin-only) codebase
-├── decision_precommit_*.md            # precommitted protocols for each robustness probe —
-│                                       #   read before touching seed variance, matched-recipe,
-│                                       #   shift-type, stain-cov, or the ViT/iWildCam extension
-├── manuscript/
-│   ├── draft_v1.md                    # markdown twin of the CVPR draft
-│   └── cvpr2027/                      # LaTeX submission (see above)
-├── outputs/reports/                   # tracked in git — the frozen numbers (CSVs, .txt locks)
-│   ├── OFFICIAL_W_FREEZE.txt          # the single source of truth for Kendall W per domain
-│   ├── NARRATIVE_LOCKS.txt            # chronological log of what was tested and closed
-│   └── camelyon17/, iwildcam/, pathology_risk_coverage/, ...
-├── scripts/                           # SLURM submit_*.sh drivers + one script per analysis step
-├── src/                                # models, datasets, OOD scoring (src/utils/scoring.py)
-└── outputs/{features,figures}/, data/, logs/   # gitignored — local/HPC only, not shipped
+├── README.md
+├── decision_precommit_*.md       # one per experiment: what runs + how each outcome is written
+├── manuscript/midl2027/          # the paper
+├── outputs/reports/              # tracked: every number the paper uses
+│   ├── OFFICIAL_W_FREEZE.txt     # official W per dataset — the source of truth
+│   ├── NARRATIVE_LOCKS.txt       # dated log of every experiment and its verdict
+│   ├── architecture_invariance_ranks.csv   # 7-score AUROC + rank per backbone/dataset
+│   ├── camelyon17/frac1/seed{42..46}/      # per-backbone score CSVs, Camelyon
+│   ├── skin/, midog/, iwildcam/            # same for the other datasets
+│   └── pathology_risk_coverage/            # coverage@risk tables
+├── scripts/                      # one script per analysis step + SLURM submit_*.sh
+├── src/                          # models, datasets, OOD scores (src/utils/scoring.py)
+├── docs/REPOSITORY_GUIDE.md      # audit of the original skin-only codebase (predates the rest)
+└── data/, outputs/features/, logs/   # local/HPC only, not in git
 ```
 
-`outputs/*` is gitignored except `outputs/reports/`, which is force-tracked because it
-**is** the frozen result set — everything in the manuscript is read from there, never
-recomputed in the paper build.
+Features and checkpoints (`outputs/features/`, `data/models/`) are not in git;
+they are tens of GB. Every number in the paper is read from `outputs/reports/`.
 
----
+## Where each result comes from
 
-## Reproducing a domain from scratch
+| Paper result | Script | Output |
+|---|---|---|
+| Official W, ranks, MSP jump | `scripts/rebuild_architecture_invariance.py` | `architecture_invariance_*.csv`, `OFFICIAL_W_FREEZE.txt` |
+| Five-seed MSP jumps | `scripts/camelyon_seed_jump.py` | `camelyon_seed_jump.txt` |
+| Cross-seed W | `scripts/camelyon_cross_seed_w.py` | `camelyon_cross_seed_w.{txt,csv}` |
+| Coverage@risk (full test set) | `scripts/pathology_risk_coverage.py` | `pathology_risk_coverage/` |
+| Coverage held-out selection | `scripts/camelyon_coverage_val_split.py` | `camelyon_coverage_val_split*.{txt,csv}` |
+| Coverage bootstrap CIs | `scripts/bootstrap_coverage_ci.py` | `pathology_risk_coverage/coverage_bootstrap_ci.txt` |
+| Leave-one-backbone W | `scripts/camelyon_loo_backbone_w.py` | `architecture_invariance_loo_backbone_w.csv` |
+| Permutation null for W | `scripts/kendall_w_perm.py` | `kendall_w_perm.{txt,csv}` |
+| Matched-recipe (M1/M2) | `scripts/camelyon_matched_recipe_read.py` | `decision_precommit_matched_recipe.md` |
+| Foundation models | `scripts/fm_ood_pilot.py` | see `NARRATIVE_LOCKS.txt` |
 
-Each domain follows the same three-step shape (feature extraction → score computation
-→ aggregation); SLURM entry points are the `scripts/submit_*.sh` files. Example,
-Camelyon17:
+Training and feature extraction run on SLURM via `scripts/submit_*.sh`
+(e.g. `submit_camelyon17_full.sh` for the Camelyon 8-CNN zoo,
+`submit_camelyon_seed_variance*.sh` for seeds 43–46).
+
+`outputs/reports/skin/seed43–46/` and `outputs/reports/midog/seed43–46/` hold
+score CSVs from extra-seed runs of the skin and MIDOG zoos. They are not used in
+the paper or in any official W.
+
+## Setup
 
 ```bash
-scripts/submit_camelyon17_pilot.sh        # or submit_camelyon17_full.sh for the 8-backbone zoo
-python scripts/rebuild_architecture_invariance.py   # rebuilds architecture_invariance*.csv
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+export PYTHONPATH=.
 ```
 
-Do **not** run `rebuild_architecture_invariance.py` against ad hoc CSVs (matched-recipe,
-stain-cov, shift-type, seed-variance runs) — those are deliberately kept out of the
-official rebuild; see the relevant `decision_precommit_*.md` for why.
+## Rules this repo follows
 
-The original single-domain skin pipeline (extract → analyze_benchmark → plot_*) still
-works as documented in `docs/REPOSITORY_GUIDE.md`, with the caveats listed there
-(two coexisting benchmark generations, a couple of scripts with stale hardcoded
-checkpoint paths, some orphaned reader-study artifacts).
+- Official W is never recomputed by the paper build or by follow-up scripts.
+- W is reported per dataset and never averaged across datasets.
+- Seed-42 artifacts are never overwritten; other seeds write to `seed{N}/`.
+- Our in-house MIDOG ResNet-50 (MSP 0.512) is never mixed with OpenMIBOOD's
+  public checkpoint (~0.59).
+- Do not run `rebuild_architecture_invariance.py` on ad-hoc CSVs (matched-recipe,
+  stain, shift-type, seed runs); see the matching precommit.
 
----
+## Open items before submission
 
-## Status
-
-Numbers are frozen (`OFFICIAL_W_FREEZE.txt`, 2026-09-18) and the seed-variance /
-shift-type / Phao-B / iWildCam-extra follow-ups are locked (`NARRATIVE_LOCKS.txt`,
-2026-09-20). Draft is in submission-prep: one related-work citation
-(Datko et al., ESWA 2026) is flagged unverified in `manuscript/cvpr2027/refs.bib` and
-needs its original source confirmed before submission.
+- The Datko et al. (ESWA 2026) citation is not verified against a primary source
+  (flagged in `refs.bib` and in a footnote).
+- The held-out coverage result uses one split of nine patients; repeated
+  patient-level resampling was not run.
+- Cross-seed W was computed for Camelyon only.

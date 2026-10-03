@@ -1,0 +1,22 @@
+OOD-triage coverage@risk 10% MSP. Percentile bootstrap, B=1000, seed=42.
+Not a new official W. Not mixed with OpenMIBOOD public R50.
+
+=== Camelyon hospital-2, unpaired per backbone ===
+resnet18                 0.145  95% CI [0.139, 0.149]  n=85054
+resnet50                 0.149  95% CI [0.146, 0.153]  n=85054
+densenet121              0.078  95% CI [0.068, 0.086]  n=85054
+convnext_tiny            0.370  95% CI [0.360, 0.379]  n=85054
+mobilenet_v3_large       0.904  95% CI [0.898, 0.910]  n=85054
+regnet_y_3_2gf           0.440  95% CI [0.430, 0.451]  n=85054
+effb3                    0.107  95% CI [0.103, 0.110]  n=85054
+efficientnet_v2_s_224    0.780  95% CI [0.773, 0.787]  n=85054
+
+=== Camelyon paired bootstrap (same OOD indices) ===
+densenet121              0.078  95% CI [0.067, 0.086]
+mobilenet_v3_large       0.904  95% CI [0.898, 0.909]
+MobileNet - DenseNet     0.825  95% CI [0.817, 0.837]
+
+=== MIDOG 1a vs 1b+1c, unpaired ===
+resnet18                 0.442  95% CI [0.369, 0.501]  n=5902
+resnet50                 0.166  95% CI [0.004, 0.369]  n=5902
+effb3                    0.712  95% CI [0.678, 0.736]  n=5902

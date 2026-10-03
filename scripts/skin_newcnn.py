@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Skin ISIC→PAD: 5 new CNN backbones (seed=42, 10 epochs, per-arch recipes).
+"""Skin ISIC→PAD CNN zoo.
 
-Does not retrain R18/R50/EffB3. Writes under outputs/{features,reports}/skin/
-so original root CSVs stay untouched. Launch only after Camelyon n=8 is in.
+seed=42 writes the official untagged paths under data/models/skin and
+outputs/{features,reports}/skin/. Other seeds write seed{N}/ and never
+overwrite seed 42. --backbone zoo = official 8 CNNs; EffV2-S forced @224.
 """
 
 from __future__ import annotations
@@ -24,11 +25,14 @@ from torchvision import transforms
 from src.datasets.isic_dataset import ISICDataset
 from src.models.cnn_family import (
     NEW_CNN_BACKBONES,
+    ORIGINAL_BACKBONES,
     fc_params as cnn_fc_params,
     get_cnn_backbone,
     input_size as default_input_size,
     recipe as cnn_recipe,
 )
+
+ZOO_OFFICIAL = (*ORIGINAL_BACKBONES, *NEW_CNN_BACKBONES)
 from src.utils.benchmark_metrics import (
     build_dispersion_vs_separability_table,
     build_score_comparison_df,
@@ -131,10 +135,16 @@ def build_eval_transform(backbone: str, input_size: int | None = None):
     )
 
 
-def paths(backbone: str, input_size: int | None = None) -> dict[str, Path]:
-    model_dir = Path("data/models/skin")
-    feat_dir = Path("outputs/features/skin")
-    report_dir = Path("outputs/reports/skin")
+def paths(backbone: str, input_size: int | None = None, seed: int = SEED_DEFAULT) -> dict[str, Path]:
+    # seed 42 stays at the official untagged paths. Other seeds never overwrite it.
+    if int(seed) == SEED_DEFAULT:
+        model_dir = Path("data/models/skin")
+        feat_dir = Path("outputs/features/skin")
+        report_dir = Path("outputs/reports/skin")
+    else:
+        model_dir = Path(f"data/models/skin/seed{seed}")
+        feat_dir = Path(f"outputs/features/skin/seed{seed}")
+        report_dir = Path(f"outputs/reports/skin/seed{seed}")
     for d in (model_dir, feat_dir, report_dir):
         d.mkdir(parents=True, exist_ok=True)
     stem = artifact_stem(backbone, input_size)
@@ -203,7 +213,7 @@ def evaluate(model, loader, device):
 
 def train_backbone(backbone: str, seed: int, num_workers: int, input_size: int | None = None) -> None:
     set_seed(seed)
-    p = paths(backbone, input_size)
+    p = paths(backbone, input_size, seed=seed)
     if p["model_best"].exists():
         print(f"  skip train, checkpoint exists: {p['model_best']}", flush=True)
         return
@@ -249,8 +259,13 @@ def train_backbone(backbone: str, seed: int, num_workers: int, input_size: int |
             print(f"  saved {p['model_best']} (auc={best_auc:.4f})", flush=True)
 
 
-def extract_backbone(backbone: str, num_workers: int, input_size: int | None = None) -> None:
-    p = paths(backbone, input_size)
+def extract_backbone(
+    backbone: str,
+    num_workers: int,
+    input_size: int | None = None,
+    seed: int = SEED_DEFAULT,
+) -> None:
+    p = paths(backbone, input_size, seed=seed)
     if p["features"].exists():
         print(f"  skip extract, features exist: {p['features']}", flush=True)
         return
@@ -311,7 +326,7 @@ def to_numpy(x):
 
 def analyze_backbone(backbone: str, seed: int, input_size: int | None = None) -> dict:
     set_seed(seed)
-    p = paths(backbone, input_size)
+    p = paths(backbone, input_size, seed=seed)
     try:
         data = torch.load(p["features"], map_location="cpu", weights_only=False)
     except TypeError:
@@ -364,23 +379,41 @@ def main() -> None:
     args = parser.parse_args()
     if args.backbone == "new":
         names = list(NEW_CNN_BACKBONES)
+    elif args.backbone == "zoo":
+        names = list(ZOO_OFFICIAL)
     else:
-        names = [args.backbone]
-        if names[0] not in NEW_CNN_BACKBONES:
-            raise ValueError(names[0])
+        names = [s.strip() for s in args.backbone.split(",") if s.strip()]
+        allowed = set(ZOO_OFFICIAL)
+        for n in names:
+            if n not in allowed:
+                raise ValueError(n)
     summaries = []
     if args.stage in ("train", "all"):
         for name in names:
-            train_backbone(name, args.seed, args.num_workers, args.input_size)
+            size = args.input_size
+            if size is None and name == "efficientnet_v2_s":
+                size = 224
+            train_backbone(name, args.seed, args.num_workers, size)
     if args.stage in ("extract", "all"):
         for name in names:
-            extract_backbone(name, args.num_workers, args.input_size)
+            size = args.input_size
+            if size is None and name == "efficientnet_v2_s":
+                size = 224
+            extract_backbone(name, args.num_workers, size, seed=args.seed)
     if args.stage in ("analyze", "all"):
         for name in names:
-            summaries.append(analyze_backbone(name, args.seed, args.input_size))
-        Path("outputs/reports/skin").mkdir(parents=True, exist_ok=True)
-        pd.DataFrame(summaries).to_csv("outputs/reports/skin/pilot_summary.csv", index=False)
-        if args.input_size is None:
+            size = args.input_size
+            if size is None and name == "efficientnet_v2_s":
+                size = 224
+            summaries.append(analyze_backbone(name, args.seed, size))
+        out_dir = (
+            Path("outputs/reports/skin")
+            if args.seed == SEED_DEFAULT
+            else Path(f"outputs/reports/skin/seed{args.seed}")
+        )
+        out_dir.mkdir(parents=True, exist_ok=True)
+        pd.DataFrame(summaries).to_csv(out_dir / "pilot_summary.csv", index=False)
+        if args.input_size is None and args.seed == SEED_DEFAULT:
             import runpy
 
             runpy.run_path(
@@ -389,8 +422,7 @@ def main() -> None:
             )
         else:
             print(
-                f"skip invariance rebuild (input_size={args.input_size} override; "
-                "do not mix with default-resolution zoo table)",
+                f"skip invariance rebuild (seed={args.seed}, input_size={args.input_size})",
                 flush=True,
             )
 

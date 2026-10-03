@@ -165,3 +165,24 @@ Phao B leftover n=8: disagree=True. DenseNet AUROC-high coverage-low (0.883 / 0.
 iWildCam extra 0/5 jump. Bound sentence stays. Do not pool with Camelyon W.
 
 
+
+--- 2026-10-03 cross-seed W + coverage val-split (both precommits locked 2026-10-02) + venue ---
+
+Official W unchanged: Camelyon 0.694 / skin 0.791 / MIDOG n=3 0.857.
+
+Cross-seed W (decision_precommit_cross_seed_w.md), fixed architecture, seeds 42-46 as raters, 7 scores,
+from existing *_score_comparison.csv (no re-extraction; seed-42 logit cells from the frozen ranks file):
+  R50 0.931, R18 0.800, DenseNet 0.789, EffB3 0.600; mean 0.780 +- 0.136.
+  Cross-arch W over the same 4 anchors per seed: 0.750-0.915.
+  Read-table rows 2+3: architecture claim on the full ranking is confounded with seed; report per anchor.
+  Survives: feature score rank 1 in 20/20 anchor x seed cells; DenseNet MSP jump 5/5.
+  Artifact: camelyon_cross_seed_w.txt.
+
+Coverage val-split (decision_precommit_coverage_val_split.md), StratifiedGroupKFold(2, seed 42) by patient:
+  val 6 patients / 41,217 patches; test 3 patients / 43,837.
+  Pipeline 1 (AUROC-select): ConvNeXt -> test cov@10 0.539. Pipeline 2 (cov-select): EffV2-S@224 -> 0.754 (+0.215).
+  Best test-half 1.000 (MobileNet). Read-table row 2: helps, noisy at n=8 / 9 patients; not solved.
+  Oracle 0.078 / 0.904 is retrospective contrast only. Artifact: camelyon_coverage_val_split.txt.
+
+Venue: CVPR 2027 dropped. Only manuscript/midl2027/ (MIDL 2027, deadline 2026-12-04) is maintained;
+the CVPR sources and cvpr2027_outline.md referenced above remain in git history (commit 18cbd2c).
