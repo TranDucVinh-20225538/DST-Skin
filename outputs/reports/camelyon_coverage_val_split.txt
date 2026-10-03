@@ -1,0 +1,29 @@
+Camelyon hospital-2 coverage@risk 10% (MSP), validation-split redo. Seed-42 official 8 CNNs.
+Split: StratifiedGroupKFold(2, shuffle, random_state=42) on tumor, grouped by patient. Frozen in camelyon_coverage_val_split_patients.csv.
+patient slides  n_patches  tumor_frac half
+    040     20       3810      0.0071 test
+    041     21       3694      0.0027  val
+    042     22       7210      0.5865  val
+    044     23       5288      0.5221  val
+    045     24       7727      0.0238  val
+    046  25 26       8149      0.1870 test
+    048     27       4556      0.0241  val
+    051     28      31878      0.8469 test
+    052     29      12742      0.5246  val
+val-half n=41217, test-half n=43837
+
+             backbone  auroc_full  cov10_full  auroc_val  cov10_val  n_val  auroc_test  cov10_test  n_test
+             resnet18      0.5743      0.1446     0.5494     0.1847  41217      0.5977      0.1096   43837
+             resnet50      0.5150      0.1491     0.4534     0.2324  41217      0.5729      0.0793   43837
+          densenet121      0.8827      0.0784     0.8544     0.1446  41217      0.9092      0.0213   43837
+        convnext_tiny      0.8456      0.3699     0.8775     0.2520  41217      0.8157      0.5386   43837
+   mobilenet_v3_large      0.7705      0.9035     0.8462     0.7704  41217      0.6994      1.0000   43837
+       regnet_y_3_2gf      0.7836      0.4403     0.7882     0.4448  41217      0.7792      0.4369   43837
+                effb3      0.8026      0.1065     0.7489     0.1594  41217      0.8531      0.0542   43837
+efficientnet_v2_s_224      0.7783      0.7798     0.7529     0.8213  41217      0.8022      0.7536   43837
+
+Pipeline 1 (AUROC-select on val):    convnext_tiny  val AUROC 0.877 -> test cov@10 0.539
+Pipeline 2 (coverage-select on val): efficientnet_v2_s_224  val cov@10 0.821 -> test cov@10 0.754
+Pipeline 2 - Pipeline 1 (test-half coverage): +0.215
+Best achievable test-half coverage (any backbone): 1.000 (mobilenet_v3_large)
+Oracle, full test set (contrast only): AUROC-best densenet121 cov 0.078; coverage-best mobilenet_v3_large cov 0.904

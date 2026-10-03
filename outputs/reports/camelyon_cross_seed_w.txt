@@ -1,0 +1,53 @@
+Cross-seed Kendall W, fixed architecture, Camelyon hospital-2, 7 scores.
+Ranking unit = seed (5 seeds: 42-46). Source: existing *_score_comparison.csv.
+Official cross-architecture W (8 CNN, seed 42) = 0.694 (not recomputed).
+
+W_seed per anchor (k=5 seeds, n=7 methods):
+  resnet18     0.800
+  resnet50     0.931
+  densenet121  0.789
+  effb3        0.600
+  mean +- sd   0.780 +- 0.136  (min 0.600, max 0.931)
+
+Supplementary, not in the read table: cross-architecture W over the same
+four anchors at each seed (k=4 backbones, n=7 methods):
+  seed 42       0.750
+  seed 43       0.786
+  seed 44       0.772
+  seed 45       0.781
+  seed 46       0.915
+  mean +- sd   0.801 +- 0.065
+
+Per-anchor rank matrix (rows=seed, 1=best):
+-- resnet18
+method  MSP  Energy  ELogitNorm  ViM  ReAct  Mahalanobis  kNN
+seed                                                         
+42      6.0     7.0         5.0  3.0    4.0          1.0  2.0
+43      5.0     6.0         4.0  7.0    3.0          1.0  2.0
+44      6.0     5.0         7.0  3.0    4.0          2.0  1.0
+45      6.0     5.0         7.0  3.0    4.0          1.0  2.0
+46      5.0     7.0         6.0  3.0    4.0          2.0  1.0
+-- resnet50
+method  MSP  Energy  ELogitNorm  ViM  ReAct  Mahalanobis  kNN
+seed                                                         
+42      5.0     7.0         6.0  4.0    3.0          1.0  2.0
+43      5.0     6.0         7.0  3.0    4.0          2.0  1.0
+44      5.0     6.0         7.0  4.0    3.0          1.0  2.0
+45      6.0     5.0         7.0  4.0    3.0          1.0  2.0
+46      6.0     5.0         7.0  3.0    4.0          2.0  1.0
+-- densenet121
+method  MSP  Energy  ELogitNorm  ViM  ReAct  Mahalanobis  kNN
+seed                                                         
+42      4.0     7.0         5.0  6.0    3.0          1.0  2.0
+43      6.0     7.0         5.0  3.0    4.0          1.0  2.0
+44      4.0     6.0         5.0  7.0    3.0          1.0  2.0
+45      5.0     6.0         4.0  7.0    3.0          1.0  2.0
+46      7.0     5.0         6.0  3.0    4.0          1.0  2.0
+-- effb3
+method  MSP  Energy  ELogitNorm  ViM  ReAct  Mahalanobis  kNN
+seed                                                         
+42      4.0     5.0         3.0  7.0    6.0          2.0  1.0
+43      7.0     5.0         6.0  3.0    4.0          1.0  2.0
+44      5.0     7.0         6.0  2.0    4.0          3.0  1.0
+45      5.0     6.0         4.0  7.0    3.0          1.0  2.0
+46      6.0     5.0         7.0  2.0    4.0          3.0  1.0
