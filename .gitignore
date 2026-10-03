@@ -52,3 +52,7 @@ checkpoints/
 
 # temporary
 *.tmp
+
+# rigor pack: SLURM job bodies + logs (contain absolute paths); caches under outputs/rigor_pack are already ignored
+logs/rigor_jobs/
+logs/rigor_*.out
