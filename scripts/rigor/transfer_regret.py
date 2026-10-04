@@ -55,7 +55,7 @@ def main() -> int:
     for domain in args.domains:
         cube = C.load_cube(root, domain, archs, seeds)  # (A, S, 7)
         for fam, ms in FAMILIES.items():
-            idx = [C.METHODS_ORDER.index(m) for m in ms]
+            idx = [C.METHODS_ORDER.index(m) for m in ms if m in C.METHODS_ORDER]
             for si, s in enumerate(seeds):
                 for a in range(len(archs)):
                     for b in range(len(archs)):

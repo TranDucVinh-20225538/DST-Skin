@@ -39,6 +39,10 @@ DISPLAY = {
     "mahalanobis": "Mahalanobis",
     "knn": "kNN",
 }
+# Sensitivity readings only (numerical-stability addendum): DST_EXCLUDE_METHODS=vim drops a
+# score from every stage. Unset = the precommitted 7 scores.
+_EXCLUDED = {m.strip() for m in os.environ.get("DST_EXCLUDE_METHODS", "").split(",") if m.strip()}
+DISPLAY = {k: v for k, v in DISPLAY.items() if k not in _EXCLUDED}
 INV_DISPLAY = {v: k for k, v in DISPLAY.items()}
 METHODS_ORDER = list(DISPLAY.values())
 METHOD_KEYS = list(DISPLAY.keys())

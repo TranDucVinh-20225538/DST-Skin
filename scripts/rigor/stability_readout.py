@@ -28,7 +28,26 @@ import common as C  # noqa: E402
 
 METHODS = ("mahalanobis", "vim")
 N_OLD = 10
-VARIANTS = ["old_r%d" % r for r in range(N_OLD)] + ["stable"]
+# Extra stable readings (added 2026-10-04, after the old/stable spread was seen): stable
+# Mahalanobis with the published ViM path at 8 BLAS threads (repeat 2 = 8 threads), and stable
+# Mahalanobis with ViM dropped (stages run with DST_EXCLUDE_METHODS=vim).
+EXTRA = ["stable_maha_vim8", "stable_maha_novim"]
+VARIANTS = ["old_r%d" % r for r in range(N_OLD)] + ["stable"] + EXTRA
+NOVIM = "stable_maha_novim"
+
+
+def spec(v: str) -> dict:
+    """method -> (repeat, 'old'|'stable'); which archs are swapped is in archs_of(v)."""
+    if v.startswith("old_r"):
+        r = int(v[len("old_r"):])
+        return {m: (r, "old") for m in METHODS}
+    if v == "stable":
+        return {m: (0, "stable") for m in METHODS}
+    return {"mahalanobis": (0, "stable"), "vim": (2, "old")}
+
+
+def archs_of(v: str):
+    return C.ANCHORS if v.startswith("old_r") else C.ARCHS
 
 
 def rep_dir(root: Path) -> Path:
@@ -52,14 +71,15 @@ def published(root: Path, arch: str, seed: int, method: str, metric: str = "AURO
 def value_table(root: Path, runs: pd.DataFrame) -> dict:
     """{variant: {(arch, seed, method): (auroc, fpr95, aupr_in, aupr_out)}} for swapped cells only."""
     out = {v: {} for v in VARIANTS}
-    for _, r in runs.iterrows():
-        for m in METHODS:
-            if r.arch in C.ANCHORS and r["repeat"] < N_OLD:
-                out["old_r%d" % r["repeat"]][(r.arch, int(r.seed), m)] = tuple(
-                    float(r["old_%s_%s" % (m, k)]) for k in ("auroc", "fpr95", "aupr_in", "aupr_out"))
-            if r["repeat"] == 0:
-                out["stable"][(r.arch, int(r.seed), m)] = tuple(
-                    float(r["stable_%s_%s" % (m, k)]) for k in ("auroc", "fpr95", "aupr_in", "aupr_out"))
+    by = {(r.arch, int(r.seed), int(r["repeat"])): r for _, r in runs.iterrows()}
+    for v in VARIANTS:
+        for a in archs_of(v):
+            for s in C.SEEDS:
+                for m, (rep, pre) in spec(v).items():
+                    r = by.get((a, s, rep))
+                    if r is not None:
+                        out[v][(a, s, m)] = tuple(float(r["%s_%s_%s" % (pre, m, k)])
+                                                  for k in ("auroc", "fpr95", "aupr_in", "aupr_out"))
     return out
 
 
@@ -133,7 +153,10 @@ def aggregate(root: Path, out_root: Path) -> None:
     vt = value_table(root, runs)
     wrows = [dict(variant="published", **w_numbers(cube(root, {})))]
     for v in VARIANTS:
-        wrows.append(dict(variant=v, **w_numbers(cube(root, vt[v]))))
+        X = cube(root, vt[v])
+        if v == NOVIM:
+            X = np.delete(X, C.METHODS_ORDER.index("ViM"), axis=2)
+        wrows.append(dict(variant=v, **w_numbers(X)))
     wdf = pd.DataFrame(wrows)
     wdf.to_csv(rep / "w_per_variant.csv", index=False)
     old = wdf[wdf.variant.str.startswith("old_")]
@@ -142,7 +165,8 @@ def aggregate(root: Path, out_root: Path) -> None:
     ws = []
     for c in wdf.columns[1:]:
         ws.append({"statistic": c, "published": pub[c], "old_min": old[c].min(), "old_max": old[c].max(),
-                   "old_range": old[c].max() - old[c].min(), "old_std": old[c].std(ddof=1), "stable": stab[c]})
+                   "old_range": old[c].max() - old[c].min(), "old_std": old[c].std(ddof=1), "stable": stab[c],
+                   **{v: wdf[wdf.variant == v].iloc[0][c] for v in EXTRA}})
     pd.DataFrame(ws).to_csv(rep / "w_spread.csv", index=False)
     print("wrote %s (%d runs)" % (rep, len(runs)))
 
@@ -181,7 +205,8 @@ def variants(root: Path, out_root: Path) -> None:
     runs = load_runs(out_root)
     vt = value_table(root, runs)
     raw = out_root / "stability" / "raw"
-    for v in VARIANTS:
+    only = [x for x in os.environ.get("DST_STAB_VARIANTS", "").split(",") if x]
+    for v in (only or VARIANTS):
         V = out_root / "stability" / "variants" / v
         if V.exists():
             shutil.rmtree(V)
@@ -217,14 +242,11 @@ def variants(root: Path, out_root: Path) -> None:
         S, SV = out_root / "scores/camelyon17", V / "outputs/rigor_pack/scores/camelyon17"
         for s in C.SEEDS:
             _link_dir(S / ("seed%d" % s), SV / ("seed%d" % s), set())
-        r = 0 if v == "stable" else int(v[len("old_r"):])
         for a, s in cells:
-            src = raw / ("%s_s%d_r%d.npz" % (C.file_stem(a), s, r))
-            new = np.load(src)
             dst = SV / ("seed%d" % s) / ("%s.npz" % C.file_stem(a))
             z = dict(np.load(S / ("seed%d" % s) / ("%s.npz" % C.file_stem(a)), allow_pickle=False))
-            pre = "stable" if v == "stable" else "old"
-            for m in METHODS:
+            for m, (rep, pre) in spec(v).items():
+                new = np.load(raw / ("%s_s%d_r%d.npz" % (C.file_stem(a), s, rep)))
                 z["id_" + m] = new["id_%s_%s" % (pre, m)]
                 z["ood_" + m] = new["ood_%s_%s" % (pre, m)]
             dst.unlink()
@@ -255,7 +277,7 @@ def verdicts(root: Path, out_root: Path) -> None:
     for h, (v0, e0) in base.items():
         if h not in VR.DEPENDS_MAHA_VIM:
             ba.append({"H": h, "depends_on_anchor_maha_vim": False, "as_run": v0, "old_10_repeats": "",
-                       "stable": "", "final": v0})
+                       "stable": "", **{x: "" for x in EXTRA}, "final": v0})
             continue
         olds = [per["old_r%d" % r][h][0] for r in range(N_OLD)]
         st = per["stable"][h][0]
@@ -267,13 +289,15 @@ def verdicts(root: Path, out_root: Path) -> None:
         if h == "H14":
             final = "descriptive; see families" if same else "INCONCLUSIVE (numerical instability) for affected families"
         ba.append({"H": h, "depends_on_anchor_maha_vim": True, "as_run": v0, "old_10_repeats": old_txt,
-                   "stable": st, "final": final})
+                   "stable": st, **{x: per[x][h][0] for x in EXTRA}, "final": final})
     ba = pd.DataFrame(ba)
     ba.to_csv(rep / "verdicts_before_after.csv", index=False)
-    lines = ["| H | depends on anchor Maha/ViM | as run (precommit pipeline) | old code, 10 repeats | stable variant | final |",
-             "|---|---|---|---|---|---|"]
+    lines = ["| H | depends on anchor Maha/ViM | as run (precommit pipeline) | old code, 10 repeats | "
+             "stable (Maha LW64 + ViM 90%) | final (addendum rule) | extra: stable Maha + ViM 8 threads | "
+             "extra: stable Maha, no ViM |", "|---|---|---|---|---|---|---|---|"]
     for _, r in ba.iterrows():
-        lines.append("| %s | %s | %s | %s | %s | %s |" % (r.H, "yes" if r.depends_on_anchor_maha_vim else "no",
-                                                       r.as_run, r.old_10_repeats or "-", r.stable or "-", r.final))
+        lines.append("| %s | %s | %s | %s | %s | %s | %s | %s |" % (
+            r.H, "yes" if r.depends_on_anchor_maha_vim else "no", r.as_run, r.old_10_repeats or "-",
+            r.stable or "-", r.final, r[EXTRA[0]] or "-", r[EXTRA[1]] or "-"))
     C.write_text(rep / "verdicts_before_after.md", lines)
     print("\n".join(lines))
