@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
 import numpy as np
@@ -12,7 +13,7 @@ from wilds import get_dataset
 from wilds.datasets.wilds_dataset import WILDSSubset
 
 CAMELYON_NUM_CLASSES = 2
-DATA_ROOT = "data/raw/wilds"
+DATA_ROOT = os.environ.get("DST_WILDS_ROOT", "data/raw/wilds")
 OOD_SPLIT = "test"  # hospital 2 — canonical WILDS OOD test center
 
 
