@@ -7,7 +7,7 @@
 #        stages runs one variant per SLURM_ARRAY_TASK_ID (0..12); without SLURM it loops all.
 #        DST_STAB_VARIANTS=a,b limits `aggregate` to (re)building those variant trees.
 set -eo pipefail
-cd "$(dirname "$0")"
+cd "${SLURM_SUBMIT_DIR:-$(dirname "$0")}"
 PY=${DST_PY:-python}
 export PYTHONPATH="$(pwd)" PYTHONUNBUFFERED=1
 R=scripts/rigor
