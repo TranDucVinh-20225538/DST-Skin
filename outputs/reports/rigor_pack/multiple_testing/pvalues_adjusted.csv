@@ -1,0 +1,174 @@
+family,domain,test,p,source,file,p_holm_family,p_bh_family,p_holm_global,p_bh_global,sig_holm_family
+delong_best_feature_vs_best_other,camelyon17,resnet18 seed42,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,resnet18 seed43,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,resnet18 seed44,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,resnet18 seed45,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,resnet18 seed46,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,resnet50 seed42,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,resnet50 seed43,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,resnet50 seed44,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,resnet50 seed45,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,resnet50 seed46,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,densenet121 seed42,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,densenet121 seed43,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,densenet121 seed44,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,densenet121 seed45,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,densenet121 seed46,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,convnext_tiny seed42,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,convnext_tiny seed43,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,convnext_tiny seed44,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,convnext_tiny seed45,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,convnext_tiny seed46,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,mobilenet_v3_large seed42,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,mobilenet_v3_large seed43,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,mobilenet_v3_large seed44,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,mobilenet_v3_large seed45,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,mobilenet_v3_large seed46,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,regnet_y_3_2gf seed42,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,regnet_y_3_2gf seed43,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,regnet_y_3_2gf seed44,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,regnet_y_3_2gf seed45,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,regnet_y_3_2gf seed46,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,effb3 seed42,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,effb3 seed43,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,effb3 seed44,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,effb3 seed45,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,effb3 seed46,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,efficientnet_v2_s seed42,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,efficientnet_v2_s seed43,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,efficientnet_v2_s seed44,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,efficientnet_v2_s seed45,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_best_feature_vs_best_other,camelyon17,efficientnet_v2_s seed46,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_maha_vs_knn,camelyon17,resnet18 seed42,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_maha_vs_knn,camelyon17,resnet18 seed43,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_maha_vs_knn,camelyon17,resnet18 seed44,2.175408696534129e-189,persample delong,persample_camelyon17/pvalues_family.csv,2.3929495661875422e-188,2.9005449287121722e-189,2.2624250443954942e-187,5.3763672071486334e-189,True
+delong_maha_vs_knn,camelyon17,resnet18 seed45,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_maha_vs_knn,camelyon17,resnet18 seed46,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_maha_vs_knn,camelyon17,resnet50 seed42,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_maha_vs_knn,camelyon17,resnet50 seed43,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_maha_vs_knn,camelyon17,resnet50 seed44,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_maha_vs_knn,camelyon17,resnet50 seed45,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_maha_vs_knn,camelyon17,resnet50 seed46,4.221949393501685e-37,persample delong,persample_camelyon17/pvalues_family.csv,1.2665848180505055e-36,4.444157256317563e-37,4.0530714177616177e-35,9.36406724456143e-37,True
+delong_maha_vs_knn,camelyon17,densenet121 seed42,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_maha_vs_knn,camelyon17,densenet121 seed43,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_maha_vs_knn,camelyon17,densenet121 seed44,6.494708903791758e-268,persample delong,persample_camelyon17/pvalues_family.csv,7.79365068455011e-267,8.958219177643805e-268,6.819444348981347e-266,1.6283835367477888e-267,True
+delong_maha_vs_knn,camelyon17,densenet121 seed45,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_maha_vs_knn,camelyon17,densenet121 seed46,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_maha_vs_knn,camelyon17,convnext_tiny seed42,6.8149041138965644e-164,persample delong,persample_camelyon17/pvalues_family.csv,6.133413702506908e-163,8.518630142370705e-164,6.951202196174496e-162,1.637470016255702e-163,True
+delong_maha_vs_knn,camelyon17,convnext_tiny seed43,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_maha_vs_knn,camelyon17,convnext_tiny seed44,3.3378890597781636e-278,persample delong,persample_camelyon17/pvalues_family.csv,4.67304468368943e-277,4.945020829300983e-278,3.571541293962635e-276,8.618728467785408e-278,True
+delong_maha_vs_knn,camelyon17,convnext_tiny seed45,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_maha_vs_knn,camelyon17,convnext_tiny seed46,4.204103773596219e-128,persample delong,persample_camelyon17/pvalues_family.csv,2.9428726415173534e-127,4.946004439524964e-128,4.204103773596219e-126,9.828512876110078e-128,True
+delong_maha_vs_knn,camelyon17,mobilenet_v3_large seed42,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_maha_vs_knn,camelyon17,mobilenet_v3_large seed43,1.8811088659036492e-94,persample delong,persample_camelyon17/pvalues_family.csv,9.405544329518246e-94,2.0901209621151658e-94,1.8434866885855762e-92,4.2819978131754124e-94,True
+delong_maha_vs_knn,camelyon17,mobilenet_v3_large seed44,1.2227653495129231e-39,persample delong,persample_camelyon17/pvalues_family.csv,4.8910613980516925e-39,1.321908485959917e-39,1.1860823890275355e-37,2.7472520190355285e-39,True
+delong_maha_vs_knn,camelyon17,mobilenet_v3_large seed45,1.774085599056269e-274,persample delong,persample_camelyon17/pvalues_family.csv,2.3063112787731496e-273,2.534407998651813e-274,1.8805307349996452e-272,4.513482479951979e-274,True
+delong_maha_vs_knn,camelyon17,mobilenet_v3_large seed46,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_maha_vs_knn,camelyon17,regnet_y_3_2gf seed42,2.773007717519675e-115,persample delong,persample_camelyon17/pvalues_family.csv,1.663804630511805e-114,3.169151677165343e-115,2.745277640344478e-113,6.396404468412051e-115,True
+delong_maha_vs_knn,camelyon17,regnet_y_3_2gf seed43,1.2420230020984417e-17,persample delong,persample_camelyon17/pvalues_family.csv,2.4840460041968834e-17,1.2738697457419914e-17,1.1799218519935197e-15,2.7198731564940557e-17,True
+delong_maha_vs_knn,camelyon17,regnet_y_3_2gf seed44,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_maha_vs_knn,camelyon17,regnet_y_3_2gf seed45,1.5259976533230177e-281,persample delong,persample_camelyon17/pvalues_family.csv,2.2889964799845264e-280,2.3476886974200274e-281,1.6480774655888592e-279,3.999963545831546e-281,True
+delong_maha_vs_knn,camelyon17,regnet_y_3_2gf seed46,2.0419517103568248e-142,persample delong,persample_camelyon17/pvalues_family.csv,1.6335613682854599e-141,2.475092982250697e-142,2.062371227460393e-140,4.839145834133297e-142,True
+delong_maha_vs_knn,camelyon17,effb3 seed42,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_maha_vs_knn,camelyon17,effb3 seed43,4.201343356290632e-184,persample delong,persample_camelyon17/pvalues_family.csv,4.201343356290632e-183,5.421088201665332e-184,4.327383656979351e-182,1.0237076065327878e-183,True
+delong_maha_vs_knn,camelyon17,effb3 seed44,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_maha_vs_knn,camelyon17,effb3 seed45,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_maha_vs_knn,camelyon17,effb3 seed46,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_maha_vs_knn,camelyon17,efficientnet_v2_s seed42,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_maha_vs_knn,camelyon17,efficientnet_v2_s seed43,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_maha_vs_knn,camelyon17,efficientnet_v2_s seed44,0.0303848318629093,persample delong,persample_camelyon17/pvalues_family.csv,0.0303848318629093,0.0303848318629093,0.9723146196130976,0.03701814022734725,True
+delong_maha_vs_knn,camelyon17,efficientnet_v2_s seed45,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+delong_maha_vs_knn,camelyon17,efficientnet_v2_s seed46,0.0,persample delong,persample_camelyon17/pvalues_family.csv,0.0,0.0,0.0,0.0,True
+W_vs_chance,camelyon17,cross_arch_k8 seed42,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00010832250108322503,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,camelyon17,cross_arch_k8 seed43,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00010832250108322503,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,camelyon17,cross_arch_k8 seed44,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00010832250108322503,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,camelyon17,cross_arch_k8 seed45,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00010832250108322503,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,camelyon17,cross_arch_k8 seed46,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00010832250108322503,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,camelyon17,cross_seed_k5 resnet18,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00010832250108322503,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,camelyon17,cross_seed_k5 resnet50,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00010832250108322503,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,camelyon17,cross_seed_k5 densenet121,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00010832250108322503,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,camelyon17,cross_seed_k5 convnext_tiny,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00010832250108322503,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,camelyon17,cross_seed_k5 mobilenet_v3_large,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00010832250108322503,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,camelyon17,cross_seed_k5 regnet_y_3_2gf,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00010832250108322503,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,camelyon17,cross_seed_k5 effb3,0.0011998800119988,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.0011998800119988,0.053994600539945994,0.0016091414114402511,True
+W_vs_chance,camelyon17,cross_seed_k5 efficientnet_v2_s,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00010832250108322503,0.0093990600939906,0.00014912301873260951,True
+arch_vs_seed,camelyon17,arch-label perm W anchors4,0.4046595340465953,w_from_csv,w_csv/pvalues_family.csv,0.8093190680931907,0.414117176564687,1.0,0.46056644335566443,False
+arch_vs_seed,camelyon17,nested F perm auroc anchors4,0.001999600079984,w_from_csv,w_csv/pvalues_family.csv,0.005998800239952,0.002999400119976,0.08798240351929601,0.0026610062602864,True
+arch_vs_seed,camelyon17,nested F perm rank anchors4,0.414117176564687,w_from_csv,w_csv/pvalues_family.csv,0.8093190680931907,0.414117176564687,1.0,0.4682501408215088,False
+arch_vs_seed,camelyon17,arch-label perm W all8,9.999000099990002e-05,w_from_csv,w_csv/pvalues_family.csv,0.0005999400059994001,0.0003999200159968,0.0093990600939906,0.00014912301873260951,True
+arch_vs_seed,camelyon17,nested F perm auroc all8,0.0001999600079984,w_from_csv,w_csv/pvalues_family.csv,0.0009998000399919999,0.0003999200159968,0.011197760447910399,0.0002767723227677232,True
+arch_vs_seed,camelyon17,nested F perm rank all8,0.0001999600079984,w_from_csv,w_csv/pvalues_family.csv,0.0009998000399919999,0.0003999200159968,0.011197760447910399,0.0002767723227677232,True
+msp_jump_gt0,camelyon17,jump>0 densenet121,0.0004066375653017,w_from_csv t,w_csv/pvalues_family.csv,0.0024398253918102,0.0024398253918102,0.0191119655691799,0.0005539236125763315,True
+msp_jump_gt0.15,camelyon17,jump>0.15 densenet121,0.0084586035567634,w_from_csv t,w_csv/pvalues_family.csv,0.050751621340580394,0.050751621340580394,0.30450972804348236,0.01060390156029035,False
+msp_jump_gt0,camelyon17,jump>0 convnext_tiny,0.0011330024866635,w_from_csv t,w_csv/pvalues_family.csv,0.0056650124333175005,0.0033990074599905,0.052118114386521,0.0015313236733811367,True
+msp_jump_gt0.15,camelyon17,jump>0.15 convnext_tiny,0.064289551156385,w_from_csv t,w_csv/pvalues_family.csv,0.321447755781925,0.192868653469155,1.0,0.07670408517279038,False
+msp_jump_gt0,camelyon17,jump>0 mobilenet_v3_large,0.0042387855266861,w_from_csv t,w_csv/pvalues_family.csv,0.0125481055859828,0.00508654263202332,0.1653126355407579,0.005431925156419966,True
+msp_jump_gt0.15,camelyon17,jump>0.15 mobilenet_v3_large,0.2625197854745923,w_from_csv t,w_csv/pvalues_family.csv,0.5250395709491846,0.31502374256951077,1.0,0.30480485159130516,False
+msp_jump_gt0,camelyon17,jump>0 regnet_y_3_2gf,0.0037844473210961,w_from_csv t,w_csv/pvalues_family.csv,0.0125481055859828,0.00508654263202332,0.151377892843844,0.004885890944400189,True
+msp_jump_gt0.15,camelyon17,jump>0.15 regnet_y_3_2gf,0.1472399881313835,w_from_csv t,w_csv/pvalues_family.csv,0.4417199643941505,0.22085998219707526,1.0,0.17211160774817127,False
+msp_jump_gt0,camelyon17,jump>0 effb3,0.032079454621472,w_from_csv t,w_csv/pvalues_family.csv,0.032079454621472,0.032079454621472,0.994463093265632,0.038809410136466126,True
+msp_jump_gt0.15,camelyon17,jump>0.15 effb3,0.5523129120953368,w_from_csv t,w_csv/pvalues_family.csv,0.5523129120953368,0.5523129120953368,1.0,0.6164524760806017,False
+msp_jump_gt0,camelyon17,jump>0 efficientnet_v2_s,0.0031370263964957,w_from_csv t,w_csv/pvalues_family.csv,0.0125481055859828,0.00508654263202332,0.1286180822563237,0.004080492981907941,True
+msp_jump_gt0.15,camelyon17,jump>0.15 efficientnet_v2_s,0.1039592960289331,w_from_csv t,w_csv/pvalues_family.csv,0.4158371841157324,0.2079185920578662,1.0,0.12318464529455772,False
+W_vs_chance,skin_isic_pad,cross_arch_k8 seed42,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00011817000118170003,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,skin_isic_pad,cross_arch_k8 seed43,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00011817000118170003,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,skin_isic_pad,cross_arch_k8 seed44,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00011817000118170003,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,skin_isic_pad,cross_arch_k8 seed45,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00011817000118170003,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,skin_isic_pad,cross_arch_k8 seed46,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00011817000118170003,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,skin_isic_pad,cross_seed_k5 resnet18,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00011817000118170003,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,skin_isic_pad,cross_seed_k5 resnet50,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00011817000118170003,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,skin_isic_pad,cross_seed_k5 densenet121,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00011817000118170003,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,skin_isic_pad,cross_seed_k5 convnext_tiny,0.0001999800019998,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00021664500216645,0.011197760447910399,0.0002767723227677232,True
+W_vs_chance,skin_isic_pad,cross_seed_k5 mobilenet_v3_large,0.0002999700029997,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.0002999700029997,0.014398560143985599,0.0004118635755472071,True
+W_vs_chance,skin_isic_pad,cross_seed_k5 regnet_y_3_2gf,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00011817000118170003,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,skin_isic_pad,cross_seed_k5 effb3,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00011817000118170003,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,skin_isic_pad,cross_seed_k5 efficientnet_v2_s,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00011817000118170003,0.0093990600939906,0.00014912301873260951,True
+arch_vs_seed,skin_isic_pad,arch-label perm W anchors4,0.3678632136786321,w_from_csv,w_csv/pvalues_family.csv,1.0,0.5517948205179481,1.0,0.4214591785854527,False
+arch_vs_seed,skin_isic_pad,nested F perm auroc anchors4,0.0107978404319136,w_from_csv,w_csv/pvalues_family.csv,0.053989202159568,0.0323935212957408,0.377924415116976,0.013439038810942825,False
+arch_vs_seed,skin_isic_pad,nested F perm rank anchors4,0.3677264547090582,w_from_csv,w_csv/pvalues_family.csv,1.0,0.5517948205179481,1.0,0.4214591785854527,False
+arch_vs_seed,skin_isic_pad,arch-label perm W all8,0.6499350064993501,w_from_csv,w_csv/pvalues_family.csv,1.0,0.6514697060587883,1.0,0.717861523236754,False
+arch_vs_seed,skin_isic_pad,nested F perm auroc all8,0.0001999600079984,w_from_csv,w_csv/pvalues_family.csv,0.0011997600479903999,0.0011997600479903999,0.011197760447910399,0.0002767723227677232,True
+arch_vs_seed,skin_isic_pad,nested F perm rank all8,0.6514697060587883,w_from_csv,w_csv/pvalues_family.csv,1.0,0.6514697060587883,1.0,0.717861523236754,False
+msp_jump_gt0,skin_isic_pad,jump>0 densenet121,0.7729594317258621,w_from_csv t,w_csv/pvalues_family.csv,1.0,0.941593559425734,1.0,0.8410187527583279,False
+msp_jump_gt0.15,skin_isic_pad,jump>0.15 densenet121,0.9998066140595642,w_from_csv t,w_csv/pvalues_family.csv,1.0,0.9999673773389888,1.0,0.9999673773389887,False
+msp_jump_gt0,skin_isic_pad,jump>0 convnext_tiny,0.1069578503116301,w_from_csv t,w_csv/pvalues_family.csv,0.6417471018697807,0.6417471018697807,1.0,0.12587556533273475,False
+msp_jump_gt0.15,skin_isic_pad,jump>0.15 convnext_tiny,0.999959549261752,w_from_csv t,w_csv/pvalues_family.csv,1.0,0.9999673773389888,1.0,0.9999673773389887,False
+msp_jump_gt0,skin_isic_pad,jump>0 mobilenet_v3_large,0.7658029674551803,w_from_csv t,w_csv/pvalues_family.csv,1.0,0.941593559425734,1.0,0.8385057808211783,False
+msp_jump_gt0.15,skin_isic_pad,jump>0.15 mobilenet_v3_large,0.999895471985998,w_from_csv t,w_csv/pvalues_family.csv,1.0,0.9999673773389888,1.0,0.9999673773389887,False
+msp_jump_gt0,skin_isic_pad,jump>0 regnet_y_3_2gf,0.941593559425734,w_from_csv t,w_csv/pvalues_family.csv,1.0,0.941593559425734,1.0,0.9999673773389887,False
+msp_jump_gt0.15,skin_isic_pad,jump>0.15 regnet_y_3_2gf,0.9999347885322872,w_from_csv t,w_csv/pvalues_family.csv,1.0,0.9999673773389888,1.0,0.9999673773389887,False
+msp_jump_gt0,skin_isic_pad,jump>0 effb3,0.5391791542790477,w_from_csv t,w_csv/pvalues_family.csv,1.0,0.941593559425734,1.0,0.60570125772906,False
+msp_jump_gt0.15,skin_isic_pad,jump>0.15 effb3,0.9999321058496726,w_from_csv t,w_csv/pvalues_family.csv,1.0,0.9999673773389888,1.0,0.9999673773389887,False
+msp_jump_gt0,skin_isic_pad,jump>0 efficientnet_v2_s,0.9181153772355468,w_from_csv t,w_csv/pvalues_family.csv,1.0,0.941593559425734,1.0,0.992712251635935,False
+msp_jump_gt0.15,skin_isic_pad,jump>0.15 efficientnet_v2_s,0.9999673773389888,w_from_csv t,w_csv/pvalues_family.csv,1.0,0.9999673773389888,1.0,0.9999673773389887,False
+W_vs_chance,midog,cross_arch_k8 seed42,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00010832250108322503,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,midog,cross_arch_k8 seed43,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00010832250108322503,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,midog,cross_arch_k8 seed44,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00010832250108322503,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,midog,cross_arch_k8 seed45,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00010832250108322503,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,midog,cross_arch_k8 seed46,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00010832250108322503,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,midog,cross_seed_k5 resnet18,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00010832250108322503,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,midog,cross_seed_k5 resnet50,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00010832250108322503,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,midog,cross_seed_k5 densenet121,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00010832250108322503,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,midog,cross_seed_k5 convnext_tiny,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00010832250108322503,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,midog,cross_seed_k5 mobilenet_v3_large,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00010832250108322503,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,midog,cross_seed_k5 regnet_y_3_2gf,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00010832250108322503,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,midog,cross_seed_k5 effb3,9.999000099990002e-05,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.00010832250108322503,0.0093990600939906,0.00014912301873260951,True
+W_vs_chance,midog,cross_seed_k5 efficientnet_v2_s,0.0001999800019998,w_from_csv perm,w_csv/pvalues_family.csv,0.0012998700129987003,0.0001999800019998,0.011197760447910399,0.0002767723227677232,True
+arch_vs_seed,midog,arch-label perm W anchors4,0.0024997500249975,w_from_csv,w_csv/pvalues_family.csv,0.0047990401919616,0.0024997500249975,0.104989501049895,0.003276187532761875,True
+arch_vs_seed,midog,nested F perm auroc anchors4,0.0001999600079984,w_from_csv,w_csv/pvalues_family.csv,0.0009998000399919999,0.00029994001199759997,0.011197760447910399,0.0002767723227677232,True
+arch_vs_seed,midog,nested F perm rank anchors4,0.0023995200959808,w_from_csv,w_csv/pvalues_family.csv,0.0047990401919616,0.0024997500249975,0.1031793641271744,0.0031688318824784614,True
+arch_vs_seed,midog,arch-label perm W all8,9.999000099990002e-05,w_from_csv,w_csv/pvalues_family.csv,0.0005999400059994001,0.00029994001199759997,0.0093990600939906,0.00014912301873260951,True
+arch_vs_seed,midog,nested F perm auroc all8,0.0001999600079984,w_from_csv,w_csv/pvalues_family.csv,0.0009998000399919999,0.00029994001199759997,0.011197760447910399,0.0002767723227677232,True
+arch_vs_seed,midog,nested F perm rank all8,0.0001999600079984,w_from_csv,w_csv/pvalues_family.csv,0.0009998000399919999,0.00029994001199759997,0.011197760447910399,0.0002767723227677232,True
+msp_jump_gt0,midog,jump>0 densenet121,0.0479974567883233,w_from_csv t,w_csv/pvalues_family.csv,0.0479974567883233,0.04799745678832331,1.0,0.057663611280416194,True
+msp_jump_gt0.15,midog,jump>0.15 densenet121,0.9834825289183547,w_from_csv t,w_csv/pvalues_family.csv,1.0,0.9988140987107265,1.0,0.9999673773389887,False
+msp_jump_gt0,midog,jump>0 convnext_tiny,0.0069155551038237,w_from_csv t,w_csv/pvalues_family.csv,0.0332405783884555,0.0138311102076474,0.2558755388414769,0.008732781262492701,True
+msp_jump_gt0.15,midog,jump>0.15 convnext_tiny,0.9988140987107264,w_from_csv t,w_csv/pvalues_family.csv,1.0,0.9988140987107265,1.0,0.9999673773389887,False
+msp_jump_gt0,midog,jump>0 mobilenet_v3_large,0.0119575275318269,w_from_csv t,w_csv/pvalues_family.csv,0.0358725825954807,0.01775918030837724,0.4065559360821146,0.014776087592900382,True
+msp_jump_gt0.15,midog,jump>0.15 mobilenet_v3_large,0.9560176092931836,w_from_csv t,w_csv/pvalues_family.csv,1.0,0.9988140987107265,1.0,0.9999673773389887,False
+msp_jump_gt0,midog,jump>0 regnet_y_3_2gf,0.0001593967832654,w_from_csv t,w_csv/pvalues_family.csv,0.0009563806995924,0.0009563806995924,0.0093990600939906,0.0002356892607257624,True
+msp_jump_gt0.15,midog,jump>0.15 regnet_y_3_2gf,0.995413437058124,w_from_csv t,w_csv/pvalues_family.csv,1.0,0.9988140987107265,1.0,0.9999673773389887,False
+msp_jump_gt0,midog,jump>0 effb3,0.0066481156776911,w_from_csv t,w_csv/pvalues_family.csv,0.0332405783884555,0.0138311102076474,0.2526283957522618,0.008456794207651178,True
+msp_jump_gt0.15,midog,jump>0.15 effb3,0.997143895211367,w_from_csv t,w_csv/pvalues_family.csv,1.0,0.9988140987107265,1.0,0.9999673773389887,False
+msp_jump_gt0,midog,jump>0 efficientnet_v2_s,0.0147993169236477,w_from_csv t,w_csv/pvalues_family.csv,0.0358725825954807,0.01775918030837724,0.4883774584803741,0.018158027147454268,True
+msp_jump_gt0.15,midog,jump>0.15 efficientnet_v2_s,0.9434106040971786,w_from_csv t,w_csv/pvalues_family.csv,1.0,0.9988140987107265,1.0,0.9999673773389887,False

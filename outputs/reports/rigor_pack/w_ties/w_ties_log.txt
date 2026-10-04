@@ -1,0 +1,3 @@
+w_ties  W source: scripts/rebuild_architecture_invariance.py
+  REPRO PASS camelyon17 W seed42 eps=0  published 0.694 recomputed 0.6942
+Wrote w_ties.csv. Read only against H17 in the precommit.

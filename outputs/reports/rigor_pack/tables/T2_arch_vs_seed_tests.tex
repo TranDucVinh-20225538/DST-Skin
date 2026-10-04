@@ -1,0 +1,18 @@
+\begin{table}[t]
+\floatconts
+  {tab:archseed}
+  {\caption{Does architecture explain ranking variance beyond seed? Arch-label permutation of the 40 runs and nested ANOVA on within-run ranks.}}
+  {\small
+  \begin{tabular}{@{}lccccccc@{}}
+  \toprule
+  domain & archs & mean W seed & null & p (label perm) & F & p (F perm) & arch share \\
+  \midrule
+  camelyon17 & anchors4 & 0.780 & 0.778 & 0.405 & 1.061 & 0.414 & 0.012 \\
+  camelyon17 & all8 & 0.825 & 0.717 & 0.000 & 4.449 & 0.000 & 0.408 \\
+  skin\_isic\_pad & anchors4 & 0.836 & 0.834 & 0.368 & 1.112 & 0.368 & 0.022 \\
+  skin\_isic\_pad & all8 & 0.799 & 0.804 & 0.650 & 0.846 & 0.651 & 0.000 \\
+  midog & anchors4 & 0.892 & 0.843 & 0.002 & 3.868 & 0.002 & 0.364 \\
+  midog & all8 & 0.882 & 0.837 & 0.000 & 3.163 & 0.000 & 0.302 \\
+  \bottomrule
+  \end{tabular}}
+\end{table}

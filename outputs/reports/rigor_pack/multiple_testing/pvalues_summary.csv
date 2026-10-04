@@ -1,0 +1,15 @@
+family,domain,n,n_raw_sig,n_holm_sig,n_bh_sig
+W_vs_chance,camelyon17,13,13,13,13
+W_vs_chance,midog,13,13,13,13
+W_vs_chance,skin_isic_pad,13,13,13,13
+arch_vs_seed,camelyon17,6,4,4,4
+arch_vs_seed,midog,6,6,6,6
+arch_vs_seed,skin_isic_pad,6,2,1,2
+delong_best_feature_vs_best_other,camelyon17,40,40,40,40
+delong_maha_vs_knn,camelyon17,40,40,40,40
+msp_jump_gt0,camelyon17,6,6,6,6
+msp_jump_gt0,midog,6,6,6,6
+msp_jump_gt0,skin_isic_pad,6,0,0,0
+msp_jump_gt0.15,camelyon17,6,1,0,0
+msp_jump_gt0.15,midog,6,0,0,0
+msp_jump_gt0.15,skin_isic_pad,6,0,0,0

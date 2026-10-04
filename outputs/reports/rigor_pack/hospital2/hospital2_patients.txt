@@ -1,0 +1,32 @@
+Camelyon17 hospital-2 per-patient table. Source: WILDS metadata.csv
+patient slides  n_patches  n_tumor  tumor_frac half_frozen_split  share_of_hospital2
+    040     20       3810       27      0.0071              test              0.0448
+    041     21       3694       10      0.0027               val              0.0434
+    042     22       7210     4229      0.5865               val              0.0848
+    044     23       5288     2761      0.5221               val              0.0622
+    045     24       7727      184      0.0238               val              0.0908
+    046  25 26       8149     1524      0.1870              test              0.0958
+    048     27       4556      110      0.0241               val              0.0536
+    051     28      31878    26998      0.8469              test              0.3748
+    052     29      12742     6684      0.5246               val              0.1498
+
+Total: 9 patients, 10 slides, 85054 patches, tumor fraction 0.5000
+
+Frozen split (StratifiedGroupKFold(2), seed 42, grouped by patient; file camelyon_coverage_val_split_patients.csv):
+half  n_patients  n_slides  n_patches  share_patches  tumor_frac                patients
+test           3         4      43837         0.5154      0.6513             040 046 051
+ val           6         6      41217         0.4846      0.3391 041 042 044 045 048 052
+
+Largest patient: 051 (slide 28): 31878 patches = 37.5% of hospital 2, tumor fraction 0.8469, frozen half = test
+
+Reading: hospital 2 has 9 patients in TOTAL. The frozen split is by patient into test 3 patients / val 6 patients; the two halves are ~half of the PATCHES each, not half of the patients and not 9 per half.
+
+Leakage checks:
+                                                  check      n_overlap        must_be
+                   L1 patients hospital2 & hospitals034              0              0
+                     L2 slides hospital2 & hospitals034              0              0
+   L3 id_val patches whose slide is in train (fraction)            1.0         report
+L3b id_val patches whose patient is in train (fraction)            1.0         report
+                                     id_val n / train n 33560 / 302436 33560 / 302436
+                                           hospital-2 n          85054          85054
+                               id_val patients / slides        26 / 30         report

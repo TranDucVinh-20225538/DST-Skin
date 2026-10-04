@@ -1,0 +1,22 @@
+\begin{table}[t]
+\floatconts
+  {tab:covsplits}
+  {\caption{Held-out coverage@risk\,10\% (MSP) of the backbone chosen on the validation patients, over repeated patient splits of hospital~2 (medians).}}
+  {\small
+  \begin{tabular}{@{}lccccccccccc@{}}
+  \toprule
+  family & mode & n & AUROC-pick & cov-pick & oracle & random & median\_gain & q25\_gain & q75\_gain & cov wins & AUROC wins \\
+  \midrule
+  F1 & per\_seed & 1260 & 0.608 & 0.758 & 0.908 & 0.392 & 0.154 & 0.000 & 0.405 & 0.663 & 0.194 \\
+  F1 & seed\_avg & 252 & 0.603 & 0.593 & 0.780 & 0.396 & 0.136 & -0.001 & 0.317 & 0.615 & 0.250 \\
+  F2 & per\_seed & 840 & 0.613 & 0.768 & 0.913 & 0.397 & 0.122 & 0.000 & 0.403 & 0.646 & 0.195 \\
+  F2 & seed\_avg & 168 & 0.617 & 0.631 & 0.783 & 0.394 & 0.130 & 0.000 & 0.304 & 0.613 & 0.232 \\
+  F3 & per\_seed & 2550 & 0.614 & 0.769 & 0.913 & 0.397 & 0.122 & 0.000 & 0.401 & 0.643 & 0.199 \\
+  F3 & seed\_avg & 510 & 0.612 & 0.623 & 0.783 & 0.395 & 0.120 & 0.000 & 0.315 & 0.598 & 0.247 \\
+  FROZEN & per\_seed & 5 & 0.912 & 0.929 & 1.000 & 0.374 & 0.005 & 0.000 & 0.088 & 0.600 & 0.200 \\
+  FROZEN & seed\_avg & 1 & 0.873 & 0.861 & 0.873 & 0.399 & -0.013 & -0.013 & -0.013 & 0.000 & 1.000 \\
+  LOPO & per\_seed & 45 & 0.846 & 1.000 & 1.000 & 0.737 & 0.000 & 0.000 & 0.213 & 0.489 & 0.044 \\
+  LOPO & seed\_avg & 9 & 0.799 & 0.999 & 0.999 & 0.744 & 0.000 & 0.000 & 0.253 & 0.444 & 0.111 \\
+  \bottomrule
+  \end{tabular}}
+\end{table}

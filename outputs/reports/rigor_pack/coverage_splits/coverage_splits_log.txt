@@ -1,0 +1,7 @@
+coverage_splits {'python': '3.11.5', 'numpy': '1.26.4', 'pandas': '2.3.3', 'w_source': 'scripts/rebuild_architecture_invariance.py'}
+complete seeds (all 8 archs cached): [42, 43, 44, 45, 46]
+patients: ['040', '041', '042', '044', '045', '046', '048', '051', '052']; splits: {'F3': 510, 'F1': 252, 'F2': 168, 'LOPO': 9, 'DROP1': 9, 'FROZEN': 1}
+REPRO PASS frozen split auroc_pick: convnext_tiny 0.5386 (published convnext_tiny 0.539)
+REPRO PASS frozen split cov_pick: efficientnet_v2_s 0.7536 (published efficientnet_v2_s 0.754)
+REPRO PASS frozen split best: mobilenet_v3_large 1.0000 (published mobilenet_v3_large 1.000)
+wrote splits_long.csv.gz, splits_summary.csv, splits_meta.csv, splits_tau*.csv

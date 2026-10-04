@@ -1,0 +1,18 @@
+H,depends_on_anchor_maha_vim,as_run,old_10_repeats,stable,stable_maha_vim8,stable_maha_novim,final
+H1,True,mixed,arch separable (7/10); mixed (3/10),mixed,mixed,mixed,INCONCLUSIVE (numerical instability)
+H2,True,all above chance,all above chance (10/10),all above chance,all above chance,all above chance,all above chance
+H3,True,D>0 (cluster CI excludes 0); sampling not what moves W,D>0 (cluster CI excludes 0); sampling not what moves W (10/10),D>0 (cluster CI excludes 0); sampling not what moves W,D>0 (cluster CI excludes 0); sampling not what moves W,D>0 (cluster CI excludes 0); sampling not what moves W,D>0 (cluster CI excludes 0); sampling not what moves W
+H4,True,arch effect detected,arch effect detected (10/10),arch effect detected,arch effect detected,arch effect detected,arch effect detected
+H5,True,(a) every backbone and seed; (b) pass,(a) every backbone and seed; (b) pass (10/10),(a) downgraded to 'usually'; (b) fail,(a) every backbone and seed; (b) pass,(a) every backbone and seed; (b) pass,INCONCLUSIVE (numerical instability)
+H6,False,supported,,,,,supported
+H7,True,not AUROC-specific,not AUROC-specific (10/10),changes under some metric,not AUROC-specific,not AUROC-specific,INCONCLUSIVE (numerical instability)
+H8,False,T-invariance check FAIL (max |dAUROC| 0.17); (b) jump not explained by accuracy,,,,,T-invariance check FAIL (max |dAUROC| 0.17); (b) jump not explained by accuracy
+H9,True,risk-level dependent; triage-score robust,risk-level dependent; triage-score robust (10/10),risk-level dependent; triage-score robust,risk-level dependent; triage-score robust,risk-level dependent; triage-score robust,risk-level dependent; triage-score robust
+H10,False,gap kept (cluster CI excludes 0); per-seed MSP-jump cluster CI not produced by persample.py,,,,,gap kept (cluster CI excludes 0); per-seed MSP-jump cluster CI not produced by persample.py
+H11,False,"(a,b) pass; (c) pending (leak job)",,,,,"(a,b) pass; (c) pending (leak job)"
+H12,False,"skin_isic_pad: H1 mixed, H4 not detected; midog: H1 mixed, H4 arch effect detected",,,,,"skin_isic_pad: H1 mixed, H4 not detected; midog: H1 mixed, H4 arch effect detected"
+H13,False,seed-robust locked prediction,,,,,seed-robust locked prediction
+H14,True,descriptive (Holm within family),descriptive (Holm within family) (10/10),descriptive (Holm within family),descriptive (Holm within family),descriptive (Holm within family),descriptive; see families
+H15,False,pending (recipe seeds incomplete),,,,,pending (recipe seeds incomplete)
+H16,True,0.185 kept with percentile; feature regret >0.05 (fraction reported),0.185 kept with percentile; feature regret >0.05 (fraction reported) (10/10),0.185 = worst case wording; feature regret >0.05 (fraction reported),0.185 kept with percentile; feature regret >0.05 (fraction reported),0.185 kept with percentile; feature regret >0.05 (fraction reported),INCONCLUSIVE (numerical instability)
+H17,True,seeds agree more (D>0.10),seeds agree more (D>0.10) (10/10),tie-robust (|D|<=0.10),seeds agree more (D>0.10),tie-robust (|D|<=0.10),INCONCLUSIVE (numerical instability)

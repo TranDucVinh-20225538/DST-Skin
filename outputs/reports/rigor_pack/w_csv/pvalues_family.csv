@@ -1,0 +1,94 @@
+family,domain,test,p,source
+W_vs_chance,camelyon17,cross_arch_k8 seed42,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,camelyon17,cross_arch_k8 seed43,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,camelyon17,cross_arch_k8 seed44,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,camelyon17,cross_arch_k8 seed45,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,camelyon17,cross_arch_k8 seed46,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,camelyon17,cross_seed_k5 resnet18,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,camelyon17,cross_seed_k5 resnet50,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,camelyon17,cross_seed_k5 densenet121,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,camelyon17,cross_seed_k5 convnext_tiny,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,camelyon17,cross_seed_k5 mobilenet_v3_large,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,camelyon17,cross_seed_k5 regnet_y_3_2gf,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,camelyon17,cross_seed_k5 effb3,0.0011998800119988001,w_from_csv perm
+W_vs_chance,camelyon17,cross_seed_k5 efficientnet_v2_s,9.999000099990002e-05,w_from_csv perm
+arch_vs_seed,camelyon17,arch-label perm W anchors4,0.4046595340465953,w_from_csv
+arch_vs_seed,camelyon17,nested F perm auroc anchors4,0.001999600079984003,w_from_csv
+arch_vs_seed,camelyon17,nested F perm rank anchors4,0.41411717656468705,w_from_csv
+arch_vs_seed,camelyon17,arch-label perm W all8,9.999000099990002e-05,w_from_csv
+arch_vs_seed,camelyon17,nested F perm auroc all8,0.0001999600079984003,w_from_csv
+arch_vs_seed,camelyon17,nested F perm rank all8,0.0001999600079984003,w_from_csv
+msp_jump_gt0,camelyon17,jump>0 densenet121,0.00040663756530178304,w_from_csv t
+msp_jump_gt0.15,camelyon17,jump>0.15 densenet121,0.008458603556763441,w_from_csv t
+msp_jump_gt0,camelyon17,jump>0 convnext_tiny,0.0011330024866635243,w_from_csv t
+msp_jump_gt0.15,camelyon17,jump>0.15 convnext_tiny,0.06428955115638503,w_from_csv t
+msp_jump_gt0,camelyon17,jump>0 mobilenet_v3_large,0.0042387855266861904,w_from_csv t
+msp_jump_gt0.15,camelyon17,jump>0.15 mobilenet_v3_large,0.2625197854745923,w_from_csv t
+msp_jump_gt0,camelyon17,jump>0 regnet_y_3_2gf,0.003784447321096117,w_from_csv t
+msp_jump_gt0.15,camelyon17,jump>0.15 regnet_y_3_2gf,0.1472399881313835,w_from_csv t
+msp_jump_gt0,camelyon17,jump>0 effb3,0.03207945462147202,w_from_csv t
+msp_jump_gt0.15,camelyon17,jump>0.15 effb3,0.5523129120953368,w_from_csv t
+msp_jump_gt0,camelyon17,jump>0 efficientnet_v2_s,0.003137026396495746,w_from_csv t
+msp_jump_gt0.15,camelyon17,jump>0.15 efficientnet_v2_s,0.10395929602893315,w_from_csv t
+W_vs_chance,skin_isic_pad,cross_arch_k8 seed42,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,skin_isic_pad,cross_arch_k8 seed43,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,skin_isic_pad,cross_arch_k8 seed44,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,skin_isic_pad,cross_arch_k8 seed45,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,skin_isic_pad,cross_arch_k8 seed46,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,skin_isic_pad,cross_seed_k5 resnet18,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,skin_isic_pad,cross_seed_k5 resnet50,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,skin_isic_pad,cross_seed_k5 densenet121,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,skin_isic_pad,cross_seed_k5 convnext_tiny,0.00019998000199980003,w_from_csv perm
+W_vs_chance,skin_isic_pad,cross_seed_k5 mobilenet_v3_large,0.00029997000299970003,w_from_csv perm
+W_vs_chance,skin_isic_pad,cross_seed_k5 regnet_y_3_2gf,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,skin_isic_pad,cross_seed_k5 effb3,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,skin_isic_pad,cross_seed_k5 efficientnet_v2_s,9.999000099990002e-05,w_from_csv perm
+arch_vs_seed,skin_isic_pad,arch-label perm W anchors4,0.3678632136786321,w_from_csv
+arch_vs_seed,skin_isic_pad,nested F perm auroc anchors4,0.010797840431913617,w_from_csv
+arch_vs_seed,skin_isic_pad,nested F perm rank anchors4,0.3677264547090582,w_from_csv
+arch_vs_seed,skin_isic_pad,arch-label perm W all8,0.6499350064993501,w_from_csv
+arch_vs_seed,skin_isic_pad,nested F perm auroc all8,0.0001999600079984003,w_from_csv
+arch_vs_seed,skin_isic_pad,nested F perm rank all8,0.6514697060587883,w_from_csv
+msp_jump_gt0,skin_isic_pad,jump>0 densenet121,0.7729594317258621,w_from_csv t
+msp_jump_gt0.15,skin_isic_pad,jump>0.15 densenet121,0.9998066140595642,w_from_csv t
+msp_jump_gt0,skin_isic_pad,jump>0 convnext_tiny,0.10695785031163019,w_from_csv t
+msp_jump_gt0.15,skin_isic_pad,jump>0.15 convnext_tiny,0.999959549261752,w_from_csv t
+msp_jump_gt0,skin_isic_pad,jump>0 mobilenet_v3_large,0.7658029674551803,w_from_csv t
+msp_jump_gt0.15,skin_isic_pad,jump>0.15 mobilenet_v3_large,0.999895471985998,w_from_csv t
+msp_jump_gt0,skin_isic_pad,jump>0 regnet_y_3_2gf,0.9415935594257339,w_from_csv t
+msp_jump_gt0.15,skin_isic_pad,jump>0.15 regnet_y_3_2gf,0.9999347885322871,w_from_csv t
+msp_jump_gt0,skin_isic_pad,jump>0 effb3,0.5391791542790477,w_from_csv t
+msp_jump_gt0.15,skin_isic_pad,jump>0.15 effb3,0.9999321058496726,w_from_csv t
+msp_jump_gt0,skin_isic_pad,jump>0 efficientnet_v2_s,0.9181153772355468,w_from_csv t
+msp_jump_gt0.15,skin_isic_pad,jump>0.15 efficientnet_v2_s,0.9999673773389887,w_from_csv t
+W_vs_chance,midog,cross_arch_k8 seed42,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,midog,cross_arch_k8 seed43,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,midog,cross_arch_k8 seed44,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,midog,cross_arch_k8 seed45,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,midog,cross_arch_k8 seed46,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,midog,cross_seed_k5 resnet18,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,midog,cross_seed_k5 resnet50,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,midog,cross_seed_k5 densenet121,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,midog,cross_seed_k5 convnext_tiny,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,midog,cross_seed_k5 mobilenet_v3_large,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,midog,cross_seed_k5 regnet_y_3_2gf,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,midog,cross_seed_k5 effb3,9.999000099990002e-05,w_from_csv perm
+W_vs_chance,midog,cross_seed_k5 efficientnet_v2_s,0.00019998000199980003,w_from_csv perm
+arch_vs_seed,midog,arch-label perm W anchors4,0.0024997500249975004,w_from_csv
+arch_vs_seed,midog,nested F perm auroc anchors4,0.0001999600079984003,w_from_csv
+arch_vs_seed,midog,nested F perm rank anchors4,0.0023995200959808036,w_from_csv
+arch_vs_seed,midog,arch-label perm W all8,9.999000099990002e-05,w_from_csv
+arch_vs_seed,midog,nested F perm auroc all8,0.0001999600079984003,w_from_csv
+arch_vs_seed,midog,nested F perm rank all8,0.0001999600079984003,w_from_csv
+msp_jump_gt0,midog,jump>0 densenet121,0.04799745678832335,w_from_csv t
+msp_jump_gt0.15,midog,jump>0.15 densenet121,0.9834825289183547,w_from_csv t
+msp_jump_gt0,midog,jump>0 convnext_tiny,0.006915555103823718,w_from_csv t
+msp_jump_gt0.15,midog,jump>0.15 convnext_tiny,0.9988140987107264,w_from_csv t
+msp_jump_gt0,midog,jump>0 mobilenet_v3_large,0.011957527531826911,w_from_csv t
+msp_jump_gt0.15,midog,jump>0.15 mobilenet_v3_large,0.9560176092931835,w_from_csv t
+msp_jump_gt0,midog,jump>0 regnet_y_3_2gf,0.00015939678326545073,w_from_csv t
+msp_jump_gt0.15,midog,jump>0.15 regnet_y_3_2gf,0.995413437058124,w_from_csv t
+msp_jump_gt0,midog,jump>0 effb3,0.006648115677691146,w_from_csv t
+msp_jump_gt0.15,midog,jump>0.15 effb3,0.997143895211367,w_from_csv t
+msp_jump_gt0,midog,jump>0 efficientnet_v2_s,0.014799316923647703,w_from_csv t
+msp_jump_gt0.15,midog,jump>0.15 efficientnet_v2_s,0.9434106040971786,w_from_csv t

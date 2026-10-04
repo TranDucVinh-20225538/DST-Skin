@@ -1,0 +1,6 @@
+seed,complete,msp_auroc,msp_ge_locked,msp_rank_of_7,best_method
+42,True,0.883727680834216,True,5,Mahalanobis
+43,True,0.8422017029677535,True,4,Mahalanobis
+44,True,0.8892328774136703,True,6,Mahalanobis
+45,True,0.8994710541529909,True,4,Mahalanobis
+46,True,0.8732287199343007,True,4,Mahalanobis

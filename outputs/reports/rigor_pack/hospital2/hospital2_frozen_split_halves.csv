@@ -1,0 +1,3 @@
+half,n_patients,n_slides,n_patches,share_patches,tumor_frac,patients
+test,3,4,43837,0.5154,0.6513,040 046 051
+val,6,6,41217,0.4846,0.3391,041 042 044 045 048 052

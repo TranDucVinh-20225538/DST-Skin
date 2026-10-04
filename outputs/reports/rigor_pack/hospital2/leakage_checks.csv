@@ -1,0 +1,8 @@
+check,n_overlap,must_be
+L1 patients hospital2 & hospitals034,0,0
+L2 slides hospital2 & hospitals034,0,0
+L3 id_val patches whose slide is in train (fraction),1.0,report
+L3b id_val patches whose patient is in train (fraction),1.0,report
+id_val n / train n,33560 / 302436,33560 / 302436
+hospital-2 n,85054,85054
+id_val patients / slides,26 / 30,report

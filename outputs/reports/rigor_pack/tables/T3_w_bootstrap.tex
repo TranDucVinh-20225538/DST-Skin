@@ -1,0 +1,23 @@
+\begin{table}[t]
+\floatconts
+  {tab:wboot}
+  {\caption{Kendall's $W$ with bootstrap over test samples (patch-iid and patient-cluster).}}
+  {\small
+  \begin{tabular}{@{}lccccc@{}}
+  \toprule
+  statistic & point & iid\_lo & iid\_hi & cluster\_lo & cluster\_hi \\
+  \midrule
+  cross\_arch\_k8\_seed42 & 0.464 & 0.456 & 0.468 & 0.459 & 0.653 \\
+  crossarch\_k5\_mean\_allseeds & 0.676 & 0.675 & 0.687 & 0.629 & 0.709 \\
+  cross\_seed\_k5\_resnet18 & 0.803 & 0.803 & 0.834 & 0.769 & 0.914 \\
+  cross\_seed\_k5\_resnet50 & 0.886 & 0.869 & 0.894 & 0.754 & 0.937 \\
+  cross\_seed\_k5\_densenet121 & 0.817 & 0.817 & 0.823 & 0.777 & 0.937 \\
+  cross\_seed\_k5\_convnext\_tiny & 0.869 & 0.869 & 0.869 & 0.834 & 0.949 \\
+  cross\_seed\_k5\_mobilenet\_v3\_large & 0.937 & 0.917 & 0.937 & 0.789 & 0.983 \\
+  cross\_seed\_k5\_regnet\_y\_3\_2gf & 0.920 & 0.920 & 0.920 & 0.846 & 0.989 \\
+  cross\_seed\_k5\_effb3 & 0.457 & 0.457 & 0.457 & 0.346 & 0.717 \\
+  cross\_seed\_k5\_efficientnet\_v2\_s & 0.757 & 0.749 & 0.834 & 0.471 & 0.937 \\
+  diff\_mean\_crossseed\_minus\_crossarchk5 & 0.129 & 0.126 & 0.135 & 0.110 & 0.173 \\
+  \bottomrule
+  \end{tabular}}
+\end{table}

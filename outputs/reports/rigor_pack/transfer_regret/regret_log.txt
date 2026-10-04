@@ -1,0 +1,3 @@
+transfer_regret  W source: scripts/rebuild_architecture_invariance.py
+  REPRO PASS ResNet-50 -> ConvNeXt seed42 nonfeature regret  published 0.185 recomputed 0.1853
+Wrote regret_pairs.csv, regret_summary.csv. Read only against H16 in the precommit.

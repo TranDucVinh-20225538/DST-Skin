@@ -1,0 +1,148 @@
+variant,H,verdict,evidence
+as_run,H1,mixed,"above q95 4/8, inside [q05,q95] 3/8"
+as_run,H2,all above chance,Holm-sig 13/13
+as_run,H3,D>0 (cluster CI excludes 0); sampling not what moves W,"D=0.129 cluster CI [0.110, 0.173]; W42 iid half-width 0.006 (W42=0.464)"
+as_run,H4,arch effect detected,"all8 p_perm(a)=9.999e-05, p_F_perm(b, ranks)=0.0002, share_varcomp_arch=0.408"
+as_run,H5,(a) every backbone and seed; (b) pass,feature rank1 40/40; DeLong best-feature>best-other Holm-sig 40/40; Maha vs kNN Holm-sig 40/40
+as_run,H6,supported,"median gain 0.154, strict-win 0.66, seeds gain>0 4/5"
+as_run,H7,not AUROC-specific,fpr95 |dW42|=0.048 |dWcs|=0.038 rank1=39; aupr_in |dW42|=0.025 |dWcs|=0.009 rank1=39; aupr_out |dW42|=0.052 |dWcs|=0.011 rank1=40
+as_run,H8,T-invariance check FAIL (max |dAUROC| 0.17); (b) jump not explained by accuracy,"DenseNet adj jump 0.241 CI [0.155, 0.345]"
+as_run,H9,risk-level dependent; triage-score robust,"MSP@5/10/20: supported/supported/not supported | @10: MSP=supported, Energy=supported, Mahalanobis=supported, kNN=supported"
+as_run,H10,gap kept (cluster CI excludes 0); per-seed MSP-jump cluster CI not produced by persample.py,"gap 0.825 cluster CI [0.208, 0.989]"
+as_run,H11,"(a,b) pass; (c) pending (leak job)","patients overlap 0, slides overlap 0"
+as_run,H12,"skin_isic_pad: H1 mixed, H4 not detected; midog: H1 mixed, H4 arch effect detected","skin_isic_pad above q95 2/8, inside [q05,q95] 5/8 | all8 p_perm(a)=0.6499, p_F_perm(b, ranks)=0.6515, share_varcomp_arch=0.000; midog above q95 3/8, inside [q05,q95] 5/8 | all8 p_perm(a)=9.999e-05, p_F_perm(b, ranks)=0.0002, share_varcomp_arch=0.302"
+as_run,H13,seed-robust locked prediction,"seeds complete: 5/5, hits: 5"
+as_run,H14,descriptive (Holm within family),W_vs_chance 13/13; arch_vs_seed 4/6; delong_best_feature_vs_best_other 40/40; delong_maha_vs_knn 40/40; msp_jump_gt0 6/6; msp_jump_gt0.15 0/6
+as_run,H15,pending (recipe seeds incomplete),M1 convnext_tiny        seeds 1/5  jump>=0.15: 1  -> INCOMPLETE (1/5 seeds) - run `bash run_rigor_pack.sh --recipe-seeds` | M1 mobilenet_v3_large   seeds 1/5  jump>=0.15: 1  -> INCOMPLETE (1/5 seeds) - run `bash run_rigor_pack.sh --recipe-seeds` | M1 regnet_y_3_2gf       seeds 1/5  jump>=0.15: 1  -> INCOMPLETE (1/5 seeds) - run `bash run_rigor_pack.sh --recipe-seeds` | M1 efficientnet_v2_s    seeds 1/5  jump>=0.15: 1  -> INCOMPLETE (1/5 seeds) - run `bash run_rigor_pack.sh --recipe-seeds` | M2 resnet18             seeds 1/5  jump>=0.15: 1  -> INCOMPLETE (1/5 seeds) - run `bash run_rigor_pack.sh --recipe-seeds` | M2 resnet50             seeds 1/5  jump>=0.15: 0  -> INCOMPLETE (1/5 seeds) - run `bash run_rigor_pack.sh --recipe-seeds`
+as_run,H16,0.185 kept with percentile; feature regret >0.05 (fraction reported),"pct of 0.185 among seed-42 nonfeature cross-arch 0.875; R50->ConvNeXt s42 nonfeature regret 0.1853; feature cross-arch max 0.157, 3.2% pairs >0.05; nonfeature median cross-seed 0.000 vs cross-arch 0.021"
+as_run,H17,seeds agree more (D>0.10),"eps=0.01 D=0.124 (cross-seed 0.868, cross-arch 0.744)"
+old_r0,H1,arch separable,"above q95 6/8, inside [q05,q95] 1/8"
+old_r0,H2,all above chance,Holm-sig 13/13
+old_r0,H3,D>0 (cluster CI excludes 0); sampling not what moves W,"D=0.158 cluster CI [0.128, 0.196]; W42 iid half-width 0.006 (W42=0.674)"
+old_r0,H4,arch effect detected,"all8 p_perm(a)=9.999e-05, p_F_perm(b, ranks)=0.0002, share_varcomp_arch=0.499"
+old_r0,H5,(a) every backbone and seed; (b) pass,feature rank1 40/40; DeLong best-feature>best-other Holm-sig 40/40; Maha vs kNN Holm-sig 38/40
+old_r0,H7,not AUROC-specific,fpr95 |dW42|=0.013 |dWcs|=0.052 rank1=40; aupr_in |dW42|=0.006 |dWcs|=0.010 rank1=39; aupr_out |dW42|=0.018 |dWcs|=0.013 rank1=40
+old_r0,H9,risk-level dependent; triage-score robust,"MSP@5/10/20: supported/supported/not supported | @10: MSP=supported, Energy=supported, Mahalanobis=supported, kNN=supported"
+old_r0,H14,descriptive (Holm within family),W_vs_chance 13/13; arch_vs_seed 6/6; delong_best_feature_vs_best_other 40/40; delong_maha_vs_knn 38/40; msp_jump_gt0 6/6; msp_jump_gt0.15 0/6
+old_r0,H16,0.185 kept with percentile; feature regret >0.05 (fraction reported),"pct of 0.185 among seed-42 nonfeature cross-arch 0.893; R50->ConvNeXt s42 nonfeature regret 0.1853; feature cross-arch max 0.387, 4.6% pairs >0.05; nonfeature median cross-seed 0.000 vs cross-arch 0.019"
+old_r0,H17,seeds agree more (D>0.10),"eps=0.01 D=0.170 (cross-seed 0.888, cross-arch 0.719)"
+old_r1,H1,arch separable,"above q95 6/8, inside [q05,q95] 2/8"
+old_r1,H2,all above chance,Holm-sig 13/13
+old_r1,H3,D>0 (cluster CI excludes 0); sampling not what moves W,"D=0.140 cluster CI [0.117, 0.176]; W42 iid half-width 0.006 (W42=0.663)"
+old_r1,H4,arch effect detected,"all8 p_perm(a)=9.999e-05, p_F_perm(b, ranks)=0.0002, share_varcomp_arch=0.485"
+old_r1,H5,(a) every backbone and seed; (b) pass,feature rank1 40/40; DeLong best-feature>best-other Holm-sig 40/40; Maha vs kNN Holm-sig 40/40
+old_r1,H7,not AUROC-specific,fpr95 |dW42|=0.002 |dWcs|=0.059 rank1=40; aupr_in |dW42|=0.025 |dWcs|=0.021 rank1=39; aupr_out |dW42|=0.007 |dWcs|=0.010 rank1=40
+old_r1,H9,risk-level dependent; triage-score robust,"MSP@5/10/20: supported/supported/not supported | @10: MSP=supported, Energy=supported, Mahalanobis=supported, kNN=supported"
+old_r1,H14,descriptive (Holm within family),W_vs_chance 13/13; arch_vs_seed 4/6; delong_best_feature_vs_best_other 40/40; delong_maha_vs_knn 40/40; msp_jump_gt0 6/6; msp_jump_gt0.15 0/6
+old_r1,H16,0.185 kept with percentile; feature regret >0.05 (fraction reported),"pct of 0.185 among seed-42 nonfeature cross-arch 0.911; R50->ConvNeXt s42 nonfeature regret 0.0646; feature cross-arch max 0.285, 3.9% pairs >0.05; nonfeature median cross-seed 0.000 vs cross-arch 0.019"
+old_r1,H17,seeds agree more (D>0.10),"eps=0.01 D=0.153 (cross-seed 0.890, cross-arch 0.737)"
+old_r2,H1,mixed,"above q95 4/8, inside [q05,q95] 4/8"
+old_r2,H2,all above chance,Holm-sig 13/13
+old_r2,H3,D>0 (cluster CI excludes 0); sampling not what moves W,"D=0.134 cluster CI [0.113, 0.173]; W42 iid half-width 0.006 (W42=0.656)"
+old_r2,H4,arch effect detected,"all8 p_perm(a)=9.999e-05, p_F_perm(b, ranks)=0.0002, share_varcomp_arch=0.450"
+old_r2,H5,(a) every backbone and seed; (b) pass,feature rank1 40/40; DeLong best-feature>best-other Holm-sig 40/40; Maha vs kNN Holm-sig 40/40
+old_r2,H7,not AUROC-specific,fpr95 |dW42|=0.022 |dWcs|=0.034 rank1=40; aupr_in |dW42|=0.013 |dWcs|=0.011 rank1=39; aupr_out |dW42|=0.020 |dWcs|=0.009 rank1=40
+old_r2,H9,risk-level dependent; triage-score robust,"MSP@5/10/20: supported/supported/not supported | @10: MSP=supported, Energy=supported, Mahalanobis=supported, kNN=supported"
+old_r2,H14,descriptive (Holm within family),W_vs_chance 13/13; arch_vs_seed 4/6; delong_best_feature_vs_best_other 40/40; delong_maha_vs_knn 40/40; msp_jump_gt0 6/6; msp_jump_gt0.15 0/6
+old_r2,H16,0.185 kept with percentile; feature regret >0.05 (fraction reported),"pct of 0.185 among seed-42 nonfeature cross-arch 0.911; R50->ConvNeXt s42 nonfeature regret 0.0646; feature cross-arch max 0.157, 3.2% pairs >0.05; nonfeature median cross-seed 0.000 vs cross-arch 0.024"
+old_r2,H17,seeds agree more (D>0.10),"eps=0.01 D=0.142 (cross-seed 0.879, cross-arch 0.737)"
+old_r3,H1,arch separable,"above q95 6/8, inside [q05,q95] 1/8"
+old_r3,H2,all above chance,Holm-sig 13/13
+old_r3,H3,D>0 (cluster CI excludes 0); sampling not what moves W,"D=0.158 cluster CI [0.128, 0.196]; W42 iid half-width 0.006 (W42=0.674)"
+old_r3,H4,arch effect detected,"all8 p_perm(a)=9.999e-05, p_F_perm(b, ranks)=0.0002, share_varcomp_arch=0.499"
+old_r3,H5,(a) every backbone and seed; (b) pass,feature rank1 40/40; DeLong best-feature>best-other Holm-sig 40/40; Maha vs kNN Holm-sig 38/40
+old_r3,H7,not AUROC-specific,fpr95 |dW42|=0.013 |dWcs|=0.052 rank1=40; aupr_in |dW42|=0.006 |dWcs|=0.010 rank1=39; aupr_out |dW42|=0.018 |dWcs|=0.013 rank1=40
+old_r3,H9,risk-level dependent; triage-score robust,"MSP@5/10/20: supported/supported/not supported | @10: MSP=supported, Energy=supported, Mahalanobis=supported, kNN=supported"
+old_r3,H14,descriptive (Holm within family),W_vs_chance 13/13; arch_vs_seed 6/6; delong_best_feature_vs_best_other 40/40; delong_maha_vs_knn 38/40; msp_jump_gt0 6/6; msp_jump_gt0.15 0/6
+old_r3,H16,0.185 kept with percentile; feature regret >0.05 (fraction reported),"pct of 0.185 among seed-42 nonfeature cross-arch 0.893; R50->ConvNeXt s42 nonfeature regret 0.1853; feature cross-arch max 0.387, 4.6% pairs >0.05; nonfeature median cross-seed 0.000 vs cross-arch 0.019"
+old_r3,H17,seeds agree more (D>0.10),"eps=0.01 D=0.170 (cross-seed 0.888, cross-arch 0.719)"
+old_r4,H1,arch separable,"above q95 6/8, inside [q05,q95] 2/8"
+old_r4,H2,all above chance,Holm-sig 13/13
+old_r4,H3,D>0 (cluster CI excludes 0); sampling not what moves W,"D=0.140 cluster CI [0.117, 0.176]; W42 iid half-width 0.006 (W42=0.663)"
+old_r4,H4,arch effect detected,"all8 p_perm(a)=9.999e-05, p_F_perm(b, ranks)=0.0002, share_varcomp_arch=0.485"
+old_r4,H5,(a) every backbone and seed; (b) pass,feature rank1 40/40; DeLong best-feature>best-other Holm-sig 40/40; Maha vs kNN Holm-sig 40/40
+old_r4,H7,not AUROC-specific,fpr95 |dW42|=0.002 |dWcs|=0.059 rank1=40; aupr_in |dW42|=0.025 |dWcs|=0.021 rank1=39; aupr_out |dW42|=0.007 |dWcs|=0.010 rank1=40
+old_r4,H9,risk-level dependent; triage-score robust,"MSP@5/10/20: supported/supported/not supported | @10: MSP=supported, Energy=supported, Mahalanobis=supported, kNN=supported"
+old_r4,H14,descriptive (Holm within family),W_vs_chance 13/13; arch_vs_seed 4/6; delong_best_feature_vs_best_other 40/40; delong_maha_vs_knn 40/40; msp_jump_gt0 6/6; msp_jump_gt0.15 0/6
+old_r4,H16,0.185 kept with percentile; feature regret >0.05 (fraction reported),"pct of 0.185 among seed-42 nonfeature cross-arch 0.911; R50->ConvNeXt s42 nonfeature regret 0.0646; feature cross-arch max 0.285, 3.9% pairs >0.05; nonfeature median cross-seed 0.000 vs cross-arch 0.019"
+old_r4,H17,seeds agree more (D>0.10),"eps=0.01 D=0.153 (cross-seed 0.890, cross-arch 0.737)"
+old_r5,H1,mixed,"above q95 4/8, inside [q05,q95] 4/8"
+old_r5,H2,all above chance,Holm-sig 13/13
+old_r5,H3,D>0 (cluster CI excludes 0); sampling not what moves W,"D=0.134 cluster CI [0.113, 0.173]; W42 iid half-width 0.006 (W42=0.656)"
+old_r5,H4,arch effect detected,"all8 p_perm(a)=9.999e-05, p_F_perm(b, ranks)=0.0002, share_varcomp_arch=0.450"
+old_r5,H5,(a) every backbone and seed; (b) pass,feature rank1 40/40; DeLong best-feature>best-other Holm-sig 40/40; Maha vs kNN Holm-sig 40/40
+old_r5,H7,not AUROC-specific,fpr95 |dW42|=0.022 |dWcs|=0.034 rank1=40; aupr_in |dW42|=0.013 |dWcs|=0.011 rank1=39; aupr_out |dW42|=0.020 |dWcs|=0.009 rank1=40
+old_r5,H9,risk-level dependent; triage-score robust,"MSP@5/10/20: supported/supported/not supported | @10: MSP=supported, Energy=supported, Mahalanobis=supported, kNN=supported"
+old_r5,H14,descriptive (Holm within family),W_vs_chance 13/13; arch_vs_seed 4/6; delong_best_feature_vs_best_other 40/40; delong_maha_vs_knn 40/40; msp_jump_gt0 6/6; msp_jump_gt0.15 0/6
+old_r5,H16,0.185 kept with percentile; feature regret >0.05 (fraction reported),"pct of 0.185 among seed-42 nonfeature cross-arch 0.911; R50->ConvNeXt s42 nonfeature regret 0.0646; feature cross-arch max 0.157, 3.2% pairs >0.05; nonfeature median cross-seed 0.000 vs cross-arch 0.024"
+old_r5,H17,seeds agree more (D>0.10),"eps=0.01 D=0.142 (cross-seed 0.879, cross-arch 0.737)"
+old_r6,H1,arch separable,"above q95 6/8, inside [q05,q95] 1/8"
+old_r6,H2,all above chance,Holm-sig 13/13
+old_r6,H3,D>0 (cluster CI excludes 0); sampling not what moves W,"D=0.158 cluster CI [0.128, 0.196]; W42 iid half-width 0.006 (W42=0.674)"
+old_r6,H4,arch effect detected,"all8 p_perm(a)=9.999e-05, p_F_perm(b, ranks)=0.0002, share_varcomp_arch=0.499"
+old_r6,H5,(a) every backbone and seed; (b) pass,feature rank1 40/40; DeLong best-feature>best-other Holm-sig 40/40; Maha vs kNN Holm-sig 38/40
+old_r6,H7,not AUROC-specific,fpr95 |dW42|=0.013 |dWcs|=0.052 rank1=40; aupr_in |dW42|=0.006 |dWcs|=0.010 rank1=39; aupr_out |dW42|=0.018 |dWcs|=0.013 rank1=40
+old_r6,H9,risk-level dependent; triage-score robust,"MSP@5/10/20: supported/supported/not supported | @10: MSP=supported, Energy=supported, Mahalanobis=supported, kNN=supported"
+old_r6,H14,descriptive (Holm within family),W_vs_chance 13/13; arch_vs_seed 6/6; delong_best_feature_vs_best_other 40/40; delong_maha_vs_knn 38/40; msp_jump_gt0 6/6; msp_jump_gt0.15 0/6
+old_r6,H16,0.185 kept with percentile; feature regret >0.05 (fraction reported),"pct of 0.185 among seed-42 nonfeature cross-arch 0.893; R50->ConvNeXt s42 nonfeature regret 0.1853; feature cross-arch max 0.387, 4.6% pairs >0.05; nonfeature median cross-seed 0.000 vs cross-arch 0.019"
+old_r6,H17,seeds agree more (D>0.10),"eps=0.01 D=0.170 (cross-seed 0.888, cross-arch 0.719)"
+old_r7,H1,arch separable,"above q95 6/8, inside [q05,q95] 2/8"
+old_r7,H2,all above chance,Holm-sig 13/13
+old_r7,H3,D>0 (cluster CI excludes 0); sampling not what moves W,"D=0.140 cluster CI [0.117, 0.176]; W42 iid half-width 0.006 (W42=0.663)"
+old_r7,H4,arch effect detected,"all8 p_perm(a)=9.999e-05, p_F_perm(b, ranks)=0.0002, share_varcomp_arch=0.485"
+old_r7,H5,(a) every backbone and seed; (b) pass,feature rank1 40/40; DeLong best-feature>best-other Holm-sig 40/40; Maha vs kNN Holm-sig 40/40
+old_r7,H7,not AUROC-specific,fpr95 |dW42|=0.002 |dWcs|=0.059 rank1=40; aupr_in |dW42|=0.025 |dWcs|=0.021 rank1=39; aupr_out |dW42|=0.007 |dWcs|=0.010 rank1=40
+old_r7,H9,risk-level dependent; triage-score robust,"MSP@5/10/20: supported/supported/not supported | @10: MSP=supported, Energy=supported, Mahalanobis=supported, kNN=supported"
+old_r7,H14,descriptive (Holm within family),W_vs_chance 13/13; arch_vs_seed 4/6; delong_best_feature_vs_best_other 40/40; delong_maha_vs_knn 40/40; msp_jump_gt0 6/6; msp_jump_gt0.15 0/6
+old_r7,H16,0.185 kept with percentile; feature regret >0.05 (fraction reported),"pct of 0.185 among seed-42 nonfeature cross-arch 0.911; R50->ConvNeXt s42 nonfeature regret 0.0646; feature cross-arch max 0.285, 3.9% pairs >0.05; nonfeature median cross-seed 0.000 vs cross-arch 0.019"
+old_r7,H17,seeds agree more (D>0.10),"eps=0.01 D=0.153 (cross-seed 0.890, cross-arch 0.737)"
+old_r8,H1,mixed,"above q95 4/8, inside [q05,q95] 4/8"
+old_r8,H2,all above chance,Holm-sig 13/13
+old_r8,H3,D>0 (cluster CI excludes 0); sampling not what moves W,"D=0.134 cluster CI [0.113, 0.173]; W42 iid half-width 0.006 (W42=0.656)"
+old_r8,H4,arch effect detected,"all8 p_perm(a)=9.999e-05, p_F_perm(b, ranks)=0.0002, share_varcomp_arch=0.450"
+old_r8,H5,(a) every backbone and seed; (b) pass,feature rank1 40/40; DeLong best-feature>best-other Holm-sig 40/40; Maha vs kNN Holm-sig 40/40
+old_r8,H7,not AUROC-specific,fpr95 |dW42|=0.022 |dWcs|=0.034 rank1=40; aupr_in |dW42|=0.013 |dWcs|=0.011 rank1=39; aupr_out |dW42|=0.020 |dWcs|=0.009 rank1=40
+old_r8,H9,risk-level dependent; triage-score robust,"MSP@5/10/20: supported/supported/not supported | @10: MSP=supported, Energy=supported, Mahalanobis=supported, kNN=supported"
+old_r8,H14,descriptive (Holm within family),W_vs_chance 13/13; arch_vs_seed 4/6; delong_best_feature_vs_best_other 40/40; delong_maha_vs_knn 40/40; msp_jump_gt0 6/6; msp_jump_gt0.15 0/6
+old_r8,H16,0.185 kept with percentile; feature regret >0.05 (fraction reported),"pct of 0.185 among seed-42 nonfeature cross-arch 0.911; R50->ConvNeXt s42 nonfeature regret 0.0646; feature cross-arch max 0.157, 3.2% pairs >0.05; nonfeature median cross-seed 0.000 vs cross-arch 0.024"
+old_r8,H17,seeds agree more (D>0.10),"eps=0.01 D=0.142 (cross-seed 0.879, cross-arch 0.737)"
+old_r9,H1,arch separable,"above q95 6/8, inside [q05,q95] 1/8"
+old_r9,H2,all above chance,Holm-sig 13/13
+old_r9,H3,D>0 (cluster CI excludes 0); sampling not what moves W,"D=0.158 cluster CI [0.128, 0.196]; W42 iid half-width 0.006 (W42=0.674)"
+old_r9,H4,arch effect detected,"all8 p_perm(a)=9.999e-05, p_F_perm(b, ranks)=0.0002, share_varcomp_arch=0.499"
+old_r9,H5,(a) every backbone and seed; (b) pass,feature rank1 40/40; DeLong best-feature>best-other Holm-sig 40/40; Maha vs kNN Holm-sig 38/40
+old_r9,H7,not AUROC-specific,fpr95 |dW42|=0.013 |dWcs|=0.052 rank1=40; aupr_in |dW42|=0.006 |dWcs|=0.010 rank1=39; aupr_out |dW42|=0.018 |dWcs|=0.013 rank1=40
+old_r9,H9,risk-level dependent; triage-score robust,"MSP@5/10/20: supported/supported/not supported | @10: MSP=supported, Energy=supported, Mahalanobis=supported, kNN=supported"
+old_r9,H14,descriptive (Holm within family),W_vs_chance 13/13; arch_vs_seed 6/6; delong_best_feature_vs_best_other 40/40; delong_maha_vs_knn 38/40; msp_jump_gt0 6/6; msp_jump_gt0.15 0/6
+old_r9,H16,0.185 kept with percentile; feature regret >0.05 (fraction reported),"pct of 0.185 among seed-42 nonfeature cross-arch 0.893; R50->ConvNeXt s42 nonfeature regret 0.1853; feature cross-arch max 0.387, 4.6% pairs >0.05; nonfeature median cross-seed 0.000 vs cross-arch 0.019"
+old_r9,H17,seeds agree more (D>0.10),"eps=0.01 D=0.170 (cross-seed 0.888, cross-arch 0.719)"
+stable,H1,mixed,"above q95 5/8, inside [q05,q95] 3/8"
+stable,H2,all above chance,Holm-sig 13/13
+stable,H3,D>0 (cluster CI excludes 0); sampling not what moves W,"D=0.072 cluster CI [0.061, 0.170]; W42 iid half-width 0.006 (W42=0.809)"
+stable,H4,arch effect detected,"all8 p_perm(a)=9.999e-05, p_F_perm(b, ranks)=0.0002, share_varcomp_arch=0.375"
+stable,H5,(a) downgraded to 'usually'; (b) fail,feature rank1 35/40; DeLong best-feature>best-other Holm-sig 34/40; Maha vs kNN Holm-sig 40/40
+stable,H7,changes under some metric,fpr95 |dW42|=0.126 |dWcs|=0.050 rank1=31 X; aupr_in |dW42|=0.000 |dWcs|=0.014 rank1=36; aupr_out |dW42|=0.035 |dWcs|=0.005 rank1=33 X
+stable,H9,risk-level dependent; triage-score robust,"MSP@5/10/20: supported/supported/not supported | @10: MSP=supported, Energy=supported, Mahalanobis=supported, kNN=supported"
+stable,H14,descriptive (Holm within family),W_vs_chance 13/13; arch_vs_seed 4/6; delong_best_feature_vs_best_other 38/40; delong_maha_vs_knn 40/40; msp_jump_gt0 6/6; msp_jump_gt0.15 0/6
+stable,H16,0.185 = worst case wording; feature regret >0.05 (fraction reported),"pct of 0.185 among seed-42 nonfeature cross-arch 0.982; R50->ConvNeXt s42 nonfeature regret 0.0000; feature cross-arch max 0.085, 1.4% pairs >0.05; nonfeature median cross-seed 0.000 vs cross-arch 0.000"
+stable,H17,tie-robust (|D|<=0.10),"eps=0.01 D=0.070 (cross-seed 0.931, cross-arch 0.861)"
+stable_maha_vim8,H1,mixed,"above q95 4/8, inside [q05,q95] 4/8"
+stable_maha_vim8,H2,all above chance,Holm-sig 13/13
+stable_maha_vim8,H3,D>0 (cluster CI excludes 0); sampling not what moves W,"D=0.130 cluster CI [0.107, 0.168]; W42 iid half-width 0.006 (W42=0.662)"
+stable_maha_vim8,H4,arch effect detected,"all8 p_perm(a)=9.999e-05, p_F_perm(b, ranks)=0.0002, share_varcomp_arch=0.461"
+stable_maha_vim8,H5,(a) every backbone and seed; (b) pass,feature rank1 40/40; DeLong best-feature>best-other Holm-sig 40/40; Maha vs kNN Holm-sig 40/40
+stable_maha_vim8,H7,not AUROC-specific,fpr95 |dW42|=0.016 |dWcs|=0.045 rank1=40; aupr_in |dW42|=0.021 |dWcs|=0.013 rank1=39; aupr_out |dW42|=0.018 |dWcs|=0.000 rank1=40
+stable_maha_vim8,H9,risk-level dependent; triage-score robust,"MSP@5/10/20: supported/supported/not supported | @10: MSP=supported, Energy=supported, Mahalanobis=supported, kNN=supported"
+stable_maha_vim8,H14,descriptive (Holm within family),W_vs_chance 13/13; arch_vs_seed 4/6; delong_best_feature_vs_best_other 40/40; delong_maha_vs_knn 40/40; msp_jump_gt0 6/6; msp_jump_gt0.15 0/6
+stable_maha_vim8,H16,0.185 kept with percentile; feature regret >0.05 (fraction reported),"pct of 0.185 among seed-42 nonfeature cross-arch 0.911; R50->ConvNeXt s42 nonfeature regret 0.0646; feature cross-arch max 0.085, 1.4% pairs >0.05; nonfeature median cross-seed 0.000 vs cross-arch 0.024"
+stable_maha_vim8,H17,seeds agree more (D>0.10),"eps=0.01 D=0.139 (cross-seed 0.891, cross-arch 0.752)"
+stable_maha_novim,H1,mixed,"above q95 5/8, inside [q05,q95] 3/8"
+stable_maha_novim,H2,all above chance,Holm-sig 13/13
+stable_maha_novim,H3,D>0 (cluster CI excludes 0); sampling not what moves W,"D=0.099 cluster CI [0.086, 0.126]; W42 iid half-width 0.009 (W42=0.746)"
+stable_maha_novim,H4,arch effect detected,"all8 p_perm(a)=9.999e-05, p_F_perm(b, ranks)=0.0002, share_varcomp_arch=0.440"
+stable_maha_novim,H5,(a) every backbone and seed; (b) pass,feature rank1 40/40; DeLong best-feature>best-other Holm-sig 40/40; Maha vs kNN Holm-sig 40/40
+stable_maha_novim,H7,not AUROC-specific,fpr95 |dW42|=0.016 |dWcs|=0.030 rank1=40; aupr_in |dW42|=0.000 |dWcs|=0.023 rank1=39; aupr_out |dW42|=0.005 |dWcs|=0.005 rank1=40
+stable_maha_novim,H9,risk-level dependent; triage-score robust,"MSP@5/10/20: supported/supported/not supported | @10: MSP=supported, Energy=supported, Mahalanobis=supported, kNN=supported"
+stable_maha_novim,H14,descriptive (Holm within family),W_vs_chance 13/13; arch_vs_seed 4/6; delong_best_feature_vs_best_other 40/40; delong_maha_vs_knn 40/40; msp_jump_gt0 6/6; msp_jump_gt0.15 0/6
+stable_maha_novim,H16,0.185 kept with percentile; feature regret >0.05 (fraction reported),"pct of 0.185 among seed-42 nonfeature cross-arch 0.857; R50->ConvNeXt s42 nonfeature regret 0.1853; feature cross-arch max 0.085, 1.4% pairs >0.05; nonfeature median cross-seed 0.000 vs cross-arch 0.000"
+stable_maha_novim,H17,tie-robust (|D|<=0.10),"eps=0.01 D=0.099 (cross-seed 0.952, cross-arch 0.853)"

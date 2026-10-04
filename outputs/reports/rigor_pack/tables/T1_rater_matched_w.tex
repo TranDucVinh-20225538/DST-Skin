@@ -1,0 +1,20 @@
+\begin{table}[t]
+\floatconts
+  {tab:ratermatched}
+  {\caption{Cross-seed $W$ (5 seeds) vs.\ cross-architecture $W$ over all 56 five-backbone subsets (seeds 42--46 pooled), Camelyon hospital~2.}}
+  {\small
+  \begin{tabular}{@{}lccccc@{}}
+  \toprule
+  Backbone & W seed (k=5) & W arch k=5 median & q05 & q95 & percentile \\
+  \midrule
+  R18 & 0.800 & 0.703 & 0.609 & 0.803 & 0.936 \\
+  R50 & 0.931 & 0.703 & 0.609 & 0.803 & 1.000 \\
+  DenseNet & 0.789 & 0.703 & 0.609 & 0.803 & 0.902 \\
+  ConvNeXt & 0.869 & 0.703 & 0.609 & 0.803 & 0.996 \\
+  MobileNet & 0.937 & 0.703 & 0.609 & 0.803 & 1.000 \\
+  RegNet & 0.920 & 0.703 & 0.609 & 0.803 & 1.000 \\
+  EffB3 & 0.600 & 0.703 & 0.609 & 0.803 & 0.043 \\
+  EffV2-S & 0.757 & 0.703 & 0.609 & 0.803 & 0.789 \\
+  \bottomrule
+  \end{tabular}}
+\end{table}

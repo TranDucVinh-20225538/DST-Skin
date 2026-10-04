@@ -1,0 +1,4 @@
+H13 ViT-B/16 over seeds (locked MSP >= 0.6947)
+seeds complete: 5/5, hits: 5
+verdict: seed-robust locked prediction
+ViT cross-seed W (k=5 seeds, n=7 scores): 0.663

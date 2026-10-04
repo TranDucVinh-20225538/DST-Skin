@@ -1,0 +1,12 @@
+check,published,recomputed,pass
+camelyon17 official W seed42 n=8,0.694,0.6941964285714286,True
+cross-seed W resnet50,0.931,0.9314285714285714,True
+cross-seed W resnet18,0.8,0.8,True
+cross-seed W densenet121,0.789,0.7885714285714286,True
+cross-seed W effb3,0.6,0.6,True
+4-anchor cross-arch W seed 42,0.75,0.75,True
+4-anchor cross-arch W seed 43,0.786,0.7857142857142857,True
+4-anchor cross-arch W seed 44,0.772,0.7723214285714286,True
+4-anchor cross-arch W seed 45,0.781,0.78125,True
+4-anchor cross-arch W seed 46,0.915,0.9151785714285714,True
+skin_isic_pad official W seed42 n=8,0.791,0.7912946428571429,True

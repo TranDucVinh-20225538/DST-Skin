@@ -1,0 +1,9 @@
+persample camelyon17  {'python': '3.11.5', 'numpy': '1.26.4', 'pandas': '2.3.3', 'w_source': 'scripts/rebuild_architecture_invariance.py'}
+cells loaded: 40 / 40
+methods present in all cells: ['msp', 'energy', 'logit_norm', 'vim', 'react_energy', 'mahalanobis', 'knn']
+clusters: 26 ID patients, 9 OOD patients
+point metrics + DeLong: 32s
+bootstrap iid B=1000: 526s
+bootstrap cluster B=1000: 534s
+REPRO PASS full-set cov@10 densenet121 published 0.078 recomputed 0.0784
+REPRO PASS full-set cov@10 mobilenet_v3_large published 0.904 recomputed 0.9035

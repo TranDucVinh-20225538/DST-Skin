@@ -1,0 +1,21 @@
+Rigor pack / w_from_csv  {'python': '3.11.5', 'numpy': '1.26.4', 'pandas': '2.3.3', 'w_source': 'scripts/rebuild_architecture_invariance.py'}
+
+[camelyon17] complete arch x seed cells: 40 / 40
+[skin_isic_pad] complete arch x seed cells: 40 / 40
+[midog] complete arch x seed cells: 40 / 40
+
+REPRODUCTION CHECKS (must all PASS before reading anything else):
+  REPRO PASS camelyon17 official W seed42 n=8         published 0.694 recomputed 0.6942
+  REPRO PASS cross-seed W resnet50                    published 0.931 recomputed 0.9314
+  REPRO PASS cross-seed W resnet18                    published 0.800 recomputed 0.8000
+  REPRO PASS cross-seed W densenet121                 published 0.789 recomputed 0.7886
+  REPRO PASS cross-seed W effb3                       published 0.600 recomputed 0.6000
+  REPRO PASS 4-anchor cross-arch W seed 42            published 0.750 recomputed 0.7500
+  REPRO PASS 4-anchor cross-arch W seed 43            published 0.786 recomputed 0.7857
+  REPRO PASS 4-anchor cross-arch W seed 44            published 0.772 recomputed 0.7723
+  REPRO PASS 4-anchor cross-arch W seed 45            published 0.781 recomputed 0.7812
+  REPRO PASS 4-anchor cross-arch W seed 46            published 0.915 recomputed 0.9152
+  REPRO PASS skin_isic_pad official W seed42 n=8      published 0.791 recomputed 0.7913
+
+Wrote: arch_label_perm.csv, cross_seed_w_all.csv, feature_rank1_cells.csv, matched_w_subsets.csv, matched_w_summary.csv, msp_jump_tests.csv, pvalues_family.csv, repro_checks.csv, variance_decomposition.csv, w_fpr95.csv, w_perm_friedman.csv
+Read results only against decisions/decision_precommit_rigor_pack.md.
