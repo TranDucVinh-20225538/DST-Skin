@@ -253,8 +253,9 @@ def h16(rep, dom=DOM):
         if len(q):
             ev += "; R50->ConvNeXt s42 nonfeature regret %.4f" % float(q.regret.iloc[0])
     fe = d[(d.family == "feature") & (d.kind == "cross_arch")].iloc[0]
-    b = "feature regret <=0.05 for all seeds" if fe["max"] <= 0.05 else "feature regret >0.05 in %.1f%% pairs" % (100 * fe.frac_gt_005 if "frac_gt_005" in fe else 100 * fe["frac_gt_0.05"])
-    ev += "; feature cross-arch max %.3f" % fe["max"]
+    b = "feature regret <=0.05 for all seeds" if fe["max"] <= 0.05 else "feature regret >0.05 (fraction reported)"
+    ev += "; feature cross-arch max %.3f, %.1f%% pairs >0.05" % (
+        fe["max"], 100 * (fe.frac_gt_005 if "frac_gt_005" in fe else fe["frac_gt_0.05"]))
     cs = d[(d.family == "nonfeature") & (d.kind == "cross_seed")]
     if len(cs):
         ev += "; nonfeature median cross-seed %.3f vs cross-arch %.3f" % (cs.iloc[0]["median"], nf["median"])
