@@ -24,7 +24,9 @@
 #   --dry-run               print sbatch commands, submit nothing
 #
 # Env overrides: DST_PY (python), DST_PARTITION (default defq), DST_EXCLUDE (e.g. node002),
-#                DST_GPU_GRES (default gpu:1), DST_ACCOUNT, DST_QOS
+#                DST_GPU_GRES (default gpu:1), DST_ACCOUNT, DST_QOS,
+#                DST_STAGE_DATA=1 (copy Camelyon17 to node-local storage per GPU job),
+#                DST_RECIPE_ARRAY (task range for --recipe-seeds, default 0-23)
 # =============================================================================
 set -euo pipefail
 
@@ -129,6 +131,13 @@ fi
 CPU_S=(-c 4 --mem=16G -t 04:00:00)
 CPU_M=(-c 16 --mem=64G -t 08:00:00)
 GPU=(--gres="${GRES}" -c 8 --mem=48G)
+# DST_STAGE_DATA=1: GPU Camelyon jobs copy the dataset to node-local storage first
+# (scripts/rigor/stage_wilds.sh); /dev/shm pages count against the job's memory, hence 64G.
+STAGE=""; RUNW=""
+if [[ "${DST_STAGE_DATA:-0}" == 1 ]]; then
+  STAGE="source ${R}/stage_wilds.sh; "; RUNW="stage_run "
+  GPU=(--gres="${GRES}" -c 8 --mem=64G)
+fi
 
 declare -a ALL_JOBS=()
 note() { ALL_JOBS+=("$1=$2"); }
@@ -193,7 +202,7 @@ J_EX=""
 if [[ ${DO_EXTRACT} -eq 1 ]]; then
   FLAG=""; [[ ${EXTRACT_MISSING} -eq 1 ]] && FLAG="--only-missing"
   "${PY}" ${R}/extract_features_indexed.py --dry-run ${FLAG} || true
-  J_EX=$(submit extract "" "${GPU[@]}" -t 08:00:00 --array=0-39 -- "${PY} ${R}/extract_features_indexed.py --task-id \${SLURM_ARRAY_TASK_ID} --verify ${FLAG}")
+  J_EX=$(submit extract "" "${GPU[@]}" -t 08:00:00 --array=0-39 -- "${STAGE}${RUNW}${PY} ${R}/extract_features_indexed.py --task-id \${SLURM_ARRAY_TASK_ID} --verify ${FLAG}")
   note extract "${J_EX}"
 fi
 if [[ ${DO_LEAK} -eq 1 ]]; then
@@ -203,7 +212,7 @@ fi
 if [[ ${DO_VIT} -eq 1 ]]; then
   # same recipe as scripts/submit_camelyon_vit.sh (seed 42); fracX/seedS paths never touch seed 42.
   SEEDS_VIT=(43 44 45 46)
-  J_VIT=$(submit vit "" "${GPU[@]}" -t 24:00:00 --array=0-3 -- "SEEDS=(${SEEDS_VIT[*]}); S=\${SEEDS[\${SLURM_ARRAY_TASK_ID}]}; echo ViT seed \${S}; ${PY} scripts/camelyon17_pilot.py --stage all --backbone vit_b_16 --seed \${S} --train-frac 1.0 --num-workers 8 --log-msp-epoch")
+  J_VIT=$(submit vit "" "${GPU[@]}" -t 24:00:00 --array=0-3 -- "SEEDS=(${SEEDS_VIT[*]}); S=\${SEEDS[\${SLURM_ARRAY_TASK_ID}]}; echo ViT seed \${S}; ${STAGE}${RUNW}${PY} scripts/camelyon17_pilot.py --stage all --backbone vit_b_16 --seed \${S} --train-frac 1.0 --num-workers 8 --log-msp-epoch")
   note vit "${J_VIT}"
   J=$(submit vitread_after "${J_VIT}" "${CPU_S[@]}" -- "${PY} ${R}/vit_seeds.py"); note vitread_after "${J}"
 fi
@@ -211,12 +220,12 @@ fi
 if [[ ${DO_RECIPE} -eq 1 ]]; then
   # same commands as scripts/submit_camelyon_matched_recipe.sh (seed 42), seeds 43-46.
   # task t: seed = 43 + t / 6 ; job = t % 6 (4 x M1, 2 x M2). Artifacts go to frac1/matched_adam(w)/seedS/.
-  J_RC=$(submit recipe "" "${GPU[@]}" -t 24:00:00 --array=0-23 -- "T=\${SLURM_ARRAY_TASK_ID}; S=\$((43 + T / 6)); J=\$((T % 6))
+  J_RC=$(submit recipe "" "${GPU[@]}" -t 24:00:00 --array="${DST_RECIPE_ARRAY:-0-23}" -- "${STAGE}T=\${SLURM_ARRAY_TASK_ID}; S=\$((43 + T / 6)); J=\$((T % 6))
 BB=(convnext_tiny mobilenet_v3_large regnet_y_3_2gf efficientnet_v2_s resnet18 resnet50)
 B=\${BB[\$J]}; EXTRA=''; [[ \$B == efficientnet_v2_s ]] && EXTRA='--input-size 224'
 if [[ \$J -lt 4 ]]; then RC='--artifact-tag matched_adam --optim adam --lr 1e-4 --wd 1e-4'; else RC='--artifact-tag matched_adamw --optim adamw --lr 1e-4 --wd 0.05'; fi
 echo recipe \$B seed \$S \$RC \$EXTRA
-${PY} scripts/camelyon17_pilot.py --stage all --backbone \$B --seed \$S --train-frac 1.0 --num-workers 8 --log-msp-epoch \$RC --recipe-batch-size 64 \$EXTRA")
+${RUNW}${PY} scripts/camelyon17_pilot.py --stage all --backbone \$B --seed \$S --train-frac 1.0 --num-workers 8 --log-msp-epoch \$RC --recipe-batch-size 64 \$EXTRA")
   note recipe "${J_RC}"
   J=$(submit reciperead_after "${J_RC}" "${CPU_S[@]}" -- "${PY} ${R}/recipe_seeds.py"); note reciperead_after "${J}"
 fi
