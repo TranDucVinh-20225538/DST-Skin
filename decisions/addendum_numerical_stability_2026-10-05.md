@@ -70,4 +70,86 @@ Results: `outputs/reports/rigor_pack/numerical_stability/`.
 
 ## Results
 
-(filled in after the runs, in a separate commit)
+Files: `outputs/reports/rigor_pack/numerical_stability/` (`old_runs.csv`, `old_spread.csv`,
+`stable_vs_published.csv`, `w_per_variant.csv`, `w_spread.csv`, `verdicts_by_variant.csv`,
+`verdicts_before_after.csv/.md`). Thread settings: repeat r uses (1, 4, 8)[r % 3] threads.
+
+### Old code, 10 repeats (anchor 4 × 5 seeds × {Maha, ViM} = 40 cells)
+
+- Within one thread setting the old code is deterministic (range 0); all spread comes from
+  the BLAS thread count.
+- Cells with range > 0.002 AUROC: Mahalanobis 15/20, ViM 18/20. Max range: Maha 0.360
+  (EffB3 s46), ViM 0.612 (EffB3 s45). Mean per-cell std: Maha 0.032, ViM 0.035.
+- Negative d² (clipped to 0) occurs in 13/20 Maha cells (up to 344k test samples for EffB3 s46).
+- Max range per backbone (Maha / ViM): ResNet18 0.087 / 0.127, ResNet50 0.283 / 0.032,
+  DenseNet121 0.000 / 0.070, EffB3 0.360 / 0.612.
+- Share of runs within 2e-3 of the published AUROC: 1 thread 0.40, 4 threads 0.44,
+  8 threads 0.94 (Maha 1.00, ViM 0.89).
+
+| Worst cells | published | old min–max | negative d² |
+|---|---|---|---|
+| ResNet50 s43 Mahalanobis | 0.964 | 0.682–0.965 | 141k |
+| EffB3 s46 Mahalanobis | 0.809 | 0.567–0.927 | 344k |
+| EffB3 s45 ViM | 0.284 | 0.284–0.896 | – |
+
+### Kendall W and REPRO lines
+
+| Statistic | published | old 10 runs min–max | stable |
+|---|---|---|---|
+| W seed 42, 8 archs (REPRO 0.694) | 0.694 | 0.656–0.674 | 0.809 |
+| Mean cross-arch W | 0.681 | 0.653–0.683 | 0.799 |
+| Mean cross-seed W (8 archs) | 0.825 | 0.835–0.850 | 0.888 |
+| Cross-seed W, EffB3 | 0.600 | 0.511–0.680 | 0.863 |
+| Cross-seed W, ResNet18 | 0.800 | 0.800–0.931 | 0.931 |
+
+No old-code run reproduces W = 0.694: the published seed-42 anchor ViM values come from the
+ranks file, which matches no single thread setting. The transfer-cost REPRO (ResNet50 →
+ConvNeXt, seed 42, nonfeature = 0.185) gives 0.1853 at 1 thread and 0.0646 at 4 and 8 threads;
+the stable variant gives 0.000. MSP seed-42 REPRO does not involve Maha/ViM and is unchanged.
+
+### Stable variant vs published (8 backbones × 5 seeds)
+
+- Float64 Ledoit-Wolf Mahalanobis: no negative d², range 0 over repeats. Equal to published
+  for the 4 non-anchor backbones; higher for ResNet18 (+0.040 mean), ResNet50 (+0.010) and
+  EffB3 (+0.104); DenseNet121 unchanged.
+- ViM at ≥90% variance: d = 2–4 for most backbones (MobileNet 24, RegNet 43 median). It is a
+  materially different detector and is higher than published on every backbone (mean +0.04
+  to +0.22). This drives most of the verdict changes below.
+
+### Verdicts (rule above: final = verdict identical in all 10 old runs and in the stable variant)
+
+| H | as run | old code, 10 runs | stable | final |
+|---|---|---|---|---|
+| H1 | mixed | arch separable 7/10, mixed 3/10 | mixed | INCONCLUSIVE (numerical instability) |
+| H2 | all above chance | same 10/10 | same | all above chance |
+| H3 | D>0; sampling not what moves W | same 10/10 | same | D>0; sampling not what moves W |
+| H4 | arch effect detected | same 10/10 | same | arch effect detected |
+| H5 | (a) every backbone and seed; (b) pass | same 10/10 | (a) "usually"; (b) fail | INCONCLUSIVE (numerical instability) |
+| H7 | not AUROC-specific | same 10/10 | changes under FPR95 / AUPR-out | INCONCLUSIVE (numerical instability) |
+| H9 | risk-level dependent; triage-score robust | same 10/10 | same | unchanged |
+| H14 | descriptive (Holm within family) | same 10/10 | same | descriptive |
+| H16 | 0.185 kept with percentile | same 10/10 (percentile 0.89–0.91) | percentile 0.982 → "worst case" wording | INCONCLUSIVE (numerical instability) |
+| H17 | seeds agree more (D>0.10) | same 10/10 (D 0.14–0.17) | tie-robust (D = 0.070) | INCONCLUSIVE (numerical instability) |
+
+H6, H8, H10, H11, H12, H13, H15 do not depend on anchor Maha/ViM and are not re-read here.
+
+### Extra sensitivity readings (added 2026-10-04, after the spread above was seen)
+
+Requested after the results above were known, so they are reported as extra readings only and
+do not change the final column. `stable_maha_vim8` = stable Mahalanobis + original ViM at
+8 threads (the draw closest to the published ViM). `stable_maha_novim` = stable Mahalanobis,
+ViM removed from all 8 backbones (6 methods; W is not on the same scale as with 7 methods).
+
+| H | stable Maha + ViM 8 threads | stable Maha, no ViM |
+|---|---|---|
+| H1 | mixed | mixed |
+| H5 | (a) every backbone and seed; (b) pass | (a) every backbone and seed; (b) pass |
+| H7 | not AUROC-specific | not AUROC-specific |
+| H16 | 0.185 kept with percentile (0.911) | 0.185 kept with percentile (0.857) |
+| H17 | seeds agree more (D = 0.139) | tie-robust (D = 0.099) |
+| W seed 42 / mean cross-arch / mean cross-seed | 0.662 / 0.691 / 0.848 | 0.746 / 0.766 / 0.885 |
+
+With the original ViM kept, only the Mahalanobis fix is applied and H1, H5, H7 and H16 read
+as in the precommit run; H17 depends on ViM (D falls to 0.099, just under the 0.10 bar, once
+ViM is dropped). The changes of H5, H7 and H16 under the stable variant come from the
+90%-variance ViM, not from the Mahalanobis fix.
