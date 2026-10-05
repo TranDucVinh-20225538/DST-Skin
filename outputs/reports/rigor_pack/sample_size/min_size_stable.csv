@@ -1,0 +1,5 @@
+tree,axis,full_size,min_reliable_size
+stable,seed,5,1
+stable,arch,8,2
+stable,id_patients,26,2
+stable,ood_patients,9,2

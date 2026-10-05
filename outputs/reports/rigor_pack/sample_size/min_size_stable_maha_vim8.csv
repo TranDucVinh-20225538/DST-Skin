@@ -1,0 +1,5 @@
+tree,axis,full_size,min_reliable_size
+stable_maha_vim8,seed,5,1
+stable_maha_vim8,arch,8,4
+stable_maha_vim8,id_patients,26,2
+stable_maha_vim8,ood_patients,9,2
