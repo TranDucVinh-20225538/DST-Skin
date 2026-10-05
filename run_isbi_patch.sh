@@ -39,5 +39,10 @@ case "${1:-}" in
     echo "retrain2 ${A} seed ${S} fold ${F} $(date)"
     if [[ "${DST_STAGE_DATA:-0}" == 1 ]]; then source ${R}/stage_wilds.sh; RUNW=stage_run; else RUNW=""; fi
     ${RUNW} ${PY} ${R}/logit_retrain_slide_disjoint_v2.py --arch ${A} --seed ${S} --fold ${F} --num-workers 8 ;;
-  *) echo "usage: $0 {leak_smoke|leak|disjoint|retrain|retrain2}"; exit 2 ;;
+  score2)
+    # CPU, same index mapping as retrain2
+    ARCHS=(resnet50 convnext_tiny densenet121); SEEDS=(42 43 44)
+    I=${SLURM_ARRAY_TASK_ID}
+    ${PY} ${R}/isbi_patch2_scores.py --arch ${ARCHS[$(((I % 6) / 2))]} --seed ${SEEDS[$((I / 6))]} --fold $((I % 2)) ;;
+  *) echo "usage: $0 {leak_smoke|leak|disjoint|retrain|retrain2|score2}"; exit 2 ;;
 esac
