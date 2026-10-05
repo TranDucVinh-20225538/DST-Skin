@@ -333,17 +333,20 @@ def varcomp(tree: str) -> None:
     df["score_arch"] = df.score * A + df.arch
     df["score_archseed"] = df.score * A * S + df.archseed
     df["score_rep"] = df.score * B_VARCOMP + df.rep
+    # string columns: patsy would resolve C(...) to the `common` module imported as C
+    for c in ("rep", "arch", "seed", "score", "archseed", "score_arch", "score_archseed", "score_rep"):
+        df[c] = "l" + df[c].astype(str)
     df["g"] = 1
     models = {
-        "primary": {"arch": "0 + C(arch)", "seed": "0 + C(seed)", "replicate": "0 + C(rep)"},
-        "secondary": {"arch": "0 + C(arch)", "arch:seed": "0 + C(archseed)", "replicate": "0 + C(rep)",
-                      "score:arch": "0 + C(score_arch)", "score:arch:seed": "0 + C(score_archseed)",
-                      "score:replicate": "0 + C(score_rep)"},
+        "primary": {"arch": "0 + arch", "seed": "0 + seed", "replicate": "0 + rep"},
+        "secondary": {"arch": "0 + arch", "arch:seed": "0 + archseed", "replicate": "0 + rep",
+                      "score:arch": "0 + score_arch", "score:arch:seed": "0 + score_archseed",
+                      "score:replicate": "0 + score_rep"},
     }
     out = []
     for name, vc in models.items():
         t0 = time.time()
-        md = smf.mixedlm("auroc_pct ~ C(score)", df, groups="g", re_formula="0", vc_formula=vc)
+        md = smf.mixedlm("auroc_pct ~ score", df, groups="g", re_formula="0", vc_formula=vc)
         fit = md.fit(reml=True, method=["lbfgs", "powell"])
         comps = dict(zip(md.exog_vc.names, np.asarray(fit.vcomp, dtype=float)))
         comps["residual"] = float(fit.scale)
