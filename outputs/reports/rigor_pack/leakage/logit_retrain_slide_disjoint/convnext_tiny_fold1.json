@@ -1,0 +1,28 @@
+{
+  "arch": "convnext_tiny",
+  "fold": 1,
+  "seed": 42,
+  "n_train": 205337,
+  "n_id_disjoint": 11021,
+  "n_id_same": 22539,
+  "n_ood": 85054,
+  "id_val_acc_disjoint": 0.974956900462753,
+  "train_seconds": 6915.2,
+  "epoch_seconds": [
+    692.5419268608093,
+    691.9795446395874,
+    690.7850613594055,
+    691.0318839550018,
+    690.9109196662903,
+    691.5787932872772,
+    690.5279264450073,
+    690.8431568145752,
+    691.0211117267609,
+    690.9537317752838
+  ],
+  "auroc_msp_slide_disjoint": 0.6527793024467915,
+  "auroc_msp_same_slides": 0.7935870915977241,
+  "auroc_energy_slide_disjoint": 0.691362166205242,
+  "auroc_energy_same_slides": 0.8214441727769374,
+  "seconds_total": 7011.8
+}

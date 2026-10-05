@@ -1,0 +1,3 @@
+score,max_loss,arch_max_loss,n_archs_loss_gt_0.02,n_archs,bar
+vim,0.0923438137534642,densenet121,8,8,appendix + H5(a)
+react,0.0047561188998913,effb3,0,8,one sentence (<= 0.02)

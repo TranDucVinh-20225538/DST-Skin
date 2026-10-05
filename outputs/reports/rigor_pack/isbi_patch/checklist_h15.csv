@@ -1,0 +1,7 @@
+set,arch,seeds,seeds_jump,robust,use
+M1,convnext_tiny,5,5,True,may be cited as robust
+M1,mobilenet_v3_large,5,4,True,may be cited as robust
+M1,regnet_y_3_2gf,5,3,False,do not cite as robust
+M1,efficientnet_v2_s,5,1,False,do not cite as robust
+M2,resnet18,5,2,False,do not cite as robust
+M2,resnet50,5,0,False,do not cite as robust
