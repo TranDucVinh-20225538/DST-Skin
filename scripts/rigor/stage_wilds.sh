@@ -13,8 +13,9 @@
 # else the original small files. The copy is used only if its file list and sizes match the
 # ORIGINAL data/raw tree and an md5 sample of DST_STAGE_MD5_N files matches the originals.
 
-_st_src="${DST_WILDS_SRC:-data/raw/wilds}/camelyon17_v1.0"
-_st_pack="${DST_WILDS_PACK:-data/cache/camelyon17_v1.0_tar}"
+_st_ds="${DST_STAGE_DS:-camelyon17_v1.0}"
+_st_src="${DST_WILDS_SRC:-data/raw/wilds}/${_st_ds}"
+_st_pack="${DST_WILDS_PACK:-data/cache/${_st_ds}_tar}"
 _st_dst=""
 _st_bg=""
 
@@ -38,7 +39,7 @@ _st_remove_stale() {
 _st_bgwait() { "$@" & _st_bg=$!; wait "${_st_bg}"; local rc=$?; _st_bg=""; return ${rc}; }
 # the training code waits forever for a missing dataset; fail instead if the copy disappears
 _st_watch() {
-  local pid=$1 f="${DST_WILDS_ROOT}/camelyon17_v1.0/metadata.csv"
+  local pid=$1 f="${DST_WILDS_ROOT}/${_st_ds}/metadata.csv"
   while kill -0 "${pid}" 2>/dev/null; do
     [[ -f "${f}" ]] || { echo "stage: staged copy disappeared (${f}), stopping job"; kill "${pid}"; return; }
     sleep 30
@@ -50,7 +51,7 @@ stage_run() {
   _st_watch "${_st_bg}" & local w=$!
   wait "${_st_bg}"; local rc=$?
   kill "${w}" 2>/dev/null; _st_bg=""
-  [[ -f "${DST_WILDS_ROOT}/camelyon17_v1.0/metadata.csv" ]] || rc=1
+  [[ -f "${DST_WILDS_ROOT}/${_st_ds}/metadata.csv" ]] || rc=1
   return ${rc}
 }
 
@@ -66,22 +67,26 @@ _st_copy() {
   if [[ -f "${_st_pack}/COMPLETE" ]]; then
     echo "stage: from tar shards (${_st_pack})"
     ls "${_st_pack}"/shard_*.tar | xargs -P 8 -I{} tar -C "${_st_dst}" -xf {}
+  elif [[ "${_st_ds}" != camelyon17_v1.0 ]]; then
+    echo "stage: copying ${_st_ds} (top-level entries in parallel)"
+    mkdir -p "${_st_dst}/${_st_ds}"
+    ls -A "${_st_src}" | xargs -P 8 -I{} cp -r "${_st_src}/{}" "${_st_dst}/${_st_ds}/"
   else
     echo "stage: no complete tar pack, copying small files"
-    mkdir -p "${_st_dst}/camelyon17_v1.0/patches"
-    cp "${_st_src}/metadata.csv" "${_st_src}/RELEASE_v1.0.txt" "${_st_dst}/camelyon17_v1.0/"
-    ls "${_st_src}/patches" | xargs -P 8 -I{} cp -r "${_st_src}/patches/{}" "${_st_dst}/camelyon17_v1.0/patches/"
+    mkdir -p "${_st_dst}/${_st_ds}/patches"
+    cp "${_st_src}/metadata.csv" "${_st_src}/RELEASE_v1.0.txt" "${_st_dst}/${_st_ds}/"
+    ls "${_st_src}/patches" | xargs -P 8 -I{} cp -r "${_st_src}/patches/{}" "${_st_dst}/${_st_ds}/patches/"
   fi
 }
 
 _st_verify() {
   local a b
   (cd "${_st_src}" && find . -type f -printf '%P %s\n' | LC_ALL=C sort) > "${_st_dst}/src.manifest"
-  (cd "${_st_dst}/camelyon17_v1.0" && find . -type f -printf '%P %s\n' | LC_ALL=C sort) > "${_st_dst}/dst.manifest"
+  (cd "${_st_dst}/${_st_ds}" && find . -type f -printf '%P %s\n' | LC_ALL=C sort) > "${_st_dst}/dst.manifest"
   cmp -s "${_st_dst}/src.manifest" "${_st_dst}/dst.manifest" || { echo "stage: file list / sizes differ from data/raw"; return 1; }
   cut -d' ' -f1 "${_st_dst}/src.manifest" | shuf -n "${DST_STAGE_MD5_N:-2000}" --random-source=<(yes) > "${_st_dst}/sample"
   a=$(cd "${_st_src}" && xargs -a "${_st_dst}/sample" -d '\n' md5sum | md5sum | cut -d' ' -f1)
-  b=$(cd "${_st_dst}/camelyon17_v1.0" && xargs -a "${_st_dst}/sample" -d '\n' md5sum | md5sum | cut -d' ' -f1)
+  b=$(cd "${_st_dst}/${_st_ds}" && xargs -a "${_st_dst}/sample" -d '\n' md5sum | md5sum | cut -d' ' -f1)
   [[ "${a}" == "${b}" ]] || { echo "stage: md5 sample differs from data/raw"; return 1; }
 }
 
