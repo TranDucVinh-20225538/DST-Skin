@@ -1,0 +1,13 @@
+H15 matched-recipe seeds (jump = MSP - official ResNet mean of the same seed; bar 0.15)
+  M1 convnext_tiny        seeds 5/5  jump>=0.15: 5  -> robust (>=4/5)
+  M1 mobilenet_v3_large   seeds 5/5  jump>=0.15: 4  -> robust (>=4/5)
+  M1 regnet_y_3_2gf       seeds 5/5  jump>=0.15: 3  -> seed-dependent (3/5)
+  M1 efficientnet_v2_s    seeds 5/5  jump>=0.15: 1  -> seed-42 result not robust (<=2/5)
+  M2 resnet18             seeds 5/5  jump>=0.15: 2  -> seed-42 result not robust (<=2/5)
+  M2 resnet50             seeds 5/5  jump>=0.15: 0  -> seed-42 result not robust (<=2/5)
+  REPRO PASS M1 convnext_tiny seed42 MSP  published 0.820 recomputed 0.8198
+  REPRO PASS M1 mobilenet_v3_large seed42 MSP  published 0.737 recomputed 0.7374
+  REPRO PASS M1 regnet_y_3_2gf seed42 MSP  published 0.805 recomputed 0.8053
+  REPRO PASS M1 efficientnet_v2_s seed42 MSP  published 0.873 recomputed 0.8725
+  REPRO PASS M2 resnet18 seed42 MSP  published 0.773 recomputed 0.7734
+  REPRO PASS M2 resnet50 seed42 MSP  published 0.581 recomputed 0.5813

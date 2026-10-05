@@ -9,10 +9,10 @@ H7,True,not AUROC-specific,not AUROC-specific (10/10),changes under some metric,
 H8,False,T-invariance check FAIL (max |dAUROC| 0.17); (b) jump not explained by accuracy,,,,,T-invariance check FAIL (max |dAUROC| 0.17); (b) jump not explained by accuracy
 H9,True,risk-level dependent; triage-score robust,risk-level dependent; triage-score robust (10/10),risk-level dependent; triage-score robust,risk-level dependent; triage-score robust,risk-level dependent; triage-score robust,risk-level dependent; triage-score robust
 H10,False,gap kept (cluster CI excludes 0); per-seed MSP-jump cluster CI not produced by persample.py,,,,,gap kept (cluster CI excludes 0); per-seed MSP-jump cluster CI not produced by persample.py
-H11,False,"(a,b) pass; (c) pending (leak job)",,,,,"(a,b) pass; (c) pending (leak job)"
+H11,False,"(a,b) pass; (c) loss > 0.02: slide-disjoint feature AUROCs to appendix, H5(a) re-check 4/8",,,,,"(a,b) pass; (c) loss > 0.02: slide-disjoint feature AUROCs to appendix, H5(a) re-check 4/8"
 H12,False,"skin_isic_pad: H1 mixed, H4 not detected; midog: H1 mixed, H4 arch effect detected",,,,,"skin_isic_pad: H1 mixed, H4 not detected; midog: H1 mixed, H4 arch effect detected"
 H13,False,seed-robust locked prediction,,,,,seed-robust locked prediction
 H14,True,descriptive (Holm within family),descriptive (Holm within family) (10/10),descriptive (Holm within family),descriptive (Holm within family),descriptive (Holm within family),descriptive; see families
-H15,False,pending (recipe seeds incomplete),,,,,pending (recipe seeds incomplete)
+H15,False,robust (>=4/5); robust (>=4/5); seed-dependent (3/5); seed-42 result not robust (<=2/5); seed-42 result not robust (<=2/5); seed-42 result not robust (<=2/5),,,,,robust (>=4/5); robust (>=4/5); seed-dependent (3/5); seed-42 result not robust (<=2/5); seed-42 result not robust (<=2/5); seed-42 result not robust (<=2/5)
 H16,True,0.185 kept with percentile; feature regret >0.05 (fraction reported),0.185 kept with percentile; feature regret >0.05 (fraction reported) (10/10),0.185 = worst case wording; feature regret >0.05 (fraction reported),0.185 kept with percentile; feature regret >0.05 (fraction reported),0.185 kept with percentile; feature regret >0.05 (fraction reported),INCONCLUSIVE (numerical instability)
 H17,True,seeds agree more (D>0.10),seeds agree more (D>0.10) (10/10),tie-robust (|D|<=0.10),seeds agree more (D>0.10),tie-robust (|D|<=0.10),INCONCLUSIVE (numerical instability)
