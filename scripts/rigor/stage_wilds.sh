@@ -6,8 +6,9 @@
 # timeout: copy/extract and the main command run in the background under `wait`, so the
 # TERM trap fires at once instead of after a child stuck in disk I/O. Leftovers of my own
 # SIGKILLed jobs are removed by the next staged job and by `stage_wilds.sh cleanup`.
-# Target: /dev/shm if the dataset is < 1/4 of free RAM; else ${TMPDIR:-/tmp} if it has 2x the
-# space; else the shared copy is used as before.
+# Target: node-local ${TMPDIR:-/tmp} if it has 2x the space, else the shared copy as before.
+# /dev/shm only with DST_STAGE_SHM=1 (and dataset < 1/4 of free RAM): on node004 systemd-logind
+# RemoveIPC wipes all of a user's /dev/shm files when one of their jobs ends.
 # Source: the tar shards of scripts/rigor/pack_wilds.sh if complete (large sequential reads),
 # else the original small files. The copy is used only if its file list and sizes match the
 # ORIGINAL data/raw tree and an md5 sample of DST_STAGE_MD5_N files matches the originals.
@@ -35,7 +36,23 @@ _st_remove_stale() {
 
 # run in background and wait, so a TERM trap is handled immediately
 _st_bgwait() { "$@" & _st_bg=$!; wait "${_st_bg}"; local rc=$?; _st_bg=""; return ${rc}; }
-stage_run() { _st_bgwait "$@"; }
+# the training code waits forever for a missing dataset; fail instead if the copy disappears
+_st_watch() {
+  local pid=$1 f="${DST_WILDS_ROOT}/camelyon17_v1.0/metadata.csv"
+  while kill -0 "${pid}" 2>/dev/null; do
+    [[ -f "${f}" ]] || { echo "stage: staged copy disappeared (${f}), stopping job"; kill "${pid}"; return; }
+    sleep 30
+  done
+}
+stage_run() {
+  if [[ -z "${_st_dst}" || -z "${DST_WILDS_ROOT:-}" ]]; then _st_bgwait "$@"; return; fi
+  "$@" & _st_bg=$!
+  _st_watch "${_st_bg}" & local w=$!
+  wait "${_st_bg}"; local rc=$?
+  kill "${w}" 2>/dev/null; _st_bg=""
+  [[ -f "${DST_WILDS_ROOT}/camelyon17_v1.0/metadata.csv" ]] || rc=1
+  return ${rc}
+}
 
 if [[ "${1:-}" == "cleanup" ]]; then _st_remove_stale; return 0 2>/dev/null || exit 0; fi
 
@@ -71,12 +88,12 @@ _st_verify() {
 _st_need=$(du -sm "${_st_src}" | cut -f1)
 _st_free=$(free -m | awk '/^Mem:/{print $4}')
 _st_base=""
-if [[ -d /dev/shm && -w /dev/shm ]] && (( _st_need * 4 < _st_free )); then
+_st_tmp="${TMPDIR:-/tmp}"
+_st_avail=$(df -Pm "${_st_tmp}" | awk 'NR==2{print $4}')
+if [[ "${DST_STAGE_SHM:-0}" == 1 && -d /dev/shm && -w /dev/shm ]] && (( _st_need * 4 < _st_free )); then
   _st_base=/dev/shm
-else
-  _st_tmp="${TMPDIR:-/tmp}"
-  _st_avail=$(df -Pm "${_st_tmp}" | awk 'NR==2{print $4}')
-  if (( _st_need * 2 < _st_avail )); then _st_base="${_st_tmp}"; fi
+elif (( _st_need * 2 < _st_avail )); then
+  _st_base="${_st_tmp}"
 fi
 echo "stage: dataset ${_st_need} MB, free RAM ${_st_free} MB -> ${_st_base:-none (shared copy)}"
 
