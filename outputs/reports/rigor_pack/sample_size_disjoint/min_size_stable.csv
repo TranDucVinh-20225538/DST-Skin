@@ -1,0 +1,5 @@
+tree,axis,min_reliable_disjoint_partition,min_reliable_overlapping_subset,sizes_tested_disjoint
+stable,seed,1,1,1..4
+stable,arch,6,2,2..6
+stable,id_patients,2,2,2..24
+stable,ood_patients,2,2,2..7

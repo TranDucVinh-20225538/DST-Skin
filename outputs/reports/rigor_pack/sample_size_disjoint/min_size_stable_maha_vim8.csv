@@ -1,0 +1,5 @@
+tree,axis,min_reliable_disjoint_partition,min_reliable_overlapping_subset,sizes_tested_disjoint
+stable_maha_vim8,seed,1,1,1..4
+stable_maha_vim8,arch,không đạt trong dữ liệu hiện có,4,2..6
+stable_maha_vim8,id_patients,2,2,2..24
+stable_maha_vim8,ood_patients,7,2,2..7
