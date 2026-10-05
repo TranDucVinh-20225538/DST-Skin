@@ -31,5 +31,13 @@ case "${1:-}" in
     echo "retrain ${A} fold ${F} $(date)"
     if [[ "${DST_STAGE_DATA:-0}" == 1 ]]; then source ${R}/stage_wilds.sh; RUNW=stage_run; else RUNW=""; fi
     ${RUNW} ${PY} ${R}/logit_retrain_slide_disjoint.py --arch ${A} --fold ${F} --num-workers 8 ;;
-  *) echo "usage: $0 {leak_smoke|leak|disjoint|retrain}"; exit 2 ;;
+  retrain2)
+    # patch 2 (precommit_isbi_patch2_2026-10-06.md): index = seed_idx*6 + arch_idx*2 + fold, 0-17
+    ARCHS=(resnet50 convnext_tiny densenet121); SEEDS=(42 43 44)
+    I=${SLURM_ARRAY_TASK_ID}
+    S=${SEEDS[$((I / 6))]}; A=${ARCHS[$(((I % 6) / 2))]}; F=$((I % 2))
+    echo "retrain2 ${A} seed ${S} fold ${F} $(date)"
+    if [[ "${DST_STAGE_DATA:-0}" == 1 ]]; then source ${R}/stage_wilds.sh; RUNW=stage_run; else RUNW=""; fi
+    ${RUNW} ${PY} ${R}/logit_retrain_slide_disjoint_v2.py --arch ${A} --seed ${S} --fold ${F} --num-workers 8 ;;
+  *) echo "usage: $0 {leak_smoke|leak|disjoint|retrain|retrain2}"; exit 2 ;;
 esac
