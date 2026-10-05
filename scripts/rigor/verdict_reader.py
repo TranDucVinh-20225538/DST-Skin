@@ -195,11 +195,30 @@ def h11(rep):
     l1 = int(lk[lk.check.str.startswith("L1")].n_overlap.iloc[0])
     l2 = int(lk[lk.check.str.startswith("L2")].n_overlap.iloc[0])
     v = "(a,b) pass" if l1 == 0 and l2 == 0 else "(a,b) FAIL - stop"
+    ev = "patients overlap %d, slides overlap %d" % (l1, l2)
     lf = None
     for p in sorted(rep.glob("leakfree*/*.csv")) + sorted(rep.glob("leakage*/*.csv")):
         lf = p
-    return v + ("; (c) see %s" % lf.relative_to(rep) if lf else "; (c) pending (leak job)"), \
-        "patients overlap %d, slides overlap %d" % (l1, l2)
+    if lf is None:
+        return v + "; (c) pending (leak job)", ev
+    d = pd.read_csv(lf)
+    loss = -d[["delta_maha_2fold", "delta_knn_2fold"]].min(axis=1)
+    n_over = int((loss > 0.02).sum())
+    ev += "; slide-disjoint 2-fold max loss Maha %.3f kNN %.3f, archs losing > 0.02: %d/%d" % (
+        -d.delta_maha_2fold.min(), -d.delta_knn_2fold.min(), n_over, len(d))
+    if n_over == 0:
+        return v + "; (c) |delta| <= 0.02 (one sentence)", ev
+    # H5(a) re-check: seed-42 cells, Mahalanobis/kNN AUROC replaced by the slide-disjoint ones
+    root = rep.resolve().parents[2]
+    oth = [i for i, m in enumerate(C.METHODS_ORDER) if m not in C.FEATURE_METHODS]
+    n_rank1 = 0
+    for _, r in d.iterrows():
+        vec = C.metric_vector(root, DOM, r.arch, int(r.seed))
+        feat = max(r.auroc_maha_2fold_slide_disjoint, r.auroc_knn_2fold_slide_disjoint)
+        n_rank1 += int(feat > np.nanmax(vec[oth]))
+    ev += "; H5(a) re-check with slide-disjoint feature AUROCs: feature rank1 %d/%d (seed 42)" % (n_rank1, len(d))
+    return v + "; (c) loss > 0.02: slide-disjoint feature AUROCs to appendix, H5(a) re-check %d/%d" % (
+        n_rank1, len(d)), ev
 
 
 def h12(rep):
