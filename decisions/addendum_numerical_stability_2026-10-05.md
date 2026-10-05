@@ -153,3 +153,24 @@ With the original ViM kept, only the Mahalanobis fix is applied and H1, H5, H7 a
 as in the precommit run; H17 depends on ViM (D falls to 0.099, just under the 0.10 bar, once
 ViM is dropped). The changes of H5, H7 and H16 under the stable variant come from the
 90%-variance ViM, not from the Mahalanobis fix.
+
+### Post-hoc: is the cross-arch transfer regret distinguishable from 0? (added 2026-10-05)
+
+Not in the precommit (H16 has no CI); asked after the results above. `scripts/rigor/transfer_regret_ci.py`,
+Camelyon17, nonfeature family, 280 cross-arch pairs. Mean regret with a 95% two-way cluster
+bootstrap over archs and seeds (B = 10000); per pair, the AUROC loss on the target cell with a
+patient-clustered DeLong SE, one-sided, Holm over the 280 pairs. Files:
+`outputs/reports/rigor_pack/numerical_stability/transfer_regret_ci*.csv`.
+
+| reading | mean regret [95% CI] | pairs > 0.05 | pairs Holm-sig. and > 0.05 | R50→ConvNeXt s42 |
+|---|---|---|---|---|
+| old code, 10 runs | 0.048–0.055, CI lower 0.014–0.019 | 35–41% | 15–22 | 0.185 or 0.065 |
+| stable (Maha LW64 + ViM 90%) | 0.011 [0.000, 0.032] | 6.8% | 6 | 0.000 |
+| extra: stable Maha + ViM 8 threads | 0.052 [0.019, 0.089] | 41% | 16 | 0.065 |
+| extra: stable Maha, no ViM | 0.034 [0.000, 0.084] | 18% | 21 | 0.185 |
+
+Under the stable variant the 90%-variance ViM is the best nonfeature score on 259/280 target
+cells, so copying the source choice is almost always right; the 6 significant pairs all have
+EfficientNet-V2-S (5) or DenseNet121 s42 (1) as source. The mean-regret CI includes 0 under
+the stable variant and with ViM removed, and excludes 0 only when the original ViM is kept.
+The "all" family behaves the same way (stable CI [0.000, 0.027]).
