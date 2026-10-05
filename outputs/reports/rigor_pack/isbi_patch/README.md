@@ -58,3 +58,4 @@ Sizes where overlapping subsets passed but disjoint partitions failed (manuscrip
 `scope_table.md` (Camelyon17 seed-42 leak-free deltas + MIDOG H12 one-liner).
 
 Suggested wording and caveats (fold sizes, fold-0 accuracy on unseen slides): `claim_edits.md`.
+Phase B per-fold table, within-model gap and ResNet50 diagnostic: `phaseB_diag.md`, `phaseB_per_fold.csv`.
