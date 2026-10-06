@@ -1,0 +1,22 @@
+{
+  "arch": "resnet50",
+  "seed": 44,
+  "fold": 1,
+  "n_fit": 129493,
+  "vim_dim": 2046,
+  "auroc_MSP_unseen": 0.2935863059893269,
+  "auroc_MSP_seen": 0.42948538051088425,
+  "auroc_Energy_unseen": 0.2855406293609897,
+  "auroc_Energy_seen": 0.41377976615667034,
+  "auroc_ELogitNorm_unseen": 0.2906951634092321,
+  "auroc_ELogitNorm_seen": 0.4230325345102618,
+  "auroc_ViM_unseen": 0.6318181887184349,
+  "auroc_ViM_seen": 0.7138178568876643,
+  "auroc_ReAct_unseen": 0.37515430226465607,
+  "auroc_ReAct_seen": 0.5627037431494828,
+  "auroc_Mahalanobis_unseen": 0.87171630013319,
+  "auroc_Mahalanobis_seen": 0.9859561638381493,
+  "auroc_kNN_unseen": 0.6960117961322928,
+  "auroc_kNN_seen": 0.9282851301566253,
+  "seconds": 680.8
+}

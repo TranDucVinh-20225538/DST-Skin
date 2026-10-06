@@ -1,0 +1,22 @@
+{
+  "arch": "convnext_tiny",
+  "seed": 43,
+  "fold": 1,
+  "n_fit": 129493,
+  "vim_dim": 766,
+  "auroc_MSP_unseen": 0.5157917878070687,
+  "auroc_MSP_seen": 0.7670145563402102,
+  "auroc_Energy_unseen": 0.5340832503556261,
+  "auroc_Energy_seen": 0.7814076103154126,
+  "auroc_ELogitNorm_unseen": 0.5166913736897285,
+  "auroc_ELogitNorm_seen": 0.7677880753496731,
+  "auroc_ViM_unseen": 0.6210500081976853,
+  "auroc_ViM_seen": 0.7716966869814684,
+  "auroc_ReAct_unseen": 0.3796521196397828,
+  "auroc_ReAct_seen": 0.5122354173180025,
+  "auroc_Mahalanobis_unseen": 0.6814977473561936,
+  "auroc_Mahalanobis_seen": 0.8963474673387976,
+  "auroc_kNN_unseen": 0.5895589302522892,
+  "auroc_kNN_seen": 0.8429066773781615,
+  "seconds": 456.7
+}
