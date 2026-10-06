@@ -1,0 +1,22 @@
+{
+  "ds": "iwildcam",
+  "arch": "convnext_tiny",
+  "seed": 42,
+  "fold": 1,
+  "n_fit": 65005,
+  "auroc_MSP_unseen": 0.39279965665825,
+  "auroc_MSP_seen": 0.6619883013202073,
+  "auroc_Energy_unseen": 0.406486976377072,
+  "auroc_Energy_seen": 0.6831429127189854,
+  "auroc_ELogitNorm_unseen": 0.4826589726753435,
+  "auroc_ELogitNorm_seen": 0.6062482966954659,
+  "auroc_ViM_unseen": 0.4426358154064489,
+  "auroc_ViM_seen": 0.7754071113294033,
+  "auroc_ReAct_unseen": 0.5139710112207505,
+  "auroc_ReAct_seen": 0.4308702361777855,
+  "auroc_Mahalanobis_unseen": 0.47069554930260604,
+  "auroc_Mahalanobis_seen": 0.8050488217622711,
+  "auroc_kNN_unseen": 0.4300050383105668,
+  "auroc_kNN_seen": 0.8237264553055843,
+  "seconds": 67.5
+}

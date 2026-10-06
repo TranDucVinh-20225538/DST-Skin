@@ -1,0 +1,22 @@
+{
+  "ds": "rxrx1",
+  "arch": "convnext_tiny",
+  "seed": 43,
+  "fold": 0,
+  "n_fit": 20918,
+  "auroc_MSP_unseen": 0.462195456362929,
+  "auroc_MSP_seen": 0.44839087609664363,
+  "auroc_Energy_unseen": 0.47240990423696305,
+  "auroc_Energy_seen": 0.44512967006546367,
+  "auroc_ELogitNorm_unseen": 0.4691170374610254,
+  "auroc_ELogitNorm_seen": 0.454320654568014,
+  "auroc_ViM_unseen": 0.5387892557005077,
+  "auroc_ViM_seen": 0.5849947747762018,
+  "auroc_ReAct_unseen": 0.480941047156013,
+  "auroc_ReAct_seen": 0.4597809312433823,
+  "auroc_Mahalanobis_unseen": 0.46170384579229495,
+  "auroc_Mahalanobis_seen": 0.4374175631830753,
+  "auroc_kNN_unseen": 0.47518869411805453,
+  "auroc_kNN_seen": 0.4800400993781347,
+  "seconds": 51.3
+}
