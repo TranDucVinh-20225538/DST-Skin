@@ -1,0 +1,9 @@
+file: decisions/precommit_group_leakage_medbench_2026-10-06.md
+sha256: 1cb7767e8b2dcae6c662c71a6846ccb61f1dd5200f72da36c1ad580c19e04b68
+commit: 0fa52af2a5001c94fa92863a84a01f5528b080dd
+utc: 2026-10-06T05:04:09Z
+
+Description for OSF / Zenodo:
+Pre-registration of a group-leakage check for post-hoc OOD detection on medical benchmarks with leaky standard splits (DermaMNIST, ISIC 2019, Kermany OCT, BreakHis; brain MRI optional).
+Locks datasets, groups, OOD sets, architectures, seeds, training epochs, model-quality gates, the 0.02 AUROC bars, cluster-bootstrap CIs and the generalization rule before any result.
+The sha256 above identifies the exact precommit text (git commit 0fa52af2a5001c94fa92863a84a01f5528b080dd, branch rigor-pack).
