@@ -11,7 +11,7 @@ set -eo pipefail
 cd "${SLURM_SUBMIT_DIR}"
 unset PYTHONPATH
 export PYTHONPATH=$(pwd) OMP_NUM_THREADS=8 OPENBLAS_NUM_THREADS=8 MKL_NUM_THREADS=8
-PY=/data2/cmdir/home/toandq/.conda/envs/torch-env/bin/python
+PY=${DST_PY:-python}
 read -ra RUNS <<< "${MB_RUNS}"
 IFS=: read -r ARCH SEED ARM <<< "${RUNS[${SLURM_ARRAY_TASK_ID}]}"
 SIZE=256; [ "${ARCH}" = "effb3" ] && SIZE=343

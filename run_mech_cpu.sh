@@ -10,7 +10,7 @@ set -eo pipefail
 cd "${SLURM_SUBMIT_DIR}"
 unset PYTHONPATH
 export PYTHONPATH=$(pwd) OMP_NUM_THREADS=16 OPENBLAS_NUM_THREADS=16 MKL_NUM_THREADS=16
-PY=/data2/cmdir/home/toandq/.conda/envs/torch-env/bin/python
+PY=${DST_PY:-python}
 read -ra CELLS <<< "${MECH_CELLS}"
 IFS=: read -r DS ARCH M4 <<< "${CELLS[${SLURM_ARRAY_TASK_ID}]}"
 ${PY} scripts/rigor/mech_cpu.py --ds "${DS}" --arch "${ARCH}" ${M4:+--m4-logit}
