@@ -3,14 +3,15 @@
 
 --fm dinov2_vitb14 | dinov2_vitl14 : torch.hub facebookresearch/dinov2 (cached repo + weights), x_norm_clstoken
 --fm uni                           : src/models/pathology_fm.py spec "uni" (timm hf-hub:MahmoodLab/uni), CLS
+--fm virchow2                      : timm hf-hub:paige-ai/Virchow2 (SwiGLUPacked, SiLU), concat(CLS, mean patch)
 --fm conch_v1_5                    : MahmoodLab/TITAN conch_v1_5.py build_conch, its own eval transform (448)
 CONCH v1 (MahmoodLab/CONCH) is gated and not accessible with the configured token (403); see access_status.json.
 
 Every FM: frozen, eval(), float32, no autocast, no augmentation; the same eval transform for every split.
 Load result (ok / STOP + reason, feat dim, transform) -> outputs/rigor_pack/foundation_gate/load/{fm}.json.
 --ds camelyon   : train / id_val / hospital-2 OOD in the index order of the rigor-pack indexed features.
---ds dermamnist : every image of the non-val sets of the medbench DermaMNIST arms std / b0 / b1 (ID and OOD),
-                  read by key from the node-local copy of data/staged/dermamnist_256.tar ($DST_IMG_DIR).
+--ds dermamnist | isic2019 | breakhis : every image of the non-val sets of the locked medbench arms (MED_ARMS;
+                  ID and OOD), read by key from the node-local copy of data/staged/{ds}_256.tar ($DST_IMG_DIR).
 --limit n       : smoke (first n images of every split), throughput only.
 Output: outputs/rigor_pack/foundation_gate/feats/{ds}_{fm}[_smoke].npz
 """
@@ -31,8 +32,8 @@ import common as C  # noqa: E402
 
 REPO = C.REPO
 OUT = REPO / "outputs/rigor_pack/foundation_gate"
-FMS = ("dinov2_vitb14", "uni", "conch_v1_5", "dinov2_vitl14")
-BATCH = {"dinov2_vitb14": 256, "dinov2_vitl14": 128, "uni": 128, "conch_v1_5": 64}
+FMS = ("dinov2_vitb14", "uni", "conch_v1_5", "virchow2", "dinov2_vitl14")
+BATCH = {"dinov2_vitb14": 256, "dinov2_vitl14": 128, "uni": 128, "conch_v1_5": 64, "virchow2": 64}
 
 
 def tf224():
@@ -55,6 +56,18 @@ def load_fm(name: str):
         m, spec = load_frozen_encoder("uni")
         fwd = m
         info = {"repo": spec.timm_id, "embedding": "CLS (timm num_classes=0)",
+                "transform": "Resize 224 bicubic + CenterCrop 224 + ImageNet mean/std"}
+        tf = tf224()
+    elif name == "virchow2":
+        import timm
+        from timm.layers import SwiGLUPacked
+        m = timm.create_model("hf-hub:paige-ai/Virchow2", pretrained=True, mlp_layer=SwiGLUPacked,
+                              act_layer=torch.nn.SiLU)
+
+        def fwd(x):
+            o = m(x)
+            return torch.cat([o[:, 0], o[:, 5:].mean(1)], dim=1)
+        info = {"repo": "hf-hub:paige-ai/Virchow2", "embedding": "concat(CLS, mean patch tokens after 4 registers)",
                 "transform": "Resize 224 bicubic + CenterCrop 224 + ImageNet mean/std"}
         tf = tf224()
     elif name == "conch_v1_5":
@@ -126,13 +139,16 @@ def camelyon_splits(tfm, limit):
     return out
 
 
-def dermamnist_splits(tfm, limit):
-    """One split "all": the union of the keys of every non-val set of the arms std / b0 / b1."""
+MED_ARMS = {"dermamnist": ("std", "b0", "b1"), "isic2019": ("std", "b0", "b1"),
+            "breakhis": tuple("std_r%d" % r for r in range(5)) + tuple("gd_r%d" % r for r in range(5))}
+
+
+def medical_splits(ds, tfm, limit):
+    """One split "all": the union of the keys of every non-val set of the dataset's locked medbench arms."""
     import os
 
     import medbench_common as M
-    keys = sorted({k for a in ("std", "b0", "b1") for s, v in M.arm("dermamnist", a).items() if s != "val"
-                   for k in v["keys"]})
+    keys = sorted({k for a in MED_ARMS[ds] for s, v in M.arm(ds, a).items() if s != "val" for k in v["keys"]})
     keys = keys[::max(1, len(keys) // limit)][:limit] if limit else keys
     return {"all": (Keyed(os.environ["DST_IMG_DIR"], keys, tfm), {"all_keys": np.asarray(keys)})}
 
@@ -140,7 +156,7 @@ def dermamnist_splits(tfm, limit):
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--fm", required=True, choices=FMS)
-    ap.add_argument("--ds", required=True, choices=["camelyon", "dermamnist"])
+    ap.add_argument("--ds", required=True, choices=["camelyon", "dermamnist", "isic2019", "breakhis"])
     ap.add_argument("--limit", type=int, default=None)
     ap.add_argument("--workers", type=int, default=8)
     args = ap.parse_args()
@@ -171,7 +187,7 @@ def main() -> int:
         return 0
     (OUT / "load" / ("%s.json" % args.fm)).write_text(json.dumps(rec, indent=2) + "\n")
     print("loaded", json.dumps(rec), flush=True)
-    splits = camelyon_splits(tfm, args.limit) if args.ds == "camelyon" else dermamnist_splits(tfm, args.limit)
+    splits = camelyon_splits(tfm, args.limit) if args.ds == "camelyon" else medical_splits(args.ds, tfm, args.limit)
     out, n_img = {}, 0
     for k, (sub, extra) in splits.items():
         t1 = time.time()

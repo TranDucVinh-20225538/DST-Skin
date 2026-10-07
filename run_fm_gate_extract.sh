@@ -6,7 +6,8 @@
 #SBATCH --time=08:00:00
 #SBATCH --exclude=node002
 #SBATCH --output=logs/fm_gate_x_%A_%a.out
-# DST_PY=... FMX_CELLS="ds:fm[:limit] ..." sbatch --array=0-(n-1)%k run_fm_gate_extract.sh
+# DST_PY=... FMX_CELLS="ds:fm[:limit] | cnnidx:arch:seed ..." sbatch --array=0-(n-1)%3 run_fm_gate_extract.sh
+# ds = camelyon | dermamnist | isic2019 | breakhis; cnnidx = existing extract_features_indexed.py (Camelyon CNN).
 set -eo pipefail
 cd "${SLURM_SUBMIT_DIR}"
 unset PYTHONPATH
@@ -16,12 +17,17 @@ PY=${DST_PY:-python}
 echo "HEAD $(git rev-parse HEAD)"
 read -ra CELLS <<< "${FMX_CELLS}"
 IFS=: read -r DS FM LIMIT <<< "${CELLS[${SLURM_ARRAY_TASK_ID:-0}]}"
+echo "cell ${DS} ${FM} ${LIMIT} on $(hostname)"
 EXTRA=()
-[[ -n "${LIMIT}" ]] && EXTRA=(--limit "${LIMIT}")
-if [[ ${DS} == camelyon ]]; then
+[[ -n "${LIMIT}" && ${DS} != cnnidx ]] && EXTRA=(--limit "${LIMIT}")
+if [[ ${DS} == camelyon || ${DS} == cnnidx ]]; then
   export DST_STAGE_DS=camelyon17_v1.0 DST_STAGE_DATA=1
   source scripts/rigor/stage_wilds.sh
-  stage_run ${PY} scripts/rigor/fm_gate_extract.py --ds "${DS}" --fm "${FM}" "${EXTRA[@]}"
+  if [[ ${DS} == cnnidx ]]; then
+    stage_run ${PY} scripts/rigor/extract_features_indexed.py --archs "${FM}" --seeds "${LIMIT}" --task-id 0 --verify --num-workers 8
+  else
+    stage_run ${PY} scripts/rigor/fm_gate_extract.py --ds "${DS}" --fm "${FM}" "${EXTRA[@]}"
+  fi
 else
   T=/tmp/${SLURM_JOB_ID}_${SLURM_ARRAY_TASK_ID:-0}
   trap 'rm -rf "${T}"' EXIT

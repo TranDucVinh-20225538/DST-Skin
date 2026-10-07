@@ -35,6 +35,7 @@ LOGIT = ("MSP", "Energy", "ELogitNorm")
 ORDER = list(C.METHODS_ORDER)
 NEAR = (0.45, 0.55)
 OUT = REPO / "outputs/reports/rigor_pack/foundation_gate/cells"
+CACHE = REPO / "outputs/rigor_pack/miccai_campaign/scores"
 
 
 def probe(X, y):
@@ -52,7 +53,9 @@ def ci(x):
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--fm", required=True)
+    ap.add_argument("--fm", default=None)
+    ap.add_argument("--cnn", default=None, help="Camelyon CNN anchor arch (indexed features, published fc)")
+    ap.add_argument("--seed", type=int, default=42, help="H11c fold RNG seed (and CNN model seed)")
     ap.add_argument("--smoke", action="store_true")
     ap.add_argument("--nb", type=int, default=2000)
     args = ap.parse_args()
@@ -60,28 +63,48 @@ def main() -> int:
     torch.set_num_threads(16)
     from leakfree_fit_scores import REPRO_FOLD_SIZES, folds
     t0 = time.time()
-    name = "camelyon_%s%s" % (args.fm, "_smoke" if args.smoke else "")
-    z = np.load(REPO / "outputs/rigor_pack/foundation_gate/feats" / ("%s.npz" % name))
+    model = args.cnn or args.fm
+    name = "camelyon_%s%s%s" % (model, "" if args.seed == 42 else "_s%d" % args.seed, "_smoke" if args.smoke else "")
+    if args.cnn:
+        d = torch.load(C.feature_path(REPO, "camelyon17", args.cnn, args.seed, indexed=True), map_location="cpu",
+                       weights_only=False)
+        g = lambda k: np.asarray(d[k].numpy() if hasattr(d[k], "numpy") else d[k])  # noqa: E731
+        z = {"train_feats": g("train_feats"), "id_feats": g("val_feats"), "ood_feats": g("ood_feats"),
+             "train_labels": g("train_labels"), "id_labels": g("val_labels"), "train_slide": g("train_slide"),
+             "id_slide": g("val_slide"), "train_idx": g("train_idx"), "fc_weight": g("fc_weight"),
+             "fc_bias": g("fc_bias"), "train_logits": g("train_logits"), "id_logits": g("val_logits"),
+             "ood_logits": g("ood_logits")}
+    else:
+        z = np.load(REPO / "outputs/rigor_pack/foundation_gate/feats" / ("camelyon_%s%s.npz" % (args.fm, "_smoke" if args.smoke else "")))
     f64 = lambda k: np.asarray(z[k], dtype=np.float64)  # noqa: E731
     Xtr, Xid, Xood = f64("train_feats"), f64("id_feats"), f64("ood_feats")
-    ytr, yid = z["train_labels"], z["id_labels"]
-    tsl, vsl = z["train_slide"].astype(str), z["id_slide"].astype(str)
+    ytr, yid = np.asarray(z["train_labels"]), np.asarray(z["id_labels"])
+    tsl, vsl = np.asarray(z["train_slide"]).astype(str), np.asarray(z["id_slide"]).astype(str)
     meta = C.load_camelyon_metadata(REPO)
-    tf, fi = folds(z["train_slide"], meta.center.to_numpy()[z["train_idx"]], z["id_slide"], 42)
-    if not args.smoke and ((tf == 0).sum(), (tf == 1).sum()) != REPRO_FOLD_SIZES:
+    tf, fi = folds(np.asarray(z["train_slide"]), meta.center.to_numpy()[np.asarray(z["train_idx"])],
+                   np.asarray(z["id_slide"]), args.seed)
+    if not args.smoke and args.seed == 42 and ((tf == 0).sum(), (tf == 1).sum()) != REPRO_FOLD_SIZES:
         raise SystemExit("STOP: H11c fold sizes differ")
     keep = fi >= 0
-    res = {"ds": "camelyon", "fm": args.fm, "seed": 42, "smoke": bool(args.smoke), "feat_dim": int(Xtr.shape[1]),
+    res = {"ds": "camelyon", "model": model, "kind": "cnn" if args.cnn else "fm", "fm": model, "seed": args.seed,
+           "smoke": bool(args.smoke), "feat_dim": int(Xtr.shape[1]),
            "n_train": int(len(ytr)), "n_id": int(keep.sum()), "n_ood": int(len(Xood)),
            "n_id_excluded": int((~keep).sum()), "n_train_fold": [int((tf == k).sum()) for k in (0, 1)],
            "n_id_fold": [int((fi == k).sum()) for k in (0, 1)]}
 
-    W, b, acc_tr, sec = probe(Xtr, ytr)
-    res["probe"] = {"train_acc": acc_tr, "seconds": sec,
-                    "id_acc": float(((Xid @ W.T + b).argmax(1) == yid)[keep].mean())}
-    Ltr, Lid, Lood = Xtr @ W.T + b, Xid @ W.T + b, Xood @ W.T + b
+    if args.cnn:
+        W, b = f64("fc_weight"), f64("fc_bias")
+        Ltr, Lid, Lood = f64("train_logits"), f64("id_logits"), f64("ood_logits")
+        res["probe"] = {"train_acc": None, "seconds": 0.0, "id_acc": float((Lid.argmax(1) == yid)[keep].mean()),
+                        "note": "published fc (no probe)"}
+    else:
+        W, b, acc_tr, sec = probe(Xtr, ytr)
+        res["probe"] = {"train_acc": acc_tr, "seconds": sec,
+                        "id_acc": float(((Xid @ W.T + b).argmax(1) == yid)[keep].mean())}
+        Ltr, Lid, Lood = Xtr @ W.T + b, Xid @ W.T + b, Xood @ W.T + b
     sc = fit(Xtr, Ltr, W, b)
     si, so = scores(sc, Lid, Xid), scores(sc, Lood, Xood)
+    cache = {"fi": fi, "id_slide": vsl, **{"std_id_%s" % m: si[m] for m in ORDER}, **{"std_ood_%s" % m: so[m] for m in ORDER}}
     res["standard"] = {m: auroc(si[m][keep], so[m]) for m in ORDER}
     del sc
     print("standard %.0fs %s" % (time.time() - t0, res["standard"]), flush=True)
@@ -95,38 +118,41 @@ def main() -> int:
             same[m].append(auroc(si[m][fi == f], so[m]))
             dis[m].append(auroc(si[m][fi == 1 - f], so[m]))
         per_fold.append(({m: si[m] for m in FIT}, {m: so[m] for m in FIT}))
+        cache.update({"f%d_id_%s" % (f, m): si[m] for m in ORDER})
+        cache.update({"f%d_ood_%s" % (f, m): so[m] for m in ORDER})
         del sc
     res["same_2fold"] = {m: float(np.mean(same[m])) for m in ORDER}
     res["disjoint_2fold"] = {m: float(np.mean(dis[m])) for m in ORDER}
     res["delta"] = {m: res["same_2fold"][m] - res["disjoint_2fold"][m] for m in FIT}
     print("A-fit %.0fs %s" % (time.time() - t0, res["delta"]), flush=True)
 
-    from src.utils.scoring import OODScorer
-    fns = {"MSP": OODScorer.score_msp, "Energy": OODScorer.score_energy}
-    lg = {m: {"seen": [], "unseen": []} for m in LOGIT}
-    acc = {"seen": [], "unseen": []}
     per_fold_logit = []
-    for f in (0, 1):
-        sel = tf == f
-        Wf, bf, _, _ = probe(Xtr[sel], ytr[sel])
-        Lf_tr, Lf_id, Lf_ood = Xtr[sel] @ Wf.T + bf, Xid @ Wf.T + bf, Xood @ Wf.T + bf
-        scf = fit(Xtr[sel], Lf_tr, Wf, bf)
-        sid, sood = scores(scf, Lf_id, Xid), scores(scf, Lf_ood, Xood)
-        del scf
-        for m in LOGIT:
-            if m in fns:
-                assert np.allclose(fns[m](Lf_id), sid[m]) and np.allclose(fns[m](Lf_ood), sood[m])
-            lg[m]["seen"].append(auroc(sid[m][fi == f], sood[m]))
-            lg[m]["unseen"].append(auroc(sid[m][fi == 1 - f], sood[m]))
-        p = Lf_id.argmax(1) == yid
-        acc["seen"].append(float(p[fi == f].mean()))
-        acc["unseen"].append(float(p[fi == 1 - f].mean()))
-        per_fold_logit.append(({m: sid[m] for m in LOGIT}, {m: sood[m] for m in LOGIT}))
-    res["logit_gap"] = {m: {"seen": float(np.mean(v["seen"])), "unseen": float(np.mean(v["unseen"])),
-                            "gap": float(np.mean(v["seen"]) - np.mean(v["unseen"]))} for m, v in lg.items()}
-    res["fold_probe_acc"] = {k: float(np.mean(v)) for k, v in acc.items()}
-    res["confound_unseen_acc_lt_0.8"] = bool(res["fold_probe_acc"]["unseen"] < 0.8)
-    print("logit gap %.0fs" % (time.time() - t0), flush=True)
+    if not args.cnn:
+        from src.utils.scoring import OODScorer
+        fns = {"MSP": OODScorer.score_msp, "Energy": OODScorer.score_energy}
+        lg = {m: {"seen": [], "unseen": []} for m in LOGIT}
+        acc = {"seen": [], "unseen": []}
+        for f in (0, 1):
+            sel = tf == f
+            Wf, bf, _, _ = probe(Xtr[sel], ytr[sel])
+            Lf_tr, Lf_id, Lf_ood = Xtr[sel] @ Wf.T + bf, Xid @ Wf.T + bf, Xood @ Wf.T + bf
+            scf = fit(Xtr[sel], Lf_tr, Wf, bf)
+            sid, sood = scores(scf, Lf_id, Xid), scores(scf, Lf_ood, Xood)
+            del scf
+            for m in LOGIT:
+                if m in fns:
+                    assert np.allclose(fns[m](Lf_id), sid[m]) and np.allclose(fns[m](Lf_ood), sood[m])
+                lg[m]["seen"].append(auroc(sid[m][fi == f], sood[m]))
+                lg[m]["unseen"].append(auroc(sid[m][fi == 1 - f], sood[m]))
+            p = Lf_id.argmax(1) == yid
+            acc["seen"].append(float(p[fi == f].mean()))
+            acc["unseen"].append(float(p[fi == 1 - f].mean()))
+            per_fold_logit.append(({m: sid[m] for m in LOGIT}, {m: sood[m] for m in LOGIT}))
+        res["logit_gap"] = {m: {"seen": float(np.mean(v["seen"])), "unseen": float(np.mean(v["unseen"])),
+                                "gap": float(np.mean(v["seen"]) - np.mean(v["unseen"]))} for m, v in lg.items()}
+        res["fold_probe_acc"] = {k: float(np.mean(v)) for k, v in acc.items()}
+        res["confound_unseen_acc_lt_0.8"] = bool(res["fold_probe_acc"]["unseen"] < 0.8)
+        print("logit gap %.0fs" % (time.time() - t0), flush=True)
 
     # cluster bootstrap: id_val slides + OOD images, one draw for every score
     brng = np.random.default_rng(2)
@@ -136,11 +162,11 @@ def main() -> int:
         so = pf[1]
         sorted_.append({m: (np.argsort(so[m], kind="mergesort"), np.sort(so[m], kind="mergesort")) for m in so})
     bd = np.zeros((args.nb, len(FIT)))
-    bg = np.zeros((args.nb, len(LOGIT)))
+    bg = np.zeros((args.nb, len(LOGIT))) if per_fold_logit else None
     for bi in range(args.nb):
         wg = cluster_resample(vsl, brng)
         wo = np.bincount(brng.integers(0, nood, nood), minlength=nood).astype(float)
-        for fam, ms, arr, off in ((per_fold, FIT, bd, 0), (per_fold_logit, LOGIT, bg, 2)):
+        for fam, ms, arr, off in ((per_fold, FIT, bd, 0), (per_fold_logit, LOGIT, bg, 2))[:2 if per_fold_logit else 1]:
             for j, m in enumerate(ms):
                 d = 0.0
                 for f, (si, _) in enumerate(fam):
@@ -151,17 +177,21 @@ def main() -> int:
                     d += (a_s - a_d) / 2
                 arr[bi, j] = d
     res["delta_ci"] = {m: ci(bd[:, j]) for j, m in enumerate(FIT)}
-    res["logit_gap_ci"] = {m: ci(bg[:, j]) for j, m in enumerate(LOGIT)}
+    if per_fold_logit:
+        res["logit_gap_ci"] = {m: ci(bg[:, j]) for j, m in enumerate(LOGIT)}
     res["near_chance"] = {m: bool(all(NEAR[0] <= res[k][m] <= NEAR[1] for k in ("same_2fold", "disjoint_2fold")))
                           for m in FIT}
-    res["near_chance_logit"] = {m: bool(all(NEAR[0] <= res["logit_gap"][m][k] <= NEAR[1] for k in ("seen", "unseen")))
-                                for m in LOGIT}
+    if per_fold_logit:
+        res["near_chance_logit"] = {m: bool(all(NEAR[0] <= res["logit_gap"][m][k] <= NEAR[1] for k in ("seen", "unseen")))
+                                    for m in LOGIT}
     from scipy.stats import kendalltau
     res["kendall_tau_b_same_vs_disjoint"] = float(kendalltau([res["same_2fold"][m] for m in ORDER],
                                                              [res["disjoint_2fold"][m] for m in ORDER]).statistic)
     res["winner"] = {k: max(ORDER, key=lambda m: res[k][m]) for k in ("standard", "same_2fold", "disjoint_2fold")}
     res["seconds"] = round(time.time() - t0, 1)
     OUT.mkdir(parents=True, exist_ok=True)
+    CACHE.mkdir(parents=True, exist_ok=True)
+    np.savez(CACHE / ("%s.npz" % name), **cache)
     (OUT / ("%s.json" % name)).write_text(json.dumps(res, indent=2) + "\n")
     print(json.dumps(res), flush=True)
     return 0
