@@ -1,0 +1,45 @@
+{
+  "item": "R3 item 5b (revised): pooling check and fold-count stability",
+  "status": "post hoc relative to the paper's original precommit; written and committed before Step B runs",
+  "one_round": true,
+  "data": {
+    "dataset": "Camelyon17 (WILDS), 30 training slides from 3 training hospitals (10 each)",
+    "fms": ["uni", "virchow2", "dinov2_vitb14", "dinov2_vitl14", "conch_v1_5"],
+    "id_eval": "id_val patches of the 30 training slides",
+    "ood": "hospital-2 test patches (Track A primary OOD set)"
+  },
+  "step_A": {
+    "inputs": "cached Track A per-image scores outputs/rigor_pack/miccai_campaign/scores/camelyon_{fm}[_s43|_s44].npz (H11c 2-fold fits, fold seed = model seed); no refits",
+    "seeds": [42, 43, 44],
+    "scorers": ["Mahalanobis", "kNN"],
+    "estimates": {
+      "F1": "mean over folds f of AUROC(id_val of fold 1-f scored by fit f, OOD scored by fit f)",
+      "F2_naive": "Track E pooling: all id_val patches, each scored by the fit that did not see its slide, against OOD scores averaged over the two fits; one AUROC",
+      "F2_matched": "each id_val patch compared with the OOD scores of the same fit that scored it; per-arm AUROC pooled with weights n_k (number of ID patches in the arm)"
+    },
+    "also_reported": "F2_naive - F1, F2_matched - F1 per cell; s.d. of single-fit OOD scores (fit 0, fit 1) vs fit-averaged OOD scores",
+    "expectation_not_gate": "F2_matched - F1 ~ 0 (fold-weight differences only); if F2_naive - F1 carries the gap, the mechanism is the averaging of OOD scores",
+    "verdict_rule": "naive pooling explains the Maha gap if, in each of the three failing Mahalanobis cells at seed 42 (dinov2_vitb14, dinov2_vitl14, conch_v1_5), |F2_matched - F1| <= 0.02 while |F2_naive - F1| > 0.02; otherwise the gap persists under matched pooling"
+  },
+  "step_B": {
+    "question": "does a scorer fitted on (K-1)/K of the training slides approximate the scorer fitted on all of them?",
+    "K": [2, 5, 10],
+    "folds": "over the 30 training slides, stratified within hospital: per hospital the slides are sorted, shuffled with numpy default_rng([20261008, K]) and dealt round-robin into the K folds (counter continues across hospitals); one fold assignment per K",
+    "estimate": "X_K = correctly (matched) pooled cross-fit AUROC = crossfit_ood.crossfit_auroc(protocol='default', fold_ids = fold of each id_val patch's slide); fit k uses all training patches of slides outside fold k and scores the id_val patches of fold k and all OOD patches; arms pooled with weights n_k",
+    "scorers": {"Mahalanobis": "mahalanobis_l2 (Ledoit-Wolf on L2-normalised features, Track A definition)",
+                "kNN": "knn_mean_cosine, k = 50 (Track A definition)"},
+    "features": "R3 item-1 inputs camelyon_{fm}_s42.npz (FM features do not depend on the seed)",
+    "also_reported": "leaky AUROC (scorer fitted on all 30 slides = deployed scorer), fit-set size per fold (min / mean / max patches), n_groups_fit, K, d, probe ID accuracy",
+    "uncertainty": "point estimates for every cell first; then jackknife 95% CI (crossfit_ood, Busing weighted, blocks = slides) where affordable within the 1-day budget (Mahalanobis on CPU; kNN only with the GPU knn_mean_cosine scorer if it passes the R3 equality check, else no CI). Cells without a CI are reported as point estimates and marked so. CIs do not enter the criteria.",
+    "recommended_default_fixed_now": 5,
+    "stability_criterion": "|X_5 - X_10| <= 0.01 on >= 4 of 5 FMs, separately for Mahalanobis and for kNN; stable only if both pass",
+    "report_only_not_gate": "|X_2 - X_5| per FM x scorer (distance of the paper's K = 2 numbers from the recommended setting)"
+  },
+  "decides": {
+    "A_naive_explains": "paper states cross-fitting = group-disjoint evaluation keeping every ID sample; warns naive pooling inflates AUROC (by up to the observed Maha gap); package implements matched pooling",
+    "A_gap_persists": "report as unexplained; recommend group-disjoint evaluation for Mahalanobis",
+    "B_stable": "K = 5 becomes the package default and the paper recommends it",
+    "B_not_stable": "recommend the largest affordable K and report the drift"
+  },
+  "stopping_rule": "no new estimators, shrinkage tuning or alternative pooling schemes beyond naive and matched; report and stop"
+}
