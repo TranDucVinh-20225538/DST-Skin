@@ -23,5 +23,12 @@ if [[ ${DS} == camelyon ]]; then
   source scripts/rigor/stage_wilds.sh
   stage_run ${PY} scripts/rigor/fm_gate_extract.py --ds "${DS}" --fm "${FM}" "${EXTRA[@]}"
 else
+  T=/tmp/${SLURM_JOB_ID}_${SLURM_ARRAY_TASK_ID:-0}
+  trap 'rm -rf "${T}"' EXIT
+  mkdir -p "${T}/img"
+  cp "data/staged/${DS}_256.tar" "${T}/"
+  tar -xf "${T}/${DS}_256.tar" -C "${T}/img"
+  rm -f "${T}/${DS}_256.tar"
+  export DST_IMG_DIR="${T}/img"
   ${PY} scripts/rigor/fm_gate_extract.py --ds "${DS}" --fm "${FM}" "${EXTRA[@]}"
 fi

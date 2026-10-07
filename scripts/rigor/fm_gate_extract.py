@@ -9,7 +9,8 @@ CONCH v1 (MahmoodLab/CONCH) is gated and not accessible with the configured toke
 Every FM: frozen, eval(), float32, no autocast, no augmentation; the same eval transform for every split.
 Load result (ok / STOP + reason, feat dim, transform) -> outputs/rigor_pack/foundation_gate/load/{fm}.json.
 --ds camelyon   : train / id_val / hospital-2 OOD in the index order of the rigor-pack indexed features.
---ds dermamnist : every image of the medbench DermaMNIST arm sets (std, b0, b1) and their OOD sets, by key.
+--ds dermamnist : every image of the non-val sets of the medbench DermaMNIST arms std / b0 / b1 (ID and OOD),
+                  read by key from the node-local copy of data/staged/dermamnist_256.tar ($DST_IMG_DIR).
 --limit n       : smoke (first n images of every split), throughput only.
 Output: outputs/rigor_pack/foundation_gate/feats/{ds}_{fm}[_smoke].npz
 """
@@ -80,16 +81,20 @@ def load_fm(name: str):
 
 
 class Keyed:
-    """medbench images from the staged tar, by key."""
+    """medbench images from the node-local copy of the staged tar, by key."""
 
-    def __init__(self, ds, keys, labels, tfm):
-        self.ds, self.k, self.y, self.t = ds, keys, labels, tfm
+    def __init__(self, img_dir, keys, tfm):
+        import medbench_common as M
+        self.p = [Path(img_dir) / M.member(k) for k in keys]
+        self.t = tfm
 
     def __len__(self):
-        return len(self.k)
+        return len(self.p)
 
     def __getitem__(self, i):
-        return self.t(self.ds.image(self.k[i])), int(self.y[i])
+        from PIL import Image
+        with Image.open(self.p[i]) as im:
+            return self.t(im.convert("RGB")), -1
 
 
 def run(fwd, loader, device):
@@ -122,13 +127,14 @@ def camelyon_splits(tfm, limit):
 
 
 def dermamnist_splits(tfm, limit):
+    """One split "all": the union of the keys of every non-val set of the arms std / b0 / b1."""
+    import os
+
     import medbench_common as M
-    ds = M.StagedImages("dermamnist")
-    out = {}
-    for name, keys, labels in M.fm_gate_sets("dermamnist"):
-        keys, labels = keys[:limit], labels[:limit]
-        out[name] = (Keyed(ds, keys, labels, tfm), {"%s_keys" % name: np.asarray(keys)})
-    return out
+    keys = sorted({k for a in ("std", "b0", "b1") for s, v in M.arm("dermamnist", a).items() if s != "val"
+                   for k in v["keys"]})
+    keys = keys[::max(1, len(keys) // limit)][:limit] if limit else keys
+    return {"all": (Keyed(os.environ["DST_IMG_DIR"], keys, tfm), {"all_keys": np.asarray(keys)})}
 
 
 def main() -> int:
