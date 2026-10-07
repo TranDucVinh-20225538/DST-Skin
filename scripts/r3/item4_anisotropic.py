@@ -270,7 +270,7 @@ def analyze(out):
                                                                      r.D_hi, r.verdict))
     tally = {s: "%d/4 hold" % (K[(K.scorer == s)].verdict == "hold").sum() for s in ("knn", "exact_maha", "lw_maha", "vim")}
     L += ["", "Verdict: " + "; ".join("%s %s" % kv for kv in tally.items()) + " (per PRECOMMIT decision rule).", "",
-          "Caveats: post-hoc (not in the original precommit); synthetic Gaussian features."]
+          "Caveats: precommitted within R3 (PRECOMMIT.json, before any run) but not part of the original paper precommit; synthetic Gaussian features."]
     (RES / "REPORT.md").write_text("\n".join(L) + "\n")
     print("\n".join(L))
 

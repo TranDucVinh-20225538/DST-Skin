@@ -26,11 +26,16 @@ def main() -> int:
     parts, stops = ["# R3 item 5: cross-fit closure", "", "commit: <filled by parent>", ""], []
     A = pd.read_csv(OUT / "a_camelyon_fm.csv") if (OUT / "a_camelyon_fm.csv").exists() else None
     if A is not None:
+        A.insert(A.columns.get_loc("abs_F2_minus_F1"), "F2_minus_F1", A.auroc_F2 - A.auroc_F1)
         parts += ["## (a) Camelyon17 FMs: leaky vs F2 vs F1 (bar |F2-F1| <= 0.02)", "", md(A), ""]
         a3 = A[A.scorer != "ReAct"]
         ar = A[A.scorer == "ReAct"]
-        va = "a: %d/%d FM x scorer cells pass |F2-F1|<=0.02 (Mahalanobis, kNN, ViM); ReAct %d/%d" % (
-            a3["pass"].sum(), len(a3), ar["pass"].sum(), len(ar))
+        va = "a: |F2-F1|<=0.02 in " + ", ".join("%s %d/%d" % (m, A[A.scorer == m]["pass"].sum(), (A.scorer == m).sum())
+                                                 for m in ("kNN", "Mahalanobis", "ViM", "ReAct"))
+        fm = A[(A.scorer == "Mahalanobis") & ~A["pass"]]
+        if len(fm):
+            va += " (Mahalanobis failures: F2 %s F1 in all %d)" % (
+                "above" if (fm.F2_minus_F1 > 0).all() else "below" if (fm.F2_minus_F1 < 0).all() else "mixed vs", len(fm))
     else:
         va = "a: not computed"
         stops.append("STOP (a): a_camelyon_fm.csv missing")
@@ -53,6 +58,8 @@ def main() -> int:
                   max_frac_closed=("frac_closed", "max")).reset_index())
         S.to_csv(OUT / "b_isbi_patch2_summary.csv", index=False)
         parts += ["## (b) isbi_patch2 retrain: fraction of gap closed = (leaky - F2) / (leaky - truth)", "",
+                  "Label: this design does not identify the gap closed for CNNs (fold 0 and fold 1 disagree; each"
+                  " cross-fit half has only 6-9 slides). Appendix only.", "",
                   "### Summary (median over arch x seed cells)", "", md(S), ""]
         for f in sorted(B.fold.unique()):
             parts += ["### Fold %d cells" % f, "", md(B[B.fold == f].drop(columns="fold")), ""]
@@ -64,7 +71,10 @@ def main() -> int:
             stops.append("STOP (b): only %s of 9 cells per fold completed" % dict(n))
     else:
         stops.append("STOP (b): no cells completed")
-    parts += ["verdict: %s; %s" % (va, vb), "", "caveats:", "- post-hoc (not in precommit)"]
+    parts += ["verdict: %s; %s" % (va, vb), "", "caveats:", "- post-hoc (not in precommit)",
+              "- ViM values come from the Track A ViM (residual = bottom C eigendirections), which is not numerically"
+              " reproducible: rerunning the same code with a different BLAS thread count changes Delta_fit"
+              " (R3 item 1 stop-check); ViM rows are not reliable"]
     parts += ["- %s" % s for s in stops]
     (OUT / "REPORT.md").write_text("\n".join(parts) + "\n")
     print("\n".join(parts))
