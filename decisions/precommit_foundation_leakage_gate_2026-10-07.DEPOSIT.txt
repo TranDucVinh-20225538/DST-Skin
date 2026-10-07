@@ -1,0 +1,9 @@
+File: decisions/precommit_foundation_leakage_gate_2026-10-07.md
+sha256: 57a26c4875a9916e805a76c0b09f118516c52c26eeb8b6994770c89df643e5f9
+commit: 29f9114 (branch rigor-pack)
+UTC: 2026-10-07T03:56:46Z
+
+OSF / Zenodo paste:
+Precommit for the foundation-embedding group-leakage gate (DST-Skin rigor-pack).
+sha256(precommit_foundation_leakage_gate_2026-10-07.md) = 57a26c4875a9916e805a76c0b09f118516c52c26eeb8b6994770c89df643e5f9
+Committed in 29f9114 on 2026-10-07T03:56:46Z, before any foundation-model result was computed.
