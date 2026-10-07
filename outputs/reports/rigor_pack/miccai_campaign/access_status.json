@@ -1,0 +1,51 @@
+{
+  "conch_v1_5": {
+    "repo": "MahmoodLab/TITAN conch_v1_5_pytorch_model.bin (CONCH v1.5)",
+    "status": "ok",
+    "feat_dim": 768,
+    "embedding": "attentional-pool contrast embedding (EncoderWithAttentionalPooler.forward)",
+    "n_params": 306109184
+  },
+  "dinov2_vitb14": {
+    "repo": "facebookresearch/dinov2 (torch.hub dinov2_vitb14)",
+    "status": "ok",
+    "feat_dim": 768,
+    "embedding": "x_norm_clstoken",
+    "n_params": 86580480
+  },
+  "dinov2_vitl14": {
+    "repo": "facebookresearch/dinov2 (torch.hub dinov2_vitl14)",
+    "status": "ok",
+    "feat_dim": 1024,
+    "embedding": "x_norm_clstoken",
+    "n_params": 304368640
+  },
+  "uni": {
+    "repo": "hf-hub:MahmoodLab/uni",
+    "status": "ok",
+    "feat_dim": 1024,
+    "embedding": "CLS (timm num_classes=0)",
+    "n_params": 303350784
+  },
+  "virchow2": {
+    "repo": "hf-hub:paige-ai/Virchow2",
+    "status": "ok",
+    "feat_dim": 2560,
+    "embedding": "concat(CLS, mean patch tokens after 4 registers)",
+    "n_params": 631239424
+  },
+  "conch_v1": {
+    "repo": "MahmoodLab/CONCH",
+    "status": "STOP",
+    "reason": "GatedRepoError 403 with the configured HF token (2026-10-07); precommitted fallback CONCH v1.5 used"
+  },
+  "uni2_h": {
+    "repo": "MahmoodLab/UNI2-h",
+    "status": "not run",
+    "reason": "precommit L2: UNI v1 only"
+  },
+  "rxrx1": {
+    "status": "skipped",
+    "reason": "precommit L1: not a medical pass"
+  }
+}

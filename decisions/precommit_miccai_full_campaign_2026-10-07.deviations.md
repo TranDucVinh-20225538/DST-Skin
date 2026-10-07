@@ -47,3 +47,12 @@
    - Kermany Track C confound check (`scripts/rigor/camp_kermany_confound.py`, job 63970): new-patient ID split
      into v2 test_unseen (86) and v3 supplement (750); accuracy, class histograms, class-matched TPR.
    - Ranking-flip robustness: counts of `swap_ci_significant` rows (already in `medbench_report.ranking`).
+6. (2026-10-07 evening, after all campaign numbers) Final reporting:
+   - `fm_gate_report.py` now writes the L4 gate also with Virchow2 included (promised in the foundation-gate
+     deviations, item 2); the precommitted 4-FM gate is unchanged (PASS, +0.071; with Virchow2 PASS, +0.067).
+   - Post-hoc slide-identity mechanism check (`scripts/rigor/camp_slide_identity.py`, jobs 63976_0-12).
+   - H11c baseline with float64 Ledoit-Wolf completed for all 8 archs (jobs 63950 + 63955), merged into
+     `outputs/reports/rigor_pack/leakage_lw64/leakfree_knn.csv`; diff vs the old float32 table in `f32_vs_f64.csv`.
+   - Track C risk-coverage skipped (wrapper > 50 lines), as L4 allows.
+   - GPU actual 11.4 GPU-h vs estimate 6-15.
+   - Venue: the L7 readout (MICCAI) stays internal; the authors chose MIDL 2027 (`venue_note.md`).
