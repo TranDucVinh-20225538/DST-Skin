@@ -1,0 +1,39 @@
+{
+  "ds": "kermany",
+  "arch": "densenet121",
+  "seed": 43,
+  "arm": "v3std",
+  "n": {
+    "ood": 8866,
+    "ood_cxr": 624,
+    "test_unseen": 750,
+    "train": 89724
+  },
+  "acc_test_unseen": 0.98,
+  "bacc_test_unseen": 0.98,
+  "acc_train": 0.9919865364896795,
+  "bacc_train": 0.9802115595532889,
+  "auroc_all": {
+    "test_unseen": {
+      "MSP": 0.6584864275509437,
+      "Energy": 0.6115962854349952,
+      "ELogitNorm": 0.7196240318820966,
+      "ViM": 0.45179156327543424,
+      "ReAct": 0.4752349800736897,
+      "Mahalanobis": 0.2857353184449959,
+      "kNN": 0.4019875178584856
+    }
+  },
+  "auroc_all_ood_cxr": {
+    "test_unseen": {
+      "MSP": 0.7416666666666667,
+      "Energy": 0.7638418803418803,
+      "ELogitNorm": 0.806147435897436,
+      "ViM": 0.855190170940171,
+      "ReAct": 0.7531025641025642,
+      "Mahalanobis": 0.9984743589743589,
+      "kNN": 0.9732094017094017
+    }
+  },
+  "seconds": 42.3
+}

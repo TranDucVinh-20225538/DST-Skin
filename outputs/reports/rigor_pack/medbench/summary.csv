@@ -1,0 +1,10 @@
+dataset,verdict,verdict_robust,A_present_scores,A_present_robust,B_present_logit_scores,B_present_robust,n_pass_archs_A,rankA_n_archs,rankA_winner_changed_archs,rankA_sig_swap_archs,rankA_median_tau,rankA_changed_plain,rankA_changed_sig,rankB_n_archs,rankB_winner_changed_archs,rankB_sig_swap_archs,rankB_median_tau,rankB_changed_plain,rankB_changed_sig,median_gap_feature,median_gap_logit,median_gap_ReAct
+dermamnist,present,present,ViM;Mahalanobis,ViM;Mahalanobis,,,8.0,8.0,1.0,0.0,0.8095238095238096,False,False,4.0,0.0,0.0,0.9047619047619049,False,False,-0.009013807727906803,-0.013969549090306399,-0.0069580518601407015
+isic2019,present,present,ViM;Mahalanobis;kNN,ViM;Mahalanobis;kNN,,,8.0,8.0,4.0,1.0,0.8095238095238096,True,False,4.0,0.0,0.0,0.8095238095238096,False,False,-0.07681863541932862,-0.08502403413876986,-0.08236424822775579
+kermany,present,present,MSP;Energy;ELogitNorm;ViM;ReAct;Mahalanobis;kNN,MSP;Energy;ELogitNorm;ViM;ReAct;Mahalanobis;kNN,,,8.0,8.0,8.0,8.0,0.09523809523809525,True,True,4.0,0.0,0.0,0.9047619047619049,False,False,0.36832172864421825,0.16513988222232495,0.1537937653218332
+breakhis,present,present,MSP;Energy;ELogitNorm;ViM;ReAct;Mahalanobis;kNN,ViM;Mahalanobis;kNN,MSP;Energy;ELogitNorm,,8.0,8.0,8.0,0.0,0.4761904761904762,True,True,,,,,,,0.1543035412052223,0.13617319565004088,0.11664168383211505
+brain_cheng,absent,absent,,,,,8.0,8.0,0.0,0.0,0.7475028863222704,False,False,,,,,,,0.0,0.04092548076923075,0.07625200320512812
+camelyon17 (earlier),present,,,,,,,,,,,,,,,,,,,,,
+iwildcam (multibench),present,,,,,,,,,,,,,,,,,,,,,
+rxrx1 (multibench),present (A only; weak detectors),,,,,,,,,,,,,,,,,,,,,
+midog (multibench),absent by construction,,,,,,,,,,,,,,,,,,,,,

@@ -1,0 +1,9 @@
+dataset,arch,n_seen_fold_min,underpowered_fit,dfit_Mahalanobis,dfit_kNN,dfit_ViM,dfit_ReAct,dfit_ci_excl0_Mahalanobis,dfit_ci_excl0_kNN,dfit_ci_excl0_ViM,dfit_ci_excl0_ReAct
+brain_cheng,convnext_tiny,290,False,0.0,5.2915258462349346e-05,0.013813137651459473,-2.6773958755110794e-05,False,False,True,False
+brain_cheng,densenet121,290,False,5.392665217818227e-06,0.0008062357285891775,0.01580900479546965,2.143293917400424e-06,False,True,True,False
+brain_cheng,effb3,290,False,0.0,0.0,0.023136031507969945,9.984823068909243e-06,False,False,True,False
+brain_cheng,efficientnet_v2_s,290,False,-1.4977234603419376e-05,-0.00017439009946262907,0.0062413149254511024,-1.141368568058354e-05,False,False,False,False
+brain_cheng,mobilenet_v3_large,290,False,0.0,3.168459803160051e-05,0.01053336859008791,4.992411534621155e-06,False,False,True,False
+brain_cheng,regnet_y_3_2gf,290,False,0.0,0.0,0.013841529840160183,-3.119396448436618e-05,False,False,True,False
+brain_cheng,resnet18,290,False,0.0,3.221396580638247e-05,0.004841718174581511,3.201599086632978e-05,False,False,False,False
+brain_cheng,resnet50,290,False,2.4962057671995552e-06,0.00035051893535620327,0.00335980688663573,-3.965093747160253e-05,False,False,True,False

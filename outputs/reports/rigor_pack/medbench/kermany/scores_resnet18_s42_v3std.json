@@ -1,0 +1,39 @@
+{
+  "ds": "kermany",
+  "arch": "resnet18",
+  "seed": 42,
+  "arm": "v3std",
+  "n": {
+    "ood": 8866,
+    "ood_cxr": 624,
+    "test_unseen": 750,
+    "train": 89724
+  },
+  "acc_test_unseen": 0.98,
+  "bacc_test_unseen": 0.98,
+  "acc_train": 0.9900918371896037,
+  "bacc_train": 0.9764943002095855,
+  "auroc_all": {
+    "test_unseen": {
+      "MSP": 0.6050606060606062,
+      "Energy": 0.6390728626212497,
+      "ELogitNorm": 0.6108848785622979,
+      "ViM": 0.4431694112339274,
+      "ReAct": 0.5848363034814648,
+      "Mahalanobis": 0.4690305286111738,
+      "kNN": 0.6109469884953755
+    }
+  },
+  "auroc_all_ood_cxr": {
+    "test_unseen": {
+      "MSP": 0.39802670940170937,
+      "Energy": 0.3511111111111111,
+      "ELogitNorm": 0.2017628205128205,
+      "ViM": 0.9415705128205129,
+      "ReAct": 0.36461965811965813,
+      "Mahalanobis": 0.9993162393162394,
+      "kNN": 0.9546431623931624
+    }
+  },
+  "seconds": 22.2
+}

@@ -24,3 +24,22 @@ All written after Phase 0 and before any model is trained or any AUROC / accurac
 7. EfficientNetV2-S runs at 224 (L2) via the recipe transforms with input_size = 224.
 8. Brain (optional): only M_std is wired so far; the cvind (B) arm is added only if the budget allows
    (L6 cut order puts brain first).
+
+## 2026-10-07 (after training and scoring)
+
+9. Scoring threads: training ran with OMP/OPENBLAS/MKL = 8 as locked; the CPU scoring jobs
+   (`run_medbench_scores.sh`, `run_medbench_sens.sh`) ran with 16 threads. Effect is at the ~1e-6 level on
+   Mahalanobis (deviation 1); no bar is that close.
+10. DermaMNIST-E test as a second clean ID_unseen set for (A) was not wired into the M_std runs (their npz
+    hold test_seen / test_unseen only); DermaMNIST-E is reported through the DermaMNIST-C external arm only.
+11. Brain cvind (B) arm not run. Brain M_std ID_unseen = 2 images / 2 patients → underpowered (L4 floor);
+    brain counts toward no bar and is not a core dataset.
+12. Aggregation choices not spelled out in the precommit (gate application per run, arch = mean over passing
+    runs, floors, robust bar, CI-significant swap definition, BreakHis (B) = M_std(r) gap) are listed in the
+    README "Aggregation choices" section.
+13. Readouts added after the first look at Kermany results (descriptive, no bar): A-gap with ID_unseen split
+    into v2 test (86 images, underpowered) and v3 supplement (750 images); Δ_fit-only summary per dataset;
+    ISIC 2019 / Kermany / BreakHis population-confound notes. The locked ISIC 2019 sensitivity (drop images
+    without lesion_id) was run as specified.
+14. M_gd(r) BreakHis runs: 17/40 fail G2/G3 on P_out (models near chance on unseen patients); reported, not
+    retrained (L5).
