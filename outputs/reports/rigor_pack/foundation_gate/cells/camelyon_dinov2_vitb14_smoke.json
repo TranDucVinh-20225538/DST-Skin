@@ -1,0 +1,131 @@
+{
+  "ds": "camelyon",
+  "model": "dinov2_vitb14",
+  "kind": "fm",
+  "fm": "dinov2_vitb14",
+  "seed": 42,
+  "smoke": true,
+  "feat_dim": 768,
+  "n_train": 4000,
+  "n_id": 4000,
+  "n_ood": 4000,
+  "n_id_excluded": 0,
+  "n_train_fold": [
+    1276,
+    2724
+  ],
+  "n_id_fold": [
+    1279,
+    2721
+  ],
+  "probe": {
+    "train_acc": 0.9975,
+    "seconds": 0.4,
+    "id_acc": 0.9505
+  },
+  "standard": {
+    "MSP": 0.61272121875,
+    "Energy": 0.61754246875,
+    "ELogitNorm": 0.61754246875,
+    "ViM": 0.6201445624999999,
+    "ReAct": 0.59563003125,
+    "Mahalanobis": 0.72145575,
+    "kNN": 0.70368434375
+  },
+  "same_2fold": {
+    "MSP": 0.6080809123771356,
+    "Energy": 0.6146509210678306,
+    "ELogitNorm": 0.6146509210678306,
+    "ViM": 0.6095689415160341,
+    "ReAct": 0.5712145192396382,
+    "Mahalanobis": 0.7082789044264932,
+    "kNN": 0.6874243555035846
+  },
+  "disjoint_2fold": {
+    "MSP": 0.6080809123771356,
+    "Energy": 0.6146509210678306,
+    "ELogitNorm": 0.6146509210678306,
+    "ViM": 0.5864838247871721,
+    "ReAct": 0.5714597645718198,
+    "Mahalanobis": 0.6389986576762728,
+    "kNN": 0.5928704149544605
+  },
+  "delta": {
+    "Mahalanobis": 0.06928024675022038,
+    "kNN": 0.09455394054912414,
+    "ViM": 0.023085116728862043,
+    "ReAct": -0.0002452453321816206
+  },
+  "logit_gap": {
+    "MSP": {
+      "seen": 0.6549255239846801,
+      "unseen": 0.5267452773529888,
+      "gap": 0.12818024663169125
+    },
+    "Energy": {
+      "seen": 0.6535596237664716,
+      "unseen": 0.5233280265714871,
+      "gap": 0.13023159719498445
+    },
+    "ELogitNorm": {
+      "seen": 0.6535596467359681,
+      "unseen": 0.5233280265714871,
+      "gap": 0.13023162016448098
+    }
+  },
+  "fold_probe_acc": {
+    "seen": 0.9584964365133892,
+    "unseen": 0.848154638911613
+  },
+  "confound_unseen_acc_lt_0.8": false,
+  "delta_ci": {
+    "Mahalanobis": [
+      0.03736276446288625,
+      0.08827304278449864
+    ],
+    "kNN": [
+      0.03338275043122411,
+      0.14426166741672602
+    ],
+    "ViM": [
+      0.006753755340527795,
+      0.03590406276320565
+    ],
+    "ReAct": [
+      -0.0004426087786717249,
+      1.788701699512862e-06
+    ]
+  },
+  "logit_gap_ci": {
+    "MSP": [
+      0.06672143641122562,
+      0.17571575792869587
+    ],
+    "Energy": [
+      0.06674609813749655,
+      0.17565478561633768
+    ],
+    "ELogitNorm": [
+      0.06674609813749655,
+      0.17565478561633768
+    ]
+  },
+  "near_chance": {
+    "Mahalanobis": false,
+    "kNN": false,
+    "ViM": false,
+    "ReAct": false
+  },
+  "near_chance_logit": {
+    "MSP": false,
+    "Energy": false,
+    "ELogitNorm": false
+  },
+  "kendall_tau_b_same_vs_disjoint": 0.6,
+  "winner": {
+    "standard": "Mahalanobis",
+    "same_2fold": "Mahalanobis",
+    "disjoint_2fold": "Mahalanobis"
+  },
+  "seconds": 38.3
+}

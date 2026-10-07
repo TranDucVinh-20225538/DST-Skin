@@ -1,0 +1,20 @@
+{
+  "ds": "dermamnist",
+  "fm": "dinov2_vitb14",
+  "arm": "std",
+  "n_classes": 7,
+  "probe_train_acc": 0.9591836734693877,
+  "n": {
+    "train": 7007,
+    "test_seen": 693,
+    "test_unseen": 1312,
+    "e_test": 1511,
+    "ood": 2298,
+    "ood_bcn": 12413,
+    "ood_blood": 3421
+  },
+  "acc_train": 0.9591836734693877,
+  "acc_test_seen": 0.7171717171717171,
+  "acc_test_unseen": 0.8460365853658537,
+  "acc_e_test": 0.7074784910655195
+}

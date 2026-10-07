@@ -1,0 +1,91 @@
+{
+  "ds": "camelyon",
+  "model": "resnet50",
+  "kind": "cnn",
+  "fm": "resnet50",
+  "seed": 43,
+  "smoke": false,
+  "feat_dim": 2048,
+  "n_train": 302436,
+  "n_id": 33560,
+  "n_ood": 85054,
+  "n_id_excluded": 0,
+  "n_train_fold": [
+    145378,
+    157058
+  ],
+  "n_id_fold": [
+    16225,
+    17335
+  ],
+  "probe": {
+    "train_acc": null,
+    "seconds": 0.0,
+    "id_acc": 0.9951728247914183,
+    "note": "published fc (no probe)"
+  },
+  "standard": {
+    "MSP": 0.6208864186344717,
+    "Energy": 0.6206491419403387,
+    "ELogitNorm": 0.6205300787247184,
+    "ViM": 0.7662679881515643,
+    "ReAct": 0.7281747010375769,
+    "Mahalanobis": 0.968753537505851,
+    "kNN": 0.967053050473186
+  },
+  "same_2fold": {
+    "MSP": 0.6211037956286836,
+    "Energy": 0.6208749793607145,
+    "ELogitNorm": 0.6207488889738115,
+    "ViM": 0.8002650843367057,
+    "ReAct": 0.7285279440934631,
+    "Mahalanobis": 0.9734899342943524,
+    "kNN": 0.969898304146438
+  },
+  "disjoint_2fold": {
+    "MSP": 0.6211037956286836,
+    "Energy": 0.6208749793607145,
+    "ELogitNorm": 0.6207488889738115,
+    "ViM": 0.7378220222353633,
+    "ReAct": 0.728299207368051,
+    "Mahalanobis": 0.8958443635234135,
+    "kNN": 0.8380223164510464
+  },
+  "delta": {
+    "Mahalanobis": 0.07764557077093892,
+    "kNN": 0.13187598769539155,
+    "ViM": 0.06244306210134243,
+    "ReAct": 0.00022873672541212642
+  },
+  "delta_ci": {
+    "Mahalanobis": [
+      0.013932997493012512,
+      0.11589216319018972
+    ],
+    "kNN": [
+      0.016858318875889813,
+      0.21594303279228613
+    ],
+    "ViM": [
+      0.007929554732992459,
+      0.09692741096511664
+    ],
+    "ReAct": [
+      -0.0006702879482380047,
+      0.0010024795832823791
+    ]
+  },
+  "near_chance": {
+    "Mahalanobis": false,
+    "kNN": false,
+    "ViM": false,
+    "ReAct": false
+  },
+  "kendall_tau_b_same_vs_disjoint": 1.0,
+  "winner": {
+    "standard": "Mahalanobis",
+    "same_2fold": "Mahalanobis",
+    "disjoint_2fold": "Mahalanobis"
+  },
+  "seconds": 8084.6
+}

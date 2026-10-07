@@ -1,0 +1,91 @@
+{
+  "ds": "camelyon",
+  "model": "convnext_tiny",
+  "kind": "cnn",
+  "fm": "convnext_tiny",
+  "seed": 42,
+  "smoke": false,
+  "feat_dim": 768,
+  "n_train": 302436,
+  "n_id": 33560,
+  "n_ood": 85054,
+  "n_id_excluded": 0,
+  "n_train_fold": [
+    97099,
+    205337
+  ],
+  "n_id_fold": [
+    11021,
+    22539
+  ],
+  "probe": {
+    "train_acc": null,
+    "seconds": 0.0,
+    "id_acc": 0.9969308700834326,
+    "note": "published fc (no probe)"
+  },
+  "standard": {
+    "MSP": 0.8456347543899265,
+    "Energy": 0.8769184352292436,
+    "ELogitNorm": 0.8450874361090883,
+    "ViM": 0.8132230579630643,
+    "ReAct": 0.6915895858826615,
+    "Mahalanobis": 0.9282987274466004,
+    "kNN": 0.9153571985453649
+  },
+  "same_2fold": {
+    "MSP": 0.8409334587214832,
+    "Energy": 0.8748273900784226,
+    "ELogitNorm": 0.8403726940628289,
+    "ViM": 0.8120318872275282,
+    "ReAct": 0.6721044692169322,
+    "Mahalanobis": 0.9346848067906414,
+    "kNN": 0.9148970579756633
+  },
+  "disjoint_2fold": {
+    "MSP": 0.8409334587214832,
+    "Energy": 0.8748273900784226,
+    "ELogitNorm": 0.8403726940628289,
+    "ViM": 0.7377158245336191,
+    "ReAct": 0.6698508704830023,
+    "Mahalanobis": 0.8754005320590077,
+    "kNN": 0.8607810708612622
+  },
+  "delta": {
+    "Mahalanobis": 0.05928427473163367,
+    "kNN": 0.05411598711440113,
+    "ViM": 0.07431606269390911,
+    "ReAct": 0.00225359873392994
+  },
+  "delta_ci": {
+    "Mahalanobis": [
+      0.016238458624982636,
+      0.10501535504954733
+    ],
+    "kNN": [
+      0.030938006696977608,
+      0.08002614957794371
+    ],
+    "ViM": [
+      0.02780749251390391,
+      0.09721533770480095
+    ],
+    "ReAct": [
+      -0.0005838276513168789,
+      0.004199608202407146
+    ]
+  },
+  "near_chance": {
+    "Mahalanobis": false,
+    "kNN": false,
+    "ViM": false,
+    "ReAct": false
+  },
+  "kendall_tau_b_same_vs_disjoint": 0.9047619047619049,
+  "winner": {
+    "standard": "Mahalanobis",
+    "same_2fold": "Mahalanobis",
+    "disjoint_2fold": "Mahalanobis"
+  },
+  "seconds": 3891.8
+}

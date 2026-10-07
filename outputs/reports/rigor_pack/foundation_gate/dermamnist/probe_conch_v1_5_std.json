@@ -1,0 +1,20 @@
+{
+  "ds": "dermamnist",
+  "fm": "conch_v1_5",
+  "arm": "std",
+  "n_classes": 7,
+  "probe_train_acc": 0.8821178821178821,
+  "n": {
+    "train": 7007,
+    "test_seen": 693,
+    "test_unseen": 1312,
+    "e_test": 1511,
+    "ood": 2298,
+    "ood_bcn": 12413,
+    "ood_blood": 3421
+  },
+  "acc_train": 0.8821178821178821,
+  "acc_test_seen": 0.7316017316017316,
+  "acc_test_unseen": 0.8742378048780488,
+  "acc_e_test": 0.7385837193911317
+}

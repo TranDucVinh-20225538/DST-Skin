@@ -1,0 +1,20 @@
+{
+  "ds": "dermamnist",
+  "fm": "virchow2",
+  "arm": "b0",
+  "n_classes": 7,
+  "probe_train_acc": 0.9997618480590617,
+  "n": {
+    "train": 4199,
+    "seen": 343,
+    "unseen": 5007,
+    "e_test": 1511,
+    "ood": 2298,
+    "ood_bcn": 12413,
+    "ood_blood": 3421
+  },
+  "acc_train": 0.9997618480590617,
+  "acc_seen": 0.7988338192419825,
+  "acc_unseen": 0.7849011384062313,
+  "acc_e_test": 0.7266710787557908
+}

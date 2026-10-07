@@ -77,8 +77,14 @@ def main() -> int:
                       "logit_gap": {k: lg[k]["unseen_inst_seen_group"] - lg[k]["unseen_group"] for k in ("MSP", "Energy")}}
     anchor_med = float(np.median([np.median([anchors[a]["delta"][m] for m in FEAT]) for a in ANCHORS]))
 
-    # gate
-    v = {fm: fm_verdict(c) for fm, c in cells.items()}
+    gate = compute_gate({fm: fm_verdict(c) for fm, c in cells.items()}, anchor_med)
+    v, n = gate["per_fm"], gate["n_fm"]
+    vc = load_json(REP / "cells" / "camelyon_virchow2.json")
+    gate_v2 = compute_gate({**v, "virchow2": fm_verdict(vc)}, anchor_med) if vc else None
+    return report(cells, anchors, anchor_med, gate, gate_v2)
+
+
+def compute_gate(v: dict, anchor_med: float) -> dict:
     n = len(v)
     gate = {"n_fm": n, "fms": list(v), "anchor_median_feature_delta": anchor_med, "per_fm": v}
     if n == 0:
@@ -99,7 +105,31 @@ def main() -> int:
                      "cond1b_sign_noise": bool(c1b), "cond1": bool(c1a or c1b),
                      "median_abs_react_delta": react_med, "n_react_counted": len(react), "cond2_react_flat": bool(c2),
                      "decision": "PASS" if (c1a or c1b) and c2 else "FAIL"})
+    return gate
 
+
+def gate_lines(gate: dict, anchor_med: float) -> list:
+    v, n = gate["per_fm"], gate["n_fm"]
+    if not n:
+        return ["No FM loaded and scored."]
+    G = ["- n loaded and scored FMs = %d (%s)" % (n, ", ".join(v)),
+         "- (1a) FMs with >= 2 of 3 counted feature Δ_fit > 0.02: %d / %d → %s" % (
+             gate["n_fm_inflation"], n, gate["cond1a_half_inflate"]),
+         "- (1b) median of per-FM median feature Δ_fit = %s (CNN anchor median %s), FMs with >= 2 CIs excluding 0: "
+         "%d / %d → %s" % (fmt(gate["median_of_fm_median_feature_delta"]), fmt(anchor_med), gate["n_fm_ci_ok"], n,
+                          gate["cond1b_sign_noise"]),
+         "- (1) = %s" % gate["cond1"],
+         "- (2) median |Δ_fit ReAct| over %d FMs = %s (<= 0.02) → %s" % (
+             gate["n_react_counted"], fmt(gate["median_abs_react_delta"]), gate["cond2_react_flat"]), "",
+         "| FM | counted feature scores | # Δ_fit > 0.02 | inflation | median feature Δ_fit | # CI excl. 0 | ReAct Δ_fit |",
+         "|---|---|---|---|---|---|---|"]
+    for fm, x in v.items():
+        G.append("| %s | %s | %d | %s | %s | %d | %s |" % (fm, ", ".join(x["counted"]), x["n_feat_gt_0.02"], x["inflation"],
+                                                         fmt(x["median_feat_delta"]), x["n_ci_excl_0"], fmt(x["react_delta"])))
+    return G
+
+
+def report(cells, anchors, anchor_med, gate, gate_v2) -> int:
     # DermaMNIST (secondary, not part of the gate)
     derma = {}
     for name, tag in [(fm, "fm_%s" % fm) for fm in FMS] + [(a, a) for a in ANCHORS]:
@@ -123,7 +153,8 @@ def main() -> int:
         if row:
             derma[name] = row
 
-    tables = {"camelyon": {"fm": cells, "anchors": anchors}, "dermamnist": derma, "gate": gate}
+    tables = {"camelyon": {"fm": cells, "anchors": anchors}, "dermamnist": derma, "gate": gate,
+              "gate_with_virchow2": gate_v2}
     (REP / "tables.json").write_text(json.dumps(tables, indent=2) + "\n")
 
     rows = []
@@ -186,24 +217,10 @@ def main() -> int:
                                                       "NA" if d.get("acc_test_unseen") is None else "%.3f" % d["acc_test_unseen"]))
     (REP / "summary.md").write_text("\n".join(L) + "\n")
 
-    G = ["# Gate decision (L4)", "", "**%s**" % gate["decision"], ""]
-    if n:
-        G += ["- n loaded and scored FMs = %d (%s)" % (n, ", ".join(v)),
-              "- (1a) FMs with >= 2 of 3 counted feature Δ_fit > 0.02: %d / %d → %s" % (
-                  gate["n_fm_inflation"], n, gate["cond1a_half_inflate"]),
-              "- (1b) median of per-FM median feature Δ_fit = %s (CNN anchor median %s), FMs with >= 2 CIs excluding 0: "
-              "%d / %d → %s" % (fmt(gate["median_of_fm_median_feature_delta"]), fmt(anchor_med), gate["n_fm_ci_ok"], n,
-                               gate["cond1b_sign_noise"]),
-              "- (1) = %s" % gate["cond1"],
-              "- (2) median |Δ_fit ReAct| over %d FMs = %s (<= 0.02) → %s" % (
-                  gate["n_react_counted"], fmt(gate["median_abs_react_delta"]), gate["cond2_react_flat"]), "",
-              "| FM | counted feature scores | # Δ_fit > 0.02 | inflation | median feature Δ_fit | # CI excl. 0 | ReAct Δ_fit |",
-              "|---|---|---|---|---|---|---|"]
-        for fm, x in v.items():
-            G.append("| %s | %s | %d | %s | %s | %d | %s |" % (fm, ", ".join(x["counted"]), x["n_feat_gt_0.02"], x["inflation"],
-                                                             fmt(x["median_feat_delta"]), x["n_ci_excl_0"], fmt(x["react_delta"])))
-    else:
-        G.append("No FM loaded and scored.")
+    G = ["# Gate decision (L4)", "", "**%s**" % gate["decision"], ""] + gate_lines(gate, anchor_med)
+    if gate_v2:
+        G += ["", "## With Virchow2 (campaign addition, deviation 2; reported separately)", "",
+              "**%s**" % gate_v2["decision"], ""] + gate_lines(gate_v2, anchor_med)
     (REP / "gate_decision.md").write_text("\n".join(G) + "\n")
     print("\n".join(G))
     return 0

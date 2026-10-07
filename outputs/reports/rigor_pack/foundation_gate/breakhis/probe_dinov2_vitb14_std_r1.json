@@ -1,0 +1,17 @@
+{
+  "ds": "breakhis",
+  "fm": "dinov2_vitb14",
+  "arm": "std_r1",
+  "n_classes": 6,
+  "probe_train_acc": 0.9812676417757249,
+  "n": {
+    "train": 3897,
+    "seen": 1082,
+    "unseen": 1484,
+    "ood": 1013,
+    "ood_crc": 7180
+  },
+  "acc_train": 0.9812676417757249,
+  "acc_seen": 0.822550831792976,
+  "acc_unseen": 0.6549865229110512
+}

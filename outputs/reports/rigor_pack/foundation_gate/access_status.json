@@ -1,0 +1,60 @@
+{
+  "dinov2_vitb14": {
+    "fm": "dinov2_vitb14",
+    "torch": "2.1.1",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "repo": "facebookresearch/dinov2 (torch.hub dinov2_vitb14)",
+    "embedding": "x_norm_clstoken",
+    "transform": "Resize 224 bicubic + CenterCrop 224 + ImageNet mean/std",
+    "n_params": 86580480,
+    "status": "ok",
+    "feat_dim": 768,
+    "load_seconds": 2.2
+  },
+  "uni": {
+    "fm": "uni",
+    "torch": "2.1.1",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "repo": "hf-hub:MahmoodLab/uni",
+    "embedding": "CLS (timm num_classes=0)",
+    "transform": "Resize 224 bicubic + CenterCrop 224 + ImageNet mean/std",
+    "n_params": 303350784,
+    "status": "ok",
+    "feat_dim": 1024,
+    "load_seconds": 7.7
+  },
+  "conch_v1_5": {
+    "fm": "conch_v1_5",
+    "torch": "2.1.1",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "repo": "MahmoodLab/TITAN conch_v1_5_pytorch_model.bin (CONCH v1.5)",
+    "embedding": "attentional-pool contrast embedding (EncoderWithAttentionalPooler.forward)",
+    "transform": "Resize 448 bilinear + CenterCrop 448 + ImageNet mean/std (build_conch)",
+    "n_params": 306109184,
+    "status": "ok",
+    "feat_dim": 768,
+    "load_seconds": 7.6
+  },
+  "dinov2_vitl14": {
+    "fm": "dinov2_vitl14",
+    "torch": "2.1.1",
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "repo": "facebookresearch/dinov2 (torch.hub dinov2_vitl14)",
+    "embedding": "x_norm_clstoken",
+    "transform": "Resize 224 bicubic + CenterCrop 224 + ImageNet mean/std",
+    "n_params": 304368640,
+    "status": "ok",
+    "feat_dim": 1024,
+    "load_seconds": 13.0
+  },
+  "conch_v1": {
+    "status": "STOP",
+    "repo": "MahmoodLab/CONCH",
+    "reason": "GatedRepoError 403: configured HF token is not in the authorized list for MahmoodLab/CONCH (checked 2026-10-07); precommitted fallback CONCH v1.5 used"
+  },
+  "uni2_h": {
+    "status": "not run",
+    "repo": "MahmoodLab/UNI2-h",
+    "reason": "precommit L2: one UNI only (UNI v1); UNI2-h weights not cached"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "ds": "isic2019",
+  "fm": "dinov2_vitb14",
+  "arm": "b0",
+  "n_classes": 6,
+  "probe_train_acc": 0.8728444003964321,
+  "n": {
+    "train": 10090,
+    "seen": 1216,
+    "unseen": 12412,
+    "ood": 492,
+    "ood_pad": 2298
+  },
+  "acc_train": 0.8728444003964321,
+  "acc_seen": 0.6866776315789473,
+  "acc_unseen": 0.6734611666129552
+}

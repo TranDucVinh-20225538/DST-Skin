@@ -1,0 +1,17 @@
+{
+  "ds": "breakhis",
+  "fm": "conch_v1_5",
+  "arm": "std_r3",
+  "n_classes": 6,
+  "probe_train_acc": 0.965958474167069,
+  "n": {
+    "train": 4142,
+    "seen": 1151,
+    "unseen": 1143,
+    "ood": 1013,
+    "ood_crc": 7180
+  },
+  "acc_train": 0.965958474167069,
+  "acc_seen": 0.8853171155516942,
+  "acc_unseen": 0.6115485564304461
+}

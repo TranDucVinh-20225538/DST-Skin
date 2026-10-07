@@ -1,0 +1,15 @@
+{
+  "ds": "breakhis",
+  "fm": "virchow2",
+  "arm": "gd_r2",
+  "n_classes": 6,
+  "probe_train_acc": 0.9793540474243663,
+  "n": {
+    "train": 4892,
+    "unseen": 1460,
+    "ood": 1013,
+    "ood_crc": 7180
+  },
+  "acc_train": 0.9793540474243663,
+  "acc_unseen": 0.7671232876712328
+}
