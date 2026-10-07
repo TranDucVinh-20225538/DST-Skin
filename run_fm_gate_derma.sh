@@ -24,3 +24,5 @@ for ARM in ${ARMS}; do
   ${PY} scripts/rigor/medbench_scores.py --ds "${DS}" --arch "fm_${FM}" --seed 42 --arm "${ARM}"
   mv "${R}/scores_fm_${FM}_s42_${ARM}.json" "${O}/"
 done
+STD=$(${PY} -c "import sys; sys.path.insert(0,'scripts/rigor'); from fm_gate_extract import MED_ARMS; print(' '.join(a for a in MED_ARMS['${DS}'] if a.startswith('std')))")
+${PY} scripts/rigor/camp_medbench_cpu.py --ds "${DS}" --models "fm_${FM}" --arms ${STD}
