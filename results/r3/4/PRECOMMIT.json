@@ -1,0 +1,34 @@
+{
+  "item": "R3 item 4: anisotropic synthetic test (post-hoc mechanism follow-up; written before any run)",
+  "date": "2026-10-07",
+  "question": "Does the scorer-fit inflation Delta depend on WHERE (high- vs low-variance eigendirections) the group (slide) effect lives, at matched slide-identity probe accuracy, and does the direction differ by scorer?",
+  "data_generating_process": {
+    "features": "x = mu_g + e, e ~ N(0, Sigma); Sigma = U diag(lambda) U^T, U random orthogonal (seeded), lambda_i = i^-1 (i = 1..d), rescaled so trace(Sigma) = d",
+    "d": [768, 2560],
+    "group_effect": "mu_g = sigma_b * U_S diag(sqrt(lambda_S)) z_g, z_g ~ N(0, I_k): slide offsets live only in the k eigendirections S, scaled by their own variances",
+    "k": 16,
+    "placements": {"high": "S = top-16 eigendirections (largest variance)", "low": "S = bottom-16 eigendirections (smallest variance)"},
+    "calibration": "sigma_b chosen per (d, placement) by bisection so that the slide-identity probe balanced accuracy = 0.90 +/- 0.02 (mean over 5 calibration draws, seeds disjoint from run seeds); calibration uses only the probe, never Delta",
+    "probe": "same as item 3 / camp_slide_identity.py: 300 train + 100 test patches per slide (fresh draws), L2-normalise, StandardScaler, LogisticRegression(C=1, lbfgs, max_iter=2000), balanced accuracy, 30 slides (chance 1/30)",
+    "ood": "9 OOD groups, x = mu_ood + e, mu_ood = delta * v, v random unit vector (seeded, fixed per d), no group offsets; delta fixed per d before the run so that the disjoint-fit exact-covariance Mahalanobis AUROC is ~0.85 with no group effect (pilot, sigma_b = 0)",
+    "group_and_sample_counts": "Camelyon shape (paper2fold_designs.py 'camelyon'): 30 training slides with the real per-slide size profile (2 slides > 50k, 28 log-spaced from 1,430, total 302,436), ID-eval per slide = 0.111 x train, 9 OOD groups over a 5x range; all sizes rescaled by one factor per n/d ratio (shape kept, min 1)",
+    "n_over_d": {"definition": "mean per-fold fit-set size / d", "values": [1, 10]}
+  },
+  "scorers": {
+    "lw_maha": "crossfit_ood MahalanobisScorer (Ledoit-Wolf, class-agnostic, raw features)",
+    "exact_maha": "empirical covariance (MLE) precision; if n_fit <= d: ridge Sigma_hat + eps I, eps = 1e-3 * trace(Sigma_hat) / d",
+    "knn": "crossfit_ood KNNScorer (L2-normalised, k = 50, distance to k-th NN)",
+    "vim": "crossfit_ood ViMScorer residual-only (default dim: 512 for d = 768, 1000 for d = 2560)"
+  },
+  "protocol": "crossfit_ood.crossfit_auroc(protocol='paper_2fold'), Delta = AUROC(seen) - AUROC(unseen), fold-mean",
+  "replicates": "50 per (d, n/d, placement) cell, run seeds 0-49 (feature draws + fold partition); population (U, v) fixed per d",
+  "outputs": "per cell x scorer: mean Delta, SE over replicates, mean AUROC seen/unseen; per (d, n/d) x scorer: D = Delta_high - Delta_low with 95% CI (paired over replicate seeds, t-interval); calibrated sigma_b and achieved probe accuracy",
+  "predictions": {
+    "knn": "Delta_high > Delta_low (D > 0)",
+    "exact_maha": "Delta_high ~= Delta_low (|D| <= 0.01 and the 95% CI of D inside [-0.02, 0.02])",
+    "lw_maha": "in between: D_exact < D_lw < D_knn (point estimates)",
+    "vim": "Delta_low > Delta_high (D < 0)"
+  },
+  "decision_rule": "kNN / ViM prediction holds in a (d, n/d) cell if the 95% CI of D excludes 0 in the predicted direction; exact-Maha holds if the equivalence condition above holds; LW holds if the point-estimate ordering holds. Reported per cell (4 cells per scorer) as hold / fail / inconclusive (CI includes 0). No retuning of k, spectrum, sigma_b target, delta or counts after seeing any Delta.",
+  "status": "post-hoc (not in the original precommit); results reported whatever they are"
+}
