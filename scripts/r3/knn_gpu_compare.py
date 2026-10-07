@@ -20,11 +20,17 @@ PAIRS = [("isic2019_resnet50_s42_std", "", "_knn_gpu"),
 TOL = 5e-7
 
 
+SCORER = sys.argv[1] if len(sys.argv) > 1 else "knn"
+if len(sys.argv) > 2:  # scorer outroot cell:cpu_suffix:gpu_suffix ...
+    W = W.parent / sys.argv[2]
+    PAIRS = [tuple(p.split(":")) for p in sys.argv[3:]]
+
+
 def knn_row(path):
     for r in csv.DictReader(open(path)):
-        if r["scorer"] == "knn":
+        if r["scorer"] == SCORER:
             return r
-    raise SystemExit(f"no knn row in {path}")
+    raise SystemExit(f"no {SCORER} row in {path}")
 
 
 def main() -> int:
@@ -41,7 +47,7 @@ def main() -> int:
                          .replace("full_full", "full"), max_abs_diff=diffs[f_max], field_of_max=f_max,
                          status_same=a["status_thr"] == b["status_thr"] and a["status_gt0"] == b["status_gt0"],
                          passed=all(d < TOL for d in diffs.values())))
-    out = W.parent / "knn_gpu_compare.csv"
+    out = W.parent / ("knn_gpu_compare.csv" if SCORER == "knn" else f"{SCORER}_gpu_compare.csv")
     with open(out, "w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(rows[0]))
         w.writeheader()

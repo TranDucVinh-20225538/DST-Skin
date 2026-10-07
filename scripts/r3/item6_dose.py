@@ -6,11 +6,12 @@ with the most training patches is the filler set C, the other two are A and B. T
 and (B, A). Per fold the fit-set size is fixed at N = all training patches of the dose set; at dose f a fraction f
 of EACH dose slide's training patches enters the fit set and the remaining N - (dose part) patches are drawn
 uniformly from C (default_rng([1, fold, 1000 f])). Delta(f) = AUROC(id_val of dose slides vs OOD) - AUROC(id_val
-of unseen slides vs OOD), fold mean; OOD = hospital 2. Scorers = crossfit_ood definitions as in item 1
-(Ledoit-Wolf Mahalanobis, kNN k = 50 on the verified GPU implementation, ViM with the fc head for CNNs and
-residual-only for FMs). 95% CI: cluster bootstrap (B = 2000, default_rng(2)) over id_val slides and OOD images,
+of unseen slides vs OOD), fold mean; OOD = hospital 2. Scorers = Track A definitions as in the item-1 rerun
+(mahalanobis_l2: Ledoit-Wolf on L2-normalised features; knn_mean_cosine: mean cosine distance to k = 50 neighbours,
+on the validated GPU implementation). ViM dropped (Track A ViM is not numerically reproducible).
+95% CI: cluster bootstrap (B = 2000, default_rng(2)) over id_val slides and OOD images,
 same draws for every f and scorer. Sanity: Delta(0) CI must contain 0 (else STOP for that model x scorer);
-Delta(1) is listed beside Track A Delta_fit and the item-1 Delta.
+Delta(1) is listed beside Track A Delta_fit and the item-1 Delta for context only (different split, not a check).
 
 Writes results/r3/6/{dose.csv, REPORT.md, dose.png}.
 """
@@ -33,7 +34,8 @@ W = Path.home() / "r3work/item1"
 OUT = REPO / "results/r3/6"
 MODELS = ("resnet50", "convnext_tiny", "uni", "dinov2_vitb14")
 FS = (0.0, 0.05, 0.1, 0.25, 0.5, 1.0)
-SCORERS = ("mahalanobis", "knn", "vim")
+SCORERS = ("mahalanobis_l2", "knn_mean_cosine")
+KEY = {"mahalanobis_l2": "Mahalanobis", "knn_mean_cosine": "kNN"}
 NB = 2000
 
 
@@ -54,9 +56,8 @@ def slide_sets(slides, hosp_of, n_patches):
 def main() -> int:
     import common as C
     from crossfit_ood import get_scorer
-    from crossfit_ood.scorers import ViMScorer
     from medbench_scores import cluster_resample, wauroc
-    from recompute_gpu_knn import GPUKNNScorer
+    from recompute_gpu_knn import GPUKNNMeanCosineScorer
     meta = C.load_camelyon_metadata(REPO)
     hosp = {str(s): int(h) for s, h in zip(meta.slide, meta.center)}
     cells = {r["cell"]: r for r in csv.DictReader(open(W / "cells_camelyon.csv"))}
@@ -68,8 +69,6 @@ def main() -> int:
         xtr, gtr, xid, gid, xood = (z[k] for k in ("features_train", "groups_train", "features_id_eval",
                                                    "groups_id_eval", "features_ood"))
         gtr, gid = gtr.astype(str), gid.astype(str)
-        hp = W / "inputs" / (cell + "_head.npz")
-        head = np.load(hp) if hp.exists() else None
         npat = {s: int((gtr == s).sum()) for s in np.unique(gtr)}
         A, B, Cf = slide_sets(list(npat), hosp, npat)
         if sum(npat[s] for s in Cf) < max(sum(npat[s] for s in A), sum(npat[s] for s in B)):
@@ -85,12 +84,7 @@ def main() -> int:
                 fill = rng.choice(pool_c, N - len(part), replace=False)
                 fit = np.concatenate([part, fill])
                 for sc in SCORERS:
-                    if sc == "knn":
-                        m = GPUKNNScorer(k=50)
-                    elif sc == "vim":
-                        m = ViMScorer(weight=head["weight"], bias=head["bias"]) if head is not None else ViMScorer()
-                    else:
-                        m = get_scorer(sc)
+                    m = GPUKNNMeanCosineScorer(k=50) if sc == "knn_mean_cosine" else get_scorer(sc)
                     m.fit(xtr[fit])
                     S[(fold, f, sc)] = (m.score(xid), m.score(xood), len(part), len(fill),
                                         len(np.unique(gtr[fit])))
@@ -122,10 +116,8 @@ def main() -> int:
                                       wauroc(sid[um], wg[um], ss, cum, cum[-1])) / 2
                 d = float(np.mean([p[0] - p[1] for p in pts]))
                 lo, hi = (float(np.percentile(boots, q)) for q in (2.5, 97.5))
-                key = {"mahalanobis": "Mahalanobis", "knn": "kNN", "vim": "ViM"}[sc]
-                r1 = W / "out" / (cell + ("_knn" if sc == "knn" else "_mv")) / "paper_ci.csv"
-                if model == "resnet50" and sc == "knn":
-                    r1 = W / "out" / (cell + "_knn_cpu_full") / "paper_ci.csv"
+                key = KEY[sc]
+                r1 = W / "out_v2" / (cell + ("_knnmc" if sc == "knn_mean_cosine" else "_maha")) / "paper_ci.csv"
                 item1 = next((float(r["delta"]) for r in csv.DictReader(open(r1)) if r["scorer"] == sc), None) \
                     if r1.exists() else None
                 rows.append(dict(model=model, scorer=sc, f=f, delta=d, ci_lo=lo, ci_hi=hi,
@@ -134,7 +126,8 @@ def main() -> int:
                                  n_fit=[p[2] + p[3] for p in pts], n_dose_patches=[p[2] for p in pts],
                                  n_groups_fit=[p[4] for p in pts], K=2, d=int(xtr.shape[1]),
                                  id_acc=cells[cell]["id_acc"], trackA_delta_fit=float(si[model]["dfit_%s" % key]),
-                                 item1_delta=item1, slides_A=len(A), slides_B=len(B), slides_C=len(Cf)))
+                                 item1_delta=item1, slides_A=len(A), slides_B=len(B), slides_C=len(Cf),
+                                 hospitals_per_set=[sorted({hosp[x] for x in st}) for st in (A, B, Cf)]))
     OUT.mkdir(parents=True, exist_ok=True)
     with open(OUT / "dose.csv", "w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(rows[0]))
@@ -154,6 +147,8 @@ def report(rows):
     L = ["# R3 item 6: dose-response (Camelyon, post-hoc)", "", "commit: %s" % commit, "",
          "K = 2 folds (dose / unseen swapped); slides per set A / B / C = %d / %d / %d (C = filler)."
          % (rows[0]["slides_A"], rows[0]["slides_B"], rows[0]["slides_C"]), "",
+         "Split stratified within hospital: training hospitals in sets A / B / C = %s (each hospital's slides cut"
+         " 3 / 3 / 4), so Delta(f) does not mix in a hospital shift." % " / ".join(map(str, rows[0]["hospitals_per_set"])), "",
          "| model | d | ID acc | scorer | f | Delta | 95% CI | n_fit (fold 0, 1) | n_groups_fit (fold 0, 1) | Delta(0) CI contains 0 |",
          "|---|---|---|---|---|---|---|---|---|---|"]
     for r in rows:
@@ -162,7 +157,8 @@ def report(rows):
         L.append("| %s | %d | %.3f | %s | %.2f | %s | %s | %s | %s | %s |" % (
             r["model"], r["d"], float(r["id_acc"]), r["scorer"], r["f"], val[0], val[1], r["n_fit"], r["n_groups_fit"],
             "yes" if ok else "NO -> STOP"))
-    L += ["", "## Delta(1) beside Track A Delta_fit (seed 42, H11c 2-fold) and item-1 Delta (crossfit paper_2fold)", "",
+    L += ["", "## Delta(1) beside Track A Delta_fit and item-1 Delta (for context only)", "",
+          "Different split (three-way, fixed fit size) from Track A and item 1 (H11c 2-fold), so this is not a check.", "",
           "| model | scorer | Delta(1) | Track A Delta_fit | item-1 Delta |", "|---|---|---|---|---|"]
     for r in rows:
         if r["f"] == 1.0:
@@ -172,7 +168,7 @@ def report(rows):
     L += ["", "![dose](dose.png)", "",
           "Verdict: Delta(0) CI contains 0 in %d/%d model x scorer rows (rows failing the sanity check are STOP)."
           % (n_ok, len(sanity)), "",
-          "Caveats: post-hoc (not in precommit); three-way slide split (dose / unseen / filler, stratified by"
+          "Caveats: post-hoc (not in precommit); three-way slide split (dose / unseen / filler, stratified within"
           " hospital) instead of the Track A 15 / 15 split, so Delta(1) is not the Track A estimand."]
     (OUT / "REPORT.md").write_text("\n".join(L) + "\n")
     fig, ax = plt.subplots(1, len(SCORERS), figsize=(5 * len(SCORERS), 3.6))

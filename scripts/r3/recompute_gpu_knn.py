@@ -52,17 +52,49 @@ class GPUKNNScorer:
         return GPUKNNScorer(self.k, self.normalize)
 
 
+class GPUKNNMeanCosineScorer:
+    """crossfit_ood knn_mean_cosine (Track A) on GPU: x / (||x|| + 1e-8), then cosine distance
+    1 - cos(q, t) (sklearn's metric="cosine" renormalises, so exact unit vectors are used here),
+    score = -mean distance to the k nearest fit samples; exact brute force, float64."""
+
+    def __init__(self, k: int = 50) -> None:
+        self.k = k
+
+    @staticmethod
+    def _unit(x):
+        x = torch.from_numpy(np.ascontiguousarray(S._l2_tracka(x))).to("cuda")
+        return x / torch.linalg.norm(x, dim=1, keepdim=True)
+
+    def fit(self, features, labels=None):
+        self.t_ = self._unit(features)
+        self.k_ = int(min(self.k, self.t_.shape[0]))
+        return self
+
+    def score(self, features):
+        q = self._unit(features)
+        out = torch.empty(q.shape[0], dtype=torch.float64, device="cuda")
+        for i in range(0, q.shape[0], CHUNK):
+            sim = q[i:i + CHUNK] @ self.t_.T
+            out[i:i + CHUNK] = (1.0 - torch.topk(sim, self.k_, dim=1, largest=True).values).mean(1)
+        return -out.cpu().numpy()
+
+    def __deepcopy__(self, memo):
+        return GPUKNNMeanCosineScorer(self.k)
+
+
 def check(path, n_fit, n_query):
     z = np.load(path, allow_pickle=True)
     rng = np.random.default_rng(0)
     xtr, xq = z["features_train"], np.concatenate([z["features_id_eval"], z["features_ood"]])
     xtr = xtr[np.sort(rng.choice(len(xtr), min(n_fit, len(xtr)), replace=False))]
     xq = xq[np.sort(rng.choice(len(xq), min(n_query, len(xq)), replace=False))]
-    a = S.KNNScorer(k=50).fit(xtr).score(xq)
-    b = GPUKNNScorer(k=50).fit(xtr).score(xq)
-    print("check %s n_fit=%d n_query=%d d=%d max_abs_diff=%.3e max_rel_diff=%.3e"
-          % (os.path.basename(path), len(xtr), len(xq), xtr.shape[1], np.max(np.abs(a - b)),
-             np.max(np.abs(a - b) / np.maximum(np.abs(a), 1e-300))), flush=True)
+    for name, cpu, gpu in (("knn", S.KNNScorer, GPUKNNScorer), ("knn_mean_cosine", S.KNNMeanCosineScorer,
+                                                                GPUKNNMeanCosineScorer)):
+        a = cpu(k=50).fit(xtr).score(xq)
+        b = gpu(k=50).fit(xtr).score(xq)
+        print("check %s %s n_fit=%d n_query=%d d=%d max_abs_diff=%.3e max_rel_diff=%.3e"
+              % (name, os.path.basename(path), len(xtr), len(xq), xtr.shape[1], np.max(np.abs(a - b)),
+                 np.max(np.abs(a - b) / np.maximum(np.abs(a), 1e-300))), flush=True)
 
 
 if __name__ == "__main__":
@@ -76,6 +108,7 @@ if __name__ == "__main__":
         check(a.check, a.n_fit, a.n_query)
         raise SystemExit(0)
     S._REGISTRY["knn"] = GPUKNNScorer
+    S._REGISTRY["knn_mean_cosine"] = GPUKNNMeanCosineScorer
     sys.path.insert(0, os.path.join(os.environ["CROSSFIT_DIR"], "scripts"))
     import recompute_paper_ci as R
     R.get_scorer = S.get_scorer

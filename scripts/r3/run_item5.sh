@@ -5,11 +5,11 @@
 #SBATCH -c 16
 #SBATCH --mem=64G
 #SBATCH --array=0-1%2
-#SBATCH --output=/data2/cmdir/home/toandq/DST-Skin/logs/r3_5_%A_%a.out
+#SBATCH --output=logs/r3_5_%A_%a.out
 # R3 item 5 (post-hoc), CPU. Task 0: part (a) + part (b) fold 0; task 1: part (b) fold 1.
 set -euo pipefail
-R=/data2/cmdir/home/toandq/DST-Skin
-PY=/data2/cmdir/home/toandq/.conda/envs/torch-env/bin/python
+R=$HOME/DST-Skin
+PY=$HOME/.conda/envs/torch-env/bin/python
 export PYTHONPATH=$R OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK OPENBLAS_NUM_THREADS=$SLURM_CPUS_PER_TASK MKL_NUM_THREADS=$SLURM_CPUS_PER_TASK
 JOBLIB_TEMP_FOLDER=$(mktemp -d /tmp/r3_5_XXXXXX)
 export JOBLIB_TEMP_FOLDER
