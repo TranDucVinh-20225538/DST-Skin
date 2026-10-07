@@ -113,9 +113,11 @@ def camelyon_splits(tfm, limit):
                      weights_only=False)
     out = {}
     for k, rk in (("train", "train"), ("id", "val"), ("ood", "ood")):
-        idx = np.asarray(ref["%s_idx" % rk])[:limit]
-        out[k] = (WILDSSubset(dset, idx, tfm), {"%s_idx" % k: idx, "%s_slide" % k: np.asarray(ref["%s_slide" % rk])[:limit],
-                                                 "ref_labels": np.asarray(ref["%s_labels" % rk])[:limit]})
+        n = len(ref["%s_idx" % rk])
+        sel = np.arange(n) if not limit else np.arange(0, n, max(1, n // limit))[:limit]
+        idx = np.asarray(ref["%s_idx" % rk])[sel]
+        out[k] = (WILDSSubset(dset, idx, tfm), {"%s_idx" % k: idx, "%s_slide" % k: np.asarray(ref["%s_slide" % rk])[sel],
+                                                 "ref_labels": np.asarray(ref["%s_labels" % rk])[sel]})
     return out
 
 
