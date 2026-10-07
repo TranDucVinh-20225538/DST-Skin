@@ -49,11 +49,11 @@ Risk-coverage: skipped (`trackC_clinical_tau/risk_coverage_skip.md`).
 Locked table: `trackD_backbone_leak/side_by_side.csv`. Post-hoc two-channel table (`two_channel.md`), fold 0
 (unseen-slide accuracy 0.91-0.97), within-model seen − unseen AUROC, mean over seeds 42-44:
 
-| arch | MSP | Energy | ReAct | Maha | kNN | ViM | Track A Δ_fit (feature) |
-|---|---|---|---|---|---|---|---|
-| ResNet50 | +0.140 | +0.103 | +0.279 | +0.059 | +0.158 | +0.021 | +0.078 |
-| ConvNeXt-T | +0.137 | +0.114 | +0.186 | +0.102 | +0.131 | +0.090 | +0.059 |
-| DenseNet121 | +0.153 | +0.146 | +0.196 | +0.075 | +0.142 | +0.069 | +0.093 |
+| arch | MSP | Energy | ReAct | Maha | kNN | ViM | Track A Δ_fit feature, seed 42 | Track A, median over seeds (n) |
+|---|---|---|---|---|---|---|---|---|
+| ResNet50 | +0.140 | +0.103 | +0.279 | +0.059 | +0.158 | +0.021 | +0.203 | +0.078 (3) |
+| ConvNeXt-T | +0.137 | +0.114 | +0.186 | +0.102 | +0.131 | +0.090 | +0.059 | +0.071 (3) |
+| DenseNet121 | +0.153 | +0.146 | +0.196 | +0.075 | +0.142 | +0.069 | +0.093 | +0.093 (1) |
 
 Fold 1 (unseen-slide accuracy 0.66-0.72, confound flag) is larger for every score.
 

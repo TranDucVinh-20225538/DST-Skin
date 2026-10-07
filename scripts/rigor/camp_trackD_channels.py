@@ -64,18 +64,21 @@ def main() -> None:
         r["feature_gap_median"] = float(np.median([r["gap_%s" % m] for m in FEAT]))
         r["any_below_chance"] = ",".join(m for m in LOGIT + FEAT if g["below_chance_%s" % m].any())
         sa = side[side.arch == a]
-        r["scorer_fit_dfit_feature_median_trackA"] = sa.a_feature_dfit_median.median()
+        r["trackA_dfit_feature_s42"] = sa[sa.seed == 42].a_feature_dfit_median.iloc[0]
+        r["trackA_dfit_feature_seed_median"] = sa.a_feature_dfit_median.median()
+        r["trackA_n_seeds"] = int(sa.a_feature_dfit_median.notna().sum())
         agg.append(r)
     A = pd.DataFrame(agg)
     A.to_csv(OUT / "two_channel.csv", index=False)
 
     cols = ["arch", "folds", "acc_unseen", "gap_MSP", "gap_Energy", "gap_ReAct", "gap_Mahalanobis", "gap_kNN", "gap_ViM",
-            "logit_gap_median", "feature_gap_median", "scorer_fit_dfit_feature_median_trackA", "any_below_chance"]
+            "logit_gap_median", "feature_gap_median", "trackA_dfit_feature_s42", "trackA_dfit_feature_seed_median",
+            "trackA_n_seeds", "any_below_chance"]
     lines = ["# Track D two-channel table (post-hoc, descriptive)", "",
              "Within-model seen - unseen AUROC on the isbi_patch2 slide-disjoint retrained models (mean over seeds 42-44"
              " and the listed folds; scorer fitted on the fold's train slides, float64). Logit gap = backbone channel;"
-             " feature gap = backbone + scorer-fit channels. Last numeric column: Track A scorer-fit-only Δ_fit (published"
-             " backbone, median over available seeds). Fold 1: unseen-slide accuracy < 0.8 in every cell (confound).", "",
+             " feature gap = backbone + scorer-fit channels. trackA_* columns: Track A scorer-fit-only Δ_fit (published"
+             " backbone; per seed = median of Maha / kNN / ViM), at seed 42 and as the median over the available seeds. Fold 1: unseen-slide accuracy < 0.8 in every cell (confound).", "",
              "| " + " | ".join(cols) + " |", "|" + "---|" * len(cols)]
     for _, r in A[cols].iterrows():
         lines.append("| " + " | ".join(("%+.3f" % v if isinstance(v, float) and not c.startswith("acc") else
