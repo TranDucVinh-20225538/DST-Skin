@@ -18,8 +18,7 @@ for p in ("med", "medfm"):
     for c in pd.read_csv(W / f"cells_{p}.csv").itertuples():
         f = W / "inputs" / f"{c.cell}.npz"
         z = dict(np.load(f, allow_pickle=True))
-        src = "foundation_gate" if c.kind == "fm" else "medbench"
-        labels = np.load(REPO / f"outputs/rigor_pack/{src}/{c.dataset}/{c.cell[len(c.dataset) + 1:]}.npz")["train_labels"]
+        labels = np.load(REPO / f"outputs/rigor_pack/medbench/{c.dataset}/{c.cell[len(c.dataset) + 1:]}.npz")["train_labels"]
         gtr, gid = z["groups_train"].astype(str), z["groups_id_eval"].astype(str)
         fm = M.fold_map(c.dataset, gtr, labels)
         fe = np.array([fm.get(g, -1) for g in gid], dtype=np.int8)

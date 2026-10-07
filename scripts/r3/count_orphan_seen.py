@@ -21,9 +21,8 @@ for p in ("med", "medfm"):
         gtr, gid = z["groups_train"].astype(str), z["groups_id_eval"].astype(str)
         key = (c.dataset, len(gtr), len(gid), hash(gtr.tobytes()), hash(gid.tobytes()))
         if key not in cache:
-            src = "foundation_gate" if c.kind == "fm" else "medbench"
-            tag = c.cell[len(c.dataset) + 1:]
-            labels = np.load(REPO / f"outputs/rigor_pack/{src}/{c.dataset}/{tag}.npz")["train_labels"]
+                tag = c.cell[len(c.dataset) + 1:]
+            labels = np.load(REPO / f"outputs/rigor_pack/medbench/{c.dataset}/{tag}.npz")["train_labels"]
             fm = M.fold_map(c.dataset, gtr, labels)
             fs = np.array([fm.get(g, -1) for g in gid])
             orphan = (fs >= 0) & ~np.isin(gid, gtr)

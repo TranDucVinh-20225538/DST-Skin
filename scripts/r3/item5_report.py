@@ -16,14 +16,14 @@ FIT = ("Mahalanobis", "kNN", "ViM", "ReAct")
 
 
 def md(df: pd.DataFrame) -> str:
-    f = lambda v: ("%.4f" % v) if isinstance(v, (float, np.floating)) and not pd.isna(v) else str(v)  # noqa: E731
+    f = lambda v: "n/a" if pd.isna(v) else ("%.4f" % v) if isinstance(v, (float, np.floating)) else str(v)  # noqa: E731
     lines = ["| " + " | ".join(df.columns) + " |", "|" + "---|" * len(df.columns)]
     lines += ["| " + " | ".join(f(v) for v in r) + " |" for r in df.itertuples(index=False)]
     return "\n".join(lines)
 
 
 def main() -> int:
-    parts, stops = ["# R3 item 5: cross-fit closure", "", "commit: <filled by parent>", ""]
+    parts, stops = ["# R3 item 5: cross-fit closure", "", "commit: <filled by parent>", ""], []
     A = pd.read_csv(OUT / "a_camelyon_fm.csv") if (OUT / "a_camelyon_fm.csv").exists() else None
     if A is not None:
         parts += ["## (a) Camelyon17 FMs: leaky vs F2 vs F1 (bar |F2-F1| <= 0.02)", "", md(A), ""]
@@ -56,9 +56,9 @@ def main() -> int:
                   "### Summary (median over arch x seed cells)", "", md(S), ""]
         for f in sorted(B.fold.unique()):
             parts += ["### Fold %d cells" % f, "", md(B[B.fold == f].drop(columns="fold")), ""]
-        s0 = S[S.fold == 0].set_index("scorer")
-        vb = "b (fold 0): median fraction of gap closed " + ", ".join(
-            "%s %.2f" % (m, s0.loc[m, "median_frac_closed"]) for m in FIT if m in s0.index)
+        vb = "; ".join("b (fold %d): median fraction of gap closed " % f + ", ".join(
+            "%s %.2f" % (m, sf.loc[m, "median_frac_closed"]) for m in FIT if m in sf.index)
+            for f, sf in ((f, S[S.fold == f].set_index("scorer")) for f in sorted(S.fold.unique())))
         n = B.groupby("fold").size() // len(FIT)
         if (n < 9).any():
             stops.append("STOP (b): only %s of 9 cells per fold completed" % dict(n))
