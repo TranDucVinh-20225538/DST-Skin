@@ -37,3 +37,13 @@
    node with the exact script of `run_fm_repro.sh MODE=compare` (job 63953 was blocked by the CPU QOS and
    cancelled); output in `outputs/reports/rigor_pack/leakage_lw64/repro_compare.txt`. The hold on campaign
    numbers is lifted.
+5. (2026-10-07 ~17:00, **post-hoc, after the preliminary Track A / C / D read; descriptive only, no bar, does not
+   change L7**) Requested by the user:
+   - Track D two-channel table (`scripts/rigor/camp_trackD_channels.py`): within-model seen − unseen AUROC for all
+     7 scores on the existing isbi_patch2 retrained models (float64 scorer), folds reported separately because
+     fold 1 has unseen-slide accuracy < 0.8. Note: Track D's "published − retrain" column reads
+     `isbi_patch/phaseB_bar.csv` (patch 1, seed 42 only, unbalanced folds) as locked in L4; the retrain arm
+     itself (isbi_patch2) has seeds 42-44.
+   - Kermany Track C confound check (`scripts/rigor/camp_kermany_confound.py`, job 63970): new-patient ID split
+     into v2 test_unseen (86) and v3 supplement (750); accuracy, class histograms, class-matched TPR.
+   - Ranking-flip robustness: counts of `swap_ci_significant` rows (already in `medbench_report.ranking`).
