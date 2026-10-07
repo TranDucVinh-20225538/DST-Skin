@@ -32,3 +32,8 @@
 3. (2026-10-07) Scheduling only: Camelyon scoring tasks 63885_0, 63885_1, 63885_2, 63882_1, 63883_0, 63902_0 and
    63902_1 were requeued (restarted from scratch) to free CPUs for the REPRO and diagnosis jobs under the
    96-CPU QOS limit.
+4. (2026-10-07 16:18) New REPRO **PASS**: baseline (job 63950), REPRO a (63951) and REPRO b (63952) are identical
+   on every float column of ResNet18 / ResNet50 seed 42 (max abs diff 0). The comparison was run on the login
+   node with the exact script of `run_fm_repro.sh MODE=compare` (job 63953 was blocked by the CPU QOS and
+   cancelled); output in `outputs/reports/rigor_pack/leakage_lw64/repro_compare.txt`. The hold on campaign
+   numbers is lifted.

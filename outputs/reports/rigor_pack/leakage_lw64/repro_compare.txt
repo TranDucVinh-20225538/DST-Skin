@@ -1,0 +1,7 @@
+a vs b resnet18 max abs diff 0
+a vs b resnet50 max abs diff 0
+a vs baseline resnet18 max abs diff 0
+a vs baseline resnet50 max abs diff 0
+b vs baseline resnet18 max abs diff 0
+b vs baseline resnet50 max abs diff 0
+REPRO PASS
