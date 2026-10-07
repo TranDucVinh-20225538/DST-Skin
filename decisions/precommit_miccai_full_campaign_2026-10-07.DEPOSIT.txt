@@ -1,0 +1,9 @@
+file: decisions/precommit_miccai_full_campaign_2026-10-07.md
+sha256: 8755770c52828fc617da1fcf2f386ef0d1b83f302e053cd4785d59a173b41f00
+commit: f438005c2b90c6c16c5dd8b96950fabc8590fbcf
+utc: 2026-10-07T04:11:12Z
+
+Paste:
+Precommit MICCAI full campaign (DST-Skin rigor-pack), 2026-10-07.
+sha256 8755770c52828fc617da1fcf2f386ef0d1b83f302e053cd4785d59a173b41f00
+commit f438005c2b90c6c16c5dd8b96950fabc8590fbcf (2026-10-07T04:11:12Z)
