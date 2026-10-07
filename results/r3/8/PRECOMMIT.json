@@ -1,0 +1,123 @@
+{
+  "item": "R3 item 8: precommit for P2-a (CXR), P2-b (retrain arm on a second medical dataset), P2-c (Section 4.2 two-channel table from the balanced-fold retrains)",
+  "status": "APPROVED 2026-10-08 (v2 + Shenzhen addition); committed before P2-a Phase 0 and P2-b run. Nothing in P2-a / P2-b has been run except the P2-a OOD ceiling pilot (plan committed before running: results/r3/8/pilot_plan.md, ddaf785; it computes no Delta). P2-c is descriptive and already computed (results/r3/8/p2c/).",
+  "general": {
+    "rules": "same as R3: statistics fit on training splits only; every Delta table carries n_groups_fit, K, d and ID accuracy; report failures as findings; no retuning toward a prediction; no substitution after results; one round per item",
+    "scorers": "Track A definitions: mahalanobis_l2 (Ledoit-Wolf on L2-normalised float64 features), knn_mean_cosine (k = 50). ViM excluded (Track A ViM not numerically reproducible across BLAS thread counts, R3 item 1)",
+    "pooling": "matched pooling (crossfit_ood) for every cross-fit estimate (R3 item 5b)",
+    "uncertainty": "PRIMARY: refit-aware grouped jackknife 95% CI (crossfit_ood, Busing weighted, blocks = groups / patients; chosen by the coverage study: 0.95-1.00). REFERENCE ONLY: paired cluster bootstrap with fitted scores held fixed (B = 2000), shown beside it; it is too narrow when Delta > 0 (coverage study: Mahalanobis 0.82-0.87, kNN 0.88-0.93 at ICC 0.3 / 0.6) and never decides anything",
+    "knn_compute": "knn_mean_cosine on CPU; the GPU scorer only after the R3 strict equality check (score difference <= 1e-9, Delta and CI equal to the 6th decimal) on one cell of the item",
+    "access": "no terms accepted or registrations made on the user's behalf; datasets / weights that need them are used only if the user provides access"
+  },
+
+  "P2_a_CXR": {
+    "verified_facts_2026_10_08": {
+      "nih_official_split": "NIH ChestX-ray14 (112,120 frontal images, 30,805 patients) ships train_val_list.txt / test_list.txt; the NIH README states they are divided on the patient level ('All studies from the same patient will only appear in either training/validation or testing set'). Commonly reported sizes 86,524 / 25,596",
+      "prior_image_level_split": "Wang et al., ChestX-ray8, CVPR 2017, Sec. 5: 'we randomly shuffled the entire dataset into three subgroups ... training (70%), validation (10%) and testing (20%)'; no patient-level grouping is stated",
+      "chestmnist": "MedMNIST v2 (Yang et al., Sci Data 2023): ChestMNIST 78,468 / 11,219 / 22,433, stated to use the official split; these counts are ~70/10/20 of 112,120 and do not match the 86,524 / 25,596 official lists, so its patient-disjointness is unverified and is audited in Phase 0",
+      "chexpert": "official train / valid split; access requires Stanford registration -> not accessed unless the user provides it; report-only",
+      "rad_dino": "microsoft/rad-dino on Hugging Face, MIT licence, not gated; DINOv2-base architecture; pretrained on MIMIC-CXR, CheXpert, NIH-CXR (all 112,120 images), PadChest, BRAX",
+      "access_checked": "NIH Box archive images_001.tar.gz downloads without registration (2026-10-08); Shenzhen CXR set downloads from data.lhncbc.nlm.nih.gov without registration"
+    },
+    "regime_statement": "CXR tests the many-groups regime (~30,000 patients; Camelyon has 30 slides, the medbench sets hundreds to thousands of groups). Section 5.1: Delta_fit is expected to shrink as the number of groups grows, because the fitted scorer depends less on any single group. p1 can fail for this reason; a failure is a finding about the regime (leakage through the scorer fit vanishing at this group count), not evidence against leakage in the few-groups regime, and is reported that way",
+    "datasets": {
+      "id": "NIH ChestX-ray14 (public download from the NIH Box, no registration)",
+      "id_task": "14-finding multi-label classification (BCE), the dataset's standard task",
+      "groups": "Patient ID from Data_Entry_2017(_v2020).csv",
+      "covariates": "View Position (AP / PA), Finding Labels, Patient Age, Patient Gender, follow-up number from Data_Entry_2017(_v2020).csv"
+    },
+    "standard_split_definition": {
+      "rule": "Phase 0 audits candidates in this order and fixes M_std by the first rule that applies; decided before any training",
+      "candidate_1": "ChestMNIST split (most widely used benchmark split on this data): map ChestMNIST (MedMNIST+ 224) images to NIH image IDs by within-split image matching (downsampled NIH image vs ChestMNIST image, normalised correlation >= 0.98; cap 8 CPU-h, else 'not run'); if the train->test leak rate >= 5%, M_std = ChestMNIST split (citation: MedMNIST v2)",
+      "candidate_2": "else, the leaky protocol = image-level random 70 / 10 / 20 split as in Wang et al. CVPR 2017 (seed 0, stratified on 'No Finding'); citation: Wang et al. 2017. The official patient-level split is not a leaky protocol and is used only as the audit reference",
+      "not_invented": "no other leaky protocol is constructed"
+    },
+    "ood": {
+      "selection": "fixed by the CPU ceiling pilot (results/r3/8/pilot_plan.md, committed before running; frozen DINOv2-B, NIH archive 1, 300 ID / 300 OOD images, no Delta computed): candidate order Kermany pediatric CXR, then Shenzhen adult CXR; a candidate is skipped if Mahalanobis AUROC > 0.97 under either ID variant",
+      "pilot_result": "results/r3/8/pilot_ood.{csv,json} (job 64430; 1,500 fit / 300 seen / 300 unseen NIH images from 1,335 patients; 300 OOD images each). Mahalanobis AUROC seen / unseen: Kermany pediatric 0.977 / 0.962 (saturates: > 0.97), Shenzhen 0.661 / 0.569. kNN: Kermany pediatric 0.950 / 0.927, Shenzhen 0.550 / 0.449",
+      "primary": "Shenzhen Hospital CXR set (NLM; 662 adult frontal CXRs, 336 TB / 326 normal; all 662 used in P2-a)",
+      "secondary": "Kermany pediatric CXR (ChestXRay2017 v2, all 5,856 images)",
+      "pilot_disclosure": "the ceiling gate needs AUROC under both ID variants, so the pilot exposes a seen - unseen difference on its own small sample (Mahalanobis: Shenzhen +0.092, Kermany pediatric +0.015; kNN: +0.101 / +0.024). It is not the P2-a estimand (archive 1 only, 1,335 patients, 1,500-image fit, no case-mix correction, frozen DINOv2-B only); the predictions and gates below were written before the pilot ran and are not changed",
+      "near_chance_risk": "on the pilot, Shenzhen kNN AUROC is 0.550 / 0.449 (near chance); P2-a cells on Shenzhen that meet G_near_chance are excluded as written, and the secondary source is still reported",
+      "shenzhen_nature": "Shenzhen holds 336 TB and 326 normal images. Adult normal films are semantically the same as NIH 'No Finding', so the primary source is mainly a site-shift (acquisition / population) OOD set, not a semantic OOD set; this is consistent with its low pilot AUROC (0.55-0.66)",
+      "shenzhen_subsets": "descriptive secondary analysis: every Shenzhen cell is also reported on the TB subset (n = 336) and the normal subset (n = 326) separately; the verdict uses all 662 as written",
+      "below_chance_rule": "a cell with AUROC < 0.5 under ID_seen or ID_unseen that is not excluded by G_near_chance (e.g. pilot kNN unseen 0.449 with seen 0.550) is flagged below chance; its Delta is reported but not interpreted and does not count toward any bar",
+      "dropped": "Kermany OCT (different modality; at ceiling by construction). Montgomery County CXR (138 images, below the 200-image floor)",
+      "rule": "OOD images never enter any ID set; both sources reported, primary drives the verdict"
+    },
+    "backbones": {
+      "cnn": ["resnet50", "convnext_tiny"],
+      "cnn_recipe": "medbench L2 recipe (ImageNet init, cosine, same transforms, epochs = clip(ceil(300000 / n_train), 10, 50)), seeds 42 and 43, checkpoint = best macro AUROC on a 10% patient-disjoint subset of the training patients",
+      "fm": ["dinov2_vitb14 (frozen, 224 px)", "rad_dino (frozen, 518 px, microsoft/rad-dino)"],
+      "fm_head": "linear probe (fm_gate_score.probe recipe, one-vs-rest LR per finding) for the ID-competence gate only; OOD scores are feature scores",
+      "rad_dino_caveat": "RAD-DINO pretraining saw all NIH images (seen and unseen patients alike); its Delta is reported with this exposure note and is not dropped",
+      "fallback": "if RAD-DINO weights cannot be obtained without accepting terms, P2-a runs with 3 backbones and says so; no substitute FM after results"
+    },
+    "design": {
+      "A_fit": "Delta_fit (scorer fit on same-patient vs other-patient 2-fold groups of the M_std training patients; medbench L3 fold rule, seed 0) for mahalanobis_l2 and knn_mean_cosine. Both arms score the same ID-eval images under different fits, so the A-fit contrast has no case-mix confound",
+      "A_gap": "AUROC(ID_seen vs OOD) - AUROC(ID_unseen vs OOD) under the same model. ID_unseen = ID-eval images whose patient has no training image (official test list supplies extra unseen images if M_std lacks enough)",
+      "A_gap_case_mix": "under an image-level random split, unseen patients are mostly single-image patients, while multi-image patients (follow-up films, often AP / ICU) dominate ID_seen, so the two sets differ in View Position and findings. Correction (primary A-gap): post-stratification of ID_seen to the ID_unseen distribution over strata = View Position (AP, PA) x finding pattern ('No Finding'; each single finding; >= 2 findings) = 2 x 16 strata; weight of an ID_seen image = p_unseen(stratum) / p_seen(stratum); weighted AUROC. Strata with < 5 images in either set are dropped and their share reported. Unweighted A-gap reported beside it",
+      "A_gap_report": "for ID_seen and ID_unseen: View Position shares, prevalence of each of the 14 findings and 'No Finding', number of findings per image, age (median, IQR), sex, images per patient; effective sample size of the reweighted ID_seen",
+      "no_logit_scores": "logit scores (MSP / Energy) are not computed: the task is multi-label and no multi-label MSP / Energy definition was preregistered. Consequence: on CXR the backbone channel cannot be separated from the scorer-fit channel by a logit-vs-feature family comparison (as in Section 4.2), so P2-a reports A-fit (scorer channel) and the case-mix-corrected A-gap (backbone + scorer channels) for feature scores only, without a family comparison"
+    },
+    "gates": {
+      "G0_access": "NIH images + Data_Entry metadata downloadable without registration; otherwise STOP",
+      "G_leak": "leak rate = fraction of M_std ID-eval images whose patient has >= 1 training image. If < 5%: 'clean - not tested', STOP P2-a after the leak audit (0 GPU-h)",
+      "G_audit_sanity": "official split patient overlap must be 0 (NIH README); patient-ID parse rate >= 99%; otherwise pause, fix only a technical parse bug, else report and stop",
+      "G_competence": "CNN: final train loss <= 50% of epoch-1 loss and macro AUROC (14 findings) on ID_seen >= 0.75; FM linear probe macro AUROC >= 0.70. Failing backbones reported and excluded from bars; < 3 passing backbones -> INCONCLUSIVE. Never retrain with new hyperparameters to pass",
+      "G_near_chance": "a (backbone, scorer, OOD source) cell with OOD AUROC in [0.45, 0.55] under both ID_seen and ID_unseen is near-chance, reported and excluded from bars",
+      "G_ceiling": "a (backbone, scorer, OOD source) cell with OOD AUROC > 0.98 under both ID_seen and ID_unseen is at ceiling, reported and excluded from bars (Delta not identifiable there)",
+      "G_floor": "ID_unseen < 200 images or < 20 patients -> underpowered, counts toward no bar"
+    },
+    "predictions": {
+      "p1": "Delta_fit > 0.02 for mahalanobis_l2 on >= half of gate-passing backbones (may fail in the many-groups regime; see regime_statement)",
+      "p2": "median Delta_fit of the 2 FMs < median Delta_fit of the 2 CNNs (per scorer)",
+      "p3": "kNN Delta_fit > 0.02 on >= half of gate-passing backbones",
+      "note": "predictions are reported hold / fail; none gates anything"
+    },
+    "verdict_rule": "leakage present on CXR for a scorer if Delta_fit > 0.02 (point) on >= half of gate-passing backbones; robust version also needs the jackknife CI to exclude 0; both reported. The case-mix-corrected A-gap is reported descriptively and does not enter the verdict",
+    "stopping_rule": "stop after the leak audit if G_leak fails; otherwise one training round, no reruns except for technical failures",
+    "gpu_h_estimate": {
+      "phase0_pilot_and_staging": "0 GPU-h (CPU: audit, ChestMNIST matching <= 8 CPU-h, ceiling pilot, pre-resize to 256 px)",
+      "cnn_training": "measured basis: Camelyon v2 retrains 1.3 ms (ResNet-50) and 3.9 ms (ConvNeXt-T) per image-epoch on A100; n_train ~78k x 10 epochs -> 0.3 h + 0.85 h per seed; 2 seeds -> ~2.3 GPU-h",
+      "extraction": "4 CNN runs x ~0.1 h + DINOv2-B ~0.2 h + RAD-DINO (518 px, ~5x tokens) ~1.2 h -> ~1.8 GPU-h",
+      "total": "~4 GPU-h, ~5-6 GPU-h with smoke and 30% overhead; 0 GPU-h if the leak audit stops P2-a"
+    }
+  },
+
+  "P2_b_retrain_second_medical_dataset": {
+    "finding_before_writing": "the medbench (B) arm already trained group-disjoint models on Kermany OCT and ISIC 2019 (and DermaMNIST): resnet18 / resnet50 / densenet121 / convnext_tiny x seeds 42, 43 x folds b0, b1, with cached features of the fold's training images, held-out same-patient images ('seen'), other-fold images ('unseen') and OOD. P2-b needs no training",
+    "datasets": {
+      "primary": "Kermany OCT (arm B: ~38k training images per fold, thousands of patients per fold, OOD = DRUSEN, the medbench Kermany OOD class)",
+      "replication": "ISIC 2019 (arm B, lesion / patient groups as in medbench; OOD as in the medbench ISIC arm). Larger Track A Delta (~0.04) than Kermany (~0.025), so the absolute channels are better resolved"
+    },
+    "G_release_kermany": {
+      "rule": "train, seen, unseen and OOD images of the Kermany (B) arm must come from one release (v2 / v3 confound, Appendix D); if mixed, restrict to one release before computing",
+      "checked_2026_10_08": "outputs/reports/rigor_pack/medbench/splits/kermany.csv.gz: every image with a b_f0 or b_f1 role (train / val / seen / unseen / ood / ood2) is version v3 (0 v2 images in either fold), by construction of medbench_common.load_sets (arm b* filters version == 'v3'). Gate passes; no restriction needed",
+      "note": "descriptive only: v3 holds 51,390 NORMAL images vs 26,565 in v2 (other classes equal); reported, not acted on"
+    },
+    "design": "per (dataset, arch, seed, fold): truth = AUROC(unseen vs OOD) with the scorer fit on the fold's training images; leaky = AUROC(seen vs OOD), same fit; F2 = within-S cross-fit (2 patient folds inside the fold's training patients, medbench fold rule, seed 0), matched pooling",
+    "outcomes": {
+      "primary": "absolute channels: scorer channel = leaky - F2; model channel = F2 - truth (median over cells, jackknife CI per cell over patients)",
+      "secondary": "fraction of gap closed = (leaky - F2) / (leaky - truth), only for cells with |leaky - truth| >= 0.01 (ratio unstable below; excluded cells counted and reported)"
+    },
+    "scorers": "mahalanobis_l2, knn_mean_cosine",
+    "gates": "medbench model_quality.csv G1 / G2 as recorded (no re-evaluation); near-chance and ceiling rules as P2-a",
+    "identification_check": "Kermany identified if the per-fold medians of the scorer channel and of the model channel each differ by <= 0.02 (absolute, both scorers); otherwise 'not identified' (as Camelyon). Same check reported for ISIC",
+    "predictions": {
+      "p1": "Kermany: median scorer channel (leaky - F2) > 0 for both scorers",
+      "p2": "Kermany: median model channel (F2 - truth) > 0 for both scorers",
+      "p3_replication": "ISIC 2019: p1 and p2 hold in the same direction",
+      "note": "hold / fail reported; robust version needs the median of the per-cell jackknife lower bounds > 0"
+    },
+    "stopping_rule": "one round; report and stop",
+    "gpu_h_estimate": "0 GPU-h (cached features; CPU only, ~2-4 CPU-h for both datasets plus jackknife)"
+  },
+
+  "P2_c_two_channel_table_balanced_folds": {
+    "scope": "no new runs (user decision 2026-10-08). Rebuild the Section 4.2 two-channel table (Delta_bb for MSP, Energy, ReAct, Mahalanobis, kNN, ViM) from the 18 balanced-fold isbi_patch2 v2 retrains (resnet50 / convnext_tiny / densenet121 x seeds 42-44 x folds 0, 1): per fold, median over seeds, ID accuracy beside AUROC",
+    "type": "descriptive, no predictions, no gates beyond near / below-chance flags; computed 2026-10-08 (results/r3/8/p2c/two_channel_balanced.md, script scripts/r3/item8_p2c_table.py)",
+    "caveats": "ViM not numerically reproducible across BLAS thread counts (flagged in the table); the old Table 3 run (seed 42, fold 0) is a different, unbalanced slide partition, shown beside for MSP / Energy only",
+    "gpu_h_estimate": "0 GPU-h"
+  }
+}
