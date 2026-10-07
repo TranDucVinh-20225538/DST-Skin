@@ -1,0 +1,22 @@
+{
+  "info": {
+    "n_images": 4999,
+    "n_patients": 1335,
+    "n_fit_patients": 667,
+    "n_fit": 1500,
+    "n_seen": 300,
+    "n_unseen": 300,
+    "kermany_ped_pool": 5856,
+    "kermany_ped_n": 300,
+    "shenzhen_n": 300
+  },
+  "maha_max_auroc": {
+    "kermany_ped": 0.9766,
+    "shenzhen": 0.660811111111111
+  },
+  "saturation_threshold": 0.97,
+  "primary": "shenzhen",
+  "secondary": "kermany_ped",
+  "rule_applied": "first non-saturating candidate",
+  "seconds": 415.8
+}
