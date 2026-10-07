@@ -47,7 +47,8 @@ class OODScorer:
     ):
         train_features_norm = self.l2_normalize(train_features)
 
-        lw = LedoitWolf().fit(train_features_norm)
+        # float32 input makes the precision depend on the BLAS thread count (cond ~1e8).
+        lw = LedoitWolf().fit(self.l2_normalize(np.asarray(train_features, dtype=np.float64)))
         self.mu = lw.location_
         self.precision = lw.precision_
 
