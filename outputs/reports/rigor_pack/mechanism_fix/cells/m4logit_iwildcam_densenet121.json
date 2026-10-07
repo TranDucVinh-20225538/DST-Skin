@@ -1,0 +1,18 @@
+{
+  "ds": "iwildcam",
+  "arch": "densenet121",
+  "seed": 42,
+  "MSP": {
+    "seen_inst": 0.7001381171718926,
+    "unseen_inst_seen_group": 0.5816042137825064,
+    "unseen_group": 0.45768824396133856,
+    "R": 0.5110993385158581
+  },
+  "Energy": {
+    "seen_inst": 0.7195211566740125,
+    "unseen_inst_seen_group": 0.6089499582724666,
+    "unseen_group": 0.46879493273295836,
+    "R": 0.5589962762429618
+  },
+  "seconds": 1.9
+}

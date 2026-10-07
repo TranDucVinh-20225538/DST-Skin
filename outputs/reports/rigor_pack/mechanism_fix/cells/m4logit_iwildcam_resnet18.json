@@ -1,0 +1,18 @@
+{
+  "ds": "iwildcam",
+  "arch": "resnet18",
+  "seed": 42,
+  "MSP": {
+    "seen_inst": 0.7278002004806008,
+    "unseen_inst_seen_group": 0.6045165070611189,
+    "unseen_group": 0.4613115989708082,
+    "R": 0.5373772359454871
+  },
+  "Energy": {
+    "seen_inst": 0.7460847899562715,
+    "unseen_inst_seen_group": 0.6444607612838923,
+    "unseen_group": 0.4759463834868548,
+    "R": 0.6238075510973875
+  },
+  "seconds": 4.1
+}

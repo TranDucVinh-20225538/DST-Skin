@@ -1,0 +1,19 @@
+{
+  "ds": "rxrx1",
+  "arch": "resnet18",
+  "seed": 42,
+  "folds": [],
+  "MSP": {
+    "seen_inst": 0.4231062118508579,
+    "unseen_inst_seen_group": 0.41093883459283,
+    "unseen_group": 0.45956014680991286,
+    "R": 1.3337740430956027
+  },
+  "Energy": {
+    "seen_inst": 0.5239807641855614,
+    "unseen_inst_seen_group": 0.5235145041965943,
+    "unseen_group": 0.51992445309035,
+    "R": null
+  },
+  "seconds": 5.7
+}

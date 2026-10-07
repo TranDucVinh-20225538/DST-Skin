@@ -1,0 +1,19 @@
+{
+  "ds": "camelyon",
+  "arch": "resnet50",
+  "seed": 42,
+  "folds": [],
+  "MSP": {
+    "seen_inst": 0.4930569867790822,
+    "unseen_inst_seen_group": 0.4894403934447753,
+    "unseen_group": 0.330975870214605,
+    "R": 0.9776865225822392
+  },
+  "Energy": {
+    "seen_inst": 0.4716061444632691,
+    "unseen_inst_seen_group": 0.46781450635587035,
+    "unseen_group": 0.3215453797243563,
+    "R": 0.9747326483775041
+  },
+  "seconds": 2.4
+}

@@ -1,0 +1,18 @@
+{
+  "ds": "camelyon",
+  "arch": "densenet121",
+  "seed": 42,
+  "MSP": {
+    "seen_inst": 0.5857477170031813,
+    "unseen_inst_seen_group": 0.5811719384396357,
+    "unseen_group": 0.4289290739870983,
+    "R": 0.9708212080174909
+  },
+  "Energy": {
+    "seen_inst": 0.5599652090415235,
+    "unseen_inst_seen_group": 0.5559144709547581,
+    "unseen_group": 0.41610284330457664,
+    "R": 0.9718429620838284
+  },
+  "seconds": 1.7
+}

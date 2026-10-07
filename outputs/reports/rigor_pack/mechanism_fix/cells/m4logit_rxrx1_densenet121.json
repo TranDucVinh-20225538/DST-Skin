@@ -1,0 +1,18 @@
+{
+  "ds": "rxrx1",
+  "arch": "densenet121",
+  "seed": 42,
+  "MSP": {
+    "seen_inst": 0.42860225278921615,
+    "unseen_inst_seen_group": 0.41961927867796756,
+    "unseen_group": 0.45529249596612353,
+    "R": 1.33656396652919
+  },
+  "Energy": {
+    "seen_inst": 0.510404664466904,
+    "unseen_inst_seen_group": 0.5093461516493125,
+    "unseen_group": 0.49277909863375413,
+    "R": 0.9399444631955775
+  },
+  "seconds": 3.9
+}

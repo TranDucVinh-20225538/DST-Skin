@@ -1,0 +1,18 @@
+{
+  "ds": "camelyon",
+  "arch": "convnext_tiny",
+  "seed": 42,
+  "MSP": {
+    "seen_inst": 0.7810955483531046,
+    "unseen_inst_seen_group": 0.7764535245228502,
+    "unseen_group": 0.5747367740328063,
+    "R": 0.9775050814023092
+  },
+  "Energy": {
+    "seen_inst": 0.8296856987541167,
+    "unseen_inst_seen_group": 0.8242784680009302,
+    "unseen_group": 0.6238609457541042,
+    "R": 0.9737289578907636
+  },
+  "seconds": 3.8
+}

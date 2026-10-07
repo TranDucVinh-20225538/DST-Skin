@@ -1,0 +1,18 @@
+{
+  "ds": "rxrx1",
+  "arch": "convnext_tiny",
+  "seed": 42,
+  "MSP": {
+    "seen_inst": 0.4738379297495488,
+    "unseen_inst_seen_group": 0.4581179907063112,
+    "unseen_group": 0.46036847814850484,
+    "R": -0.1670808514594026
+  },
+  "Energy": {
+    "seen_inst": 0.4511648424872321,
+    "unseen_inst_seen_group": 0.4510328496971171,
+    "unseen_group": 0.4728417544426398,
+    "R": 1.0060890956417836
+  },
+  "seconds": 4.7
+}

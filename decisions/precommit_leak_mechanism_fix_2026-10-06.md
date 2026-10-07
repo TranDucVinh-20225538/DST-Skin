@@ -116,3 +116,14 @@ No home paths, `.pt`, feature arrays committed.
 ## Execution order
 
 Set by the user on 2026-10-06 03:08: ISBI patch 2 first, then multibench, then this analysis.
+
+## Deviations (2026-10-07, after results)
+
+1. M1 reduction median excludes cells with |original effect| < 0.01 (the ratio is undefined; mostly ReAct,
+   whose Δ is ~0 everywhere); excluded cells are counted and the all-cells median is reported next to it.
+2. M1 within-model gap on Camelyon uses the ISBI-patch-2 v2 seed-42 models, which exist for ResNet50 /
+   DenseNet121 / ConvNeXt-T only (no ResNet18 retrain).
+3. CPU scoring used 16 BLAS threads (fixed for every cell).
+4. M1 ablations reduce published-model ID accuracy to near chance on Camelyon (0.996 → 0.56-0.60) and
+   RxRx1 (0.19 → 0.005); the M1 readings there are reported with that caveat (the precommit's "a variant
+   that destroys accuracy weakens the reading").
