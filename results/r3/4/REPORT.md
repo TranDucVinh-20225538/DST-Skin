@@ -73,4 +73,4 @@ Design and predictions: PRECOMMIT.json (committed before any run). Protocol pape
 
 Verdict: knn 4/4 hold; exact_maha 1/4 hold; lw_maha 3/4 hold; vim 4/4 hold (per PRECOMMIT decision rule).
 
-Caveats: post-hoc (not in the original precommit); synthetic Gaussian features.
+Caveats: precommitted within R3 (PRECOMMIT.json, before any run) but not part of the original paper precommit; synthetic Gaussian features. Post-hoc sigma_b-matched check: posthoc_sigma_matched.md (verdict above unchanged).

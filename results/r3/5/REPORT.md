@@ -1,33 +1,35 @@
 # R3 item 5: cross-fit closure
 
-commit: 8dfa074
+commit: aaf5267
 
 ## (a) Camelyon17 FMs: leaky vs F2 vs F1 (bar |F2-F1| <= 0.02)
 
-| fm | scorer | auroc_leaky | auroc_F2 | auroc_F1 | abs_F2_minus_F1 | pass | n_groups_fit | K | d | id_acc | ci95 |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| uni | Mahalanobis | 0.9988 | 0.9928 | 0.9918 | 0.0010 | True | 15/15 | 2 | 1024 | 0.9944 | n/a |
-| uni | kNN | 0.9967 | 0.8881 | 0.9029 | 0.0148 | True | 15/15 | 2 | 1024 | 0.9944 | n/a |
-| uni | ViM | 0.9377 | 0.9220 | 0.9076 | 0.0144 | True | 15/15 | 2 | 1024 | 0.9944 | n/a |
-| uni | ReAct | 0.5296 | 0.5295 | 0.5212 | 0.0083 | True | 15/15 | 2 | 1024 | 0.9944 | n/a |
-| virchow2 | Mahalanobis | 0.9857 | 0.9664 | 0.9584 | 0.0079 | True | 15/15 | 2 | 2560 | 0.9948 | n/a |
-| virchow2 | kNN | 0.9636 | 0.8542 | 0.8583 | 0.0041 | True | 15/15 | 2 | 2560 | 0.9948 | n/a |
-| virchow2 | ViM | 0.7979 | 0.8025 | 0.7728 | 0.0298 | False | 15/15 | 2 | 2560 | 0.9948 | n/a |
-| virchow2 | ReAct | 0.4018 | 0.4019 | 0.4010 | 0.0009 | True | 15/15 | 2 | 2560 | 0.9948 | n/a |
-| dinov2_vitb14 | Mahalanobis | 0.7297 | 0.7036 | 0.6549 | 0.0487 | False | 15/15 | 2 | 768 | 0.9717 | n/a |
-| dinov2_vitb14 | kNN | 0.7556 | 0.6355 | 0.6296 | 0.0059 | True | 15/15 | 2 | 768 | 0.9717 | n/a |
-| dinov2_vitb14 | ViM | 0.6642 | 0.6506 | 0.6347 | 0.0159 | True | 15/15 | 2 | 768 | 0.9717 | n/a |
-| dinov2_vitb14 | ReAct | 0.6208 | 0.6207 | 0.6385 | 0.0178 | True | 15/15 | 2 | 768 | 0.9717 | n/a |
-| dinov2_vitl14 | Mahalanobis | 0.7609 | 0.7342 | 0.6826 | 0.0516 | False | 15/15 | 2 | 1024 | 0.9765 | n/a |
-| dinov2_vitl14 | kNN | 0.7940 | 0.6786 | 0.6718 | 0.0068 | True | 15/15 | 2 | 1024 | 0.9765 | n/a |
-| dinov2_vitl14 | ViM | 0.7232 | 0.7059 | 0.6905 | 0.0154 | True | 15/15 | 2 | 1024 | 0.9765 | n/a |
-| dinov2_vitl14 | ReAct | 0.5788 | 0.5788 | 0.5951 | 0.0163 | True | 15/15 | 2 | 1024 | 0.9765 | n/a |
-| conch_v1_5 | Mahalanobis | 0.8575 | 0.8033 | 0.7696 | 0.0337 | False | 15/15 | 2 | 768 | 0.9873 | n/a |
-| conch_v1_5 | kNN | 0.9609 | 0.7924 | 0.8124 | 0.0200 | True | 15/15 | 2 | 768 | 0.9873 | n/a |
-| conch_v1_5 | ViM | 0.6451 | 0.6283 | 0.6036 | 0.0247 | False | 15/15 | 2 | 768 | 0.9873 | n/a |
-| conch_v1_5 | ReAct | 0.5352 | 0.5351 | 0.5147 | 0.0205 | False | 15/15 | 2 | 768 | 0.9873 | n/a |
+| fm | scorer | auroc_leaky | auroc_F2 | auroc_F1 | F2_minus_F1 | abs_F2_minus_F1 | pass | n_groups_fit | K | d | id_acc | ci95 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| uni | Mahalanobis | 0.9988 | 0.9928 | 0.9918 | 0.0010 | 0.0010 | True | 15/15 | 2 | 1024 | 0.9944 | n/a |
+| uni | kNN | 0.9967 | 0.8881 | 0.9029 | -0.0148 | 0.0148 | True | 15/15 | 2 | 1024 | 0.9944 | n/a |
+| uni | ViM | 0.9377 | 0.9220 | 0.9076 | 0.0144 | 0.0144 | True | 15/15 | 2 | 1024 | 0.9944 | n/a |
+| uni | ReAct | 0.5296 | 0.5295 | 0.5212 | 0.0083 | 0.0083 | True | 15/15 | 2 | 1024 | 0.9944 | n/a |
+| virchow2 | Mahalanobis | 0.9857 | 0.9664 | 0.9584 | 0.0079 | 0.0079 | True | 15/15 | 2 | 2560 | 0.9948 | n/a |
+| virchow2 | kNN | 0.9636 | 0.8542 | 0.8583 | -0.0041 | 0.0041 | True | 15/15 | 2 | 2560 | 0.9948 | n/a |
+| virchow2 | ViM | 0.7979 | 0.8025 | 0.7728 | 0.0298 | 0.0298 | False | 15/15 | 2 | 2560 | 0.9948 | n/a |
+| virchow2 | ReAct | 0.4018 | 0.4019 | 0.4010 | 0.0009 | 0.0009 | True | 15/15 | 2 | 2560 | 0.9948 | n/a |
+| dinov2_vitb14 | Mahalanobis | 0.7297 | 0.7036 | 0.6549 | 0.0487 | 0.0487 | False | 15/15 | 2 | 768 | 0.9717 | n/a |
+| dinov2_vitb14 | kNN | 0.7556 | 0.6355 | 0.6296 | 0.0059 | 0.0059 | True | 15/15 | 2 | 768 | 0.9717 | n/a |
+| dinov2_vitb14 | ViM | 0.6642 | 0.6506 | 0.6347 | 0.0159 | 0.0159 | True | 15/15 | 2 | 768 | 0.9717 | n/a |
+| dinov2_vitb14 | ReAct | 0.6208 | 0.6207 | 0.6385 | -0.0178 | 0.0178 | True | 15/15 | 2 | 768 | 0.9717 | n/a |
+| dinov2_vitl14 | Mahalanobis | 0.7609 | 0.7342 | 0.6826 | 0.0516 | 0.0516 | False | 15/15 | 2 | 1024 | 0.9765 | n/a |
+| dinov2_vitl14 | kNN | 0.7940 | 0.6786 | 0.6718 | 0.0068 | 0.0068 | True | 15/15 | 2 | 1024 | 0.9765 | n/a |
+| dinov2_vitl14 | ViM | 0.7232 | 0.7059 | 0.6905 | 0.0154 | 0.0154 | True | 15/15 | 2 | 1024 | 0.9765 | n/a |
+| dinov2_vitl14 | ReAct | 0.5788 | 0.5788 | 0.5951 | -0.0163 | 0.0163 | True | 15/15 | 2 | 1024 | 0.9765 | n/a |
+| conch_v1_5 | Mahalanobis | 0.8575 | 0.8033 | 0.7696 | 0.0337 | 0.0337 | False | 15/15 | 2 | 768 | 0.9873 | n/a |
+| conch_v1_5 | kNN | 0.9609 | 0.7924 | 0.8124 | -0.0200 | 0.0200 | True | 15/15 | 2 | 768 | 0.9873 | n/a |
+| conch_v1_5 | ViM | 0.6451 | 0.6283 | 0.6036 | 0.0247 | 0.0247 | False | 15/15 | 2 | 768 | 0.9873 | n/a |
+| conch_v1_5 | ReAct | 0.5352 | 0.5351 | 0.5147 | 0.0205 | 0.0205 | False | 15/15 | 2 | 768 | 0.9873 | n/a |
 
 ## (b) isbi_patch2 retrain: fraction of gap closed = (leaky - F2) / (leaky - truth)
+
+Label: this design does not identify the gap closed for CNNs (fold 0 and fold 1 disagree; each cross-fit half has only 6-9 slides). Appendix only.
 
 ### Summary (median over arch x seed cells)
 
@@ -124,7 +126,8 @@ commit: 8dfa074
 | resnet50 | 44 | ViM | 0.6318 | 0.7138 | 0.7627 | 0.0820 | -0.5963 | 9/6 | 2 | 2048 |
 | resnet50 | 44 | kNN | 0.6960 | 0.9283 | 0.8972 | 0.2323 | 0.1337 | 9/6 | 2 | 2048 |
 
-verdict: a: 10/15 FM x scorer cells pass |F2-F1|<=0.02 (Mahalanobis, kNN, ViM); ReAct 4/5; b (fold 0): median fraction of gap closed Mahalanobis 5.42, kNN 2.66, ViM 1.49, ReAct 0.00; b (fold 1): median fraction of gap closed Mahalanobis 0.37, kNN 0.18, ViM 0.05, ReAct 0.05
+verdict: a: |F2-F1|<=0.02 in kNN 5/5, Mahalanobis 2/5, ViM 3/5, ReAct 4/5 (Mahalanobis failures: F2 above F1 in all 3); b (fold 0): median fraction of gap closed Mahalanobis 5.42, kNN 2.66, ViM 1.49, ReAct 0.00; b (fold 1): median fraction of gap closed Mahalanobis 0.37, kNN 0.18, ViM 0.05, ReAct 0.05
 
 caveats:
 - post-hoc (not in precommit)
+- ViM values come from the Track A ViM (residual = bottom C eigendirections), which is not numerically reproducible: rerunning the same code with a different BLAS thread count changes Delta_fit (R3 item 1 stop-check); ViM rows are not reliable
