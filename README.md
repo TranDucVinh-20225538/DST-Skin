@@ -102,6 +102,50 @@ Elsewhere, a full TeX Live with `texlive-publishers` (for `jmlr.cls`) and
 An earlier CVPR 2027 version was dropped on 2026-10-03; its sources are in git
 history (commit `18cbd2c`, `manuscript/cvpr2027/`).
 
+## Leakage study (rigor pack and round R3)
+
+The group-leakage analyses (Track A Δ_fit, cross-fit closure, Phase 2) live on this branch (`rigor-pack`).
+Precommits are in `decisions/` and `results/r3/<item>/PRECOMMIT.json`; every R3 item has a
+`results/r3/<item>/REPORT.md` with the commit hash of its data and a one-line verdict.
+
+| Item | Report | Content |
+|---|---|---|
+| 0 | `results/r3/0/REPORT.md` | crossfit-ood v3 install and tests |
+| 1 | `results/r3/1/REPORT.md` | paper_2fold Δ with old (bootstrap) and new (jackknife) CIs, Track A scorers, all feature sets |
+| 2 | `results/r3/2/REPORT.md` | coverage of the jackknife CI on designs read from the real splits |
+| 3 | `results/r3/3/REPORT.md` | mechanism follow-up, Camelyon, 13 backbones (post hoc) |
+| 4 | `results/r3/4/REPORT.md` | anisotropic synthetic test (+ post hoc σ_b-matched check) |
+| 5, 5b | `results/r3/5/REPORT.md`, `results/r3/5b/REPORT.md` | cross-fit closure; pooling and fold-count check |
+| 6 | `results/r3/6/REPORT.md` | within-slide dose-response (post hoc) |
+| 7 | `results/r3/7/REPORT.md` | split conformal under slide leakage (post hoc) |
+| 8 | `results/r3/8/{p2a,p2b,p2d,ood_overlap}/REPORT.md` | Phase 2: CXR (P2-a), retrain arm on medbench (P2-b), Kvasir-Capsule / brain MRI (P2-d), OOD-overlap audit (post hoc) |
+
+The Camelyon Track A table for the 8 CNNs (H11c), regenerated with float64 Ledoit-Wolf and pinned BLAS, is
+`outputs/reports/rigor_pack/leakage_lw64/leakfree_knn.csv`; the diff against the earlier float32 table is
+`outputs/reports/rigor_pack/leakage_lw64/f32_vs_f64.csv` (details in
+`outputs/reports/rigor_pack/miccai_campaign/README.md`, section REPRO). The package changes used by R3 (Track A
+scorers `mahalanobis_l2` / `knn_mean_cosine`, `--seen tracka`) are `scripts/r3/patches/crossfit_ood_tracka.diff`
+against crossfit-ood 0.0.3.dev0.
+
+### Cached features needed to reproduce the main tables
+
+Not in git. Sizes as stored on the HPC (decimal GB, uncompressed float32 `.pt` / `.npz`):
+
+| Set | Path (under `outputs/`) | Files | Size |
+|---|---|---|---|
+| Camelyon17 CNNs: 8 archs seed 42, ResNet-50 / ConvNeXt-T seeds 43–44 | `features/camelyon17/frac1/seed{42,43,44}/rigor_indexed/*_features.pt` | 12 | 34.75 GB |
+| Camelyon17 foundation models (UNI, Virchow2, DINOv2-B/L, CONCH v1.5) | `rigor_pack/foundation_gate/feats/camelyon_*.npz` | 5 | 10.40 GB |
+| Medbench CNN, Track A arm (DermaMNIST, ISIC 2019, Kermany, BreakHis) | `rigor_pack/medbench/<ds>/*_std*.npz` except `fm_*` | 96 | 12.13 GB |
+| Medbench foundation models, Track A arm (same 4 datasets) | `rigor_pack/medbench/<ds>/fm_*_std*.npz` | 35 | 3.30 GB |
+| Medbench retrain arm b0 / b1 (Kermany, ISIC 2019; P2-b) | `rigor_pack/medbench/{kermany,isic2019}/{resnet18,resnet50,densenet121,convnext_tiny}_s{42,43}_b{0,1}.npz` | 32 | 9.59 GB |
+| CXR (P2-a) | `rigor_pack/r3_item8/p2a/*.npz` (without `*_smoke`) | 10 | 2.85 GB |
+| Kvasir-Capsule / brain MRI (P2-d) | `rigor_pack/r3_item8/p2d/*.npz` | 16 | 1.83 GB |
+| **Total** | | **206** | **74.84 GB** |
+
+The other files in the medbench folders (BreakHis `gd_r*`, DermaMNIST `dmc`, Kermany `v3std`, b0 / b1 of other
+archs and of DermaMNIST, brain_cheng; 129 files, 14.44 GB) are not used by the main tables. The per-cell inputs built by `scripts/r3/build_ci_inputs.py`
+are derived from the sets above and need not be archived.
+
 ## Repository layout
 
 ```
@@ -123,7 +167,8 @@ DST-Skin/
 ```
 
 Features and checkpoints (`outputs/features/`, `data/models/`) are not in git;
-they are tens of GB. Every number in the paper is read from `outputs/reports/`.
+they are tens of GB. Every number in the paper is read from `outputs/reports/`. The feature sets the leakage
+study needs are listed with sizes under "Cached features needed to reproduce the main tables" above.
 
 ## Where each result comes from
 
