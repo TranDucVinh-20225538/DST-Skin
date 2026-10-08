@@ -1,0 +1,156 @@
+{
+ "ds": "kermany",
+ "arch": "convnext_tiny",
+ "seed": 43,
+ "fold": "b0",
+ "d": 768,
+ "n_train": 38207,
+ "n_seen": 7482,
+ "n_orphan_seen_dropped": 2,
+ "n_orphan_seen_groups": 1,
+ "n_unseen": 49757,
+ "n_ood": 3696,
+ "n_ood_before_restriction": 8866,
+ "ood_clean": true,
+ "n_groups_train": 2232,
+ "n_groups_seen": 1762,
+ "n_groups_unseen": 2220,
+ "K_within": 2,
+ "acc_seen": 0.9929182255478354,
+ "acc_unseen": 0.9837208834937796,
+ "G1": true,
+ "G2": true,
+ "passes_quality": true,
+ "scorers": {
+  "mahalanobis_l2": {
+   "leaky": {
+    "est": 0.6758530357417687,
+    "se": 0.011543073751650588,
+    "ci95": [
+     0.653229026917644,
+     0.6984770445658934
+    ]
+   },
+   "truth": {
+    "est": 0.6497736412384101,
+    "se": 0.013954594536626013,
+    "ci95": [
+     0.6224231385277637,
+     0.6771241439490565
+    ]
+   },
+   "F2": {
+    "est": 0.6596502240297348,
+    "se": 0.011439775095693229,
+    "ci95": [
+     0.6372286768509379,
+     0.6820717712085318
+    ]
+   },
+   "scorer_channel": {
+    "est": 0.01620281171203386,
+    "se": 0.002237881933018479,
+    "ci95": [
+     0.011816643721664764,
+     0.020588979702402956
+    ]
+   },
+   "model_channel": {
+    "est": 0.00987658279132475,
+    "se": 0.01345427134254202,
+    "ci95": [
+     -0.016493304478286962,
+     0.03624647006093647
+    ]
+   },
+   "leaky_minus_truth": 0.02607939450335861,
+   "fraction_closed": 0.621287879591959,
+   "flags": {
+    "near_chance": false,
+    "ceiling": false,
+    "below_chance": false
+   },
+   "package_check": {
+    "leaky_diff": 0.0,
+    "F2_diff": 0.0,
+    "leaky_package": 0.6758530357417687,
+    "F2_package": 0.6596502240297348,
+    "near_tied_pairs_leaky": 0,
+    "near_tied_pairs_F2": [
+     0,
+     0
+    ],
+    "tol_leaky": 1e-09,
+    "tol_F2": 1e-09
+   },
+   "n_blocks_id": 50,
+   "n_blocks_ood": 50,
+   "seconds": 256.0
+  },
+  "knn_mean_cosine": {
+   "leaky": {
+    "est": 0.7386036733470575,
+    "se": 0.01526686586118976,
+    "ci95": [
+     0.7086811661023215,
+     0.7685261805917935
+    ]
+   },
+   "truth": {
+    "est": 0.7058719119509561,
+    "se": 0.017227532002433953,
+    "ci95": [
+     0.6721065696836743,
+     0.7396372542182379
+    ]
+   },
+   "F2": {
+    "est": 0.7241121114918228,
+    "se": 0.014414823573961674,
+    "ci95": [
+     0.6958595764433589,
+     0.7523646465402866
+    ]
+   },
+   "scorer_channel": {
+    "est": 0.014491561855234703,
+    "se": 0.003424702969947578,
+    "ci95": [
+     0.007779267376390092,
+     0.021203856334079313
+    ]
+   },
+   "model_channel": {
+    "est": 0.018240199540866642,
+    "se": 0.011442161091874998,
+    "ci95": [
+     -0.004186024104513849,
+     0.040666423186247136
+    ]
+   },
+   "leaky_minus_truth": 0.032731761396101344,
+   "fraction_closed": 0.44273700030578805,
+   "flags": {
+    "near_chance": false,
+    "ceiling": false,
+    "below_chance": false
+   },
+   "package_check": {
+    "leaky_diff": 0.0,
+    "F2_diff": 0.0,
+    "leaky_package": 0.7386036733470575,
+    "F2_package": 0.7241121114918228,
+    "near_tied_pairs_leaky": 0,
+    "near_tied_pairs_F2": [
+     0,
+     0
+    ],
+    "tol_leaky": 1e-09,
+    "tol_F2": 1e-09
+   },
+   "n_blocks_id": 50,
+   "n_blocks_ood": 50,
+   "seconds": 2900.3
+  }
+ }
+}
