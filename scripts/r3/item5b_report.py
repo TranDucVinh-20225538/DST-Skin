@@ -58,9 +58,10 @@ def load_rows(models):
                 rows.append({"fm": fm, "scorer": SC[sc], "missing": True})
                 continue
             j = json.loads(p.read_text())
-            pk = D / "stepB" / ("%s_%s_k30.json" % (fm, sc))
-            if pk.exists():
-                j.update({k: v for k, v in json.loads(pk.read_text()).items() if k == "K30"})
+            for kt in ("K10", "K30"):
+                pk = D / "stepB" / ("%s_%s_%s.json" % (fm, sc, kt.lower()))
+                if pk.exists() and kt not in j:
+                    j[kt] = json.loads(pk.read_text())[kt]
             pj = D / "stepB" / ("%s_%s_jk.json" % (fm, sc))
             jk = json.loads(pj.read_text()) if pj.exists() else {}
             r = {"fm": fm, "scorer": SC[sc], "missing": False, "d": j["d"], "id_acc": j["probe_id_acc"],

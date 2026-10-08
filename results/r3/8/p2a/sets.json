@@ -1,0 +1,32 @@
+{
+  "m_std": "wang2017",
+  "n_images": {
+    "fit": 70666,
+    "seen": 16497,
+    "wang_val": 11212,
+    "ckpt": 7818,
+    "unseen": 4045,
+    "test_ckpt": 1882
+  },
+  "n_patients": {
+    "fit": 22625,
+    "seen": 6990,
+    "wang_val": 7232,
+    "ckpt": 2514,
+    "unseen": 3814,
+    "test_ckpt": 809
+  },
+  "n_wang_train_patients": 25139,
+  "n_ckpt_patients": 2514,
+  "afit_fold_images": {
+    "0": 35338,
+    "1": 35328
+  },
+  "afit_fold_patients": {
+    "1": 11412,
+    "0": 11213
+  },
+  "seen_patients_in_fit": true,
+  "unseen_patients_disjoint": true,
+  "leak_rate_on_eval": 0.803086359653393
+}

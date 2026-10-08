@@ -1,0 +1,59 @@
+{
+  "stage": {
+    "n_images": 112120,
+    "staged_dir": "data/staged/nih_256",
+    "seconds": 337
+  },
+  "G0_access": {
+    "archives": 12,
+    "all_verified": true
+  },
+  "G_audit_sanity": {
+    "n_metadata_rows": 112120,
+    "n_images_in_archives": 112120,
+    "images_in_both": 112120,
+    "patient_id_parse_rate": 1.0,
+    "official_train_val": 86524,
+    "official_test": 25596,
+    "official_patient_overlap": 0,
+    "n_patients": 30805,
+    "pass": true
+  },
+  "chestmnist_audit": {
+    "n": 112120,
+    "n_accepted": 112120,
+    "accept_rate": 1.0,
+    "corr224_quantiles_all": [
+      0.9994720788002014,
+      0.9996232503652572,
+      0.9998877644538879
+    ],
+    "duplicate_nih_targets_among_accepted": 26,
+    "label_agreement_accepted": 0.9982875490545844,
+    "n_per_split": {
+      "train": 78468,
+      "test": 22433,
+      "val": 11219
+    },
+    "leak_rate_train_to_test": 0.0,
+    "leak_rate_train_to_val": 0.0002674035118994563,
+    "test_vs_official_test_overlap": 0.23238086747202782
+  },
+  "wang_split": {
+    "sizes": {
+      "train": 78484,
+      "test": 22424,
+      "val": 11212
+    },
+    "leak_rate_train_to_test": 0.8196129147342134,
+    "leak_rate_train_to_val": 0.8123439172315376
+  },
+  "M_std": "wang2017",
+  "G_leak": {
+    "leak_rate": 0.8196129147342134,
+    "threshold": 0.05,
+    "pass": true,
+    "decision": "continue to training"
+  },
+  "seconds": 665
+}
