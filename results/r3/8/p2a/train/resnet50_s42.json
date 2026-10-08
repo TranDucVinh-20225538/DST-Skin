@@ -1,0 +1,149 @@
+{
+  "arch": "resnet50",
+  "seed": 42,
+  "smoke": false,
+  "epochs": 10,
+  "best_epoch": 10,
+  "best_ckpt_macro_auroc": 0.8154096020964372,
+  "n": {
+    "fit": 70666,
+    "ckpt": 7818,
+    "seen": 16497,
+    "unseen": 4045
+  },
+  "d": 2048,
+  "recipe": {
+    "optim": "adam",
+    "lr": 0.0001,
+    "wd": 0.0001,
+    "batch_size": 64
+  },
+  "input_size": 224,
+  "loss": "BCEWithLogits (14 findings)",
+  "epoch1_loss": 0.17300302136819212,
+  "final_loss": 0.14767728217039539,
+  "id_macro_auroc": {
+    "fit": 0.841137191294485,
+    "seen": 0.8251426265880057,
+    "unseen": 0.812779605512946
+  },
+  "id_per_finding_auroc": {
+    "fit": {
+      "Atelectasis": 0.8260164782993513,
+      "Cardiomegaly": 0.9151673767035432,
+      "Effusion": 0.892996920695033,
+      "Infiltration": 0.7223990480231006,
+      "Mass": 0.8706379958825351,
+      "Nodule": 0.790839737357405,
+      "Pneumonia": 0.7666072236304933,
+      "Pneumothorax": 0.8866587876550411,
+      "Consolidation": 0.8197441225997131,
+      "Edema": 0.9045671538763217,
+      "Emphysema": 0.9144731660724196,
+      "Fibrosis": 0.8095822565290327,
+      "Pleural_Thickening": 0.8036565753904685,
+      "Hernia": 0.8525738354083336
+    },
+    "seen": {
+      "Atelectasis": 0.7932539278712442,
+      "Cardiomegaly": 0.903380597383205,
+      "Effusion": 0.8678720138254412,
+      "Infiltration": 0.7194406870028404,
+      "Mass": 0.8485508012257417,
+      "Nodule": 0.7884023813110584,
+      "Pneumonia": 0.7505749499846239,
+      "Pneumothorax": 0.8672109879736175,
+      "Consolidation": 0.788525697921591,
+      "Edema": 0.8800301784235768,
+      "Emphysema": 0.9137631830803019,
+      "Fibrosis": 0.801435012655885,
+      "Pleural_Thickening": 0.7914478092197232,
+      "Hernia": 0.8381085443532291
+    },
+    "unseen": {
+      "Atelectasis": 0.8635378556910568,
+      "Cardiomegaly": 0.9345304691579026,
+      "Effusion": 0.919253769505833,
+      "Infiltration": 0.6406402060699465,
+      "Mass": 0.9034606638139854,
+      "Nodule": 0.765938983302091,
+      "Pneumonia": 0.6725732714321154,
+      "Pneumothorax": 0.745993149789526,
+      "Consolidation": 0.7910493190766542,
+      "Edema": 0.8349950458261086,
+      "Emphysema": 0.7787616913830506,
+      "Fibrosis": 0.7990008949296641,
+      "Pleural_Thickening": 0.7919116144311802,
+      "Hernia": 0.93726754277213
+    }
+  },
+  "G_competence": {
+    "final_loss_le_half_epoch1": false,
+    "seen_macro_auroc_ge_0.75": true,
+    "pass": false
+  },
+  "train_seconds": 815.4,
+  "extract_seconds": 40.1,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.17300302136819212,
+      "ckpt_macro_auroc": 0.7540830889972495,
+      "seconds": 84.38734936714172
+    },
+    {
+      "epoch": 2,
+      "loss": 0.16249973652922584,
+      "ckpt_macro_auroc": 0.770588590232267,
+      "seconds": 81.15192103385925
+    },
+    {
+      "epoch": 3,
+      "loss": 0.16014883830378773,
+      "ckpt_macro_auroc": 0.7653722585514829,
+      "seconds": 81.18783640861511
+    },
+    {
+      "epoch": 4,
+      "loss": 0.15826043174933022,
+      "ckpt_macro_auroc": 0.7855079612630019,
+      "seconds": 81.30802488327026
+    },
+    {
+      "epoch": 5,
+      "loss": 0.15632926811490042,
+      "ckpt_macro_auroc": 0.7911543755627471,
+      "seconds": 80.5974223613739
+    },
+    {
+      "epoch": 6,
+      "loss": 0.15467812071065387,
+      "ckpt_macro_auroc": 0.7915073185715507,
+      "seconds": 81.03792119026184
+    },
+    {
+      "epoch": 7,
+      "loss": 0.15270744323295238,
+      "ckpt_macro_auroc": 0.8020148463679446,
+      "seconds": 80.62017941474915
+    },
+    {
+      "epoch": 8,
+      "loss": 0.1507040096029196,
+      "ckpt_macro_auroc": 0.8075525264905982,
+      "seconds": 80.65784096717834
+    },
+    {
+      "epoch": 9,
+      "loss": 0.14871666555155602,
+      "ckpt_macro_auroc": 0.8117009012416687,
+      "seconds": 80.92908644676208
+    },
+    {
+      "epoch": 10,
+      "loss": 0.14767728217039539,
+      "ckpt_macro_auroc": 0.8154096020964372,
+      "seconds": 80.79614019393921
+    }
+  ]
+}

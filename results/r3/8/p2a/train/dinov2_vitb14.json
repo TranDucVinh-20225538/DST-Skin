@@ -1,0 +1,15 @@
+{
+  "fm": "dinov2_vitb14",
+  "weights": "torch.hub facebookresearch_dinov2 dinov2_vitb14_pretrain.pth",
+  "n": {
+    "fit": 70666,
+    "seen": 16497,
+    "unseen": 4045,
+    "ood": 6518
+  },
+  "d": 768,
+  "input": "224 from staged 256",
+  "torch": "2.1.1",
+  "seconds": 301.7,
+  "gpu": "NVIDIA A100-SXM4-80GB"
+}

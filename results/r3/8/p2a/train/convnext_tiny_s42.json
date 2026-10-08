@@ -1,0 +1,149 @@
+{
+  "arch": "convnext_tiny",
+  "seed": 42,
+  "smoke": false,
+  "epochs": 10,
+  "best_epoch": 10,
+  "best_ckpt_macro_auroc": 0.8295919867663452,
+  "n": {
+    "fit": 70666,
+    "ckpt": 7818,
+    "seen": 16497,
+    "unseen": 4045
+  },
+  "d": 768,
+  "recipe": {
+    "optim": "adamw",
+    "lr": 0.0001,
+    "wd": 0.05,
+    "batch_size": 64
+  },
+  "input_size": 224,
+  "loss": "BCEWithLogits (14 findings)",
+  "epoch1_loss": 0.16896245156273287,
+  "final_loss": 0.13815440214558658,
+  "id_macro_auroc": {
+    "fit": 0.8759941532718308,
+    "seen": 0.8427151706987576,
+    "unseen": 0.8358055787444627
+  },
+  "id_per_finding_auroc": {
+    "fit": {
+      "Atelectasis": 0.8564228655544308,
+      "Cardiomegaly": 0.9397894426442037,
+      "Effusion": 0.9075697005604143,
+      "Infiltration": 0.7506895314479609,
+      "Mass": 0.8992185650806399,
+      "Nodule": 0.8244941392227618,
+      "Pneumonia": 0.8191563054894154,
+      "Pneumothorax": 0.9180191802166785,
+      "Consolidation": 0.8513293308081732,
+      "Edema": 0.9245318486418941,
+      "Emphysema": 0.9462040754864728,
+      "Fibrosis": 0.8549272806322854,
+      "Pleural_Thickening": 0.8444689953827595,
+      "Hernia": 0.9270968846375405
+    },
+    "seen": {
+      "Atelectasis": 0.8029840696667122,
+      "Cardiomegaly": 0.9150792854834575,
+      "Effusion": 0.8712213206316707,
+      "Infiltration": 0.7277882641238418,
+      "Mass": 0.8685713655764808,
+      "Nodule": 0.8069439576678585,
+      "Pneumonia": 0.7789141354071588,
+      "Pneumothorax": 0.8836846181222554,
+      "Consolidation": 0.7982424531851465,
+      "Edema": 0.8890690337489522,
+      "Emphysema": 0.9309389498351145,
+      "Fibrosis": 0.8283796218425037,
+      "Pleural_Thickening": 0.8106077274945613,
+      "Hernia": 0.8855875869968932
+    },
+    "unseen": {
+      "Atelectasis": 0.8812703252032521,
+      "Cardiomegaly": 0.9362646378757365,
+      "Effusion": 0.9271190709708934,
+      "Infiltration": 0.6535304311333485,
+      "Mass": 0.9020242464903829,
+      "Nodule": 0.7694626219453822,
+      "Pneumonia": 0.7635999574724457,
+      "Pneumothorax": 0.7920621225194132,
+      "Consolidation": 0.8096065667128144,
+      "Edema": 0.899461233589299,
+      "Emphysema": 0.8134535367545076,
+      "Fibrosis": 0.8064050395726711,
+      "Pleural_Thickening": 0.7997499428956132,
+      "Hernia": 0.9472683692867179
+    }
+  },
+  "G_competence": {
+    "final_loss_le_half_epoch1": false,
+    "seen_macro_auroc_ge_0.75": true,
+    "pass": false
+  },
+  "train_seconds": 2411.0,
+  "extract_seconds": 79.2,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.16896245156273287,
+      "ckpt_macro_auroc": 0.7729973380343683,
+      "seconds": 245.27104234695435
+    },
+    {
+      "epoch": 2,
+      "loss": 0.15708315358866087,
+      "ckpt_macro_auroc": 0.7923773119641615,
+      "seconds": 240.59170937538147
+    },
+    {
+      "epoch": 3,
+      "loss": 0.1528693548732976,
+      "ckpt_macro_auroc": 0.8067488309663539,
+      "seconds": 239.77633714675903
+    },
+    {
+      "epoch": 4,
+      "loss": 0.15016117494790449,
+      "ckpt_macro_auroc": 0.8084018008897801,
+      "seconds": 240.1831567287445
+    },
+    {
+      "epoch": 5,
+      "loss": 0.1476219259389098,
+      "ckpt_macro_auroc": 0.8162226562827755,
+      "seconds": 239.81043791770935
+    },
+    {
+      "epoch": 6,
+      "loss": 0.14533654092591877,
+      "ckpt_macro_auroc": 0.8210791838124051,
+      "seconds": 240.26624369621277
+    },
+    {
+      "epoch": 7,
+      "loss": 0.14301156213907334,
+      "ckpt_macro_auroc": 0.826313048890232,
+      "seconds": 240.20087146759033
+    },
+    {
+      "epoch": 8,
+      "loss": 0.1408610050854724,
+      "ckpt_macro_auroc": 0.8280092402187034,
+      "seconds": 240.7919623851776
+    },
+    {
+      "epoch": 9,
+      "loss": 0.13923853975727424,
+      "ckpt_macro_auroc": 0.8293986675249138,
+      "seconds": 240.54054141044617
+    },
+    {
+      "epoch": 10,
+      "loss": 0.13815440214558658,
+      "ckpt_macro_auroc": 0.8295919867663452,
+      "seconds": 240.34132313728333
+    }
+  ]
+}
