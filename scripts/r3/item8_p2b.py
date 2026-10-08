@@ -15,6 +15,8 @@ leaky and F2 point estimates are checked against crossfit_auroc (1e-9, plus one 
 Orphan seen images (group with no training image: the medbench val carve-out took the group's last training image)
 are dropped from seen, as in the package paper_2fold (R3 item 1); counts recorded per cell.
 Writes results/r3/8/p2b/cells/{ds}_{arch}_s{seed}_{fold}.json
+--ood-clean (post hoc sensitivity, results/r3/8/ood_overlap/audit.json): OOD restricted to images whose group is
+absent from every ID set of the fold (train, val, seen, unseen); writes results/r3/8/p2b/cells_ood_clean/.
 """
 
 from __future__ import annotations
@@ -82,13 +84,26 @@ def main() -> int:
     ap.add_argument("--arch", required=True)
     ap.add_argument("--seed", type=int, required=True)
     ap.add_argument("--fold", required=True, choices=["b0", "b1"])
+    ap.add_argument("--ood-clean", action="store_true")
     a = ap.parse_args()
+    out_dir = OUT.parent / "cells_ood_clean" if a.ood_clean else OUT
     from crossfit_ood import crossfit_auroc
     from crossfit_ood.core import _blocks, _jk_var_weighted
 
     z = np.load(FEAT / a.ds / ("%s_s%d_%s.npz" % (a.arch, a.seed, a.fold)))
     xtr, xse, xun, xood = (np.asarray(z[k + "_feats"], dtype=np.float64) for k in ("train", "seen", "unseen", "ood"))
     gtr, gse, gun = (groups_of(a.ds, z[k + "_keys"]) for k in ("train", "seen", "unseen"))
+    n_ood_all = len(xood)
+    if a.ood_clean:
+        d = pd.read_csv(SPL / f"{a.ds}.csv.gz", low_memory=False)
+        col = f"b_f{a.fold[1]}"
+        if a.ds == "kermany":
+            d = d[(d.version == "v3") & (d.label != "CXR")]
+        id_g = set(d.group[d[col].isin(["train", "val", "seen", "unseen"])].astype(str))
+        keep = ~np.isin(groups_of(a.ds, z["ood_keys"]), list(id_g))
+        audit = json.loads((REPO / "results/r3/8/ood_overlap/audit.json").read_text())[f"{a.ds}_{a.fold}"]
+        assert int(keep.sum()) == audit["clean_ood_images"], (int(keep.sum()), audit["clean_ood_images"])
+        xood = xood[keep]
     orphan = ~np.isin(gse, gtr)
     n_orphan, n_orphan_groups = int(orphan.sum()), int(len(np.unique(gse[orphan])))
     xse, gse = xse[~orphan], gse[~orphan]
@@ -98,7 +113,7 @@ def main() -> int:
     q = q[(q.dataset == a.ds) & (q.arch == a.arch) & (q.seed == a.seed) & (q.arm == a.fold)].iloc[0]
     res = {"ds": a.ds, "arch": a.arch, "seed": a.seed, "fold": a.fold, "d": int(xtr.shape[1]),
            "n_train": len(xtr), "n_seen": len(xse), "n_orphan_seen_dropped": n_orphan,
-           "n_orphan_seen_groups": n_orphan_groups, "n_unseen": len(xun), "n_ood": len(xood),
+           "n_orphan_seen_groups": n_orphan_groups, "n_unseen": len(xun), "n_ood": len(xood), "n_ood_before_restriction": n_ood_all, "ood_clean": a.ood_clean,
            "n_groups_train": int(len(set(gtr))), "n_groups_seen": int(len(set(gse))), "n_groups_unseen": int(len(set(gun))),
            "K_within": 2, "acc_seen": float(q.acc_seen), "acc_unseen": float(q.acc_unseen),
            "G1": bool(q.G1), "G2": bool(q.G2), "passes_quality": bool(q.passes), "scorers": {}}
@@ -164,8 +179,8 @@ def main() -> int:
                    seconds=round(time.time() - t0, 1))
         res["scorers"][sc] = out
         print(a.ds, a.arch, a.seed, a.fold, sc, {n: round(out[n]["est"], 4) for n in names}, out["seconds"], flush=True)
-    OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / ("%s_%s_s%d_%s.json" % (a.ds, a.arch, a.seed, a.fold))).write_text(json.dumps(res, indent=1) + "\n")
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / ("%s_%s_s%d_%s.json" % (a.ds, a.arch, a.seed, a.fold))).write_text(json.dumps(res, indent=1) + "\n")
     return 0
 
 
