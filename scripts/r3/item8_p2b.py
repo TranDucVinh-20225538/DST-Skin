@@ -11,7 +11,7 @@ definitions, CPU). Per cell, with the fold's model fixed:
 Jackknife (refit-aware, grouped delete-a-block as in crossfit_ood, Busing weighted): ID units = groups of
 train / seen / unseen, deleted together with all fits redone (fold map held fixed); OOD samples in blocks, scores
 fixed; 50 blocks each; V = V_id + V_ood, 95% normal CI for every statistic.
-leaky and F2 point estimates are checked against crossfit_auroc (1e-9).
+leaky and F2 point estimates are checked against crossfit_auroc (1e-9, plus one pair per near-tied seen / OOD score pair).
 Orphan seen images (group with no training image: the medbench val carve-out took the group's last training image)
 are dropped from seen, as in the package paper_2fold (R3 item 1); counts recorded per cell.
 Writes results/r3/8/p2b/cells/{ds}_{arch}_s{seed}_{fold}.json
@@ -51,6 +51,11 @@ def groups_of(ds, keys):
 
 def auroc(s_id, s_ood):
     return float(roc_auc_score(np.r_[np.ones(len(s_id)), np.zeros(len(s_ood))], np.r_[s_id, s_ood]))
+
+
+def near_ties(a, b, eps=1e-12):
+    b = np.sort(b)
+    return int((np.searchsorted(b, a + eps, side="right") - np.searchsorted(b, a - eps, side="left")).sum())
 
 
 def estimates(name, xtr, gtr, xse, gse, xun, xood, fold_of_seen_group):
@@ -109,13 +114,6 @@ def main() -> int:
         rep = crossfit_auroc(xtr, gtr, xse, gse, xood, scorers=[sc], protocol="default", n_splits=2,
                              fold_ids=fids, uncertainty="bootstrap", n_bootstrap=0, random_state=0)
         r = rep.results[sc]
-        chk = {"leaky_diff": abs(r.auroc_leaky - th[0]), "F2_diff": abs(r.auroc_crossfit - th[2])}
-        assert chk["leaky_diff"] < 1e-9 and chk["F2_diff"] < 1e-9, chk
-        th_id = []
-        for b in id_blocks:
-            kt, ks, ku = ~np.isin(gtr, b), ~np.isin(gse, b), ~np.isin(gun, b)
-            th_id.append(estimates(sc, xtr[kt], gtr[kt], xse[ks], gse[ks], xun[ku], xood, fold_map)[0])
-        th_id = np.array(th_id)
         s_se_full = np.asarray(full.score(xse), dtype=np.float64)
         s_un_full = np.asarray(full.score(xun), dtype=np.float64)
         fse = fids
@@ -124,6 +122,22 @@ def main() -> int:
             from crossfit_ood import get_scorer
             f = get_scorer(sc).fit(xtr[~np.isin(gtr, sorted(set(gse[fse == k])))])
             arm.append((np.asarray(f.score(xse[fse == k]), dtype=np.float64), np.asarray(f.score(xood), dtype=np.float64)))
+        # Pixel-identical seen / OOD images give exactly tied scores; the tie can break differently between the two
+        # code paths (BLAS blocking), moving AUROC by one pair. Allowed slack: 1 / (n_seen * n_ood) per near-tied pair.
+        t_lk = near_ties(s_se_full, so)
+        t_f2 = [near_ties(*arm[k]) for k in (0, 1)]
+        n_arm = [len(arm[k][0]) for k in (0, 1)]
+        tol_lk = 1e-9 + t_lk / (len(xse) * len(xood))
+        tol_f2 = 1e-9 + sum(n_arm[k] / sum(n_arm) * t_f2[k] / (n_arm[k] * len(xood)) for k in (0, 1))
+        chk = {"leaky_diff": abs(r.auroc_leaky - th[0]), "F2_diff": abs(r.auroc_crossfit - th[2]),
+               "leaky_package": float(r.auroc_leaky), "F2_package": float(r.auroc_crossfit),
+               "near_tied_pairs_leaky": t_lk, "near_tied_pairs_F2": t_f2, "tol_leaky": tol_lk, "tol_F2": tol_f2}
+        assert chk["leaky_diff"] <= tol_lk and chk["F2_diff"] <= tol_f2, chk
+        th_id = []
+        for b in id_blocks:
+            kt, ks, ku = ~np.isin(gtr, b), ~np.isin(gse, b), ~np.isin(gun, b)
+            th_id.append(estimates(sc, xtr[kt], gtr[kt], xse[ks], gse[ks], xun[ku], xood, fold_map)[0])
+        th_id = np.array(th_id)
         th_ood = []
         for b in ood_blocks:
             keep = ~np.isin(np.arange(len(xood)), b)
