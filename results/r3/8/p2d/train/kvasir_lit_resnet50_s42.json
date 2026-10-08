@@ -1,0 +1,170 @@
+{
+  "ds": "kvasir",
+  "variant": "lit",
+  "candidate": "Angiectasia",
+  "arch": "resnet50",
+  "seed": 42,
+  "smoke": false,
+  "classes": [
+    "Erosion",
+    "Erythematous",
+    "Foreign Bodies",
+    "Ileo-cecal valve",
+    "Lymphangiectasia",
+    "Normal",
+    "Pylorus",
+    "Reduced Mucosal View",
+    "Ulcer"
+  ],
+  "epochs": 13,
+  "best_epoch": 7,
+  "best_ckpt_macro_auroc": 0.9350690902465738,
+  "n": {
+    "fit": 23530,
+    "ckpt": 1870,
+    "seen": 5042,
+    "unseen": 4663,
+    "ood": 866
+  },
+  "d": 2048,
+  "recipe": {
+    "optim": "adam",
+    "lr": 0.0001,
+    "wd": 0.0001,
+    "batch_size": 64
+  },
+  "input_size": 224,
+  "loss": "CrossEntropy (single-label)",
+  "epoch1_loss": 0.4510200427027393,
+  "final_loss": 0.017428716887706867,
+  "id_macro_auroc": {
+    "fit": 0.9999165912650105,
+    "seen": 0.9993220373805498,
+    "unseen": 0.8949374708220499
+  },
+  "id_acc": {
+    "fit": 0.9949851253718657,
+    "seen": 0.989289964299881,
+    "unseen": 0.7956251340338838
+  },
+  "id_per_class_auroc": {
+    "fit": {
+      "Erosion": 0.9998519553346791,
+      "Erythematous": 0.9999731020230989,
+      "Foreign Bodies": 0.9999777278339698,
+      "Ileo-cecal valve": 0.9999763159458345,
+      "Lymphangiectasia": 0.9999975017387898,
+      "Normal": 0.9998034591194969,
+      "Pylorus": 0.9996811448656792,
+      "Reduced Mucosal View": 0.9999895149778542,
+      "Ulcer": 0.9999985995456926
+    },
+    "seen": {
+      "Erosion": 0.9975729393234831,
+      "Erythematous": 0.9999303066507367,
+      "Foreign Bodies": 0.9998888114294792,
+      "Ileo-cecal valve": 0.9999083027132877,
+      "Lymphangiectasia": 0.9999708332573782,
+      "Normal": 0.99931565768616,
+      "Pylorus": 0.9988082589271845,
+      "Reduced Mucosal View": 0.9999955234952549,
+      "Ulcer": 0.9985077029419842
+    },
+    "unseen": {
+      "Foreign Bodies": 0.8891632667668743,
+      "Ileo-cecal valve": 0.9032547684036302,
+      "Normal": 0.9209227084652634,
+      "Pylorus": 0.9186987352202928,
+      "Reduced Mucosal View": 0.8309543986017689,
+      "Ulcer": 0.9066309474744699
+    }
+  },
+  "G_competence": {
+    "final_loss_le_half_epoch1": true,
+    "seen_macro_auroc_ge_0.75": true,
+    "pass": true
+  },
+  "train_seconds": 466.5,
+  "extract_seconds": 20.0,
+  "gpu": "NVIDIA A100-SXM4-80GB",
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.4510200427027393,
+      "ckpt_macro_auroc": 0.833584735151542,
+      "seconds": 36.69898223876953
+    },
+    {
+      "epoch": 2,
+      "loss": 0.2080170551045013,
+      "ckpt_macro_auroc": 0.8645953396065212,
+      "seconds": 34.775514125823975
+    },
+    {
+      "epoch": 3,
+      "loss": 0.14908552138388942,
+      "ckpt_macro_auroc": 0.8981905662509178,
+      "seconds": 35.24936556816101
+    },
+    {
+      "epoch": 4,
+      "loss": 0.12636009118833594,
+      "ckpt_macro_auroc": 0.8930340311995795,
+      "seconds": 35.84644532203674
+    },
+    {
+      "epoch": 5,
+      "loss": 0.0993672836095386,
+      "ckpt_macro_auroc": 0.8654141119386245,
+      "seconds": 34.72889804840088
+    },
+    {
+      "epoch": 6,
+      "loss": 0.07339964392866118,
+      "ckpt_macro_auroc": 0.8943236244607212,
+      "seconds": 34.829718589782715
+    },
+    {
+      "epoch": 7,
+      "loss": 0.05857590295190741,
+      "ckpt_macro_auroc": 0.9350690902465738,
+      "seconds": 35.985857248306274
+    },
+    {
+      "epoch": 8,
+      "loss": 0.04541233048591837,
+      "ckpt_macro_auroc": 0.8952579602961404,
+      "seconds": 35.68784308433533
+    },
+    {
+      "epoch": 9,
+      "loss": 0.036816526655364216,
+      "ckpt_macro_auroc": 0.8993991861429845,
+      "seconds": 37.60289239883423
+    },
+    {
+      "epoch": 10,
+      "loss": 0.029685868599910813,
+      "ckpt_macro_auroc": 0.902140986680968,
+      "seconds": 36.55596709251404
+    },
+    {
+      "epoch": 11,
+      "loss": 0.02441527948438127,
+      "ckpt_macro_auroc": 0.9044225821168077,
+      "seconds": 35.66046333312988
+    },
+    {
+      "epoch": 12,
+      "loss": 0.01869222175257096,
+      "ckpt_macro_auroc": 0.9075306910601777,
+      "seconds": 35.12248373031616
+    },
+    {
+      "epoch": 13,
+      "loss": 0.017428716887706867,
+      "ckpt_macro_auroc": 0.9074984397208224,
+      "seconds": 35.92828965187073
+    }
+  ]
+}

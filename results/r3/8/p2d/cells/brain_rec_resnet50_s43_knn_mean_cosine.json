@@ -1,0 +1,141 @@
+{
+ "ds": "brain",
+ "variant": "rec",
+ "candidate": "meningioma",
+ "run": "resnet50_s43",
+ "scorer": "knn_mean_cosine",
+ "d": 2048,
+ "K": 2,
+ "classes": [
+  "glioma",
+  "pituitary"
+ ],
+ "n": {
+  "fit": 1044,
+  "seen": 343,
+  "seen_dropped_no_fit_group": 4,
+  "unseen": 450,
+  "ood": 708
+ },
+ "n_groups": {
+  "fit": 108,
+  "seen": 96,
+  "unseen": 30,
+  "ood": 82
+ },
+ "n_groups_fit_per_fold": [
+  60,
+  60
+ ],
+ "n_fit_per_fold": [
+  547,
+  570
+ ],
+ "case_mix": {
+  "strata_kept": [
+   "glioma",
+   "pituitary"
+  ],
+  "seen_share_dropped": 0.0,
+  "unseen_share_dropped": 0.0,
+  "ess_seen_weighted": 342.6240295653097
+ },
+ "package_check": {
+  "leaky_diff": 1.1102230246251565e-16,
+  "F2_diff": 0.0,
+  "leaky_package": 0.8994992670191563,
+  "F2_package": 0.8904646604404474,
+  "near_tied_pairs_leaky": 0,
+  "near_tied_pairs_F2": [
+   0,
+   0
+  ],
+  "tol_leaky": 1e-09,
+  "tol_F2": 1e-09
+ },
+ "n_blocks_id": 50,
+ "n_blocks_ood": 50,
+ "bootstrap_B": 2000,
+ "stats": {
+  "leaky": {
+   "est": 0.8994992670191564,
+   "jk_se": 0.024836220303642107,
+   "jk_ci95": [
+    0.8508211697119155,
+    0.9481773643263973
+   ],
+   "boot_ci95_ref": [
+    0.854871467470276,
+    0.9353094330801821
+   ]
+  },
+  "F2": {
+   "est": 0.8904646604404474,
+   "jk_se": 0.025522169831870705,
+   "jk_ci95": [
+    0.840442126762666,
+    0.9404871941182287
+   ],
+   "boot_ci95_ref": [
+    0.8441475943491904,
+    0.9269106218974217
+   ]
+  },
+  "delta_fit": {
+   "est": 0.009034606578709026,
+   "jk_se": 0.004229993074257582,
+   "jk_ci95": [
+    0.0007439724983103035,
+    0.017325240659107746
+   ],
+   "boot_ci95_ref": [
+    0.004973724594577655,
+    0.0135195216545847
+   ]
+  },
+  "truth": {
+   "est": 0.8843377275580665,
+   "jk_se": 0.034250248695449244,
+   "jk_ci95": [
+    0.8172084736534461,
+    0.9514669814626869
+   ],
+   "boot_ci95_ref": [
+    0.8216592611093219,
+    0.9381686802919721
+   ]
+  },
+  "a_gap": {
+   "est": 0.01516153946108989,
+   "jk_se": 0.030286505726694536,
+   "jk_ci95": [
+    -0.04419892098079749,
+    0.07452199990297727
+   ],
+   "boot_ci95_ref": [
+    -0.04242902967564483,
+    0.07660800438720661
+   ]
+  },
+  "a_gap_cm": {
+   "est": 0.015147283064146144,
+   "jk_se": 0.030365870957002758,
+   "jk_ci95": [
+    -0.04436873037077007,
+    0.07466329649906236
+   ],
+   "boot_ci95_ref": [
+    -0.04210934679917308,
+    0.07609046824369538
+   ]
+  }
+ },
+ "flags": {
+  "near_chance": false,
+  "ceiling": false,
+  "below_chance": false,
+  "ood_side_ci_unreliable": false,
+  "a_gap_underpowered": false
+ },
+ "seconds": 46.8
+}

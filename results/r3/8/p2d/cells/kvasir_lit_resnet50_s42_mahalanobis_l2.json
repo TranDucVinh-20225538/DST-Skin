@@ -1,0 +1,152 @@
+{
+ "ds": "kvasir",
+ "variant": "lit",
+ "candidate": "Angiectasia",
+ "run": "resnet50_s42",
+ "scorer": "mahalanobis_l2",
+ "d": 2048,
+ "K": 2,
+ "classes": [
+  "Erosion",
+  "Erythematous",
+  "Foreign Bodies",
+  "Ileo-cecal valve",
+  "Lymphangiectasia",
+  "Normal",
+  "Pylorus",
+  "Reduced Mucosal View",
+  "Ulcer"
+ ],
+ "n": {
+  "fit": 23530,
+  "seen": 5042,
+  "seen_dropped_no_fit_group": 0,
+  "unseen": 4663,
+  "ood": 866
+ },
+ "n_groups": {
+  "fit": 27,
+  "seen": 27,
+  "unseen": 7,
+  "ood": 6
+ },
+ "n_groups_fit_per_fold": [
+  13,
+  14
+ ],
+ "n_fit_per_fold": [
+  10243,
+  13287
+ ],
+ "case_mix": {
+  "strata_kept": [
+   "Foreign Bodies",
+   "Ileo-cecal valve",
+   "Normal",
+   "Pylorus",
+   "Reduced Mucosal View",
+   "Ulcer"
+  ],
+  "seen_share_dropped": 0.028163427211424064,
+  "unseen_share_dropped": 0.0,
+  "ess_seen_weighted": 4607.6017724490775
+ },
+ "package_check": {
+  "leaky_diff": 1.1102230246251565e-16,
+  "F2_diff": 5.551115123125783e-17,
+  "leaky_package": 0.8081452977437561,
+  "F2_package": 0.28782751446738847,
+  "near_tied_pairs_leaky": 0,
+  "near_tied_pairs_F2": [
+   0,
+   0
+  ],
+  "tol_leaky": 1e-09,
+  "tol_F2": 1e-09
+ },
+ "n_blocks_id": 34,
+ "n_blocks_ood": 6,
+ "bootstrap_B": 2000,
+ "stats": {
+  "leaky": {
+   "est": 0.8081452977437562,
+   "jk_se": 0.11485658547381523,
+   "jk_ci95": [
+    0.5830305268278321,
+    1.0332600686596805
+   ],
+   "boot_ci95_ref": [
+    0.7526001714962895,
+    0.9558417742574217
+   ]
+  },
+  "F2": {
+   "est": 0.2878275144673885,
+   "jk_se": 0.2774734520570493,
+   "jk_ci95": [
+    -0.25601045823042934,
+    0.8316654871652064
+   ],
+   "boot_ci95_ref": [
+    0.17891451815590487,
+    0.6789636017729914
+   ]
+  },
+  "delta_fit": {
+   "est": 0.5203177832763677,
+   "jk_se": 0.1682160729657948,
+   "jk_ci95": [
+    0.1906203386426481,
+    0.8500152279100872
+   ],
+   "boot_ci95_ref": [
+    0.2676468669746341,
+    0.6070540699286326
+   ]
+  },
+  "truth": {
+   "est": 0.3238949540855014,
+   "jk_se": 0.3087256047836411,
+   "jk_ci95": [
+    -0.2811961123957816,
+    0.9289860205667844
+   ],
+   "boot_ci95_ref": [
+    0.15544830779080576,
+    0.7688119087918914
+   ]
+  },
+  "a_gap": {
+   "est": 0.4842503436582548,
+   "jk_se": 0.2041944018791323,
+   "jk_ci95": [
+    0.08403667013045768,
+    0.8844640171860519
+   ],
+   "boot_ci95_ref": [
+    0.17805619653915752,
+    0.6330314653283914
+   ]
+  },
+  "a_gap_cm": {
+   "est": 0.48262237963835397,
+   "jk_se": 0.2063058699204291,
+   "jk_ci95": [
+    0.07827030479510777,
+    0.8869744544816002
+   ],
+   "boot_ci95_ref": [
+    0.17840499999836776,
+    0.6316034005829794
+   ]
+  }
+ },
+ "flags": {
+  "near_chance": false,
+  "ceiling": false,
+  "below_chance": true,
+  "ood_side_ci_unreliable": false,
+  "a_gap_underpowered": true
+ },
+ "seconds": 1251.2
+}

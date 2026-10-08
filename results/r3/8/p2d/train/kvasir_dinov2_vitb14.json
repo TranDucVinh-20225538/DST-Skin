@@ -1,0 +1,12 @@
+{
+  "ds": "kvasir",
+  "candidate": "Angiectasia",
+  "fm": "dinov2_vitb14",
+  "weights": "torch.hub facebookresearch_dinov2 dinov2_vitb14_pretrain.pth",
+  "n": 41013,
+  "d": 768,
+  "input": "224 from staged 256",
+  "torch": "2.1.1",
+  "seconds": 282.0,
+  "gpu": "NVIDIA A100-SXM4-80GB"
+}

@@ -1,0 +1,134 @@
+{
+ "plan": "results/r3/8/p2d/pilot_plan.md",
+ "saturation_threshold": 0.97,
+ "kvasir_capsule": {
+  "candidates": {
+   "Angiectasia": {
+    "sets": {
+     "fit": {
+      "n": 1500,
+      "groups": 26
+     },
+     "seen": {
+      "n": 300,
+      "groups": 19
+     },
+     "unseen": {
+      "n": 300,
+      "groups": 7
+     },
+     "ood": {
+      "n": 300,
+      "groups": 6
+     },
+     "seen_eligible": 5481
+    },
+    "maha_max_auroc": 0.5526222222222222,
+    "skipped": false
+   },
+   "Erosion": {
+    "sets": {
+     "fit": {
+      "n": 1500,
+      "groups": 22
+     },
+     "seen": {
+      "n": 300,
+      "groups": 16
+     },
+     "unseen": {
+      "n": 300,
+      "groups": 7
+     },
+     "ood": {
+      "n": 300,
+      "groups": 9
+     },
+     "seen_eligible": 3567
+    },
+    "maha_max_auroc": 0.5119999999999999,
+    "skipped": false
+   }
+  },
+  "primary": "Angiectasia",
+  "secondary": "Erosion",
+  "rule_applied": "first non-skipped candidate"
+ },
+ "brain": {
+  "candidates": {
+   "meningioma": {
+    "sets": {
+     "fit": {
+      "n": 1044,
+      "groups": 108
+     },
+     "seen": {
+      "n": 300,
+      "groups": 94
+     },
+     "unseen": {
+      "n": 300,
+      "groups": 29
+     },
+     "ood": {
+      "n": 300,
+      "groups": 73
+     },
+     "seen_eligible": 343
+    },
+    "maha_max_auroc": 0.7330888888888889,
+    "skipped": false
+   },
+   "pituitary": {
+    "sets": {
+     "fit": {
+      "n": 958,
+      "groups": 120
+     },
+     "seen": {
+      "n": 300,
+      "groups": 101
+     },
+     "unseen": {
+      "n": 300,
+      "groups": 34
+     },
+     "ood": {
+      "n": 300,
+      "groups": 61
+     },
+     "seen_eligible": 316
+    },
+    "maha_max_auroc": 0.6086777777777778,
+    "skipped": false
+   },
+   "glioma": {
+    "sets": {
+     "fit": {
+      "n": 750,
+      "groups": 103
+     },
+     "seen": {
+      "n": 249,
+      "groups": 85
+     },
+     "unseen": {
+      "n": 291,
+      "groups": 28
+     },
+     "ood": {
+      "n": 300,
+      "groups": 83
+     },
+     "seen_eligible": 249
+    },
+    "maha_max_auroc": 0.8823828647925034,
+    "skipped": false
+   }
+  },
+  "primary": "meningioma",
+  "secondary": "pituitary",
+  "rule_applied": "first non-skipped candidate"
+ },
+ "seconds": 2169.6
+}

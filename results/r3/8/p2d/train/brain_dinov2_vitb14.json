@@ -1,0 +1,12 @@
+{
+  "ds": "brain",
+  "candidate": "meningioma",
+  "fm": "dinov2_vitb14",
+  "weights": "torch.hub facebookresearch_dinov2 dinov2_vitb14_pretrain.pth",
+  "n": 3064,
+  "d": 768,
+  "input": "224 from staged 256",
+  "torch": "2.1.1",
+  "seconds": 18.4,
+  "gpu": "NVIDIA A100-SXM4-80GB"
+}

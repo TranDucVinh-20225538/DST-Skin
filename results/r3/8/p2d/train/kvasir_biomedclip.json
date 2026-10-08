@@ -1,0 +1,12 @@
+{
+  "ds": "kvasir",
+  "candidate": "Angiectasia",
+  "fm": "biomedclip",
+  "weights": "hf-hub:microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224 (revision in g0_biomedclip.json)",
+  "n": 41013,
+  "d": 512,
+  "input": "224 from staged 256",
+  "torch": "2.1.1",
+  "seconds": 261.3,
+  "gpu": "NVIDIA A100-SXM4-80GB"
+}

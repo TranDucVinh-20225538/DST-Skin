@@ -1,0 +1,40 @@
+{
+  "ds": "kvasir",
+  "variant": "seg",
+  "candidate": "Angiectasia",
+  "fm": "biomedclip",
+  "probe": "LogisticRegression(C=1.0, lbfgs, max_iter=2000) one-vs-rest per ID class, raw features, fit images",
+  "macro_auroc": {
+    "seen": 0.9141054385585529,
+    "unseen": 0.8662271297361713
+  },
+  "acc": {
+    "seen": 0.7712096332785988,
+    "unseen": 0.7531631996568733
+  },
+  "per_class_auroc": {
+    "seen": {
+      "Erosion": 0.88432294004277,
+      "Erythematous": 0.9571951857666143,
+      "Foreign Bodies": 0.8928318092864845,
+      "Ileo-cecal valve": 0.840173048748447,
+      "Lymphangiectasia": 0.9642195889650065,
+      "Normal": 0.8616739569463177,
+      "Pylorus": 0.9060897776095914,
+      "Reduced Mucosal View": 0.92935379351055,
+      "Ulcer": 0.9910888461511949
+    },
+    "unseen": {
+      "Foreign Bodies": 0.9287810464533677,
+      "Ileo-cecal valve": 0.8531282095205037,
+      "Normal": 0.8892242754364997,
+      "Pylorus": 0.7706170476908148,
+      "Reduced Mucosal View": 0.8261820272836639,
+      "Ulcer": 0.9294301720321778
+    }
+  },
+  "G_competence": {
+    "probe_seen_macro_auroc_ge_0.70": true,
+    "pass": true
+  }
+}

@@ -1,0 +1,367 @@
+{
+  "ds": "brain",
+  "variant": "rec",
+  "candidate": "meningioma",
+  "arch": "convnext_tiny",
+  "seed": 42,
+  "smoke": false,
+  "classes": [
+    "glioma",
+    "pituitary"
+  ],
+  "epochs": 50,
+  "best_epoch": 4,
+  "best_ckpt_macro_auroc": 1.0,
+  "n": {
+    "fit": 1044,
+    "ckpt": 167,
+    "seen": 347,
+    "unseen": 450,
+    "ood": 708
+  },
+  "d": 768,
+  "recipe": {
+    "optim": "adamw",
+    "lr": 0.0001,
+    "wd": 0.05,
+    "batch_size": 64
+  },
+  "input_size": 224,
+  "loss": "CrossEntropy (single-label)",
+  "epoch1_loss": 0.3057930890856118,
+  "final_loss": 0.00014991042575748974,
+  "id_macro_auroc": {
+    "fit": 0.9999504731716982,
+    "seen": 0.999612948627727,
+    "unseen": 0.9999797853200995
+  },
+  "id_acc": {
+    "fit": 0.9770114942528736,
+    "seen": 0.9737609329446064,
+    "unseen": 0.9466666666666667
+  },
+  "id_per_class_auroc": {
+    "fit": {
+      "glioma": 0.9999504731716982,
+      "pituitary": 0.9999504731716982
+    },
+    "seen": {
+      "glioma": 0.999612948627727,
+      "pituitary": 0.999612948627727
+    },
+    "unseen": {
+      "glioma": 0.9999797853200995,
+      "pituitary": 0.9999797853200995
+    }
+  },
+  "G_competence": {
+    "final_loss_le_half_epoch1": true,
+    "seen_macro_auroc_ge_0.75": true,
+    "pass": true
+  },
+  "train_seconds": 261.1,
+  "extract_seconds": 5.3,
+  "gpu": "NVIDIA A100-SXM4-80GB",
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.3057930890856118,
+      "ckpt_macro_auroc": 0.9972434266327396,
+      "seconds": 6.956956148147583
+    },
+    {
+      "epoch": 2,
+      "loss": 0.07655416949298875,
+      "ckpt_macro_auroc": 0.9980916030534351,
+      "seconds": 4.930263996124268
+    },
+    {
+      "epoch": 3,
+      "loss": 0.048212209938119,
+      "ckpt_macro_auroc": 0.9989397794741306,
+      "seconds": 5.114152193069458
+    },
+    {
+      "epoch": 4,
+      "loss": 0.03382948179411705,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.141512393951416
+    },
+    {
+      "epoch": 5,
+      "loss": 0.032093225104084876,
+      "ckpt_macro_auroc": 0.9997879558948262,
+      "seconds": 5.307005167007446
+    },
+    {
+      "epoch": 6,
+      "loss": 0.013897482258931402,
+      "ckpt_macro_auroc": 0.9997879558948262,
+      "seconds": 5.553487777709961
+    },
+    {
+      "epoch": 7,
+      "loss": 0.02643295345913576,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.37518572807312
+    },
+    {
+      "epoch": 8,
+      "loss": 0.01853469675549545,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.31906533241272
+    },
+    {
+      "epoch": 9,
+      "loss": 0.026638279836696227,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.320624113082886
+    },
+    {
+      "epoch": 10,
+      "loss": 0.03569952921649277,
+      "ckpt_macro_auroc": 0.9997879558948262,
+      "seconds": 5.298590183258057
+    },
+    {
+      "epoch": 11,
+      "loss": 0.017748248800849437,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.02512788772583
+    },
+    {
+      "epoch": 12,
+      "loss": 0.01644115989235626,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.255035638809204
+    },
+    {
+      "epoch": 13,
+      "loss": 0.006277592038696496,
+      "ckpt_macro_auroc": 0.9997879558948262,
+      "seconds": 5.0622780323028564
+    },
+    {
+      "epoch": 14,
+      "loss": 0.00905994398134022,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.167255163192749
+    },
+    {
+      "epoch": 15,
+      "loss": 0.004359858558589942,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.077728271484375
+    },
+    {
+      "epoch": 16,
+      "loss": 0.0012923697441445227,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.119542837142944
+    },
+    {
+      "epoch": 17,
+      "loss": 0.004593532776713846,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.285865545272827
+    },
+    {
+      "epoch": 18,
+      "loss": 0.0038655487663501525,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.347909688949585
+    },
+    {
+      "epoch": 19,
+      "loss": 0.0017763602902391975,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.19978404045105
+    },
+    {
+      "epoch": 20,
+      "loss": 0.0008908563609755959,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.127851247787476
+    },
+    {
+      "epoch": 21,
+      "loss": 0.0028436575312960457,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.141973972320557
+    },
+    {
+      "epoch": 22,
+      "loss": 0.001004972170424644,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.336712837219238
+    },
+    {
+      "epoch": 23,
+      "loss": 0.012127636614259175,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.259274244308472
+    },
+    {
+      "epoch": 24,
+      "loss": 0.007326919400807598,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.362545967102051
+    },
+    {
+      "epoch": 25,
+      "loss": 0.0013308552240103597,
+      "ckpt_macro_auroc": 0.9997879558948262,
+      "seconds": 5.245159149169922
+    },
+    {
+      "epoch": 26,
+      "loss": 0.00201638943840878,
+      "ckpt_macro_auroc": 0.9997879558948262,
+      "seconds": 5.22251296043396
+    },
+    {
+      "epoch": 27,
+      "loss": 0.004044768330685695,
+      "ckpt_macro_auroc": 0.9997879558948262,
+      "seconds": 4.997966766357422
+    },
+    {
+      "epoch": 28,
+      "loss": 0.0014642281071960898,
+      "ckpt_macro_auroc": 0.9997879558948262,
+      "seconds": 5.0584681034088135
+    },
+    {
+      "epoch": 29,
+      "loss": 0.0014934403233281854,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.288782119750977
+    },
+    {
+      "epoch": 30,
+      "loss": 0.0038565499529642166,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.137809991836548
+    },
+    {
+      "epoch": 31,
+      "loss": 0.000994059941428089,
+      "ckpt_macro_auroc": 0.9997879558948262,
+      "seconds": 5.43176007270813
+    },
+    {
+      "epoch": 32,
+      "loss": 0.002841653886172649,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.056658029556274
+    },
+    {
+      "epoch": 33,
+      "loss": 0.0006953966321015081,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 4.894739627838135
+    },
+    {
+      "epoch": 34,
+      "loss": 0.0006483956217815764,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 4.872414827346802
+    },
+    {
+      "epoch": 35,
+      "loss": 0.0007746416709479034,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.103959321975708
+    },
+    {
+      "epoch": 36,
+      "loss": 0.0004915889487262829,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 4.9323790073394775
+    },
+    {
+      "epoch": 37,
+      "loss": 0.0011510086649274133,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.243508815765381
+    },
+    {
+      "epoch": 38,
+      "loss": 0.00048251720769237194,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.113015651702881
+    },
+    {
+      "epoch": 39,
+      "loss": 0.0016823402547185627,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.03032660484314
+    },
+    {
+      "epoch": 40,
+      "loss": 0.00022965105830965397,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 4.963398456573486
+    },
+    {
+      "epoch": 41,
+      "loss": 0.000873026696423611,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.339226245880127
+    },
+    {
+      "epoch": 42,
+      "loss": 0.00036455741041160184,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.124777317047119
+    },
+    {
+      "epoch": 43,
+      "loss": 0.0005320947101507853,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.1222991943359375
+    },
+    {
+      "epoch": 44,
+      "loss": 0.00029817175811916674,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 4.982354402542114
+    },
+    {
+      "epoch": 45,
+      "loss": 0.001017452207379671,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 4.981086730957031
+    },
+    {
+      "epoch": 46,
+      "loss": 0.0002025661238364811,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.085371971130371
+    },
+    {
+      "epoch": 47,
+      "loss": 0.0004198907199644678,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.143244504928589
+    },
+    {
+      "epoch": 48,
+      "loss": 0.00022763830504633962,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 4.989254951477051
+    },
+    {
+      "epoch": 49,
+      "loss": 0.0007549997381651881,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 4.910275459289551
+    },
+    {
+      "epoch": 50,
+      "loss": 0.00014991042575748974,
+      "ckpt_macro_auroc": 1.0,
+      "seconds": 5.118029594421387
+    }
+  ]
+}
