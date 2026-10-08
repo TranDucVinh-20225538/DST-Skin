@@ -25,18 +25,19 @@ commit() {  # message
 }
 finalize() {  # name, "data paths", "report cmd (gets hash appended)", "report paths" [, fallback cmd on generator failure]
   local name=$1 data=$2 cmd=$3 rep=$4 fb=${5:-}
+  local tag=${name//[^A-Za-z0-9]/_}
   (
     flock 9
     git reset -q
-    eval "$cmd pending" > "$ST/$name.gen0.log" 2>&1 || echo "generator (pre) failed: $name" >> "$ST/log"
+    eval "$cmd pending" > "$ST/$tag.gen0.log" 2>&1 || echo "generator (pre) failed: $name" >> "$ST/log"
     git add $data 2>/dev/null
     commit "R3 $name: data"
     H=$(git rev-parse --short HEAD)
-    if eval "$cmd $H" > "$ST/$name.gen.log" 2>&1; then
+    if eval "$cmd $H" > "$ST/$tag.gen.log" 2>&1; then
       git add $rep $data 2>/dev/null
       commit "R3 $name: REPORT (data at $H)"
     else
-      echo "generator failed: $name (see $ST/$name.gen.log)" >> "$ST/log"
+      echo "generator failed: $name (see $ST/$tag.gen.log)" >> "$ST/log"
       if [ -n "$fb" ]; then
         eval "$fb $H" && git add $rep && commit "R3 $name: STOP REPORT (data at $H)"
       fi
