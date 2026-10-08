@@ -188,5 +188,28 @@ def report(rows):
     print("\n".join(L))
 
 
+def refresh() -> int:
+    """Re-read dose.csv, refill item1_delta from out_v2 (Camelyon item-1 v2 rows) and rewrite the report; no recompute."""
+    import ast
+    rows = list(csv.DictReader(open(OUT / "dose.csv")))
+    for r in rows:
+        for k in ("f", "delta", "ci_lo", "ci_hi", "auroc_seen", "auroc_unseen", "id_acc", "trackA_delta_fit"):
+            r[k] = float(r[k])
+        for k in ("d", "K", "slides_A", "slides_B", "slides_C"):
+            r[k] = int(r[k])
+        for k in ("n_fit", "n_dose_patches", "n_groups_fit", "hospitals_per_set"):
+            r[k] = ast.literal_eval(r[k])
+        sc = r["scorer"]
+        r1 = W / "out_v2" / ("camelyon_%s_s42" % r["model"] + ("_knnmc" if sc == "knn_mean_cosine" else "_maha")) / "paper_ci.csv"
+        r["item1_delta"] = next((float(x["delta"]) for x in csv.DictReader(open(r1)) if x["scorer"] == sc), None) \
+            if r1.exists() else None
+    with open(OUT / "dose.csv", "w", newline="") as fh:
+        w = csv.DictWriter(fh, fieldnames=list(rows[0]))
+        w.writeheader()
+        w.writerows(rows)
+    report(rows)
+    return 0
+
+
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(refresh() if sys.argv[1:] == ["refresh"] else main())

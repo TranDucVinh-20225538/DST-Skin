@@ -1,0 +1,336 @@
+diff -ruN -x __pycache__ -x '*.egg-info' -x results -x .pytest_cache a/scripts/recompute_paper_ci.py b/scripts/recompute_paper_ci.py
+--- a/scripts/recompute_paper_ci.py	2026-10-07 19:53:13.000000000 +0700
++++ b/scripts/recompute_paper_ci.py	2026-10-07 23:36:52.296753211 +0700
+@@ -56,7 +56,8 @@
+ from crossfit_ood import ViMScorer, crossfit_auroc, get_scorer
+ 
+ REQUIRED = ("features_train", "groups_train", "features_id_eval", "groups_id_eval", "features_ood")
+-OPTIONAL = ("labels_train", "groups_ood")
++OPTIONAL = ("labels_train", "groups_ood", "fold_train", "fold_id_eval")
++# fold_train: fixed paper fold (0/1) per train sample; fold_id_eval: fold (-1/0/1) per ID-eval sample (--seen tracka)
+ 
+ 
+ def _kv(items):
+@@ -119,6 +120,9 @@
+     ap.add_argument("--vim-dim", type=int, default=None)
+     ap.add_argument("--max-per-group", type=int, default=None,
+                     help="optional cap on train samples per group (speed; changes the estimate)")
++    ap.add_argument("--seen", default="strict", choices=["strict", "tracka"],
++                    help="paper_2fold seen set: strict = ID-eval groups present in training; tracka = also groups "
++                         "given a fold by fold_id_eval")
+     ap.add_argument("--ci-level", type=float, default=0.95)
+     ap.add_argument("--n-jobs", type=int, default=1)
+     ap.add_argument("--seed", type=int, default=0)
+@@ -139,8 +143,8 @@
+             scorers["vim"] = ViMScorer(weight=h[a.vim_weight_key], bias=h[a.vim_bias_key], dim=a.vim_dim)
+         elif s == "vim":
+             scorers["vim"] = ViMScorer(dim=a.vim_dim)
+-        elif s == "knn":
+-            scorers["knn"] = get_scorer("knn", k=a.knn_k)
++        elif s in ("knn", "knn_mean_cosine"):
++            scorers[s] = get_scorer(s, k=a.knn_k)
+         else:
+             scorers[s] = get_scorer(s)
+ 
+@@ -149,10 +153,16 @@
+     for name, src in sources:
+         d = load_dataset(src, keymap, a.allow_pickle)
+         rng = np.random.default_rng(a.seed)
++        if d["fold_train"] is not None and a.max_per_group is not None:
++            raise SystemExit("--max-per-group cannot be combined with fold_train")
++        if a.seen == "tracka" and (d["fold_id_eval"] is None or d["fold_train"] is None):
++            raise SystemExit("--seen tracka needs fold_train and fold_id_eval in the input")
+         xtr, gtr, ytr = cap_per_group(d["features_train"], d["groups_train"], d["labels_train"],
+                                       a.max_per_group, rng)
+         common = dict(labels_train=ytr, scorers=scorers, groups_ood=d["groups_ood"], protocol=a.protocol,
+-                      n_repeats=a.n_repeats, ci_level=a.ci_level, random_state=a.seed, n_jobs=a.n_jobs)
++                      n_repeats=a.n_repeats, ci_level=a.ci_level, random_state=a.seed, n_jobs=a.n_jobs,
++                      fold_ids=None if d["fold_train"] is None else d["fold_train"].astype(int),
++                      fold_ids_eval=d["fold_id_eval"].astype(int) if a.seen == "tracka" else None)
+         args = (xtr, gtr, d["features_id_eval"], d["groups_id_eval"], d["features_ood"])
+         runs = {}
+         t = time.time()
+@@ -170,7 +180,7 @@
+         for s in scorers:
+             r0 = base.results[s]
+             rj = runs["jackknife"][0].results[s]
+-            row = dict(dataset=name, scorer=s, protocol=a.protocol, K=base.n_splits,
++            row = dict(dataset=name, scorer=s, protocol=a.protocol, seen=a.seen, K=base.n_splits,
+                        n_repeats=base.n_repeats, n_groups_train=base.n_groups_train,
+                        n_groups_id_eval=base.n_groups_id_eval, auroc_seen=r0.auroc_leaky,
+                        auroc_unseen=r0.auroc_crossfit, delta=r0.delta,
+@@ -189,7 +199,8 @@
+                 row[f"status_{crit}"] = ("pass_both" if po and pn else "pass_old_only" if po else
+                                          "pass_new_only" if pn else "fail_both")
+             row.update(threshold=a.threshold, n_train=len(xtr), n_id_eval=len(d["features_id_eval"]),
+-                       n_ood=len(d["features_ood"]), tpr_new=r0.tpr_transfer.tpr_new)
++                       n_ood=len(d["features_ood"]), tpr_new=r0.tpr_transfer.tpr_new,
++                       n_id_eval_orphan=base.meta.get("n_id_eval_orphan", 0))
+             rows.append(row)
+ 
+     csv_path = os.path.join(a.out, "paper_ci.csv")
+diff -ruN -x __pycache__ -x '*.egg-info' -x results -x .pytest_cache a/src/crossfit_ood/core.py b/src/crossfit_ood/core.py
+--- a/src/crossfit_ood/core.py	2026-10-07 19:53:13.000000000 +0700
++++ b/src/crossfit_ood/core.py	2026-10-07 23:36:27.321776876 +0700
+@@ -445,6 +445,7 @@
+     n_repeats: int = 1,
+     match_fit_size: bool = False,
+     fold_ids: Optional[Union[np.ndarray, Sequence[np.ndarray]]] = None,
++    fold_ids_eval: Optional[np.ndarray] = None,
+     uncertainty: str = "jackknife",
+     ci_level: float = 0.95,
+     n_jackknife_blocks: int = 50,
+@@ -570,7 +571,12 @@
+         number of independent fold partitions (both protocols)
+     match_fit_size : size-matched leaky arm (default protocol only)
+     fold_ids : user fold per ID-eval sample (array, or list per repeat; must be
+-        constant within groups); default protocol only
++        constant within groups); for protocol="paper_2fold": fold 0 / 1 per TRAIN
++        sample (e.g. the paper's fixed folds); the jackknife keeps this map
++    fold_ids_eval : protocol="paper_2fold" with ``fold_ids`` only: fold (0 / 1, or -1 = none)
++        per ID-eval sample. ID-eval groups absent from the training set but given a fold here
++        are kept and counted as seen for that fold (and become jackknife units); train groups
++        must get the same fold as in ``fold_ids``
+     uncertainty, ci_level, n_jackknife_blocks, jackknife_formula, n_subsamples,
+     subsample_size, subsample_scaling, subsample_ci, n_bootstrap : see *Uncertainty*
+     target_tpr : seen-group TPR defining the transfer threshold
+@@ -616,16 +622,45 @@
+     meta: Dict[str, object] = {"n_train": len(xtr), "n_id_eval": len(xid), "n_ood": len(xood),
+                                "n_features": d}
+ 
++    paper_user_map = None
+     if protocol == "paper_2fold":
+-        if fold_ids is not None or match_fit_size:
+-            raise ValueError("fold_ids / match_fit_size are not supported with protocol='paper_2fold'")
+-        used = np.isin(gid, gtr)
++        if match_fit_size:
++            raise ValueError("match_fit_size is not supported with protocol='paper_2fold'")
++        if fold_ids_eval is not None and fold_ids is None:
++            raise ValueError("fold_ids_eval needs fold_ids (per train sample)")
++        fe = None
++        if fold_ids_eval is not None:
++            fe = np.asarray(fold_ids_eval, dtype=int)
++            if fe.shape != gid.shape or not np.isin(fe, (-1, 0, 1)).all():
++                raise ValueError("fold_ids_eval must be -1 / 0 / 1, one per ID-eval sample")
++        used = np.isin(gid, gtr) | (fe >= 0 if fe is not None else False)
+         meta["n_id_eval_unused"] = int((~used).sum())
+         xid, gid = xid[used], gid[used]
++        if fe is not None:
++            fe = fe[used]
+         if len(np.unique(gtr)) < 2:
+             raise ValueError("paper_2fold needs at least 2 train groups")
++        if fold_ids is not None:
++            # paper_2fold: fold_ids = fold (0 / 1) per TRAIN sample, whole groups per fold
++            paper_user_map = _fold_ids_to_maps(fold_ids, gtr)
++            if any(sorted(set(m.values())) != [0, 1] for m in paper_user_map):
++                raise ValueError("paper_2fold fold_ids must use exactly the folds 0 and 1")
++            if fe is not None:
++                if len(paper_user_map) != 1:
++                    raise ValueError("fold_ids_eval supports a single fold_ids array")
++                m = paper_user_map[0]
++                known = _apply_map(m, gid)
++                if np.any((known >= 0) & (fe >= 0) & (known != fe)):
++                    raise ValueError("fold_ids_eval disagrees with fold_ids on a train group")
++                new = known < 0
++                ev = _fold_ids_to_maps(fe[new], gid[new])[0] if new.any() else {}
++                m.update(ev)
++                meta["n_id_eval_orphan"] = int(new.sum())
++                meta["n_groups_orphan"] = len(ev)
+     user_folds = fold_ids is not None
+-    if user_folds:
++    if paper_user_map is not None:
++        fold_maps = paper_user_map
++    elif user_folds:
+         fold_maps = _fold_ids_to_maps(fold_ids, gid)
+     else:
+         fold_maps = _new_fold_maps(protocol, gtr, gid, n_splits, n_repeats, random_state)
+@@ -645,7 +680,8 @@
+     rng = np.random.default_rng(None if random_state is None else random_state + 1)
+     ood_units_lab = np.arange(len(xood)) if good is None else good
+     ood_units = np.unique(ood_units_lab)
+-    id_units = np.unique(np.concatenate([gtr, gid])) if protocol == "default" else np.unique(gtr)
++    id_units = (np.unique(np.concatenate([gtr, gid])) if protocol == "default" or fold_ids_eval is not None
++                else np.unique(gtr))
+ 
+     # ---------------------------------------------------------------- uncertainty
+     if uncertainty == "bootstrap" and n_bootstrap > 0:
+diff -ruN -x __pycache__ -x '*.egg-info' -x results -x .pytest_cache a/src/crossfit_ood/scorers.py b/src/crossfit_ood/scorers.py
+--- a/src/crossfit_ood/scorers.py	2026-10-07 19:53:13.000000000 +0700
++++ b/src/crossfit_ood/scorers.py	2026-10-07 22:58:16.970059896 +0700
+@@ -22,6 +22,8 @@
+     "Scorer",
+     "MahalanobisScorer",
+     "KNNScorer",
++    "KNNMeanCosineScorer",
++    "MahalanobisL2Scorer",
+     "ViMScorer",
+     "register_scorer",
+     "get_scorer",
+@@ -152,6 +154,49 @@
+         return -dist[:, -1]
+ 
+ 
++def _l2_tracka(x: np.ndarray) -> np.ndarray:
++    # DST-Skin OODScorer.l2_normalize: x / (||x|| + 1e-8)
++    x = _as_f64(x)
++    return x / (np.linalg.norm(x, axis=1, keepdims=True) + 1e-8)
++
++
++@register_scorer("knn_mean_cosine")
++class KNNMeanCosineScorer:
++    """Track A k-NN (DST-Skin OODScorer.score_knn): L2-normalise (x / (||x|| + 1e-8)),
++    ``score = -mean cosine distance to the k nearest fit samples`` (sklearn
++    NearestNeighbors, metric="cosine", algorithm="auto"). ``k`` capped at n_fit."""
++
++    def __init__(self, k: int = 50) -> None:
++        self.k = k
++
++    def fit(self, features: np.ndarray, labels: Optional[np.ndarray] = None) -> "KNNMeanCosineScorer":
++        x = _l2_tracka(features)
++        self.k_ = int(min(self.k, x.shape[0]))
++        self.nn_ = NearestNeighbors(n_neighbors=self.k_, metric="cosine", algorithm="auto").fit(x)
++        return self
++
++    def score(self, features: np.ndarray) -> np.ndarray:
++        dist, _ = self.nn_.kneighbors(_l2_tracka(features), n_neighbors=self.k_)
++        return -dist.mean(axis=1)
++
++
++@register_scorer("mahalanobis_l2")
++class MahalanobisL2Scorer:
++    """Track A Mahalanobis (DST-Skin OODScorer): LedoitWolf() (default, centring at the
++    mean) on L2-normalised float64 features (x / (||x|| + 1e-8)), one class-agnostic
++    mean; ``score = -sqrt(max((x - mu)^T P (x - mu), 0))`` as in Track A."""
++
++    def fit(self, features: np.ndarray, labels: Optional[np.ndarray] = None) -> "MahalanobisL2Scorer":
++        lw = LedoitWolf().fit(_l2_tracka(features))
++        self.mu_ = np.asarray(lw.location_, dtype=np.float64)
++        self.precision_ = np.asarray(lw.precision_, dtype=np.float64)
++        return self
++
++    def score(self, features: np.ndarray) -> np.ndarray:
++        diff = _l2_tracka(features) - self.mu_
++        return -np.sqrt(np.maximum(np.sum((diff @ self.precision_) * diff, axis=1), 0.0))
++
++
+ def _default_vim_dim(n_features: int) -> int:
+     # Same rule of thumb as the reference ViM implementation (Wang et al., 2022).
+     if n_features >= 2048:
+diff -ruN -x __pycache__ -x '*.egg-info' -x results -x .pytest_cache a/tests/test_fold_ids_eval.py b/tests/test_fold_ids_eval.py
+--- a/tests/test_fold_ids_eval.py	1970-01-01 08:00:00.000000000 +0800
++++ b/tests/test_fold_ids_eval.py	2026-10-07 23:37:11.075983537 +0700
+@@ -0,0 +1,59 @@
++"""paper_2fold with fold_ids_eval: ID-eval groups absent from training but given a fold count as seen."""
++import numpy as np
++import pytest
++from sklearn.metrics import roc_auc_score
++
++from crossfit_ood import crossfit_auroc, get_scorer
++
++
++def _data(seed=0):
++    r = np.random.default_rng(seed)
++    gtr = np.repeat(np.arange(20), 15)
++    xtr = r.normal(size=(len(gtr), 8)) + r.normal(size=(20, 8))[gtr]
++    gid = np.r_[np.repeat(np.arange(20), 3), np.repeat([100, 101, 102, 103], 4)]
++    xid = r.normal(size=(len(gid), 8))
++    xid[:60] += r.normal(size=(20, 8))[gid[:60]] * 0.5
++    xood = r.normal(loc=1.0, size=(40, 8))
++    ftr = (gtr % 2).astype(int)
++    fe = np.r_[(gid[:60] % 2), [0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, -1, -1, -1, -1]].astype(int)
++    return xtr, gtr, xid, gid, xood, ftr, fe
++
++
++def _manual(xtr, gtr, xid, xood, ftr, fs):
++    same, dis = [], []
++    for f in (0, 1):
++        s = get_scorer("mahalanobis_l2").fit(xtr[ftr == f])
++        si, so = s.score(xid), s.score(xood)
++        auc = lambda m: roc_auc_score(np.r_[np.ones(m.sum()), np.zeros(len(so))], np.r_[si[m], so])  # noqa: E731
++        same.append(auc(fs == f)); dis.append(auc(fs == 1 - f))
++    return np.mean(same) - np.mean(dis)
++
++
++def test_orphans_counted_as_seen():
++    xtr, gtr, xid, gid, xood, ftr, fe = _data()
++    kw = dict(scorers={"m": get_scorer("mahalanobis_l2")}, protocol="paper_2fold", fold_ids=ftr,
++              uncertainty="bootstrap", n_bootstrap=0)
++    r = crossfit_auroc(xtr, gtr, xid, gid, xood, fold_ids_eval=fe, **kw)
++    assert r.meta["n_id_eval_orphan"] == 12 and r.meta["n_groups_orphan"] == 3
++    assert r.results["m"].delta == pytest.approx(_manual(xtr, gtr, xid, xood, ftr, fe), abs=1e-12)
++    strict = crossfit_auroc(xtr, gtr, xid, gid, xood, **kw)
++    fs_strict = np.where(np.isin(gid, gtr), fe, -1)
++    assert strict.results["m"].delta == pytest.approx(_manual(xtr, gtr, xid, xood, ftr, fs_strict), abs=1e-12)
++
++
++def test_orphans_are_jackknife_units():
++    xtr, gtr, xid, gid, xood, ftr, fe = _data()
++    r = crossfit_auroc(xtr, gtr, xid, gid, xood, scorers={"m": get_scorer("mahalanobis_l2")},
++                       protocol="paper_2fold", fold_ids=ftr, fold_ids_eval=fe, uncertainty="jackknife",
++                       n_jackknife_blocks=50)
++    assert np.isfinite(r.results["m"].delta_se)
++
++
++def test_fold_ids_eval_validation():
++    xtr, gtr, xid, gid, xood, ftr, fe = _data()
++    kw = dict(scorers=["mahalanobis_l2"], protocol="paper_2fold", uncertainty="bootstrap", n_bootstrap=0)
++    with pytest.raises(ValueError, match="needs fold_ids"):
++        crossfit_auroc(xtr, gtr, xid, gid, xood, fold_ids_eval=fe, **kw)
++    bad = fe.copy(); bad[0] = 1 - bad[0]; bad[1:3] = bad[0]
++    with pytest.raises(ValueError, match="disagrees"):
++        crossfit_auroc(xtr, gtr, xid, gid, xood, fold_ids=ftr, fold_ids_eval=bad, **kw)
+diff -ruN -x __pycache__ -x '*.egg-info' -x results -x .pytest_cache a/tests/test_tracka_scorers.py b/tests/test_tracka_scorers.py
+--- a/tests/test_tracka_scorers.py	1970-01-01 08:00:00.000000000 +0800
++++ b/tests/test_tracka_scorers.py	2026-10-07 23:00:14.725356545 +0700
+@@ -0,0 +1,51 @@
++"""Track A scorer definitions (DST-Skin OODScorer) vs the package scorers knn_mean_cosine,
++mahalanobis_l2 and ViMScorer(head, dim = D - C), on one real cell.
++
++Needs DSTSKIN_ROOT (DST-Skin checkout, for src.utils.scoring) and TRACKA_CELL (an R3 item-1 input
++.npz with a sibling <cell>_head.npz); skipped otherwise.
++"""
++import os
++import sys
++
++import numpy as np
++import pytest
++
++from crossfit_ood import ViMScorer, get_scorer
++
++ROOT, CELL = os.environ.get("DSTSKIN_ROOT"), os.environ.get("TRACKA_CELL")
++pytestmark = pytest.mark.skipif(not (ROOT and CELL), reason="needs DSTSKIN_ROOT and TRACKA_CELL")
++
++
++@pytest.fixture(scope="module")
++def tracka():
++    sys.path.insert(0, ROOT)
++    from src.utils.scoring import OODScorer
++    z = np.load(CELL, allow_pickle=True)
++    h = np.load(CELL.replace(".npz", "_head.npz"))
++    w, b = h["weight"], h["bias"]
++    xtr = np.asarray(z["features_train"], np.float64)
++    xq = np.concatenate([z["features_id_eval"], z["features_ood"]]).astype(np.float64)
++    sc = OODScorer(k_nearest=50, use_react=False, use_vim=True, vim_dim=None)
++    sc.fit(xtr, train_logits=xtr @ w.T + b, fc_weight=w, fc_bias=b)
++    ref = sc.get_all_scores(xq @ w.T + b, xq)
++    return xtr, xq, w, b, ref
++
++
++def test_knn_mean_cosine(tracka):
++    xtr, xq, _, _, ref = tracka
++    s = get_scorer("knn_mean_cosine", k=50).fit(xtr).score(xq)
++    np.testing.assert_allclose(s, ref["knn"], rtol=0, atol=1e-9)
++
++
++def test_mahalanobis_l2(tracka):
++    xtr, xq, _, _, ref = tracka
++    s = get_scorer("mahalanobis_l2").fit(xtr).score(xq)
++    np.testing.assert_allclose(s, ref["mahalanobis"], rtol=1e-9, atol=1e-9)
++
++
++def test_vim_tracka_dim(tracka):
++    # Track A stores the ViM parameters and the score in float32 -> float32-level tolerance
++    xtr, xq, w, b, ref = tracka
++    s = ViMScorer(weight=w, bias=b, dim=xtr.shape[1] - w.shape[0]).fit(xtr).score(xq)
++    np.testing.assert_allclose(s, ref["vim"], rtol=2e-4, atol=2e-4)
++    assert np.mean(np.argsort(np.argsort(s)) == np.argsort(np.argsort(ref["vim"]))) > 0.99
