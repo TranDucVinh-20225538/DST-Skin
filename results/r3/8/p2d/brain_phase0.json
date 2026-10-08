@@ -1,0 +1,107 @@
+{
+ "fields": [
+  "PID",
+  "image",
+  "label",
+  "tumorBorder",
+  "tumorMask"
+ ],
+ "slice_index_field": false,
+ "n_slices": 3064,
+ "n_patients": 233,
+ "slices_per_class": {
+  "glioma": 1426,
+  "pituitary": 930,
+  "meningioma": 708
+ },
+ "patients_per_class": {
+  "glioma": 89,
+  "meningioma": 82,
+  "pituitary": 62
+ },
+ "patients_with_gt1_class": 0,
+ "pid_parse_empty": 0,
+ "slices_per_patient": {
+  "min": 1,
+  "q25": 7,
+  "median": 13,
+  "q75": 18,
+  "max": 38,
+  "mean": 13.15
+ },
+ "sizes": {
+  "512x512": 3049,
+  "256x256": 15
+ },
+ "duplicate_pixels": {
+  "hashes_with_gt1_slices": 0,
+  "slices_in_them": 0,
+  "hashes_across_patients": 0
+ },
+ "G_audit_sanity": true,
+ "candidates": {
+  "meningioma": {
+   "id_classes": [
+    "glioma",
+    "pituitary"
+   ],
+   "ood_slices": 708,
+   "ood_patients": 82,
+   "fit": 1044,
+   "val": 348,
+   "seen": 347,
+   "unseen": 450,
+   "ckpt": 167,
+   "unseen_patients": 30,
+   "ckpt_patients": 12,
+   "fit_patients": 108,
+   "afit_fold_patients": {
+    "0.0": 53,
+    "1.0": 55
+   },
+   "G_leak": 0.9885
+  },
+  "pituitary": {
+   "id_classes": [
+    "glioma",
+    "meningioma"
+   ],
+   "ood_slices": 930,
+   "ood_patients": 62,
+   "fit": 958,
+   "val": 320,
+   "seen": 318,
+   "unseen": 371,
+   "ckpt": 167,
+   "unseen_patients": 34,
+   "ckpt_patients": 14,
+   "fit_patients": 120,
+   "afit_fold_patients": {
+    "0.0": 63,
+    "1.0": 57
+   },
+   "G_leak": 0.9937
+  },
+  "glioma": {
+   "id_classes": [
+    "meningioma",
+    "pituitary"
+   ],
+   "ood_slices": 1426,
+   "ood_patients": 89,
+   "fit": 750,
+   "val": 250,
+   "seen": 250,
+   "unseen": 291,
+   "ckpt": 97,
+   "unseen_patients": 28,
+   "ckpt_patients": 12,
+   "fit_patients": 103,
+   "afit_fold_patients": {
+    "0.0": 51,
+    "1.0": 52
+   },
+   "G_leak": 0.996
+  }
+ }
+}
