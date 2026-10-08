@@ -133,7 +133,9 @@ Predictions (hold / fail; none gates anything):
 | p1 | fails (0/2) | fails (0/4) |
 | p3 | holds (1/2) | fails (1/4) |
 | p2_mahalanobis_l2 | n/a (needs gate-passing FMs and CNNs) | holds (FM median +0.0184 vs CNN median +0.0205) |
+| p2_mahalanobis_l2 (sensitivity, post hoc: excluded cells removed) | n/a (FMs left 1, CNNs left 0) | n/a (FMs left 1, CNNs left 0) |
 | p2_knn_mean_cosine | n/a (needs gate-passing FMs and CNNs) | fails (FM median +0.0524 vs CNN median +0.0237) |
+| p2_knn_mean_cosine (sensitivity, post hoc: excluded cells removed) | n/a (FMs left 1, CNNs left 0) | n/a (FMs left 1, CNNs left 0) |
 
 ## Case mix of ID_seen vs ID_unseen (A_gap_report)
 

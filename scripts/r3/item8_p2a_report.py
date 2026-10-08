@@ -112,6 +112,11 @@ def predictions(bb_pass):
         cnn = [d[b]["est"] for b in ("resnet50", "convnext_tiny") if d[b] and bb_pass[b]]
         out[f"p2_{sc}"] = ("n/a (needs gate-passing FMs and CNNs)" if not fm or not cnn else
                            f"{'holds' if np.median(fm) < np.median(cnn) else 'fails'} (FM median {np.median(fm):+.4f} vs CNN median {np.median(cnn):+.4f})")
+        fm_k = [d[b]["est"] for b in FMS if d[b] and bb_pass[b] and not d[b]["excluded"]]
+        cnn_k = [d[b]["est"] for b in ("resnet50", "convnext_tiny") if d[b] and bb_pass[b] and not d[b]["excluded"]]
+        out[f"p2_{sc} (sensitivity, post hoc: excluded cells removed)"] = (
+            f"n/a (FMs left {len(fm_k)}, CNNs left {len(cnn_k)})" if not fm_k or not cnn_k else
+            f"{'holds' if np.median(fm_k) < np.median(cnn_k) else 'fails'} (FM median {np.median(fm_k):+.4f} vs CNN median {np.median(cnn_k):+.4f})")
     return out
 
 

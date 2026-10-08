@@ -1,0 +1,163 @@
+{
+ "parse": {
+  "rows": 47161,
+  "a_equals_b_video": true,
+  "a_equals_b_frame": true,
+  "a_rsplit": {
+   "videos": 43,
+   "videos_in_both_folds": 7,
+   "frames_in_those_videos": 7944,
+   "minority_side_frames": 1264,
+   "ids": [
+    "64440803f87b4843",
+    "7a47e8eacea04e64",
+    "7ad22d50ebaf4596",
+    "8885668afb844852",
+    "8ebf0e483cac48d6",
+    "ad91cf7ca91440aa",
+    "bca26705313a4644"
+   ]
+  },
+  "b_regex": {
+   "videos": 43,
+   "videos_in_both_folds": 7,
+   "frames_in_those_videos": 7944,
+   "minority_side_frames": 1264,
+   "ids": [
+    "64440803f87b4843",
+    "7a47e8eacea04e64",
+    "7ad22d50ebaf4596",
+    "8885668afb844852",
+    "8ebf0e483cac48d6",
+    "ad91cf7ca91440aa",
+    "bca26705313a4644"
+   ]
+  }
+ },
+ "gap": {
+  "gap_frames": 25,
+  "frame_level_split": {
+   "Angiectasia": {
+    "ood_videos": 6,
+    "ood_frames": 866,
+    "meets_ge5_ood_videos": true,
+    "unseen_videos": 7,
+    "unseen_frames": 4663,
+    "ckpt_videos": 3,
+    "fit_frames": 23530,
+    "fit_videos": 27,
+    "seen_frames": 5042,
+    "gap_removed_frames": 23288,
+    "gap_removed_share": 0.9897,
+    "fit_frames_left_after_gap": 242,
+    "id_classes_with_ge2_videos": 8
+   },
+   "Erosion": {
+    "ood_videos": 9,
+    "ood_frames": 498,
+    "meets_ge5_ood_videos": true,
+    "unseen_videos": 7,
+    "unseen_frames": 9017,
+    "ckpt_videos": 3,
+    "fit_frames": 15411,
+    "fit_videos": 24,
+    "seen_frames": 3303,
+    "gap_removed_frames": 15283,
+    "gap_removed_share": 0.9917,
+    "fit_frames_left_after_gap": 128,
+    "id_classes_with_ge2_videos": 10
+   },
+   "Reduced Mucosal View": {
+    "ood_videos": 7,
+    "ood_frames": 2906,
+    "meets_ge5_ood_videos": true,
+    "unseen_videos": 7,
+    "unseen_frames": 8514,
+    "ckpt_videos": 3,
+    "fit_frames": 19789,
+    "fit_videos": 26,
+    "seen_frames": 4243,
+    "gap_removed_frames": 19585,
+    "gap_removed_share": 0.9897,
+    "fit_frames_left_after_gap": 204,
+    "id_classes_with_ge2_videos": 10
+   },
+   "Ulcer": {
+    "ood_videos": 3,
+    "ood_frames": 854,
+    "meets_ge5_ood_videos": false,
+    "unseen_videos": 8,
+    "unseen_frames": 6757,
+    "ckpt_videos": 3,
+    "fit_frames": 24895,
+    "fit_videos": 29,
+    "seen_frames": 5336,
+    "gap_removed_frames": 24700,
+    "gap_removed_share": 0.9922,
+    "fit_frames_left_after_gap": 195,
+    "id_classes_with_ge2_videos": 10
+   },
+   "Foreign Bodies": {
+    "ood_videos": 4,
+    "ood_frames": 776,
+    "meets_ge5_ood_videos": false,
+    "unseen_videos": 8,
+    "unseen_frames": 7440,
+    "ckpt_videos": 3,
+    "fit_frames": 21805,
+    "fit_videos": 28,
+    "seen_frames": 4673,
+    "gap_removed_frames": 21547,
+    "gap_removed_share": 0.9882,
+    "fit_frames_left_after_gap": 258,
+    "id_classes_with_ge2_videos": 10
+   }
+  },
+  "frame_level_sweep_angiectasia": {
+   "1": {
+    "removed_share": 0.2714,
+    "fit_left": 17143
+   },
+   "2": {
+    "removed_share": 0.4662,
+    "fit_left": 12561
+   },
+   "5": {
+    "removed_share": 0.7828,
+    "fit_left": 5110
+   },
+   "10": {
+    "removed_share": 0.9398,
+    "fit_left": 1417
+   },
+   "25": {
+    "removed_share": 0.9897,
+    "fit_left": 242
+   }
+  },
+  "contiguous_runs": {
+   "n": 642,
+   "median_len": 9,
+   "max_len": 1699,
+   "share_frames_in_runs_ge50": 0.92
+  },
+  "segment_level_split": {
+   "Angiectasia": {
+    "segments": 451,
+    "fit_frames": 22131,
+    "seen_frames": 5638,
+    "gap_removed_share": 0.014,
+    "fit_frames_left_after_gap": 21821,
+    "seen_frames_whose_video_has_fit_frames": 0.972
+   },
+   "Erosion": {
+    "segments": 316,
+    "fit_frames": 14327,
+    "seen_frames": 3569,
+    "gap_removed_share": 0.0109,
+    "fit_frames_left_after_gap": 14171,
+    "seen_frames_whose_video_has_fit_frames": 1.0
+   }
+  }
+ }
+}
