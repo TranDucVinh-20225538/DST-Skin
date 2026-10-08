@@ -1,0 +1,15 @@
+{
+ "item": "R3 item 8 / P2-d gate G0 for the BiomedCLIP backbone (PRECOMMIT backbones.fm)",
+ "checked": "2026-10-08",
+ "model": "microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224",
+ "revision": "9f341de24bfb00180f1b847274256e9b65a3a32e",
+ "weights_sha256": "52cc993c5c5ff962bd0c60931874bc001e7e9b41666a385530f4a036294576be",
+ "licence": "MIT (Hugging Face model card / API: license:mit)",
+ "gated": false,
+ "terms_accepted": "none required (public, not gated); no registration",
+ "offline_load": "passes: open_clip.create_model_from_pretrained with HF_HUB_OFFLINE=1 and TRANSFORMERS_OFFLINE=1 after one download",
+ "embedding": "model.encode_image (image tower + linear projection), 512-d, frozen",
+ "preprocessing": "the model's own open_clip eval processor: Resize 224 (bicubic, shortest edge) + CenterCrop 224 + RGB + CLIP mean/std (0.48145466, 0.4578275, 0.40821073) / (0.26862954, 0.26130258, 0.27577711); input = staged 256 px PNGs",
+ "environment": "separate venv (open_clip_torch 2.24.0, transformers 4.40.2, tokenizers 0.19.1, torch 2.1.1); the crossfit-r3 venv is unchanged",
+ "verdict": "G0 passes: BiomedCLIP is used (4 backbones)"
+}
