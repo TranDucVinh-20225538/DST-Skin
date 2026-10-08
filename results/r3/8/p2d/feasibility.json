@@ -1,0 +1,183 @@
+{
+ "kvasir_capsule": {
+  "rows": 47161,
+  "multi_label_files": 8,
+  "single_label_frames": 47145,
+  "videos": 43,
+  "frames_per_video": {
+   "min": 74,
+   "q25": 615,
+   "median": 1002,
+   "q75": 1474,
+   "max": 2394
+  },
+  "frames_per_video_top5_share": 0.229,
+  "class_counts": {
+   "Normal": 34338,
+   "Ileo-cecal valve": 4189,
+   "Reduced Mucosal View": 2906,
+   "Pylorus": 1521,
+   "Angiectasia": 866,
+   "Ulcer": 854,
+   "Foreign Bodies": 776,
+   "Lymphangiectasia": 592,
+   "Erosion": 498,
+   "Blood": 446,
+   "Erythematous": 159
+  },
+  "videos_per_class": {
+   "Blood": 2,
+   "Erythematous": 3,
+   "Lymphangiectasia": 3,
+   "Ulcer": 3,
+   "Foreign Bodies": 4,
+   "Angiectasia": 6,
+   "Reduced Mucosal View": 7,
+   "Erosion": 9,
+   "Pylorus": 32,
+   "Ileo-cecal valve": 34,
+   "Normal": 37
+  },
+  "official_folds": {
+   "videos_per_fold": {
+    "0": 25,
+    "1": 25
+   },
+   "videos_in_both_folds": 7,
+   "frames_in_those_videos": 7944,
+   "minority_side_frames": 1264
+  },
+  "frac_frames_with_adjacent_labelled_frame": 0.999,
+  "held_out_class_options": {
+   "Ulcer": {
+    "ood_frames": 854,
+    "ood_videos": 3,
+    "id_frames_left": 45939,
+    "id_videos_left": 40,
+    "id_classes_with_ge2_videos": 10
+   },
+   "Foreign Bodies": {
+    "ood_frames": 776,
+    "ood_videos": 4,
+    "id_frames_left": 42307,
+    "id_videos_left": 39,
+    "id_classes_with_ge2_videos": 10
+   },
+   "Angiectasia": {
+    "ood_frames": 866,
+    "ood_videos": 6,
+    "id_frames_left": 40147,
+    "id_videos_left": 37,
+    "id_classes_with_ge2_videos": 8
+   },
+   "Lymphangiectasia": {
+    "ood_frames": 592,
+    "ood_videos": 3,
+    "id_frames_left": 42954,
+    "id_videos_left": 40,
+    "id_classes_with_ge2_videos": 9
+   },
+   "Blood": {
+    "ood_frames": 446,
+    "ood_videos": 2,
+    "id_frames_left": 44525,
+    "id_videos_left": 41,
+    "id_classes_with_ge2_videos": 10
+   },
+   "Erosion": {
+    "ood_frames": 498,
+    "ood_videos": 9,
+    "id_frames_left": 33821,
+    "id_videos_left": 34,
+    "id_classes_with_ge2_videos": 10
+   },
+   "Erythematous": {
+    "ood_frames": 159,
+    "ood_videos": 3,
+    "id_frames_left": 41213,
+    "id_videos_left": 40,
+    "id_classes_with_ge2_videos": 10
+   }
+  }
+ },
+ "galar": {
+  "licence": "CC BY 4.0",
+  "total_bytes": 603891382690,
+  "files": {
+   "Galar_labels_and_metadata.7z": 2307032,
+   "Galar_Frames_1_to_10.7z": 31155949292,
+   "Galar_Frames_11_to_20.7z": 40043548469,
+   "Galar_Frames_21_to_29_2.7z": 31989399751,
+   "Galar_Frames_31_to_40.7z": 69219317963,
+   "Galar_Frames_41_to_50.7z": 173935092108,
+   "Galar_Frames_51_to_60.7z": 202693348645,
+   "Galar_Frames_61_to_70.7z": 23302692206,
+   "Galar_Frames_71_to_80_v2.7z": 31299974313,
+   "Galar_splits.zip": 231821773,
+   "20251215_Labels_Updated.zip": 17931138
+  },
+  "by_capsule_system": {
+   "Olympus": {
+    "videos": 22,
+    "frames": 2750514,
+    "small_intestine": 847942,
+    "small_intestine_pathology": 126045
+   },
+   "PillCam COLON2": {
+    "videos": 5,
+    "frames": 54577,
+    "small_intestine": 15745,
+    "small_intestine_pathology": 2715
+   },
+   "PillCam SB2": {
+    "videos": 2,
+    "frames": 48340,
+    "small_intestine": 37952,
+    "small_intestine_pathology": 5071
+   },
+   "PillCam SB3": {
+    "videos": 51,
+    "frames": 660108,
+    "small_intestine": 474279,
+    "small_intestine_pathology": 47086
+   }
+  },
+  "olympus_videos": [
+   39,
+   40,
+   41,
+   42,
+   43,
+   44,
+   45,
+   46,
+   47,
+   48,
+   49,
+   50,
+   51,
+   52,
+   53,
+   54,
+   55,
+   56,
+   57,
+   58,
+   59,
+   60
+  ]
+ },
+ "brain_tumor_cheng": {
+  "licence": "CC BY 4.0",
+  "doi": "10.6084/m9.figshare.1512427.v8",
+  "total_bytes": 879510755,
+  "files": {
+   "brainTumorDataPublic_1-766.zip": 214401279,
+   "brainTumorDataPublic_1533-2298.zip": 215563856,
+   "brainTumorDataPublic_767-1532.zip": 217848429,
+   "brainTumorDataPublic_2299-3064.zip": 231679762,
+   "cvind.mat": 5736,
+   "README 2024.txt": 3303
+  }
+ }
+}

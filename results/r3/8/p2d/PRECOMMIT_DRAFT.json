@@ -1,0 +1,123 @@
+{
+  "item": "R3 item 8 / P2-d: Delta_fit on two few-group medical datasets (Kvasir-Capsule video capsule endoscopy; Figshare brain tumor MRI) and the cross-dataset ordering with CXR (P2-a)",
+  "status": "DRAFT 2026-10-08, not approved. Nothing run. Facts below come from public metadata only (results/r3/8/p2d/feasibility.json, scripts/r3/item8_p2d_feasibility.py); no image archive downloaded, no terms accepted.",
+  "disclosure": "Written after the P2-a cells were seen (CXR Delta_fit, Shenzhen, 10 of 12 cells: +0.014 to +0.032; DINOv2-B Mahalanobis +0.016). The CXR term of the ordering prediction and the 0.05 per-dataset threshold were therefore chosen with the CXR magnitudes known; the Kvasir-Capsule and brain MRI terms are genuine predictions. The paper states this.",
+
+  "general": {
+    "rules": "as P2-a (results/r3/8/PRECOMMIT.json, general): statistics fit on training splits only; every Delta table carries n_groups_fit, K, d and ID accuracy; failures reported as findings; no retuning; no substitution after results; one round",
+    "scorers": "mahalanobis_l2 (primary), knn_mean_cosine (k = 50, secondary); matched pooling; refit-aware grouped jackknife 95% CI primary, fixed-score cluster bootstrap reference only",
+    "knn_compute": "CPU; GPU only after the R3 strict equality check on one cell",
+    "access": "both datasets CC BY 4.0 with public download links; download (Kvasir-Capsule labelled images 521 MB, brain tumor 880 MB) happens only after approval of this precommit; Galar only if the pilot reaches that candidate, and only after the user approves the 23 GB archive"
+  },
+
+  "verified_facts_2026_10_08": {
+    "kvasir_capsule": {
+      "citation": "Smedsrud et al., Kvasir-Capsule, a video capsule endoscopy dataset, Sci Data 8:142 (2021)",
+      "licence": "CC BY 4.0 (Sci Data paper; OSF node dv2ag licence 'CC-By Attribution 4.0 International'; GitHub LICENSE.md). README / Simula terms: 'released fully open for research and educational purposes. The use of the dataset for purposes such as competitions and commercial purposes needs prior written permission'; no registration or click-through",
+      "size": "labelled images: 47,238 PNG (336 x 336, Olympus EC-S10), kvasir-capsule-labeled-images.zip 521 MB (datasets.simula.no); full dataset ~89 GB (videos 32.2 + 58.2 GB, not needed)",
+      "groups": "43 labelled videos (one examination each); filename = {video_id}_{frame}; metadata.csv maps file -> video, frame, class, bounding box. Patient identity is anonymised; whether a patient contributed > 1 video is not stated",
+      "frames_per_video": "official split files: min 74, q25 615, median 1,002, q75 1,474, max 2,394; top 5 videos hold 22.9% of frames; 99.9% of labelled frames have a labelled neighbouring frame (frame +/- 1) in the same video",
+      "classes": "split files use 11 labels (Ampulla of Vater, Blood - hematin, Polyp removed for the baseline): Normal 34,338 (72.8%), Ileo-cecal valve 4,189, Reduced Mucosal View 2,906, Pylorus 1,529, Angiectasia 866, Ulcer 854, Foreign Bodies 776, Lymphangiectasia 592, Erosion 506, Blood 446, Erythematous 159. 8 files carry two labels (Erosion + Pylorus) and are dropped. Videos per class: Blood 2, Erythematous / Lymphangiectasia / Ulcer 3, Foreign Bodies 4, Angiectasia 6, RMV 7, Erosion 9, Pylorus 32, Ileo-cecal valve 34, Normal 37",
+      "official_split": "official_splits/split_{0,1}.csv (two-fold). The paper states 'no video is shared between splits', but the files place 7 of 43 videos in both folds (7,944 frames; 1,264 on the minority side). The official split is therefore not video-disjoint as released; P2-d does not use it as the reference (see design.reference_split)",
+      "random_frame_split_in_use": [
+        "Li, Cave, Li, Li, iGIE 2023 (doi 10.1016/j.igie.2023.11.007): 'The data set for each type of VCE images was randomly divided into a training data set and a testing data set, with approximately 90% of the images for training an AI model and 10% of the images put aside as unseen data for testing the model'",
+        "El-Ghany, Mahmood, Abd El-Aziz, Appl. Sci. 14(22):10243 (2024): 'We divided the Kvasir-Capsule dataset into three sets: a training set with 26,453 images (70%), a test set with 5669 images (15%), and a validation set with 5668 images (15%).' (no video grouping stated; reported accuracy up to 99.906%)",
+        "CapsuleCoder (preprint, 2026): 'The dataset is further randomly split into training, validation, and test sets with a ratio of 6:2:2.' (venue / arXiv id not confirmed)"
+      ],
+      "galar": "Le Floch et al., Galar, Sci Data 2025 (doi 10.6084/m9.figshare.25807915 / figshare+ 25304616): CC BY 4.0 (README adds the same research-use / written-consent-for-commercial terms), public download, no registration. 80 videos, 3,513,539 frame-wise labelled frames, ~604 GB in 10-video 7z archives (23-203 GB each). Capsules: Olympus 22 videos (39-60; 2.75 M frames, inside the 69 / 174 / 203 GB archives), PillCam SB3 51, SB2 2, COLON2 5. Videos 61-80 (PillCam, Dippoldiswalde) are the authors' test set, archives 23 GB (61-70) and 31 GB (71-80)"
+    },
+    "brain_tumor_cheng": {
+      "citation": "Cheng, brain tumor dataset, figshare, doi 10.6084/m9.figshare.1512427 (v8, 2024-12-21; first online 2017-04-02); Cheng et al., PLoS ONE 10(10):e0140381 (2015)",
+      "licence": "CC BY 4.0 (figshare API); no registration",
+      "size": "4 zip archives of 766 .mat files each (214-232 MB; 880 MB total) + cvind.mat (5-fold patient-wise indices) + README 2024.txt",
+      "fields": "README: cjdata.label (1 meningioma, 2 glioma, 3 pituitary tumor), cjdata.PID (patient ID), cjdata.image, cjdata.tumorBorder, cjdata.tumorMask",
+      "counts": "3,064 T1-weighted contrast-enhanced slices, 233 patients: meningioma 708, glioma 1,426, pituitary 930 slices; 512 x 512, 0.49 mm pixels, 6 mm slices, 1 mm gap; two hospitals (Nanfang, Guangzhou; General Hospital, Tianjin Medical University), 2005-2010. Planes (Badza 2020): sagittal 1,025, axial 994, coronal 1,045",
+      "slices_per_patient": "mean 3,064 / 233 = 13.2; the distribution and per-class patient counts need the PID field (inside the .mat files) and are computed in Phase 0, not from metadata",
+      "badza_2020": "Badza & Barjaktarovic, Appl. Sci. 10(6):1999 (2020), Table 2, 10-fold test accuracy: record-wise original 95.40%, augmented 96.56%; subject-wise original 84.45%, augmented 88.48% (gap 10.95 / 8.08 points). Record-wise = 'randomly divide the data into 10 approximately equal portions so that each tumor category was equally present in each portion'; split 60 / 20 / 20 (Table 3)"
+    }
+  },
+
+  "regime_statement": "Section 5.1 predicts Delta_fit grows as the number of groups falls and as within-group similarity rises. Kvasir-Capsule: ~28-29 fit videos, ~1,000 near-duplicate frames each. Brain MRI: ~130-165 fit patients (depends on the OOD class), ~13 slices each from one volume. CXR: ~22,600 fit patients, ~3 films each (P2-a). Hence the ordering prediction",
+
+  "datasets": {
+    "kvasir_capsule": {
+      "id_task": "single-label classification over the classes remaining after the OOD class is removed (cross-entropy)",
+      "groups": "video_id",
+      "covariates": "class, frame position (normalised frame index within the video) for the case-mix report"
+    },
+    "brain_mri": {
+      "id_task": "binary classification of the two tumour types remaining after the OOD class is removed (cross-entropy)",
+      "groups": "cjdata.PID",
+      "covariates": "plane (sagittal / axial / coronal, derived in Phase 0 from the image only if a deterministic rule exists; otherwise not used), class",
+      "image": ".mat int16 -> per-slice min-max to uint8 (README conversion) -> grey -> 256 x 256 bicubic staged PNG, the P2-a chain"
+    }
+  },
+
+  "design": {
+    "unseen_holdout": "before the leaky split, 20% of the groups (videos / patients; default_rng(0) permutation of sorted group IDs, stratified on the group's majority class) are held out as ID_unseen. Needed because a frame- or record-level random split leaves no unseen group (every video has >= 74 frames, every patient ~13 slices); declared as a construction step, not part of the cited protocols",
+    "M_std": {
+      "kvasir_capsule": "frame-level random split of the remaining frames, 70 / 15 / 15 stratified on class, default_rng(0) (El-Ghany et al. 2024 proportions; Li et al. 2023 random 90 / 10 cited as the same practice)",
+      "brain_mri": "record-wise random split of the remaining slices, 60 / 20 / 20 stratified on class, default_rng(0) (Badza & Barjaktarovic 2020)"
+    },
+    "sets": "ckpt = all training images of 10% of the training groups (checkpoint selection only); fit = remaining training images (CNN training and scorer fit); seen = M_std test images (all of them have their group in fit, by construction); unseen = all images of the held-out groups; M_std validation images unused",
+    "A_fit": "Delta_fit = leaky - F2: scorer fit on all fit images vs on the fit images of the other half of the groups (2-fold over fit groups, medbench fold rule, default_rng(0)), scoring the same seen images; matched pooling. PRIMARY estimand",
+    "A_gap": "AUROC(seen vs OOD) - AUROC(unseen vs OOD), same model; descriptive only (P2-a caveat 8 applies); case-mix post-stratification on class (both datasets) and plane (brain, if available); strata < 5 images dropped and reported",
+    "reference_split": "the released Kvasir-Capsule official split is not video-disjoint (7 shared videos) and is reported as a finding, not used"
+  },
+
+  "ood": {
+    "pilot": "CPU ceiling pilot first (frozen DINOv2-B, 224 px from the staged 256 px images; per candidate 1,500 fit / 300 seen / 300 unseen ID images from the P2-d construction, 300 OOD images; no Delta computed; plan file committed before running). A candidate is skipped if Mahalanobis AUROC > 0.97 under either ID variant (P2-a rule). The first non-skipped candidate is primary, the second secondary; the pilot's seen - unseen difference is disclosed as in P2-a",
+    "kvasir_capsule_candidates": [
+      "1. held-out class Ulcer (854 frames, 3 videos; near-OOD, visually close to Erosion): its 3 videos are removed from ID entirely, leaving 45,947 frames / 40 videos, 10 ID classes with >= 2 videos",
+      "2. held-out class Foreign Bodies (776 frames, 4 videos): leaves 42,315 frames / 39 videos, 10 ID classes",
+      "3. Galar PillCam SB3 small-intestine frames from videos 61-70 (device + site shift; 23 GB archive, download only with approval). Galar Olympus (same device, other site) is not a candidate: its videos sit in the 69-203 GB archives"
+    ],
+    "kvasir_capsule_rule": "OOD-class frames never enter ID; all frames of OOD-class videos are removed from ID so no OOD frame shares a video with an ID image",
+    "brain_candidates": [
+      "1. held-out meningioma (708 slices; lowest sensitivity of the three classes in Badza 2020, the class most often confused with the others, so the least likely to saturate); ID = glioma vs pituitary",
+      "2. held-out pituitary (930 slices); ID = meningioma vs glioma",
+      "3. held-out glioma (1,426 slices); ID = meningioma vs pituitary"
+    ],
+    "brain_rule": "each patient has one tumour type, so OOD patients never appear in ID. Which class gives a non-saturated pilot is not known from metadata; the pilot decides by the rule above. If all three saturate, brain P2-d is 'ceiling - not identifiable' and stops after the pilot"
+  },
+
+  "backbones": {
+    "cnn": "resnet50, convnext_tiny; medbench recipe (ImageNet init, cosine, epochs = clip(ceil(300000 / n_fit), 10, 50)), seeds 42, 43; checkpoint = best macro one-vs-rest AUROC on ckpt",
+    "fm": "dinov2_vitb14 (frozen, 224 px); BiomedCLIP ViT-B/16 image encoder (microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224, frozen; licence and offline loading checked at G0). Fallback if BiomedCLIP cannot be loaded without accepting terms: 3 backbones, said so; no substitute after results",
+    "fm_head": "linear probe (one-vs-rest LR, C = 1) for the competence gate only"
+  },
+
+  "gates": {
+    "G0_access": "images + labels + group IDs downloadable without registration; otherwise STOP that dataset",
+    "G_leak": "fraction of seen-candidate test images whose group has >= 1 fit image; >= 5% expected by construction (100%); if < 5%: 'clean - not tested', stop",
+    "G_audit_sanity": "group ID parse rate 100% (filename / PID); Kvasir-Capsule frame counts match the split files; brain counts 3,064 / 233 / 708 / 1,426 / 930 match the README; otherwise fix only a parse bug, else report and stop",
+    "G_competence": "as P2-a, preregistered: CNN final train loss <= 50% of epoch-1 loss (single-label cross-entropy, the setting it was written for) and macro one-vs-rest AUROC on seen >= 0.75; FM linear probe macro AUROC >= 0.70. < 3 passing backbones -> INCONCLUSIVE for that dataset. Never retrain to pass",
+    "G_near_chance": "OOD AUROC in [0.45, 0.55] under both seen and unseen -> excluded from bars",
+    "G_ceiling": "OOD AUROC > 0.98 under both -> excluded from bars",
+    "below_chance": "AUROC < 0.5 under seen or unseen and not near-chance -> flagged, reported, not interpreted, counts toward no bar",
+    "G_floor": "applies to A_gap only: unseen < 200 images or < 20 groups -> A_gap underpowered. Kvasir-Capsule has ~8 unseen videos, so its A_gap is underpowered by construction and is reported as such; Delta_fit is unaffected"
+  },
+
+  "predictions": {
+    "p1_kvasir": "Kvasir-Capsule: Delta_fit > 0.05 (mahalanobis_l2, primary OOD) on >= half of gate-passing backbones",
+    "p2_brain": "brain MRI: Delta_fit > 0.05 (mahalanobis_l2, primary OOD) on >= half of gate-passing backbones",
+    "p3_ordering": "median Delta_fit over gate-passing backbones (mahalanobis_l2, primary OOD): Kvasir-Capsule > brain MRI > CXR (P2-a Shenzhen; P2-a gate-passing set under the preregistered gate, and under the post hoc AUROC-only gate, both reported). Robust version: the median of each dataset's per-backbone jackknife lower bounds exceeds the median of the next dataset's upper bounds",
+    "p4_knn": "p1-p3 repeated for knn_mean_cosine (secondary)",
+    "note": "hold / fail reported; none gates anything. Cells excluded by near-chance / ceiling / below-chance do not count; denominator = gate-passing backbones. Datasets differ in task, image size and number of classes, so p3 compares magnitudes of the same estimand, not a controlled contrast"
+  },
+
+  "verdict_rule": "per dataset: leakage through the scorer fit present if Delta_fit > 0.05 (point) on >= half of gate-passing backbones; robust version also needs the jackknife CI to exclude 0; both reported. The ordering is reported hold / fail, point and robust",
+  "stopping_rule": "pilot first; then one training round per dataset; no reruns except technical failures; brain stops after the pilot if all three classes saturate",
+
+  "phase0": [
+    "download (after approval) and checksum: Kvasir-Capsule labelled images zip + metadata.csv; brain tumor 4 zips (figshare md5 supplied)",
+    "audit: counts vs G_audit_sanity; brain slices per patient (distribution), per-class patient counts, duplicate-image check (identical pixel hash) within and across patients; Kvasir-Capsule duplicate frames across videos",
+    "stage to 256 px PNG tars (P2-a chain), build sets, write sets.json; pilot plan committed; then pilot"
+  ],
+
+  "gpu_h_estimate": {
+    "kvasir_capsule": "n_fit ~23k frames (45.9k after removing the OOD-class videos, minus 20% unseen and 10% ckpt groups, x 0.70), 14 epochs: ResNet-50 ~0.12 h + ConvNeXt-T ~0.35 h per seed (Camelyon v2 rates 1.3 / 3.9 ms per image-epoch, as in the P2-a estimate) -> ~1 GPU-h for 2 seeds; FM extraction ~0.2 GPU-h",
+    "brain_mri": "n_fit ~1.0k slices (~165 patients x 13.2 slices minus the OOD class, x 0.60), 50 epochs (~50k image-epochs) -> < 0.2 GPU-h for all CNN runs; FM extraction < 0.05 GPU-h",
+    "total": "~1.5 GPU-h, ~2-3 GPU-h with smoke and overhead; CPU: pilot ~1 CPU-h per dataset, scoring + jackknife (~40 / ~190 groups) a few CPU-h"
+  }
+}
