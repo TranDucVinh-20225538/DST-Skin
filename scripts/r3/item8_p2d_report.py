@@ -220,7 +220,11 @@ def main() -> int:
           "5. Backbone aggregation over seeds (mean; robust = every seed's CI > 0; ordering bounds = min / max over seeds) is "
           "not specified in the precommit and was fixed before the cells were computed.",
           "6. Package check: leaky and F2 match crossfit_auroc within 1e-9 plus one pair per near-tied seen / OOD score pair "
-          "(the P2-b technical fix, applied from the start here)."]
+          "(the P2-b technical fix, applied from the start here).",
+          "7. Process deviation (commit history): the first REPORT commit (2eb9c17) was a STOP report written by the "
+          "auto-finalize watcher, whose generator call failed on a log path containing '/' before the generator ran; the "
+          "chain had completed. Replaced by the generated REPORT on the same data (c3df6ed) in 9648ca0; no data or analysis "
+          "changed. The SLURM report job (64827) was cancelled while queued; the same generator ran on the login node."]
     (P2D / "REPORT.md").write_text("\n".join(L) + "\n")
     print("\n".join(L[:12]))
     return 0
