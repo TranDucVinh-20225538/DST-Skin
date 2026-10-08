@@ -46,8 +46,15 @@ def main() -> int:
     ap.add_argument("--scorer", required=True, choices=["mahalanobis_l2", "knn_mean_cosine"])
     ap.add_argument("--jackknife", action="store_true")
     ap.add_argument("--ks", default="2,5,10")
+    ap.add_argument("--gpu-knn", action="store_true", help="knn_mean_cosine via the validated GPU scorer")
+    ap.add_argument("--tag", default="")
     a = ap.parse_args()
     from crossfit_ood import crossfit_auroc
+    if a.gpu_knn:
+        sys.path.insert(0, str(REPO / "scripts/r3"))
+        from crossfit_ood import scorers as S
+        from recompute_gpu_knn import GPUKNNMeanCosineScorer
+        S._REGISTRY["knn_mean_cosine"] = GPUKNNMeanCosineScorer
 
     z = np.load(Path(os.environ["R3_INPUTS"]) / ("camelyon_%s_s42.npz" % a.fm))
     xtr, gtr = z["features_train"], z["groups_train"].astype(str)
@@ -58,15 +65,21 @@ def main() -> int:
     slides = sorted(set(gtr))
     assert len(slides) == 30, len(slides)
     no_id = sorted(set(slides) - set(gid))
-    cell = json.loads((REPO / "outputs/reports/rigor_pack/foundation_gate/cells" / ("camelyon_%s.json" % a.fm)).read_text())
+    cj = REPO / "outputs/reports/rigor_pack/foundation_gate/cells" / ("camelyon_%s.json" % a.fm)
+    if cj.exists():
+        id_acc = json.loads(cj.read_text())["probe"]["id_acc"]
+    else:
+        import pandas as pd
+        c = pd.read_csv(Path(os.environ["R3_INPUTS"]).parent / "cells_camelyon.csv").set_index("cell")
+        id_acc = float(c.loc["camelyon_%s_s42" % a.fm, "id_acc"])
 
     OUT.mkdir(parents=True, exist_ok=True)
-    tag = "_jk" if a.jackknife else ""
+    tag = ("_jk" if a.jackknife else "") + a.tag
     outp = OUT / ("%s_%s%s.json" % (a.fm, a.scorer, tag))
     res = json.loads(outp.read_text()) if outp.exists() else {}
     res.update({"fm": a.fm, "scorer": a.scorer, "d": int(xtr.shape[1]), "n_train": int(len(xtr)),
                 "n_id_eval": int(len(xid)), "n_ood": int(len(xood)), "n_slides": 30,
-                "train_slides_without_id_val": no_id, "probe_id_acc": cell["probe"]["id_acc"],
+                "train_slides_without_id_val": no_id, "probe_id_acc": id_acc, "gpu_knn": a.gpu_knn,
                 "hospitals": sorted(set(hosp[s] for s in slides))})
     for K in [int(k) for k in a.ks.split(",")]:
         fold = slide_folds(slides, hosp, K)
