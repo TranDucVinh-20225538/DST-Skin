@@ -1,0 +1,16 @@
+{
+  "fm": "rad_dino",
+  "weights": "microsoft/rad-dino snapshot 110cbc18d5133582e320b43d53bf5c44e410c936",
+  "n": {
+    "fit": 70666,
+    "seen": 16497,
+    "unseen": 4045,
+    "ood": 6518
+  },
+  "d": 768,
+  "input": "518 from originals",
+  "torch": "2.1.1",
+  "seconds": 2231.8,
+  "gpu": "NVIDIA A100-SXM4-80GB",
+  "transformers": "4.44.2"
+}

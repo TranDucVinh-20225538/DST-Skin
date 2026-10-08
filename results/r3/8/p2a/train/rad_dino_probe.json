@@ -1,0 +1,47 @@
+{
+  "fm": "rad_dino",
+  "probe": "LogisticRegression(C=1.0, lbfgs, max_iter=2000) per finding, raw features",
+  "macro_auroc": {
+    "seen": 0.8325427733949967,
+    "unseen": 0.8067558968635634
+  },
+  "per_finding_auroc": {
+    "seen": {
+      "Atelectasis": 0.7928540190580403,
+      "Cardiomegaly": 0.8867566737188641,
+      "Effusion": 0.8548253906541095,
+      "Infiltration": 0.7130730108913809,
+      "Mass": 0.864131446657978,
+      "Nodule": 0.7862584506977303,
+      "Pneumonia": 0.7404965880660542,
+      "Pneumothorax": 0.8873410969179863,
+      "Consolidation": 0.7864213610154394,
+      "Edema": 0.8733301811764201,
+      "Emphysema": 0.8923952879051102,
+      "Fibrosis": 0.8408943686113097,
+      "Pleural_Thickening": 0.8091364146098498,
+      "Hernia": 0.9276845375496815
+    },
+    "unseen": {
+      "Atelectasis": 0.8663986280487805,
+      "Cardiomegaly": 0.9175663832326396,
+      "Effusion": 0.883195884550655,
+      "Infiltration": 0.6441609294372028,
+      "Mass": 0.897046031665542,
+      "Nodule": 0.7843971675009959,
+      "Pneumonia": 0.7249176028635219,
+      "Pneumothorax": 0.7973305095824509,
+      "Consolidation": 0.7097950847840389,
+      "Edema": 0.7941540748080258,
+      "Emphysema": 0.7967299690600662,
+      "Fibrosis": 0.8042166568783734,
+      "Pleural_Thickening": 0.7679458049314146,
+      "Hernia": 0.9067278287461773
+    }
+  },
+  "G_competence": {
+    "probe_seen_macro_auroc_ge_0.70": true,
+    "pass": true
+  },
+  "seconds": 24.2
+}
