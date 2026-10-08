@@ -72,7 +72,8 @@ def load_rows(models):
                 r["ng%d" % K] = k["n_groups_fit_min_max"] if k else None
                 kj = jk.get("K%d" % K)
                 r["ci%d" % K] = kj["X_K_ci"] if kj else None
-            r["ceiling"] = bool(r["leaky"] >= CEIL)
+            xs = [r["X%d" % K] for K in (2, 5, 10, 30) if r["X%d" % K] == r["X%d" % K]]
+            r["ceiling"] = bool(r["leaky"] > CEIL and xs and min(xs) > CEIL)
             rows.append(r)
     return pd.DataFrame(rows)
 
@@ -87,7 +88,7 @@ def bracket_table(L, B, acc_label):
     def ng(x):
         return "%d" % x[0] if x and x[0] == x[1] else ("%d-%d" % tuple(x) if x else "-")
     L += ["| model | scorer | d | %s | leaky | X_2 | X_5 | X_10 | X_30 | leaky - X_2 | leaky - X_10 | leaky - X_30 |"
-          " n_groups_fit K=2/5/10/30 | ceiling (leaky >= %.2f) |" % (acc_label, CEIL),
+          " n_groups_fit K=2/5/10/30 | ceiling (> %.2f under leaky and every X_K) |" % (acc_label, CEIL),
           "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for _, r in B.iterrows():
         if r.missing:
@@ -97,8 +98,15 @@ def bracket_table(L, B, acc_label):
             r.fm, r.scorer, r.d, r.id_acc, r.leaky, f(r.X2), f(r.X5), f(r.X10), f(r.X30), s(r.leaky - r.X2),
             s(r.leaky - r.X10), s(r.leaky - r.X30), ng(r.ng2), ng(r.ng5), ng(r.ng10), ng(r.ng30),
             "CEILING" if r.ceiling else ""))
-    L += ["", "Ceiling: leaky AUROC >= %.2f, so every leaky - X_K is bounded by 1 - X_K and is small by"
-          " construction; not evidence of absent leakage." % CEIL,
+    L += ["", "Ceiling (rule of the CXR precommit, results/r3/8/PRECOMMIT.json G_ceiling): AUROC > %.2f under both"
+          " variants, i.e. leaky and every computed X_K; leaky - X_K is then bounded by 1 - X_K and small by"
+          " construction, not evidence of absent leakage." % CEIL]
+    if "virchow2" in set(B.fm):
+        v = B[(B.fm == "virchow2") & (B.scorer == "Mahalanobis") & ~B.missing]
+        if len(v):
+            L.append("Near ceiling (descriptive, no flag): Virchow2 Mahalanobis, leaky %.3f / X_2 %.3f; the"
+                     " gap has little room above X_K." % (v.leaky.iloc[0], v.X2.iloc[0]))
+    L += [
           "Bracket (post hoc): X_K rises with the fit size, so if the rise continues, the deployed scorer (all 30"
           " slides) has AUROC on new slides >= X_30 and its inflation <= leaky - X_30 <= leaky - X_10 <="
           " leaky - X_2. These are upper bounds; no lower bound is established. leaky - X_K uses the default"
