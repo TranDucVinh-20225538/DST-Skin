@@ -5,6 +5,7 @@ Usage: python3 scripts/r3/item8_p2a_report.py <commit>
 
 from __future__ import annotations
 
+import ast
 import json
 import sys
 from pathlib import Path
@@ -126,7 +127,7 @@ def case_mix_table():
         rows.append({"set": r, "n": len(x), "patients": x.patient.nunique(), "AP share": (x.view == "AP").mean(),
                      "No Finding": (nf == 0).mean(), "findings/image (mean)": nf.mean(), ">=2 findings": (nf >= 2).mean(),
                      "age median [IQR]": f"{e['Patient Age'].median():.0f} [{e['Patient Age'].quantile(.25):.0f}, {e['Patient Age'].quantile(.75):.0f}]",
-                     "female": (e["Patient Gender"] == "F").mean(), "follow-up # (median)": e["Follow-up #"].median(),
+                     "female": (e["Patient Sex"] == "F").mean(), "follow-up # (median)": e["Follow-up #"].median(),
                      "images/patient in dataset (median)": ipp.loc[x.patient.unique()].median(),
                      **{f: x[f].mean() for f in FINDINGS}})
     return pd.DataFrame(rows).set_index("set").T
@@ -229,16 +230,43 @@ def main() -> int:
         L += ["", f"Post-stratification: {cm['strata_kept']} of 32 strata kept; dropped share seen {cm['seen_share_dropped']:.3f}, "
               f"unseen {cm['unseen_share_dropped']:.3f}; effective sample size of the reweighted ID_seen {cm['ess_seen_weighted']:,.0f} "
               f"(of {cm['n_seen_kept']:,})."]
-    L += ["",
-          "## Deviations and caveats", "",
+    par = json.loads((P2A / "preproc_parity.json").read_text())
+    dino_agcm = " / ".join(f"{c['ood']['shenzhen']['a_gap_cm']['est']:+.3f} ({sc})" for sc in SCORERS
+                           if (c := cell("dinov2_vitb14", sc))) or "missing"
+
+    def src(k):
+        p = par[k]
+        fm = ", ".join(f"{' '.join(ast.literal_eval(m)[:2])} x{n:,}" for m, n in p["format_mode"].items())
+        return (f"| {k.replace('_raw', '').replace('_sample1000', '')} | {p['n']:,} | {fm} | 8-bit | {p['w_range'][0]}-{p['w_range'][2]} x "
+                f"{p['h_range'][0]}-{p['h_range'][2]} (median {p['w_range'][1]} x {p['h_range'][1]}) | {p['aspect_w_over_h_median']:.2f} |")
+    L += ["", "## Preprocessing parity (technical check before the report, 2026-10-08; scripts/r3/item8_p2a_parity_audit.py)", "",
+          "| source | n audited | format / PIL mode | bit depth | size w x h | median aspect w/h |", "|---|---|---|---|---|---|",
+          src("nih_raw_sample1000"), src("shenzhen_raw"), src("kermany_raw"), "",
+          "Every audited file decodes to uint8 (no 16-bit images, so no clipping by PIL convert('L')); the 635 Shenzhen palette PNGs "
+          "have grey palettes (R = G = B for every used index); RGB / RGBA files are converted with PIL's ITU-R 601 luma.", "",
+          "| backbone | NIH chain | OOD chain |", "|---|---|---|",
+          "| ResNet-50, ConvNeXt-T | original -> L -> 256 x 256 PIL bicubic (staged PNG) -> RGB -> Resize(256) + CenterCrop(224), "
+          "torchvision bilinear -> ImageNet mean/std | same code path, same transform object |",
+          "| DINOv2-B | same 256 px staged PNG -> Resize(224, bicubic) + CenterCrop(224) -> ImageNet mean/std | same |",
+          "| RAD-DINO | original 1024 px -> L -> 518 x 518 PIL bicubic -> RGB -> /255 -> mean 0.5307 / std 0.2583 | same function on "
+          "the original PNG / JPEG |", "",
+          "Mean grey level / fraction of pixels at 0 after staging: " + ", ".join(
+              f"{k.split('_')[0]} {par[k]['L_mean']:.1f} / {par[k]['frac_px_0']:.3f}" for k in
+              ("nih_256_staged_sample1000", "shenzhen_256_staged", "kermany_256_staged")) +
+          " (raw: " + ", ".join(f"{k.split('_')[0]} {par[k]['L_mean']:.1f} / {par[k]['frac_px_0']:.3f}"
+                                for k in ("nih_raw_sample1000", "shenzhen_raw", "kermany_raw")) +
+          "); staging changes neither. Verdict: no source-dependent difference in the chain, so no OOD re-extraction or rescoring. "
+          "The between-source intensity difference is already present in the raw files.", ""]
+    L += ["## Deviations and caveats", "",
           "1. **Competence gate (post hoc sensitivity, approved 2026-10-08):** the preregistered CNN condition 'final train loss <= 50% of "
           "epoch-1 loss' was copied from single-label cross-entropy training (medbench) and is mis-specified for 14-finding multi-label BCE, "
           "where the epoch-1 mean loss is already low. The preregistered verdict applies it as written; the post hoc verdict uses the AUROC "
           "condition only, with the precommitted thresholds (CNN macro AUROC >= 0.75, FM probe >= 0.70); no new thresholds.",
           "2. Wang-test images of the checkpoint patients (test_ckpt) are neither seen nor unseen and are excluded (counted above).",
-          "3. OOD images (Shenzhen, Kermany pediatric; not square) are staged with the NIH operation: grayscale, squashed to 256 x 256 "
-          "(RAD-DINO: 518 x 518 from the originals); DINOv2-B and the CNNs read the staged 256 px images (the ceiling pilot read DINOv2-B "
-          "inputs from the 1024 px originals).",
+          "3. Preprocessing parity (see the section above): within each backbone NIH and OOD share one code path. RAD-DINO does not use "
+          "its BitImageProcessor (shortest edge 518 + centre crop 518); it squashes to 518 x 518, identical for square NIH images, "
+          "not for non-square OOD images (Kermany pediatric median aspect w/h "
+          f"{par['kermany_raw']['aspect_w_over_h_median']:.2f}). The ceiling pilot read DINOv2-B inputs from the 1024 px originals.",
           "4. RAD-DINO loaded with transformers 4.44.2 (private install; the environment's transformers needs torch >= 2.5), "
           "pooler_output (CLS after the final layer norm). RAD-DINO pretraining saw all NIH images (seen and unseen alike).",
           "5. CNN backbone-level aggregation over the two seeds (mean; robust = both seeds' jackknife CIs > 0) is not specified in the "
@@ -247,7 +275,10 @@ def main() -> int:
           "6. No logit scores (precommit): CXR reports the scorer channel (A-fit) and the case-mix-corrected A-gap for feature scores only; "
           "no family comparison.",
           "7. Bootstrap CIs are reference only (fitted scores held fixed; too narrow when Delta > 0 per the coverage study); the jackknife "
-          "decides robustness.", ""]
+          "decides robustness.",
+          "8. **A_gap is descriptive.** It is not evidence that the image-level split raises or lowers AUROC: DINOv2-B never saw NIH "
+          f"and still shows A_gap_cm {dino_agcm} on Shenzhen after post-stratification on view x finding pattern, so residual "
+          "case-mix confounding between ID_seen and ID_unseen remains.", ""]
     (P2A / "REPORT.md").write_text("\n".join(L) + "\n")
     print("\n".join(L[:8]))
     return 0
