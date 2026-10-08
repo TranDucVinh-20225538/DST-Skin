@@ -1,6 +1,6 @@
 # R3 item 2: coverage of the paper_2fold jackknife CI on designs read from the real splits
 
-Commit: pending
+Commit: 0bdd906
 
 Verdict: 1 cell(s) with jackknife coverage < 0.93: reported, stop (no method change this round).
 
