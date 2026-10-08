@@ -1,0 +1,417 @@
+{
+ "kermany_b0": {
+  "group_unit": "patient ID",
+  "n_ood_images": 8866,
+  "n_ood_groups": 882,
+  "id_sets": {
+   "train": {
+    "images": 38207,
+    "groups": 2232
+   },
+   "val": {
+    "images": 4245,
+    "groups": 1468
+   },
+   "seen": {
+    "images": 7484,
+    "groups": 1763
+   },
+   "unseen": {
+    "images": 49757,
+    "groups": 2220
+   }
+  },
+  "by_set": {
+   "train": {
+    "ood_groups_in_set": 219,
+    "ood_images_from_set_groups": 3083,
+    "pixel_identical_pairs": 116,
+    "pixel_identical_pairs_same_group": 116,
+    "pixel_identical_pairs_cross_group": 0,
+    "ood_images_with_identical_in_set": 116,
+    "set_images_with_identical_in_ood": 114
+   },
+   "val": {
+    "ood_groups_in_set": 158,
+    "ood_images_from_set_groups": 2571,
+    "pixel_identical_pairs": 9,
+    "pixel_identical_pairs_same_group": 9,
+    "pixel_identical_pairs_cross_group": 0,
+    "ood_images_with_identical_in_set": 9,
+    "set_images_with_identical_in_ood": 9
+   },
+   "seen": {
+    "ood_groups_in_set": 176,
+    "ood_images_from_set_groups": 2555,
+    "pixel_identical_pairs": 19,
+    "pixel_identical_pairs_same_group": 19,
+    "pixel_identical_pairs_cross_group": 0,
+    "ood_images_with_identical_in_set": 19,
+    "set_images_with_identical_in_ood": 19
+   },
+   "unseen": {
+    "ood_groups_in_set": 166,
+    "ood_images_from_set_groups": 2024,
+    "pixel_identical_pairs": 109,
+    "pixel_identical_pairs_same_group": 109,
+    "pixel_identical_pairs_cross_group": 0,
+    "ood_images_with_identical_in_set": 104,
+    "set_images_with_identical_in_ood": 100
+   }
+  },
+  "ood_groups_in_any_id_set": 387,
+  "ood_images_from_any_id_group": 5170,
+  "clean_ood_images": 3696,
+  "clean_ood_groups": 495,
+  "clean_ood_images_with_identical_in_any_id_set": 0,
+  "ood_within_set_identical_extra_copies": 618
+ },
+ "isic2019_b0": {
+  "group_unit": "lesion_id, else image (no patient ID in ISIC 2019)",
+  "n_ood_images": 492,
+  "n_ood_groups": 248,
+  "id_sets": {
+   "train": {
+    "images": 10090,
+    "groups": 6315
+   },
+   "val": {
+    "images": 1121,
+    "groups": 1038
+   },
+   "seen": {
+    "images": 1216,
+    "groups": 914
+   },
+   "unseen": {
+    "images": 12412,
+    "groups": 6873
+   }
+  },
+  "by_set": {
+   "train": {
+    "ood_groups_in_set": 0,
+    "ood_images_from_set_groups": 0,
+    "pixel_identical_pairs": 0,
+    "pixel_identical_pairs_same_group": 0,
+    "pixel_identical_pairs_cross_group": 0,
+    "ood_images_with_identical_in_set": 0,
+    "set_images_with_identical_in_ood": 0
+   },
+   "val": {
+    "ood_groups_in_set": 0,
+    "ood_images_from_set_groups": 0,
+    "pixel_identical_pairs": 0,
+    "pixel_identical_pairs_same_group": 0,
+    "pixel_identical_pairs_cross_group": 0,
+    "ood_images_with_identical_in_set": 0,
+    "set_images_with_identical_in_ood": 0
+   },
+   "seen": {
+    "ood_groups_in_set": 0,
+    "ood_images_from_set_groups": 0,
+    "pixel_identical_pairs": 0,
+    "pixel_identical_pairs_same_group": 0,
+    "pixel_identical_pairs_cross_group": 0,
+    "ood_images_with_identical_in_set": 0,
+    "set_images_with_identical_in_ood": 0
+   },
+   "unseen": {
+    "ood_groups_in_set": 0,
+    "ood_images_from_set_groups": 0,
+    "pixel_identical_pairs": 0,
+    "pixel_identical_pairs_same_group": 0,
+    "pixel_identical_pairs_cross_group": 0,
+    "ood_images_with_identical_in_set": 0,
+    "set_images_with_identical_in_ood": 0
+   }
+  },
+  "ood_groups_in_any_id_set": 0,
+  "ood_images_from_any_id_group": 0,
+  "clean_ood_images": 492,
+  "clean_ood_groups": 248,
+  "clean_ood_images_with_identical_in_any_id_set": 0,
+  "ood_within_set_identical_extra_copies": 0
+ },
+ "kermany_b1": {
+  "group_unit": "patient ID",
+  "n_ood_images": 8866,
+  "n_ood_groups": 882,
+  "id_sets": {
+   "train": {
+    "images": 38069,
+    "groups": 2214
+   },
+   "val": {
+    "images": 4230,
+    "groups": 1459
+   },
+   "seen": {
+    "images": 7458,
+    "groups": 1756
+   },
+   "unseen": {
+    "images": 49936,
+    "groups": 2239
+   }
+  },
+  "by_set": {
+   "train": {
+    "ood_groups_in_set": 165,
+    "ood_images_from_set_groups": 2006,
+    "pixel_identical_pairs": 89,
+    "pixel_identical_pairs_same_group": 89,
+    "pixel_identical_pairs_cross_group": 0,
+    "ood_images_with_identical_in_set": 86,
+    "set_images_with_identical_in_ood": 82
+   },
+   "val": {
+    "ood_groups_in_set": 128,
+    "ood_images_from_set_groups": 1759,
+    "pixel_identical_pairs": 10,
+    "pixel_identical_pairs_same_group": 10,
+    "pixel_identical_pairs_cross_group": 0,
+    "ood_images_with_identical_in_set": 10,
+    "set_images_with_identical_in_ood": 8
+   },
+   "seen": {
+    "ood_groups_in_set": 137,
+    "ood_images_from_set_groups": 1817,
+    "pixel_identical_pairs": 10,
+    "pixel_identical_pairs_same_group": 10,
+    "pixel_identical_pairs_cross_group": 0,
+    "ood_images_with_identical_in_set": 10,
+    "set_images_with_identical_in_ood": 10
+   },
+   "unseen": {
+    "ood_groups_in_set": 221,
+    "ood_images_from_set_groups": 3146,
+    "pixel_identical_pairs": 144,
+    "pixel_identical_pairs_same_group": 144,
+    "pixel_identical_pairs_cross_group": 0,
+    "ood_images_with_identical_in_set": 144,
+    "set_images_with_identical_in_ood": 142
+   }
+  },
+  "ood_groups_in_any_id_set": 387,
+  "ood_images_from_any_id_group": 5170,
+  "clean_ood_images": 3696,
+  "clean_ood_groups": 495,
+  "clean_ood_images_with_identical_in_any_id_set": 0,
+  "ood_within_set_identical_extra_copies": 618
+ },
+ "isic2019_b1": {
+  "group_unit": "lesion_id, else image (no patient ID in ISIC 2019)",
+  "n_ood_images": 492,
+  "n_ood_groups": 248,
+  "id_sets": {
+   "train": {
+    "images": 10093,
+    "groups": 6395
+   },
+   "val": {
+    "images": 1122,
+    "groups": 1026
+   },
+   "seen": {
+    "images": 1197,
+    "groups": 878
+   },
+   "unseen": {
+    "images": 12427,
+    "groups": 6810
+   }
+  },
+  "by_set": {
+   "train": {
+    "ood_groups_in_set": 0,
+    "ood_images_from_set_groups": 0,
+    "pixel_identical_pairs": 0,
+    "pixel_identical_pairs_same_group": 0,
+    "pixel_identical_pairs_cross_group": 0,
+    "ood_images_with_identical_in_set": 0,
+    "set_images_with_identical_in_ood": 0
+   },
+   "val": {
+    "ood_groups_in_set": 0,
+    "ood_images_from_set_groups": 0,
+    "pixel_identical_pairs": 0,
+    "pixel_identical_pairs_same_group": 0,
+    "pixel_identical_pairs_cross_group": 0,
+    "ood_images_with_identical_in_set": 0,
+    "set_images_with_identical_in_ood": 0
+   },
+   "seen": {
+    "ood_groups_in_set": 0,
+    "ood_images_from_set_groups": 0,
+    "pixel_identical_pairs": 0,
+    "pixel_identical_pairs_same_group": 0,
+    "pixel_identical_pairs_cross_group": 0,
+    "ood_images_with_identical_in_set": 0,
+    "set_images_with_identical_in_ood": 0
+   },
+   "unseen": {
+    "ood_groups_in_set": 0,
+    "ood_images_from_set_groups": 0,
+    "pixel_identical_pairs": 0,
+    "pixel_identical_pairs_same_group": 0,
+    "pixel_identical_pairs_cross_group": 0,
+    "ood_images_with_identical_in_set": 0,
+    "set_images_with_identical_in_ood": 0
+   }
+  },
+  "ood_groups_in_any_id_set": 0,
+  "ood_images_from_any_id_group": 0,
+  "clean_ood_images": 492,
+  "clean_ood_groups": 248,
+  "clean_ood_images_with_identical_in_any_id_set": 0,
+  "ood_within_set_identical_extra_copies": 0
+ },
+ "kermany_std": {
+  "group_unit": "patient ID",
+  "n_ood_images": 8866,
+  "n_ood_groups": 716,
+  "id_sets": {
+   "train": {
+    "images": 67381,
+    "groups": 4240
+   },
+   "val": {
+    "images": 7487,
+    "groups": 2226
+   },
+   "seen": {
+    "images": 664,
+    "groups": 440
+   },
+   "unseen": {
+    "images": 86,
+    "groups": 67
+   },
+   "unseen_extra": {
+    "images": 750,
+    "groups": 490
+   }
+  },
+  "by_set": {
+   "train": {
+    "ood_groups_in_set": 387,
+    "ood_images_from_set_groups": 5405,
+    "pixel_identical_pairs": 181,
+    "pixel_identical_pairs_same_group": 181,
+    "pixel_identical_pairs_cross_group": 0,
+    "ood_images_with_identical_in_set": 181,
+    "set_images_with_identical_in_ood": 171
+   },
+   "val": {
+    "ood_groups_in_set": 261,
+    "ood_images_from_set_groups": 4195,
+    "pixel_identical_pairs": 23,
+    "pixel_identical_pairs_same_group": 23,
+    "pixel_identical_pairs_cross_group": 0,
+    "ood_images_with_identical_in_set": 23,
+    "set_images_with_identical_in_ood": 22
+   },
+   "seen": {
+    "ood_groups_in_set": 73,
+    "ood_images_from_set_groups": 1257,
+    "pixel_identical_pairs": 0,
+    "pixel_identical_pairs_same_group": 0,
+    "pixel_identical_pairs_cross_group": 0,
+    "ood_images_with_identical_in_set": 0,
+    "set_images_with_identical_in_ood": 0
+   },
+   "unseen": {
+    "ood_groups_in_set": 0,
+    "ood_images_from_set_groups": 0,
+    "pixel_identical_pairs": 0,
+    "pixel_identical_pairs_same_group": 0,
+    "pixel_identical_pairs_cross_group": 0,
+    "ood_images_with_identical_in_set": 0,
+    "set_images_with_identical_in_ood": 0
+   },
+   "unseen_extra": {
+    "ood_groups_in_set": 0,
+    "ood_images_from_set_groups": 0,
+    "pixel_identical_pairs": 0,
+    "pixel_identical_pairs_same_group": 0,
+    "pixel_identical_pairs_cross_group": 0,
+    "ood_images_with_identical_in_set": 0,
+    "set_images_with_identical_in_ood": 0
+   }
+  },
+  "ood_groups_in_any_id_set": 398,
+  "ood_images_from_any_id_group": 5512,
+  "clean_ood_images": 3354,
+  "clean_ood_groups": 318,
+  "clean_ood_images_with_identical_in_any_id_set": 0,
+  "ood_within_set_identical_extra_copies": 840
+ },
+ "isic2019_std": {
+  "group_unit": "lesion_id, else image (no patient ID in ISIC 2019)",
+  "n_ood_images": 492,
+  "n_ood_groups": 248,
+  "id_sets": {
+   "train": {
+    "images": 17884,
+    "groups": 11041
+   },
+   "val": {
+    "images": 1987,
+    "groups": 1829
+   },
+   "seen": {
+    "images": 3021,
+    "groups": 2297
+   },
+   "unseen": {
+    "images": 1947,
+    "groups": 1829
+   }
+  },
+  "by_set": {
+   "train": {
+    "ood_groups_in_set": 0,
+    "ood_images_from_set_groups": 0,
+    "pixel_identical_pairs": 0,
+    "pixel_identical_pairs_same_group": 0,
+    "pixel_identical_pairs_cross_group": 0,
+    "ood_images_with_identical_in_set": 0,
+    "set_images_with_identical_in_ood": 0
+   },
+   "val": {
+    "ood_groups_in_set": 0,
+    "ood_images_from_set_groups": 0,
+    "pixel_identical_pairs": 0,
+    "pixel_identical_pairs_same_group": 0,
+    "pixel_identical_pairs_cross_group": 0,
+    "ood_images_with_identical_in_set": 0,
+    "set_images_with_identical_in_ood": 0
+   },
+   "seen": {
+    "ood_groups_in_set": 0,
+    "ood_images_from_set_groups": 0,
+    "pixel_identical_pairs": 0,
+    "pixel_identical_pairs_same_group": 0,
+    "pixel_identical_pairs_cross_group": 0,
+    "ood_images_with_identical_in_set": 0,
+    "set_images_with_identical_in_ood": 0
+   },
+   "unseen": {
+    "ood_groups_in_set": 0,
+    "ood_images_from_set_groups": 0,
+    "pixel_identical_pairs": 0,
+    "pixel_identical_pairs_same_group": 0,
+    "pixel_identical_pairs_cross_group": 0,
+    "ood_images_with_identical_in_set": 0,
+    "set_images_with_identical_in_ood": 0
+   }
+  },
+  "ood_groups_in_any_id_set": 0,
+  "ood_images_from_any_id_group": 0,
+  "clean_ood_images": 492,
+  "clean_ood_groups": 248,
+  "clean_ood_images_with_identical_in_any_id_set": 0,
+  "ood_within_set_identical_extra_copies": 0
+ }
+}
