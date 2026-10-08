@@ -12,6 +12,8 @@ Jackknife (refit-aware, grouped delete-a-block as in crossfit_ood, Busing weight
 train / seen / unseen, deleted together with all fits redone (fold map held fixed); OOD samples in blocks, scores
 fixed; 50 blocks each; V = V_id + V_ood, 95% normal CI for every statistic.
 leaky and F2 point estimates are checked against crossfit_auroc (1e-9).
+Orphan seen images (group with no training image: the medbench val carve-out took the group's last training image)
+are dropped from seen, as in the package paper_2fold (R3 item 1); counts recorded per cell.
 Writes results/r3/8/p2b/cells/{ds}_{arch}_s{seed}_{fold}.json
 """
 
@@ -82,12 +84,16 @@ def main() -> int:
     z = np.load(FEAT / a.ds / ("%s_s%d_%s.npz" % (a.arch, a.seed, a.fold)))
     xtr, xse, xun, xood = (np.asarray(z[k + "_feats"], dtype=np.float64) for k in ("train", "seen", "unseen", "ood"))
     gtr, gse, gun = (groups_of(a.ds, z[k + "_keys"]) for k in ("train", "seen", "unseen"))
+    orphan = ~np.isin(gse, gtr)
+    n_orphan, n_orphan_groups = int(orphan.sum()), int(len(np.unique(gse[orphan])))
+    xse, gse = xse[~orphan], gse[~orphan]
     assert set(gse) <= set(gtr) and not (set(gun) & set(gtr))
     fold_map = assign_folds(gtr, np.asarray(z["train_labels"]), np.random.default_rng(0))
     q = pd.read_csv(REPO / "outputs/reports/rigor_pack/medbench/model_quality.csv")
     q = q[(q.dataset == a.ds) & (q.arch == a.arch) & (q.seed == a.seed) & (q.arm == a.fold)].iloc[0]
     res = {"ds": a.ds, "arch": a.arch, "seed": a.seed, "fold": a.fold, "d": int(xtr.shape[1]),
-           "n_train": len(xtr), "n_seen": len(xse), "n_unseen": len(xun), "n_ood": len(xood),
+           "n_train": len(xtr), "n_seen": len(xse), "n_orphan_seen_dropped": n_orphan,
+           "n_orphan_seen_groups": n_orphan_groups, "n_unseen": len(xun), "n_ood": len(xood),
            "n_groups_train": int(len(set(gtr))), "n_groups_seen": int(len(set(gse))), "n_groups_unseen": int(len(set(gun))),
            "K_within": 2, "acc_seen": float(q.acc_seen), "acc_unseen": float(q.acc_unseen),
            "G1": bool(q.G1), "G2": bool(q.G2), "passes_quality": bool(q.passes), "scorers": {}}

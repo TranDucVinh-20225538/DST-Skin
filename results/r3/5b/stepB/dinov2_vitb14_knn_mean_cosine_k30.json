@@ -1,0 +1,396 @@
+{
+ "fm": "dinov2_vitb14",
+ "scorer": "knn_mean_cosine",
+ "d": 768,
+ "n_train": 302436,
+ "n_id_eval": 33560,
+ "n_ood": 85054,
+ "n_slides": 30,
+ "train_slides_without_id_val": [],
+ "probe_id_acc": 0.9717222884386174,
+ "gpu_knn": true,
+ "hospitals": [
+  0,
+  3,
+  4
+ ],
+ "K30": {
+  "X_K": 0.657236699979958,
+  "auroc_leaky": 0.7556272260800003,
+  "delta": 0.09839052610004229,
+  "X_K_ci": null,
+  "delta_ci": null,
+  "fit_patches_min_mean_max": [
+   247287,
+   292354.8,
+   301006
+  ],
+  "n_groups_fit_min_max": [
+   29,
+   29
+  ],
+  "folds": [
+   {
+    "fold": 0,
+    "slides_out": [
+     "7"
+    ],
+    "hospitals_out": [
+     0
+    ],
+    "n_fit_patches": 301006,
+    "n_groups_fit": 29,
+    "n_id_eval": 166
+   },
+   {
+    "fold": 1,
+    "slides_out": [
+     "2"
+    ],
+    "hospitals_out": [
+     0
+    ],
+    "n_fit_patches": 298839,
+    "n_groups_fit": 29,
+    "n_id_eval": 449
+   },
+   {
+    "fold": 2,
+    "slides_out": [
+     "1"
+    ],
+    "hospitals_out": [
+     0
+    ],
+    "n_fit_patches": 298307,
+    "n_groups_fit": 29,
+    "n_id_eval": 468
+   },
+   {
+    "fold": 3,
+    "slides_out": [
+     "8"
+    ],
+    "hospitals_out": [
+     0
+    ],
+    "n_fit_patches": 290318,
+    "n_groups_fit": 29,
+    "n_id_eval": 1337
+   },
+   {
+    "fold": 4,
+    "slides_out": [
+     "6"
+    ],
+    "hospitals_out": [
+     0
+    ],
+    "n_fit_patches": 299352,
+    "n_groups_fit": 29,
+    "n_id_eval": 343
+   },
+   {
+    "fold": 5,
+    "slides_out": [
+     "0"
+    ],
+    "hospitals_out": [
+     0
+    ],
+    "n_fit_patches": 298558,
+    "n_groups_fit": 29,
+    "n_id_eval": 438
+   },
+   {
+    "fold": 6,
+    "slides_out": [
+     "4"
+    ],
+    "hospitals_out": [
+     0
+    ],
+    "n_fit_patches": 295838,
+    "n_groups_fit": 29,
+    "n_id_eval": 696
+   },
+   {
+    "fold": 7,
+    "slides_out": [
+     "3"
+    ],
+    "hospitals_out": [
+     0
+    ],
+    "n_fit_patches": 290208,
+    "n_groups_fit": 29,
+    "n_id_eval": 1409
+   },
+   {
+    "fold": 8,
+    "slides_out": [
+     "9"
+    ],
+    "hospitals_out": [
+     0
+    ],
+    "n_fit_patches": 299022,
+    "n_groups_fit": 29,
+    "n_id_eval": 394
+   },
+   {
+    "fold": 9,
+    "slides_out": [
+     "5"
+    ],
+    "hospitals_out": [
+     0
+    ],
+    "n_fit_patches": 299487,
+    "n_groups_fit": 29,
+    "n_id_eval": 311
+   },
+   {
+    "fold": 10,
+    "slides_out": [
+     "32"
+    ],
+    "hospitals_out": [
+     3
+    ],
+    "n_fit_patches": 294473,
+    "n_groups_fit": 29,
+    "n_id_eval": 868
+   },
+   {
+    "fold": 11,
+    "slides_out": [
+     "39"
+    ],
+    "hospitals_out": [
+     3
+    ],
+    "n_fit_patches": 284815,
+    "n_groups_fit": 29,
+    "n_id_eval": 1864
+   },
+   {
+    "fold": 12,
+    "slides_out": [
+     "33"
+    ],
+    "hospitals_out": [
+     3
+    ],
+    "n_fit_patches": 298821,
+    "n_groups_fit": 29,
+    "n_id_eval": 404
+   },
+   {
+    "fold": 13,
+    "slides_out": [
+     "38"
+    ],
+    "hospitals_out": [
+     3
+    ],
+    "n_fit_patches": 250804,
+    "n_groups_fit": 29,
+    "n_id_eval": 5743
+   },
+   {
+    "fold": 14,
+    "slides_out": [
+     "35"
+    ],
+    "hospitals_out": [
+     3
+    ],
+    "n_fit_patches": 296962,
+    "n_groups_fit": 29,
+    "n_id_eval": 615
+   },
+   {
+    "fold": 15,
+    "slides_out": [
+     "36"
+    ],
+    "hospitals_out": [
+     3
+    ],
+    "n_fit_patches": 292825,
+    "n_groups_fit": 29,
+    "n_id_eval": 1050
+   },
+   {
+    "fold": 16,
+    "slides_out": [
+     "34"
+    ],
+    "hospitals_out": [
+     3
+    ],
+    "n_fit_patches": 298888,
+    "n_groups_fit": 29,
+    "n_id_eval": 402
+   },
+   {
+    "fold": 17,
+    "slides_out": [
+     "31"
+    ],
+    "hospitals_out": [
+     3
+    ],
+    "n_fit_patches": 299299,
+    "n_groups_fit": 29,
+    "n_id_eval": 329
+   },
+   {
+    "fold": 18,
+    "slides_out": [
+     "37"
+    ],
+    "hospitals_out": [
+     3
+    ],
+    "n_fit_patches": 297633,
+    "n_groups_fit": 29,
+    "n_id_eval": 536
+   },
+   {
+    "fold": 19,
+    "slides_out": [
+     "30"
+    ],
+    "hospitals_out": [
+     3
+    ],
+    "n_fit_patches": 292881,
+    "n_groups_fit": 29,
+    "n_id_eval": 1068
+   },
+   {
+    "fold": 20,
+    "slides_out": [
+     "45"
+    ],
+    "hospitals_out": [
+     4
+    ],
+    "n_fit_patches": 296171,
+    "n_groups_fit": 29,
+    "n_id_eval": 691
+   },
+   {
+    "fold": 21,
+    "slides_out": [
+     "46"
+    ],
+    "hospitals_out": [
+     4
+    ],
+    "n_fit_patches": 298038,
+    "n_groups_fit": 29,
+    "n_id_eval": 516
+   },
+   {
+    "fold": 22,
+    "slides_out": [
+     "43"
+    ],
+    "hospitals_out": [
+     4
+    ],
+    "n_fit_patches": 295269,
+    "n_groups_fit": 29,
+    "n_id_eval": 772
+   },
+   {
+    "fold": 23,
+    "slides_out": [
+     "44"
+    ],
+    "hospitals_out": [
+     4
+    ],
+    "n_fit_patches": 295286,
+    "n_groups_fit": 29,
+    "n_id_eval": 808
+   },
+   {
+    "fold": 24,
+    "slides_out": [
+     "42"
+    ],
+    "hospitals_out": [
+     4
+    ],
+    "n_fit_patches": 295333,
+    "n_groups_fit": 29,
+    "n_id_eval": 764
+   },
+   {
+    "fold": 25,
+    "slides_out": [
+     "49"
+    ],
+    "hospitals_out": [
+     4
+    ],
+    "n_fit_patches": 287829,
+    "n_groups_fit": 29,
+    "n_id_eval": 1747
+   },
+   {
+    "fold": 26,
+    "slides_out": [
+     "40"
+    ],
+    "hospitals_out": [
+     4
+    ],
+    "n_fit_patches": 295835,
+    "n_groups_fit": 29,
+    "n_id_eval": 794
+   },
+   {
+    "fold": 27,
+    "slides_out": [
+     "48"
+    ],
+    "hospitals_out": [
+     4
+    ],
+    "n_fit_patches": 247287,
+    "n_groups_fit": 29,
+    "n_id_eval": 5961
+   },
+   {
+    "fold": 28,
+    "slides_out": [
+     "47"
+    ],
+    "hospitals_out": [
+     4
+    ],
+    "n_fit_patches": 289126,
+    "n_groups_fit": 29,
+    "n_id_eval": 1393
+   },
+   {
+    "fold": 29,
+    "slides_out": [
+     "41"
+    ],
+    "hospitals_out": [
+     4
+    ],
+    "n_fit_patches": 292134,
+    "n_groups_fit": 29,
+    "n_id_eval": 1224
+   }
+  ],
+  "seconds": 246.8
+ }
+}

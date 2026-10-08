@@ -107,11 +107,16 @@ def bracket_table(L, B, acc_label):
         if len(v):
             L.append("Near ceiling (descriptive, no flag): Virchow2 Mahalanobis, leaky %.3f / X_2 %.3f; the"
                      " gap has little room above X_K." % (v.leaky.iloc[0], v.X2.iloc[0]))
+    c = B[~B.missing & B.X2.notna() & B.X10.notna() & B.X30.notna()]
+    up_2_10 = int((c.X10 > c.X2).sum())
+    dn_10_30 = int((c.X30 < c.X10).sum())
+    d30 = (c.X30 - c.X10)
     L += [
-          "Bracket (post hoc): X_K rises with the fit size, so if the rise continues, the deployed scorer (all 30"
-          " slides) has AUROC on new slides >= X_30 and its inflation <= leaky - X_30 <= leaky - X_10 <="
-          " leaky - X_2. These are upper bounds; no lower bound is established. leaky - X_K uses the default"
-          " protocol (same ID patches, different fits), not the Track A paper_2fold Delta_fit.", ""]
+          "Drift (post hoc, observed): X_10 > X_2 in %d/%d rows; X_30 < X_10 in %d/%d rows (X_30 - X_10 from %+.4f to"
+          " %+.4f). X_K does not keep rising beyond K = 10, so the ordering leaky - X_30 <= leaky - X_10 assumed for a"
+          " deployment bracket does not hold; leaky - X_K is reported as the observed drift across fit sizes, not as"
+          " a bound on deployment inflation. leaky - X_K uses the default protocol (same ID patches, different fits),"
+          " not the Track A paper_2fold Delta_fit." % (up_2_10, len(c), dn_10_30, len(c), d30.min(), d30.max()), ""]
 
 
 def stepB(L):
@@ -173,7 +178,8 @@ def main() -> int:
     L += ["## Post hoc: Camelyon CNNs (seed 42), same estimator, K = 2 / 5 / 10 / 30", "",
           "Not in PRECOMMIT.json; requested after Step B to bracket the main Delta_fit numbers between K = 2"
           " (preregistered fit size, 15 slides) and K = 10 / 30 (closer to the deployed fit size, 30 slides). kNN on"
-          " the GPU scorer after an equality check against the CPU Step B result (conch_v1_5, K = 2, 1e-6).", ""]
+          " the GPU scorer after an equality check against the CPU Step B result (conch_v1_5, K = 2: max abs difference 0.0, Delta identical). Virchow2 kNN K = 10"
+          " (FM table) also uses the GPU scorer: the CPU run timed out at 7 h.", ""]
     bracket_table(L, load_rows(CNNS), "model ID acc")
     L += ["## Decision (precommit table)", "",
           "- Step A: " + ("paper warns that naive pooling inflates AUROC (up to the observed Mahalanobis gap); package"
