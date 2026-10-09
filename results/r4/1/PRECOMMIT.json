@@ -1,0 +1,30 @@
+{
+ "item": "R4 analysis 1: threshold repair by group-disjoint calibration, with slide-level false alarms (Camelyon17)",
+ "status": "EXPLORATORY / POST HOC. Committed before any run of this analysis. Not part of any earlier precommit; the paper may cite it only as exploratory.",
+ "data": {
+  "dataset": "Camelyon17-WILDS; the 30 training slides (hospitals 0, 3 and 4, 10 slides each)",
+  "backbones": ["uni", "virchow2", "dinov2_vitb14", "dinov2_vitl14", "conch_v1_5", "resnet50", "convnext_tiny"],
+  "seed": 42,
+  "features": "the cached Track C / R3 frozen features of each backbone, seed 42 (features_train, features_id_eval). The cached Track C scores cannot be reused for this analysis: they come from 2-fold fits, and here the scorer is refit on each partition's fit set F",
+  "scorers": "Track A definitions (crossfit_ood): mahalanobis_l2 (Ledoit-Wolf on L2-normalised float64 features) and knn_mean_cosine (k = 50), both on CPU, BLAS threads pinned. Higher score = more ID"
+ },
+ "design": {
+  "partitions": "20 random slide-disjoint partitions into fit F, calibration C and test T, stratified by hospital. Partition p uses numpy default_rng([4, p]). For each hospital in sorted order, its 10 slides (sorted, then shuffled) are cut 4 / 3 / 3. A random permutation of the roles (F, C, T), drawn first, decides which set gets the 4-slide share of each hospital, so every set has 10 slides with 4 + 3 + 3 per hospital",
+  "fit": "the scorer is fitted on all training patches of the F slides (n_groups_fit = 10)",
+  "leaky_threshold": "the 5th percentile (numpy.percentile, linear) of scores on the held-out id_val patches of the F slides, i.e. the 95% ID quantile from a standard split",
+  "disjoint_threshold": "the 5th percentile of scores on the id_val patches of the C slides (never in F)",
+  "test": "both thresholds are applied to the id_val patches of the T slides. A patch is accepted as ID when score >= threshold",
+  "metrics": {
+   "a_patch": "realised coverage on T = fraction of T id_val patches accepted, for each threshold",
+   "b_slide": "per T slide, false-alarm rate = fraction of that slide's id_val patches with score < threshold. Per partition: the median slide false-alarm rate, the fraction of T slides with false-alarm rate > 0.10 and > 0.20, and the worst slide (maximum rate)",
+   "summary": "per backbone x scorer x threshold: the median and the range (min to max) over the 20 partitions of every metric. The pooled distribution of slide false-alarm rates (20 x 10 slide values) is shown as quantiles"
+  },
+  "table_columns": "every table carries n_groups_fit (10), K (3-way slide split; 20 partitions), d (feature dimension) and the ID accuracy of the backbone probe (Track C cell json)"
+ },
+ "prediction": {
+  "text": "The disjoint threshold's median patch-level coverage on T lies within 0.93-0.97, and the leaky threshold's lies below 0.93.",
+  "evaluation": "per cell (7 backbones x 2 scorers = 14 cells), on the median over the 20 partitions of the patch-level coverage on T. Part D holds in a cell when 0.93 <= disjoint median <= 0.97. Part L holds when leaky median < 0.93. Report the number of cells (out of 14) where D holds, where L holds and where both hold.",
+  "verdict_rule": "SUPPORTED if both parts hold in all 14 cells; PARTLY SUPPORTED if both hold in at least one cell but not all; NOT SUPPORTED if no cell has both. Failing cells are reported as findings, not retuned"
+ },
+ "rules": "no change to these criteria after results are seen; no hyperparameter search; statistics fit on training splits only (F); missing feature file -> STOP for that backbone, continue with the rest"
+}
