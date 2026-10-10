@@ -49,8 +49,18 @@ def params_C():
     return c_design.all_units()
 
 
-UNITS = {"A": units_A, "B": units_B, "C": units_C}
-PARAMS = {"C": params_C}
+def units_D():
+    import d_design
+    return {0: sorted(d_design.all_units(CM.RES / "I" / "registry.csv"))}
+
+
+def params_D():
+    import d_design
+    return d_design.all_units(CM.RES / "I" / "registry.csv")
+
+
+UNITS = {"A": units_A, "B": units_B, "C": units_C, "D": units_D}
+PARAMS = {"C": params_C, "D": params_D}
 
 
 def work_list(item, j, n_lists, ids):
@@ -75,7 +85,8 @@ def main(item):
                unit_id_formats={"A": "a1|<cell_id> (A1 per registry cell), a3|<cell_id> (A3 audit per registry cell), "
                                      "a2|<backbone>|f<fold>|G<G'>|n<n'>|r<repeat> (A2, 13 Camelyon backbones, seed 42)",
                                "B": "b|<cell_id> (one unit = both paper_2fold folds of one registry cell: kNN k in {1,5,10,20,50,100,200}, descriptors, MTS)",
-                               "C": "see the docstring of scripts/t1/c_design.py (c0|..., c1|<i>, c3|..., c4tv|..., c4sc|..., c5|<variant>|<i>); parameters of every unit in unit_params"}.get(item),
+                               "C": "see the docstring of scripts/t1/c_design.py (c0|..., c1|<i>, c3|..., c4tv|..., c4sc|..., c5|<variant>|<i>); parameters of every unit in unit_params",
+                               "D": "see the docstring of scripts/t1/d_design.py (d1|<i>, d2r|<i>, d3|<cell>, d4|<cell>); parameters in unit_params; D2 CMA-ES evaluations are adaptive and not in the list"}.get(item),
                work_lists=wl)
     if item in PARAMS:
         rec["unit_params"] = PARAMS[item]()

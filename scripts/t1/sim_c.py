@@ -71,7 +71,22 @@ class Model:
         self.sq = None if sp is None else torch.as_tensor(np.sqrt(np.asarray(sp, float)), device=DEV)
         self.dr = dr
         G = len(self.n_g)
-        self.u = np.sqrt(self.rho) * _rows(dr.normal(G, self.d), dr.t_scale(G, self.nu_u))
+        r = cfg.get("u_rank")
+        self.B = None
+        if r is not None and int(r) < self.d:
+            q, _ = torch.linalg.qr(dr.normal(self.d, int(r)))
+            self.B = q.T * np.sqrt(self.d / int(r))
+        self.u = self._u(G)
+        K, sep = int(cfg.get("K", 1)), float(cfg.get("sep", 0.0))
+        self.means = None
+        if K > 1:
+            q, _ = torch.linalg.qr(dr.normal(self.d, K))
+            self.means = sep / np.sqrt(2.0) * q.T
+            self.u = self.u + self.means[torch.as_tensor(dr.np.integers(0, K, G), device=DEV)]
+
+    def _u(self, n):
+        z = _rows(self.dr.normal(n, self.d if self.B is None else self.B.shape[0]), self.dr.t_scale(n, self.nu_u))
+        return np.sqrt(self.rho) * (z if self.B is None else z @ self.B)
 
     def _e(self, n):
         return np.sqrt(1 - self.rho) * _rows(self.dr.normal(n, self.d), self.dr.t_scale(n, self.nu_e))
@@ -88,7 +103,9 @@ class Model:
         return self._out(self.u[gi] + self._e(m))
 
     def fresh(self, m):
-        uf = np.sqrt(self.rho) * _rows(self.dr.normal(m, self.d), self.dr.t_scale(m, self.nu_u))
+        uf = self._u(m)
+        if self.means is not None:
+            uf = uf + self.means[torch.as_tensor(self.dr.np.integers(0, self.means.shape[0], m), device=DEV)]
         return self._out(uf + self._e(m))
 
     def oods(self, m):
