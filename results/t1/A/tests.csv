@@ -1,0 +1,11 @@
+test_id,item,quantity,n_units,statistic,null,p_raw,ci_lo,ci_hi,status,p_holm,pass
+A1_D_vs_B1,A,"mean D_b (e_B1 - e_P), Camelyon LOBO",13,-0.00018924678421649866,0,0.4994,-0.014079379817032589,0.013290317059129357,prereg,1.0,False
+A1_D_vs_B1w,A,"mean D_b (e_B1w - e_P), Camelyon LOBO",13,-0.0031165735565741462,0,0.6955,-0.015044727132464238,0.008195680539473109,prereg,1.0,False
+A1_D_vs_B3,A,"mean D_b (e_B3 - e_P), Camelyon LOBO",13,0.009770371896501647,0,0.117,-0.005296511465793685,0.027579043743954097,prereg,0.7020000000000001,False
+A1_D_vs_B4,A,"mean D_b (e_B4 - e_P), Camelyon LOBO",13,-0.005010631958206114,0,0.829,-0.01568357164561401,0.004784647678152208,prereg,1.0,False
+A1_D_vs_B5,A,"mean D_b (e_B5 - e_P), Camelyon LOBO",13,-0.0011684007030066178,0,0.5573,-0.015694829355580028,0.013913903261254752,prereg,1.0,False
+A2_D_vs_B5,A,"mean D_b (e_B5 - e_P), A2 LOBO pooled over designs",13,0.0009302138584173076,0,0.0779,-0.00035433317174724037,0.0022518968049588524,prereg,0.5453,False
+A2_D_vs_B6,A,"mean D_b (e_B6 - e_P), A2 LOBO pooled over designs",13,-0.009469273129901094,0,0.9996,-0.015069659009090533,-0.003931549150519563,prereg,1.0,False
+A2_within_backbone_spearman,A,"mean within-backbone Spearman(P_delta, Delta_meas) over 30 designs",13,-0.25914263711816543,0,,-0.4814494737742791,-0.03246769915290535,prereg,,False
+A1_dq_median_rel_err,A,median |dQ_pred/dQ_meas - 1| over Camelyon cells (zero-parameter),27,0.9837213050803262,<= 0.35,,,,prereg,,False
+A1_dq_r2_oos,A,pooled R2_oos of LOBO-calibrated dQ_pred vs B0,13,-1.053762515658379,0,,,,prereg,,False

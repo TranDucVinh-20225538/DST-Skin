@@ -1,0 +1,21 @@
+{
+ "verdict": "NO-GO",
+ "status": {
+  "A_i": "fail",
+  "A_ii": "fail",
+  "A_iii": "fail",
+  "A_iv": "fail"
+ },
+ "a_ii_alt_reading_cell": false,
+ "a_iv_alt_reading_cell_fold": false,
+ "verdict_reading_dependent": false,
+ "r_sat_frac_ge_0_9": {
+  "cell_fold": 0.0,
+  "cell": 0.0
+ },
+ "a0": {
+  "a0a": true,
+  "a0b": true,
+  "a0c": true
+ }
+}
