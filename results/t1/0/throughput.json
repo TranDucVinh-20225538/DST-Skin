@@ -1,0 +1,17 @@
+{
+ "source": "results/t1/0/throughput_NVIDIA_A100-SXM4-80GB.json (SLURM job 65255, node004)",
+ "gpu_types": {
+  "NVIDIA A100-SXM4-80GB": {
+   "matmul4096_float64_tflops": 17.764255500843298,
+   "inv2560_float64_s": 0.015179506215182218,
+   "cholesky2560_float64_s": 0.001916536657962821,
+   "knn_50k_x_100k_x_2560_float64_topk200_s": 1.8650310039520264
+  }
+ },
+ "knn_equality_timing_camelyon_resnet50_s42_full_2fold": {
+  "cpu_sklearn_knn_mean_cosine_s": 1287,
+  "cpu_sklearn_knn_kth_s": 156,
+  "gpu_knn_mean_cosine_s": 19,
+  "gpu_knn_kth_s": 14
+ }
+}
