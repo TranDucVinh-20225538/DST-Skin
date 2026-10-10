@@ -61,7 +61,8 @@ def _rows(z, scale):
 
 class Model:
     """Variant of M(G, n, rho, d): x = Sigma^{1/2} (u_g + e), u_g ~ rho * law_u, e ~ (1 - rho) * law_e (total cov Sigma).
-    cfg keys: d, rho, n_g (array of group sizes), nu_u, nu_e (None = Gaussian), spectrum (None or diag of Sigma, mean 1)."""
+    cfg keys: d, rho, n_g (array of group sizes), nu_u, nu_e (None = Gaussian), spectrum (None or diag of Sigma, mean 1),
+    u_scale (None or per-coordinate factor of u_g before Sigma^{1/2}; non-proportional group covariance)."""
 
     def __init__(self, cfg, dr: Draw):
         self.d, self.rho = int(cfg["d"]), float(cfg["rho"])
@@ -69,6 +70,8 @@ class Model:
         self.nu_u, self.nu_e = cfg.get("nu_u"), cfg.get("nu_e")
         sp = cfg.get("spectrum")
         self.sq = None if sp is None else torch.as_tensor(np.sqrt(np.asarray(sp, float)), device=DEV)
+        us = cfg.get("u_scale")
+        self.us = None if us is None else torch.as_tensor(np.asarray(us, float), device=DEV)
         self.dr = dr
         G = len(self.n_g)
         r = cfg.get("u_rank")
@@ -86,7 +89,8 @@ class Model:
 
     def _u(self, n):
         z = _rows(self.dr.normal(n, self.d if self.B is None else self.B.shape[0]), self.dr.t_scale(n, self.nu_u))
-        return np.sqrt(self.rho) * (z if self.B is None else z @ self.B)
+        z = z if self.B is None else z @ self.B
+        return np.sqrt(self.rho) * (z if self.us is None else z * self.us[None, :])
 
     def _e(self, n):
         return np.sqrt(1 - self.rho) * _rows(self.dr.normal(n, self.d), self.dr.t_scale(n, self.nu_e))

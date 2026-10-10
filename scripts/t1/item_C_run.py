@@ -174,7 +174,12 @@ def run_c4sc(uid, p):
     return out
 
 
-HANDLERS = {"c1|": run_c1, "c3|": run_c3, "c4tv|": run_c4tv, "c4sc|": run_c4sc}
+def run_c5(uid, p):
+    import item_C5
+    return item_C5.run_c5(uid, p)
+
+
+HANDLERS = {"c1|": run_c1, "c3|": run_c3, "c4tv|": run_c4tv, "c4sc|": run_c4sc, "c5|": run_c5}
 
 
 def main(phase, task, ntasks):
