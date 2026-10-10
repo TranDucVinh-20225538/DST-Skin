@@ -1,0 +1,16 @@
+# Item B — DEVIATIONS (rule 12)
+
+Who decided: agent (autonomous mode; the "least invasive reading" rule of the user's instructions). None of these changes a
+criterion, threshold, seed or grid.
+
+| id | what | why | effect on criterion | verdict effect |
+|---|---|---|---|---|
+| DB-1 | ρ̂_cos = the ANOVA-corrected ICC (`rho_anova` of `scorer64.group_stats`) on the L2-normalised fit features, i.e. the mean over coordinates of the one-way ANOVA ICC with the unequal-size n₀ | the order says "ANOVA-corrected ICC on the normalised features, as ρ̂_raw"; ρ̂_raw itself is the uncorrected ratio, so the ANOVA-corrected per-coordinate form is the reading that is both "corrected" and "as ρ̂_raw" (same features, same pooling) | B-i (x₁, B1), B-ii (MTS ρ) | none known; ρ̂_raw is stored beside it (`rho_cos_raw` in `cells_knn.csv`) |
+| DB-2 | Single-descriptor LOBO maps (x₁, x₂, x₃, ρ̂_cos, d/N, d, T_unseen, r_NN) are isotonic with equal capacity; x₁, x₂, x₃ and ρ̂_cos increasing (K4 fixes the direction), the others with the direction chosen on the training units. **B1 = isotonic ρ̂_cos** (equal capacity to the isotonic x₁ map) | the order asks for "LOBO equal capacity, as A1" and an isotonic map for x₁; a linear B1 against an isotonic x₁ would not be equal capacity | B-i, B-ii | none: the linear-B1 comparisons are reported beside them (`tests.csv`, "report" rows) and also fail (B-i vs linear B1: −0.0028 [−0.0113, 0.0049]; B-ii vs linear B1: −0.065 [−0.081, −0.048]) |
+| DB-3 | Decision unit = Camelyon backbone (13), values averaged over seeds and folds, as A1 | A1 convention | B-i, B-ii | none |
+| DB-4 | MTS toy scorer = Euclidean mean distance to the k nearest fit points on raw toy vectors (not the cosine form) | the toy is isotropic Gaussian with ‖x‖² concentrated at d; the cosine and Euclidean neighbour orderings agree up to the norm fluctuation, and the order specifies the toy as "kNN-k" | B-ii | not tested; the cosine toy was not run |
+| DB-5 | MTS seen-eval points: groups drawn uniformly among the fit groups (not proportional to n_g); m = 4,000 seen, 4,000 unseen, 4,000 OOD per replicate; OOD scale bisection on log a ∈ [log 0.01, log 100], 30 iterations, per k; 16 replicates; d_toy = round(PR) capped at 1,024 | the order gives the replicate count and the matching rule but not m or the bracket; uniform seen groups is the C simulator convention ("new draws from uniformly chosen fit groups") | B-ii | none known; bracket clipping: 0 % of cell × folds at k = 50 |
+| DB-6 | TwoNN: 20,000-point uniform subsample of the fit set, μ = r₂/r₁, least-squares line through the origin of −log(1 − F_emp(μ)) on log μ after discarding the largest 10 % of μ (Facco et al. 2017) | the order names the estimator, not the fit details | x₃ (report only) | none (x₃ is report only) |
+| DB-7 | Per-k "flat for k ≤ n_g" and "drop once k > n_g" use the median group size of the fit set of the fold as n_g | the order uses n_g for a cell with unequal groups | per-k (report only) | none (report only) |
+| DB-8 | T_unseen in B is computed with the item D definition on unit vectors (m = min(5,000, \|unseen\|), 20,000-point fit LOO subsample) | same as D | baseline T_unseen-only (report) | none |
+| DB-9 | At most 4 GPUs held at once | user decision D0-5 (`results/t1/0/DEVIATIONS.md`) | none | none |
