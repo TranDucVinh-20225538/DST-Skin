@@ -59,8 +59,20 @@ def params_D():
     return d_design.all_units(CM.RES / "I" / "registry.csv")
 
 
-UNITS = {"A": units_A, "B": units_B, "C": units_C, "D": units_D}
-PARAMS = {"C": params_C, "D": params_D}
+def units_E():
+    import e_design
+    a, b = e_design.lists(CM.RES / "I" / "registry.csv")
+    return {0: sorted(a), 1: sorted(b)}
+
+
+def params_E():
+    import e_design
+    a, b = e_design.lists(CM.RES / "I" / "registry.csv")
+    return {**a, **b}
+
+
+UNITS = {"A": units_A, "B": units_B, "C": units_C, "D": units_D, "E": units_E}
+PARAMS = {"C": params_C, "D": params_D, "E": params_E}
 
 
 def work_list(item, j, n_lists, ids):
@@ -86,7 +98,9 @@ def main(item):
                                      "a2|<backbone>|f<fold>|G<G'>|n<n'>|r<repeat> (A2, 13 Camelyon backbones, seed 42)",
                                "B": "b|<cell_id> (one unit = both paper_2fold folds of one registry cell: kNN k in {1,5,10,20,50,100,200}, descriptors, MTS)",
                                "C": "see the docstring of scripts/t1/c_design.py (c0|..., c1|<i>, c3|..., c4tv|..., c4sc|..., c5|<variant>|<i>); parameters of every unit in unit_params",
-                               "D": "see the docstring of scripts/t1/d_design.py (d1|<i>, d2r|<i>, d3|<cell>, d4|<cell>); parameters in unit_params; D2 CMA-ES evaluations are adaptive and not in the list"}.get(item),
+                               "D": "see the docstring of scripts/t1/d_design.py (d1|<i>, d2r|<i>, d3|<cell>, d4|<cell>); parameters in unit_params; D2 CMA-ES evaluations are adaptive and not in the list",
+                               "E": "see the docstring of scripts/t1/e_design.py; list j = 0 = regime (a) (E1 regime-(a) cells, E2, E3, E4 (a)/(a')), "
+                                    "list j = 1 = regime (b) (E1 regime-(b) cells, E4 (b)), processed after list 0; parameters in unit_params"}.get(item),
                work_lists=wl)
     if item in PARAMS:
         rec["unit_params"] = PARAMS[item]()

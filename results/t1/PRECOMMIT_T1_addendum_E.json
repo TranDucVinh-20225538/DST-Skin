@@ -1,0 +1,4124 @@
+{
+ "title": "PRECOMMIT T1 addendum: work list(s) of item E (rule 16)",
+ "written_asia_saigon": "2026-10-11T04:01:11+07:00",
+ "precommit_commit": "e326d392fd42ced26fbebe6c0a38ed983267d187",
+ "registry_sha256": "33fc4e902f5f5b1b701a665db5072f395ae9ebe531d7b4c8eb67927763952a92",
+ "status": "Written before any item-E computation (no criterion, threshold, seed or grid is changed).",
+ "unit_id_formats": "see the docstring of scripts/t1/e_design.py; list j = 0 = regime (a) (E1 regime-(a) cells, E2, E3, E4 (a)/(a')), list j = 1 = regime (b) (E1 regime-(b) cells, E4 (b)), processed after list 0; parameters in unit_params",
+ "work_lists": [
+  {
+   "item": "E",
+   "list_index_j": 0,
+   "n_lists": 2,
+   "seed": "SeedSequence([20261010, 5, 16, 0]).spawn(2)[0]",
+   "n_units": 474,
+   "sha256_sorted_ids_newline_joined": "498dbe97f6cdea1ea8a79f6ccc2c79a01fb2a785b81e3d94ae1d3dec4620932c",
+   "sorted_ids": [
+    "e1|a|beta|const|n200|rho0",
+    "e1|a|beta|const|n200|rho0.02",
+    "e1|a|beta|const|n200|rho0.05",
+    "e1|a|beta|const|n200|rho0.1",
+    "e1|a|beta|const|n200|rho0.2",
+    "e1|a|beta|const|n200|rho0.4",
+    "e1|a|beta|const|n20|rho0",
+    "e1|a|beta|const|n20|rho0.02",
+    "e1|a|beta|const|n20|rho0.05",
+    "e1|a|beta|const|n20|rho0.1",
+    "e1|a|beta|const|n20|rho0.2",
+    "e1|a|beta|const|n20|rho0.4",
+    "e1|a|beta|const|n50|rho0",
+    "e1|a|beta|const|n50|rho0.02",
+    "e1|a|beta|const|n50|rho0.05",
+    "e1|a|beta|const|n50|rho0.1",
+    "e1|a|beta|const|n50|rho0.2",
+    "e1|a|beta|const|n50|rho0.4",
+    "e1|a|beta|const|n5|rho0",
+    "e1|a|beta|const|n5|rho0.02",
+    "e1|a|beta|const|n5|rho0.05",
+    "e1|a|beta|const|n5|rho0.1",
+    "e1|a|beta|const|n5|rho0.2",
+    "e1|a|beta|const|n5|rho0.4",
+    "e1|a|beta|lognormal|n200|rho0",
+    "e1|a|beta|lognormal|n200|rho0.02",
+    "e1|a|beta|lognormal|n200|rho0.05",
+    "e1|a|beta|lognormal|n200|rho0.1",
+    "e1|a|beta|lognormal|n200|rho0.2",
+    "e1|a|beta|lognormal|n200|rho0.4",
+    "e1|a|beta|lognormal|n20|rho0",
+    "e1|a|beta|lognormal|n20|rho0.02",
+    "e1|a|beta|lognormal|n20|rho0.05",
+    "e1|a|beta|lognormal|n20|rho0.1",
+    "e1|a|beta|lognormal|n20|rho0.2",
+    "e1|a|beta|lognormal|n20|rho0.4",
+    "e1|a|beta|lognormal|n50|rho0",
+    "e1|a|beta|lognormal|n50|rho0.02",
+    "e1|a|beta|lognormal|n50|rho0.05",
+    "e1|a|beta|lognormal|n50|rho0.1",
+    "e1|a|beta|lognormal|n50|rho0.2",
+    "e1|a|beta|lognormal|n50|rho0.4",
+    "e1|a|beta|lognormal|n5|rho0",
+    "e1|a|beta|lognormal|n5|rho0.02",
+    "e1|a|beta|lognormal|n5|rho0.05",
+    "e1|a|beta|lognormal|n5|rho0.1",
+    "e1|a|beta|lognormal|n5|rho0.2",
+    "e1|a|beta|lognormal|n5|rho0.4",
+    "e1|a|beta|poisson|n200|rho0",
+    "e1|a|beta|poisson|n200|rho0.02",
+    "e1|a|beta|poisson|n200|rho0.05",
+    "e1|a|beta|poisson|n200|rho0.1",
+    "e1|a|beta|poisson|n200|rho0.2",
+    "e1|a|beta|poisson|n200|rho0.4",
+    "e1|a|beta|poisson|n20|rho0",
+    "e1|a|beta|poisson|n20|rho0.02",
+    "e1|a|beta|poisson|n20|rho0.05",
+    "e1|a|beta|poisson|n20|rho0.1",
+    "e1|a|beta|poisson|n20|rho0.2",
+    "e1|a|beta|poisson|n20|rho0.4",
+    "e1|a|beta|poisson|n50|rho0",
+    "e1|a|beta|poisson|n50|rho0.02",
+    "e1|a|beta|poisson|n50|rho0.05",
+    "e1|a|beta|poisson|n50|rho0.1",
+    "e1|a|beta|poisson|n50|rho0.2",
+    "e1|a|beta|poisson|n50|rho0.4",
+    "e1|a|beta|poisson|n5|rho0",
+    "e1|a|beta|poisson|n5|rho0.02",
+    "e1|a|beta|poisson|n5|rho0.05",
+    "e1|a|beta|poisson|n5|rho0.1",
+    "e1|a|beta|poisson|n5|rho0.2",
+    "e1|a|beta|poisson|n5|rho0.4",
+    "e1|a|flag0.05|const|n200|rho0",
+    "e1|a|flag0.05|const|n200|rho0.02",
+    "e1|a|flag0.05|const|n200|rho0.05",
+    "e1|a|flag0.05|const|n200|rho0.1",
+    "e1|a|flag0.05|const|n200|rho0.2",
+    "e1|a|flag0.05|const|n200|rho0.4",
+    "e1|a|flag0.05|const|n20|rho0",
+    "e1|a|flag0.05|const|n20|rho0.02",
+    "e1|a|flag0.05|const|n20|rho0.05",
+    "e1|a|flag0.05|const|n20|rho0.1",
+    "e1|a|flag0.05|const|n20|rho0.2",
+    "e1|a|flag0.05|const|n20|rho0.4",
+    "e1|a|flag0.05|const|n50|rho0",
+    "e1|a|flag0.05|const|n50|rho0.02",
+    "e1|a|flag0.05|const|n50|rho0.05",
+    "e1|a|flag0.05|const|n50|rho0.1",
+    "e1|a|flag0.05|const|n50|rho0.2",
+    "e1|a|flag0.05|const|n50|rho0.4",
+    "e1|a|flag0.05|const|n5|rho0",
+    "e1|a|flag0.05|const|n5|rho0.02",
+    "e1|a|flag0.05|const|n5|rho0.05",
+    "e1|a|flag0.05|const|n5|rho0.1",
+    "e1|a|flag0.05|const|n5|rho0.2",
+    "e1|a|flag0.05|const|n5|rho0.4",
+    "e1|a|flag0.05|lognormal|n200|rho0",
+    "e1|a|flag0.05|lognormal|n200|rho0.02",
+    "e1|a|flag0.05|lognormal|n200|rho0.05",
+    "e1|a|flag0.05|lognormal|n200|rho0.1",
+    "e1|a|flag0.05|lognormal|n200|rho0.2",
+    "e1|a|flag0.05|lognormal|n200|rho0.4",
+    "e1|a|flag0.05|lognormal|n20|rho0",
+    "e1|a|flag0.05|lognormal|n20|rho0.02",
+    "e1|a|flag0.05|lognormal|n20|rho0.05",
+    "e1|a|flag0.05|lognormal|n20|rho0.1",
+    "e1|a|flag0.05|lognormal|n20|rho0.2",
+    "e1|a|flag0.05|lognormal|n20|rho0.4",
+    "e1|a|flag0.05|lognormal|n50|rho0",
+    "e1|a|flag0.05|lognormal|n50|rho0.02",
+    "e1|a|flag0.05|lognormal|n50|rho0.05",
+    "e1|a|flag0.05|lognormal|n50|rho0.1",
+    "e1|a|flag0.05|lognormal|n50|rho0.2",
+    "e1|a|flag0.05|lognormal|n50|rho0.4",
+    "e1|a|flag0.05|lognormal|n5|rho0",
+    "e1|a|flag0.05|lognormal|n5|rho0.02",
+    "e1|a|flag0.05|lognormal|n5|rho0.05",
+    "e1|a|flag0.05|lognormal|n5|rho0.1",
+    "e1|a|flag0.05|lognormal|n5|rho0.2",
+    "e1|a|flag0.05|lognormal|n5|rho0.4",
+    "e1|a|flag0.05|poisson|n200|rho0",
+    "e1|a|flag0.05|poisson|n200|rho0.02",
+    "e1|a|flag0.05|poisson|n200|rho0.05",
+    "e1|a|flag0.05|poisson|n200|rho0.1",
+    "e1|a|flag0.05|poisson|n200|rho0.2",
+    "e1|a|flag0.05|poisson|n200|rho0.4",
+    "e1|a|flag0.05|poisson|n20|rho0",
+    "e1|a|flag0.05|poisson|n20|rho0.02",
+    "e1|a|flag0.05|poisson|n20|rho0.05",
+    "e1|a|flag0.05|poisson|n20|rho0.1",
+    "e1|a|flag0.05|poisson|n20|rho0.2",
+    "e1|a|flag0.05|poisson|n20|rho0.4",
+    "e1|a|flag0.05|poisson|n50|rho0",
+    "e1|a|flag0.05|poisson|n50|rho0.02",
+    "e1|a|flag0.05|poisson|n50|rho0.05",
+    "e1|a|flag0.05|poisson|n50|rho0.1",
+    "e1|a|flag0.05|poisson|n50|rho0.2",
+    "e1|a|flag0.05|poisson|n50|rho0.4",
+    "e1|a|flag0.05|poisson|n5|rho0",
+    "e1|a|flag0.05|poisson|n5|rho0.02",
+    "e1|a|flag0.05|poisson|n5|rho0.05",
+    "e1|a|flag0.05|poisson|n5|rho0.1",
+    "e1|a|flag0.05|poisson|n5|rho0.2",
+    "e1|a|flag0.05|poisson|n5|rho0.4",
+    "e1|a|flag0.3|const|n200|rho0",
+    "e1|a|flag0.3|const|n200|rho0.02",
+    "e1|a|flag0.3|const|n200|rho0.05",
+    "e1|a|flag0.3|const|n200|rho0.1",
+    "e1|a|flag0.3|const|n200|rho0.2",
+    "e1|a|flag0.3|const|n200|rho0.4",
+    "e1|a|flag0.3|const|n20|rho0",
+    "e1|a|flag0.3|const|n20|rho0.02",
+    "e1|a|flag0.3|const|n20|rho0.05",
+    "e1|a|flag0.3|const|n20|rho0.1",
+    "e1|a|flag0.3|const|n20|rho0.2",
+    "e1|a|flag0.3|const|n20|rho0.4",
+    "e1|a|flag0.3|const|n50|rho0",
+    "e1|a|flag0.3|const|n50|rho0.02",
+    "e1|a|flag0.3|const|n50|rho0.05",
+    "e1|a|flag0.3|const|n50|rho0.1",
+    "e1|a|flag0.3|const|n50|rho0.2",
+    "e1|a|flag0.3|const|n50|rho0.4",
+    "e1|a|flag0.3|const|n5|rho0",
+    "e1|a|flag0.3|const|n5|rho0.02",
+    "e1|a|flag0.3|const|n5|rho0.05",
+    "e1|a|flag0.3|const|n5|rho0.1",
+    "e1|a|flag0.3|const|n5|rho0.2",
+    "e1|a|flag0.3|const|n5|rho0.4",
+    "e1|a|flag0.3|lognormal|n200|rho0",
+    "e1|a|flag0.3|lognormal|n200|rho0.02",
+    "e1|a|flag0.3|lognormal|n200|rho0.05",
+    "e1|a|flag0.3|lognormal|n200|rho0.1",
+    "e1|a|flag0.3|lognormal|n200|rho0.2",
+    "e1|a|flag0.3|lognormal|n200|rho0.4",
+    "e1|a|flag0.3|lognormal|n20|rho0",
+    "e1|a|flag0.3|lognormal|n20|rho0.02",
+    "e1|a|flag0.3|lognormal|n20|rho0.05",
+    "e1|a|flag0.3|lognormal|n20|rho0.1",
+    "e1|a|flag0.3|lognormal|n20|rho0.2",
+    "e1|a|flag0.3|lognormal|n20|rho0.4",
+    "e1|a|flag0.3|lognormal|n50|rho0",
+    "e1|a|flag0.3|lognormal|n50|rho0.02",
+    "e1|a|flag0.3|lognormal|n50|rho0.05",
+    "e1|a|flag0.3|lognormal|n50|rho0.1",
+    "e1|a|flag0.3|lognormal|n50|rho0.2",
+    "e1|a|flag0.3|lognormal|n50|rho0.4",
+    "e1|a|flag0.3|lognormal|n5|rho0",
+    "e1|a|flag0.3|lognormal|n5|rho0.02",
+    "e1|a|flag0.3|lognormal|n5|rho0.05",
+    "e1|a|flag0.3|lognormal|n5|rho0.1",
+    "e1|a|flag0.3|lognormal|n5|rho0.2",
+    "e1|a|flag0.3|lognormal|n5|rho0.4",
+    "e1|a|flag0.3|poisson|n200|rho0",
+    "e1|a|flag0.3|poisson|n200|rho0.02",
+    "e1|a|flag0.3|poisson|n200|rho0.05",
+    "e1|a|flag0.3|poisson|n200|rho0.1",
+    "e1|a|flag0.3|poisson|n200|rho0.2",
+    "e1|a|flag0.3|poisson|n200|rho0.4",
+    "e1|a|flag0.3|poisson|n20|rho0",
+    "e1|a|flag0.3|poisson|n20|rho0.02",
+    "e1|a|flag0.3|poisson|n20|rho0.05",
+    "e1|a|flag0.3|poisson|n20|rho0.1",
+    "e1|a|flag0.3|poisson|n20|rho0.2",
+    "e1|a|flag0.3|poisson|n20|rho0.4",
+    "e1|a|flag0.3|poisson|n50|rho0",
+    "e1|a|flag0.3|poisson|n50|rho0.02",
+    "e1|a|flag0.3|poisson|n50|rho0.05",
+    "e1|a|flag0.3|poisson|n50|rho0.1",
+    "e1|a|flag0.3|poisson|n50|rho0.2",
+    "e1|a|flag0.3|poisson|n50|rho0.4",
+    "e1|a|flag0.3|poisson|n5|rho0",
+    "e1|a|flag0.3|poisson|n5|rho0.02",
+    "e1|a|flag0.3|poisson|n5|rho0.05",
+    "e1|a|flag0.3|poisson|n5|rho0.1",
+    "e1|a|flag0.3|poisson|n5|rho0.2",
+    "e1|a|flag0.3|poisson|n5|rho0.4",
+    "e2|n15|rhof0.05|d1024",
+    "e2|n15|rhof0.05|d16",
+    "e2|n15|rhof0.05|d256",
+    "e2|n15|rhof0.05|d4",
+    "e2|n15|rhof0.05|d64",
+    "e2|n15|rhof0.1|d1024",
+    "e2|n15|rhof0.1|d16",
+    "e2|n15|rhof0.1|d256",
+    "e2|n15|rhof0.1|d4",
+    "e2|n15|rhof0.1|d64",
+    "e2|n15|rhof0.2|d1024",
+    "e2|n15|rhof0.2|d16",
+    "e2|n15|rhof0.2|d256",
+    "e2|n15|rhof0.2|d4",
+    "e2|n15|rhof0.2|d64",
+    "e2|n15|rhof0.3|d1024",
+    "e2|n15|rhof0.3|d16",
+    "e2|n15|rhof0.3|d256",
+    "e2|n15|rhof0.3|d4",
+    "e2|n15|rhof0.3|d64",
+    "e2|n15|rhof0.6|d1024",
+    "e2|n15|rhof0.6|d16",
+    "e2|n15|rhof0.6|d256",
+    "e2|n15|rhof0.6|d4",
+    "e2|n15|rhof0.6|d64",
+    "e2|n50|rhof0.05|d1024",
+    "e2|n50|rhof0.05|d16",
+    "e2|n50|rhof0.05|d256",
+    "e2|n50|rhof0.05|d4",
+    "e2|n50|rhof0.05|d64",
+    "e2|n50|rhof0.1|d1024",
+    "e2|n50|rhof0.1|d16",
+    "e2|n50|rhof0.1|d256",
+    "e2|n50|rhof0.1|d4",
+    "e2|n50|rhof0.1|d64",
+    "e2|n50|rhof0.2|d1024",
+    "e2|n50|rhof0.2|d16",
+    "e2|n50|rhof0.2|d256",
+    "e2|n50|rhof0.2|d4",
+    "e2|n50|rhof0.2|d64",
+    "e2|n50|rhof0.3|d1024",
+    "e2|n50|rhof0.3|d16",
+    "e2|n50|rhof0.3|d256",
+    "e2|n50|rhof0.3|d4",
+    "e2|n50|rhof0.3|d64",
+    "e2|n50|rhof0.6|d1024",
+    "e2|n50|rhof0.6|d16",
+    "e2|n50|rhof0.6|d256",
+    "e2|n50|rhof0.6|d4",
+    "e2|n50|rhof0.6|d64",
+    "e2|n5|rhof0.05|d1024",
+    "e2|n5|rhof0.05|d16",
+    "e2|n5|rhof0.05|d256",
+    "e2|n5|rhof0.05|d4",
+    "e2|n5|rhof0.05|d64",
+    "e2|n5|rhof0.1|d1024",
+    "e2|n5|rhof0.1|d16",
+    "e2|n5|rhof0.1|d256",
+    "e2|n5|rhof0.1|d4",
+    "e2|n5|rhof0.1|d64",
+    "e2|n5|rhof0.2|d1024",
+    "e2|n5|rhof0.2|d16",
+    "e2|n5|rhof0.2|d256",
+    "e2|n5|rhof0.2|d4",
+    "e2|n5|rhof0.2|d64",
+    "e2|n5|rhof0.3|d1024",
+    "e2|n5|rhof0.3|d16",
+    "e2|n5|rhof0.3|d256",
+    "e2|n5|rhof0.3|d4",
+    "e2|n5|rhof0.3|d64",
+    "e2|n5|rhof0.6|d1024",
+    "e2|n5|rhof0.6|d16",
+    "e2|n5|rhof0.6|d256",
+    "e2|n5|rhof0.6|d4",
+    "e2|n5|rhof0.6|d64",
+    "e3|breakhis_convnext_tiny_s42_std_r0",
+    "e3|breakhis_convnext_tiny_s42_std_r1",
+    "e3|breakhis_convnext_tiny_s42_std_r2",
+    "e3|breakhis_convnext_tiny_s42_std_r3",
+    "e3|breakhis_convnext_tiny_s42_std_r4",
+    "e3|breakhis_convnext_tiny_s43_std_r0",
+    "e3|breakhis_convnext_tiny_s43_std_r1",
+    "e3|breakhis_convnext_tiny_s43_std_r2",
+    "e3|breakhis_convnext_tiny_s43_std_r3",
+    "e3|breakhis_convnext_tiny_s43_std_r4",
+    "e3|breakhis_densenet121_s42_std_r0",
+    "e3|breakhis_densenet121_s42_std_r1",
+    "e3|breakhis_densenet121_s42_std_r2",
+    "e3|breakhis_densenet121_s42_std_r3",
+    "e3|breakhis_densenet121_s42_std_r4",
+    "e3|breakhis_densenet121_s43_std_r0",
+    "e3|breakhis_densenet121_s43_std_r1",
+    "e3|breakhis_densenet121_s43_std_r2",
+    "e3|breakhis_densenet121_s43_std_r3",
+    "e3|breakhis_densenet121_s43_std_r4",
+    "e3|breakhis_effb3_s42_std_r0",
+    "e3|breakhis_effb3_s42_std_r1",
+    "e3|breakhis_effb3_s42_std_r2",
+    "e3|breakhis_effb3_s42_std_r3",
+    "e3|breakhis_effb3_s42_std_r4",
+    "e3|breakhis_efficientnet_v2_s_s42_std_r0",
+    "e3|breakhis_efficientnet_v2_s_s42_std_r1",
+    "e3|breakhis_efficientnet_v2_s_s42_std_r2",
+    "e3|breakhis_efficientnet_v2_s_s42_std_r3",
+    "e3|breakhis_efficientnet_v2_s_s42_std_r4",
+    "e3|breakhis_fm_conch_v1_5_s42_std_r0",
+    "e3|breakhis_fm_conch_v1_5_s42_std_r1",
+    "e3|breakhis_fm_conch_v1_5_s42_std_r2",
+    "e3|breakhis_fm_conch_v1_5_s42_std_r3",
+    "e3|breakhis_fm_conch_v1_5_s42_std_r4",
+    "e3|breakhis_fm_dinov2_vitb14_s42_std_r0",
+    "e3|breakhis_fm_dinov2_vitb14_s42_std_r1",
+    "e3|breakhis_fm_dinov2_vitb14_s42_std_r2",
+    "e3|breakhis_fm_dinov2_vitb14_s42_std_r3",
+    "e3|breakhis_fm_dinov2_vitb14_s42_std_r4",
+    "e3|breakhis_fm_dinov2_vitl14_s42_std_r0",
+    "e3|breakhis_fm_dinov2_vitl14_s42_std_r1",
+    "e3|breakhis_fm_dinov2_vitl14_s42_std_r2",
+    "e3|breakhis_fm_dinov2_vitl14_s42_std_r3",
+    "e3|breakhis_fm_dinov2_vitl14_s42_std_r4",
+    "e3|breakhis_fm_uni_s42_std_r0",
+    "e3|breakhis_fm_uni_s42_std_r1",
+    "e3|breakhis_fm_uni_s42_std_r2",
+    "e3|breakhis_fm_uni_s42_std_r3",
+    "e3|breakhis_fm_uni_s42_std_r4",
+    "e3|breakhis_fm_virchow2_s42_std_r0",
+    "e3|breakhis_fm_virchow2_s42_std_r1",
+    "e3|breakhis_fm_virchow2_s42_std_r2",
+    "e3|breakhis_fm_virchow2_s42_std_r3",
+    "e3|breakhis_fm_virchow2_s42_std_r4",
+    "e3|breakhis_mobilenet_v3_large_s42_std_r0",
+    "e3|breakhis_mobilenet_v3_large_s42_std_r1",
+    "e3|breakhis_mobilenet_v3_large_s42_std_r2",
+    "e3|breakhis_mobilenet_v3_large_s42_std_r3",
+    "e3|breakhis_mobilenet_v3_large_s42_std_r4",
+    "e3|breakhis_regnet_y_3_2gf_s42_std_r0",
+    "e3|breakhis_regnet_y_3_2gf_s42_std_r1",
+    "e3|breakhis_regnet_y_3_2gf_s42_std_r2",
+    "e3|breakhis_regnet_y_3_2gf_s42_std_r3",
+    "e3|breakhis_regnet_y_3_2gf_s42_std_r4",
+    "e3|breakhis_resnet18_s42_std_r0",
+    "e3|breakhis_resnet18_s42_std_r1",
+    "e3|breakhis_resnet18_s42_std_r2",
+    "e3|breakhis_resnet18_s42_std_r3",
+    "e3|breakhis_resnet18_s42_std_r4",
+    "e3|breakhis_resnet18_s43_std_r0",
+    "e3|breakhis_resnet18_s43_std_r1",
+    "e3|breakhis_resnet18_s43_std_r2",
+    "e3|breakhis_resnet18_s43_std_r3",
+    "e3|breakhis_resnet18_s43_std_r4",
+    "e3|breakhis_resnet50_s42_std_r0",
+    "e3|breakhis_resnet50_s42_std_r1",
+    "e3|breakhis_resnet50_s42_std_r2",
+    "e3|breakhis_resnet50_s42_std_r3",
+    "e3|breakhis_resnet50_s42_std_r4",
+    "e3|breakhis_resnet50_s43_std_r0",
+    "e3|breakhis_resnet50_s43_std_r1",
+    "e3|breakhis_resnet50_s43_std_r2",
+    "e3|breakhis_resnet50_s43_std_r3",
+    "e3|breakhis_resnet50_s43_std_r4",
+    "e3|camelyon_conch_v1_5_s42",
+    "e3|camelyon_convnext_tiny_s42",
+    "e3|camelyon_densenet121_s42",
+    "e3|camelyon_dinov2_vitb14_s42",
+    "e3|camelyon_dinov2_vitl14_s42",
+    "e3|camelyon_effb3_s42",
+    "e3|camelyon_efficientnet_v2_s_s42",
+    "e3|camelyon_mobilenet_v3_large_s42",
+    "e3|camelyon_regnet_y_3_2gf_s42",
+    "e3|camelyon_resnet18_s42",
+    "e3|camelyon_resnet50_s42",
+    "e3|camelyon_uni_s42",
+    "e3|camelyon_virchow2_s42",
+    "e3|dermamnist_convnext_tiny_s42_std",
+    "e3|dermamnist_convnext_tiny_s43_std",
+    "e3|dermamnist_densenet121_s42_std",
+    "e3|dermamnist_densenet121_s43_std",
+    "e3|dermamnist_effb3_s42_std",
+    "e3|dermamnist_efficientnet_v2_s_s42_std",
+    "e3|dermamnist_fm_conch_v1_5_s42_std",
+    "e3|dermamnist_fm_dinov2_vitb14_s42_std",
+    "e3|dermamnist_fm_dinov2_vitl14_s42_std",
+    "e3|dermamnist_fm_uni_s42_std",
+    "e3|dermamnist_fm_virchow2_s42_std",
+    "e3|dermamnist_mobilenet_v3_large_s42_std",
+    "e3|dermamnist_regnet_y_3_2gf_s42_std",
+    "e3|dermamnist_resnet18_s42_std",
+    "e3|dermamnist_resnet18_s43_std",
+    "e3|dermamnist_resnet50_s42_std",
+    "e3|dermamnist_resnet50_s43_std",
+    "e3|isic2019_convnext_tiny_s42_std",
+    "e3|isic2019_convnext_tiny_s43_std",
+    "e3|isic2019_densenet121_s42_std",
+    "e3|isic2019_densenet121_s43_std",
+    "e3|isic2019_effb3_s42_std",
+    "e3|isic2019_efficientnet_v2_s_s42_std",
+    "e3|isic2019_fm_conch_v1_5_s42_std",
+    "e3|isic2019_fm_dinov2_vitb14_s42_std",
+    "e3|isic2019_fm_dinov2_vitl14_s42_std",
+    "e3|isic2019_fm_uni_s42_std",
+    "e3|isic2019_fm_virchow2_s42_std",
+    "e3|isic2019_mobilenet_v3_large_s42_std",
+    "e3|isic2019_regnet_y_3_2gf_s42_std",
+    "e3|isic2019_resnet18_s42_std",
+    "e3|isic2019_resnet18_s43_std",
+    "e3|isic2019_resnet50_s42_std",
+    "e3|isic2019_resnet50_s43_std",
+    "e3|kermany_convnext_tiny_s42_std",
+    "e3|kermany_convnext_tiny_s43_std",
+    "e3|kermany_densenet121_s42_std",
+    "e3|kermany_densenet121_s43_std",
+    "e3|kermany_effb3_s42_std",
+    "e3|kermany_efficientnet_v2_s_s42_std",
+    "e3|kermany_mobilenet_v3_large_s42_std",
+    "e3|kermany_regnet_y_3_2gf_s42_std",
+    "e3|kermany_resnet18_s42_std",
+    "e3|kermany_resnet18_s43_std",
+    "e3|kermany_resnet50_s42_std",
+    "e3|kermany_resnet50_s43_std",
+    "e4|ap|conch_v1_5",
+    "e4|ap|convnext_tiny",
+    "e4|ap|densenet121",
+    "e4|ap|dinov2_vitb14",
+    "e4|ap|dinov2_vitl14",
+    "e4|ap|effb3",
+    "e4|ap|efficientnet_v2_s",
+    "e4|ap|mobilenet_v3_large",
+    "e4|ap|regnet_y_3_2gf",
+    "e4|ap|resnet18",
+    "e4|ap|resnet50",
+    "e4|ap|uni",
+    "e4|ap|virchow2",
+    "e4|a|conch_v1_5|n100",
+    "e4|a|conch_v1_5|n20",
+    "e4|a|convnext_tiny|n100",
+    "e4|a|convnext_tiny|n20",
+    "e4|a|densenet121|n100",
+    "e4|a|densenet121|n20",
+    "e4|a|dinov2_vitb14|n100",
+    "e4|a|dinov2_vitb14|n20",
+    "e4|a|dinov2_vitl14|n100",
+    "e4|a|dinov2_vitl14|n20",
+    "e4|a|effb3|n100",
+    "e4|a|effb3|n20",
+    "e4|a|efficientnet_v2_s|n100",
+    "e4|a|efficientnet_v2_s|n20",
+    "e4|a|mobilenet_v3_large|n100",
+    "e4|a|mobilenet_v3_large|n20",
+    "e4|a|regnet_y_3_2gf|n100",
+    "e4|a|regnet_y_3_2gf|n20",
+    "e4|a|resnet18|n100",
+    "e4|a|resnet18|n20",
+    "e4|a|resnet50|n100",
+    "e4|a|resnet50|n20",
+    "e4|a|uni|n100",
+    "e4|a|uni|n20",
+    "e4|a|virchow2|n100",
+    "e4|a|virchow2|n20"
+   ],
+   "execution_order": [
+    "e1|a|flag0.3|poisson|n5|rho0.4",
+    "e4|a|regnet_y_3_2gf|n20",
+    "e3|isic2019_resnet50_s42_std",
+    "e1|a|flag0.05|poisson|n200|rho0.02",
+    "e1|a|flag0.05|poisson|n50|rho0.05",
+    "e2|n50|rhof0.6|d4",
+    "e2|n15|rhof0.3|d4",
+    "e1|a|beta|lognormal|n5|rho0.1",
+    "e2|n15|rhof0.2|d1024",
+    "e2|n15|rhof0.3|d256",
+    "e1|a|beta|poisson|n200|rho0",
+    "e1|a|flag0.05|poisson|n50|rho0.2",
+    "e3|breakhis_efficientnet_v2_s_s42_std_r4",
+    "e3|camelyon_densenet121_s42",
+    "e3|breakhis_fm_conch_v1_5_s42_std_r2",
+    "e1|a|beta|lognormal|n5|rho0.2",
+    "e1|a|flag0.05|const|n5|rho0.1",
+    "e1|a|flag0.05|const|n5|rho0",
+    "e1|a|beta|const|n20|rho0.2",
+    "e3|breakhis_densenet121_s43_std_r1",
+    "e1|a|flag0.3|lognormal|n20|rho0",
+    "e3|breakhis_resnet18_s42_std_r2",
+    "e3|breakhis_fm_conch_v1_5_s42_std_r1",
+    "e1|a|flag0.05|lognormal|n20|rho0.2",
+    "e1|a|flag0.3|poisson|n50|rho0.4",
+    "e1|a|flag0.3|const|n20|rho0.4",
+    "e1|a|beta|poisson|n200|rho0.4",
+    "e1|a|beta|lognormal|n200|rho0.2",
+    "e3|camelyon_resnet50_s42",
+    "e4|a|efficientnet_v2_s|n20",
+    "e3|breakhis_densenet121_s42_std_r1",
+    "e2|n50|rhof0.05|d1024",
+    "e1|a|beta|poisson|n200|rho0.02",
+    "e2|n5|rhof0.1|d256",
+    "e1|a|flag0.3|poisson|n50|rho0.02",
+    "e1|a|flag0.3|const|n200|rho0",
+    "e2|n5|rhof0.05|d256",
+    "e2|n5|rhof0.3|d256",
+    "e1|a|flag0.05|lognormal|n200|rho0.05",
+    "e1|a|flag0.3|lognormal|n50|rho0.1",
+    "e1|a|flag0.3|const|n200|rho0.1",
+    "e3|dermamnist_mobilenet_v3_large_s42_std",
+    "e2|n50|rhof0.1|d4",
+    "e3|dermamnist_convnext_tiny_s42_std",
+    "e4|ap|efficientnet_v2_s",
+    "e2|n50|rhof0.1|d64",
+    "e1|a|beta|poisson|n50|rho0",
+    "e3|breakhis_effb3_s42_std_r1",
+    "e3|breakhis_convnext_tiny_s42_std_r2",
+    "e1|a|flag0.05|lognormal|n50|rho0",
+    "e1|a|flag0.3|lognormal|n20|rho0.2",
+    "e3|dermamnist_densenet121_s42_std",
+    "e1|a|flag0.05|const|n200|rho0.05",
+    "e1|a|flag0.05|poisson|n200|rho0.2",
+    "e1|a|flag0.3|poisson|n200|rho0",
+    "e2|n15|rhof0.2|d4",
+    "e1|a|flag0.05|lognormal|n200|rho0.02",
+    "e3|breakhis_densenet121_s43_std_r3",
+    "e3|breakhis_convnext_tiny_s42_std_r0",
+    "e1|a|flag0.05|poisson|n20|rho0.1",
+    "e3|breakhis_regnet_y_3_2gf_s42_std_r1",
+    "e1|a|beta|const|n50|rho0.02",
+    "e1|a|flag0.3|poisson|n50|rho0.05",
+    "e3|breakhis_fm_dinov2_vitb14_s42_std_r3",
+    "e3|breakhis_efficientnet_v2_s_s42_std_r2",
+    "e3|isic2019_fm_virchow2_s42_std",
+    "e2|n50|rhof0.3|d16",
+    "e4|a|convnext_tiny|n100",
+    "e1|a|flag0.05|poisson|n200|rho0",
+    "e1|a|flag0.3|poisson|n200|rho0.05",
+    "e2|n50|rhof0.1|d256",
+    "e2|n15|rhof0.6|d4",
+    "e3|kermany_mobilenet_v3_large_s42_std",
+    "e1|a|beta|const|n200|rho0.1",
+    "e3|breakhis_resnet50_s42_std_r1",
+    "e2|n50|rhof0.2|d1024",
+    "e3|kermany_densenet121_s42_std",
+    "e3|breakhis_resnet18_s42_std_r4",
+    "e1|a|beta|poisson|n200|rho0.1",
+    "e1|a|beta|lognormal|n20|rho0.4",
+    "e1|a|beta|const|n20|rho0",
+    "e1|a|flag0.3|lognormal|n5|rho0.4",
+    "e3|breakhis_fm_conch_v1_5_s42_std_r3",
+    "e1|a|flag0.05|lognormal|n20|rho0.05",
+    "e3|breakhis_fm_dinov2_vitb14_s42_std_r0",
+    "e1|a|beta|lognormal|n50|rho0.4",
+    "e1|a|beta|lognormal|n200|rho0",
+    "e1|a|beta|lognormal|n200|rho0.4",
+    "e4|ap|regnet_y_3_2gf",
+    "e3|breakhis_fm_conch_v1_5_s42_std_r4",
+    "e1|a|flag0.05|lognormal|n5|rho0.05",
+    "e3|isic2019_mobilenet_v3_large_s42_std",
+    "e1|a|flag0.3|const|n5|rho0.1",
+    "e3|breakhis_fm_dinov2_vitb14_s42_std_r4",
+    "e2|n50|rhof0.3|d1024",
+    "e3|breakhis_fm_dinov2_vitl14_s42_std_r1",
+    "e4|a|densenet121|n100",
+    "e1|a|flag0.3|poisson|n20|rho0",
+    "e1|a|beta|const|n200|rho0.4",
+    "e1|a|flag0.05|lognormal|n20|rho0.4",
+    "e1|a|flag0.3|lognormal|n20|rho0.1",
+    "e3|breakhis_convnext_tiny_s43_std_r3",
+    "e1|a|beta|const|n50|rho0",
+    "e3|breakhis_resnet18_s43_std_r0",
+    "e3|dermamnist_resnet18_s43_std",
+    "e2|n50|rhof0.3|d4",
+    "e1|a|flag0.3|lognormal|n200|rho0",
+    "e3|breakhis_convnext_tiny_s43_std_r4",
+    "e3|kermany_resnet18_s42_std",
+    "e1|a|beta|poisson|n5|rho0.4",
+    "e1|a|flag0.05|poisson|n50|rho0.1",
+    "e3|dermamnist_regnet_y_3_2gf_s42_std",
+    "e3|camelyon_mobilenet_v3_large_s42",
+    "e3|breakhis_resnet50_s42_std_r0",
+    "e3|breakhis_fm_uni_s42_std_r2",
+    "e1|a|flag0.3|lognormal|n50|rho0.4",
+    "e2|n15|rhof0.1|d1024",
+    "e1|a|beta|poisson|n50|rho0.02",
+    "e2|n50|rhof0.2|d4",
+    "e3|breakhis_fm_virchow2_s42_std_r3",
+    "e4|ap|densenet121",
+    "e1|a|flag0.05|const|n5|rho0.05",
+    "e2|n5|rhof0.2|d4",
+    "e1|a|flag0.05|poisson|n50|rho0",
+    "e2|n5|rhof0.6|d1024",
+    "e3|kermany_effb3_s42_std",
+    "e3|breakhis_convnext_tiny_s43_std_r0",
+    "e3|kermany_convnext_tiny_s43_std",
+    "e1|a|flag0.05|lognormal|n50|rho0.2",
+    "e1|a|flag0.3|poisson|n50|rho0.2",
+    "e3|breakhis_fm_dinov2_vitb14_s42_std_r2",
+    "e1|a|flag0.05|const|n50|rho0.02",
+    "e1|a|beta|const|n200|rho0",
+    "e2|n15|rhof0.6|d1024",
+    "e3|camelyon_uni_s42",
+    "e1|a|flag0.05|const|n50|rho0",
+    "e4|a|resnet18|n20",
+    "e2|n5|rhof0.1|d16",
+    "e2|n5|rhof0.1|d64",
+    "e4|a|effb3|n100",
+    "e1|a|flag0.3|poisson|n50|rho0",
+    "e3|breakhis_fm_virchow2_s42_std_r2",
+    "e1|a|flag0.05|const|n20|rho0.4",
+    "e1|a|flag0.3|const|n200|rho0.2",
+    "e2|n5|rhof0.2|d256",
+    "e1|a|flag0.3|lognormal|n20|rho0.05",
+    "e4|ap|resnet18",
+    "e1|a|flag0.05|poisson|n20|rho0.2",
+    "e4|a|dinov2_vitb14|n100",
+    "e2|n5|rhof0.2|d1024",
+    "e3|isic2019_resnet18_s42_std",
+    "e3|isic2019_resnet50_s43_std",
+    "e2|n50|rhof0.05|d256",
+    "e3|breakhis_regnet_y_3_2gf_s42_std_r2",
+    "e3|breakhis_regnet_y_3_2gf_s42_std_r3",
+    "e3|breakhis_efficientnet_v2_s_s42_std_r1",
+    "e3|breakhis_effb3_s42_std_r3",
+    "e1|a|flag0.3|lognormal|n200|rho0.2",
+    "e1|a|flag0.3|poisson|n200|rho0.2",
+    "e1|a|beta|poisson|n20|rho0.05",
+    "e3|breakhis_convnext_tiny_s42_std_r4",
+    "e1|a|flag0.3|const|n5|rho0",
+    "e4|a|dinov2_vitl14|n100",
+    "e2|n50|rhof0.05|d16",
+    "e3|breakhis_resnet18_s43_std_r4",
+    "e3|camelyon_dinov2_vitb14_s42",
+    "e3|isic2019_resnet18_s43_std",
+    "e1|a|flag0.05|poisson|n20|rho0.02",
+    "e2|n5|rhof0.3|d64",
+    "e4|ap|dinov2_vitl14",
+    "e2|n5|rhof0.05|d64",
+    "e3|isic2019_fm_dinov2_vitb14_s42_std",
+    "e2|n50|rhof0.6|d1024",
+    "e4|ap|uni",
+    "e2|n15|rhof0.1|d16",
+    "e4|ap|resnet50",
+    "e1|a|beta|const|n50|rho0.2",
+    "e1|a|beta|const|n50|rho0.05",
+    "e3|breakhis_densenet121_s42_std_r3",
+    "e1|a|flag0.05|const|n20|rho0.2",
+    "e3|breakhis_fm_uni_s42_std_r4",
+    "e1|a|beta|poisson|n5|rho0.05",
+    "e4|a|conch_v1_5|n100",
+    "e1|a|beta|lognormal|n50|rho0.05",
+    "e1|a|beta|const|n20|rho0.4",
+    "e1|a|flag0.3|const|n50|rho0.2",
+    "e1|a|beta|poisson|n50|rho0.2",
+    "e1|a|beta|lognormal|n50|rho0.1",
+    "e3|breakhis_densenet121_s43_std_r4",
+    "e1|a|beta|poisson|n50|rho0.4",
+    "e1|a|beta|lognormal|n200|rho0.02",
+    "e1|a|beta|poisson|n200|rho0.2",
+    "e3|camelyon_resnet18_s42",
+    "e1|a|flag0.05|const|n5|rho0.02",
+    "e1|a|flag0.3|const|n5|rho0.4",
+    "e1|a|flag0.05|poisson|n5|rho0.05",
+    "e3|breakhis_resnet50_s42_std_r3",
+    "e2|n50|rhof0.6|d16",
+    "e1|a|flag0.3|lognormal|n200|rho0.05",
+    "e2|n15|rhof0.05|d4",
+    "e2|n15|rhof0.05|d64",
+    "e1|a|flag0.3|poisson|n200|rho0.4",
+    "e1|a|beta|poisson|n5|rho0",
+    "e3|dermamnist_efficientnet_v2_s_s42_std",
+    "e1|a|beta|const|n5|rho0.2",
+    "e3|kermany_efficientnet_v2_s_s42_std",
+    "e3|breakhis_densenet121_s43_std_r2",
+    "e1|a|beta|const|n50|rho0.4",
+    "e4|a|conch_v1_5|n20",
+    "e1|a|beta|lognormal|n20|rho0.1",
+    "e3|breakhis_efficientnet_v2_s_s42_std_r0",
+    "e3|dermamnist_resnet50_s43_std",
+    "e2|n15|rhof0.2|d64",
+    "e1|a|flag0.3|const|n200|rho0.05",
+    "e1|a|flag0.05|lognormal|n5|rho0.1",
+    "e1|a|flag0.3|const|n5|rho0.02",
+    "e1|a|flag0.05|lognormal|n20|rho0.1",
+    "e3|isic2019_densenet121_s42_std",
+    "e3|breakhis_fm_virchow2_s42_std_r1",
+    "e1|a|flag0.05|lognormal|n50|rho0.02",
+    "e1|a|beta|lognormal|n20|rho0",
+    "e1|a|flag0.05|const|n20|rho0.05",
+    "e3|camelyon_conch_v1_5_s42",
+    "e1|a|flag0.05|poisson|n20|rho0",
+    "e1|a|beta|poisson|n5|rho0.02",
+    "e1|a|beta|lognormal|n200|rho0.1",
+    "e1|a|flag0.3|lognormal|n5|rho0.1",
+    "e1|a|flag0.05|poisson|n20|rho0.4",
+    "e4|ap|convnext_tiny",
+    "e1|a|flag0.3|poisson|n200|rho0.02",
+    "e2|n15|rhof0.6|d256",
+    "e1|a|flag0.3|lognormal|n50|rho0.05",
+    "e4|a|virchow2|n20",
+    "e1|a|flag0.3|const|n50|rho0",
+    "e1|a|flag0.05|poisson|n5|rho0.4",
+    "e4|a|effb3|n20",
+    "e4|a|resnet50|n20",
+    "e1|a|flag0.05|poisson|n20|rho0.05",
+    "e1|a|beta|lognormal|n5|rho0",
+    "e3|camelyon_effb3_s42",
+    "e2|n5|rhof0.3|d1024",
+    "e3|breakhis_fm_dinov2_vitl14_s42_std_r0",
+    "e2|n50|rhof0.6|d64",
+    "e2|n5|rhof0.05|d4",
+    "e3|breakhis_resnet18_s42_std_r0",
+    "e3|breakhis_fm_dinov2_vitb14_s42_std_r1",
+    "e3|isic2019_convnext_tiny_s43_std",
+    "e1|a|flag0.3|poisson|n20|rho0.2",
+    "e3|dermamnist_fm_dinov2_vitb14_s42_std",
+    "e1|a|flag0.3|const|n50|rho0.4",
+    "e1|a|flag0.05|const|n5|rho0.4",
+    "e3|camelyon_virchow2_s42",
+    "e2|n50|rhof0.05|d64",
+    "e1|a|beta|const|n200|rho0.2",
+    "e3|breakhis_densenet121_s42_std_r0",
+    "e3|breakhis_efficientnet_v2_s_s42_std_r3",
+    "e1|a|flag0.05|poisson|n200|rho0.1",
+    "e3|breakhis_effb3_s42_std_r0",
+    "e2|n5|rhof0.3|d16",
+    "e1|a|flag0.05|poisson|n5|rho0.02",
+    "e1|a|beta|lognormal|n50|rho0",
+    "e3|breakhis_convnext_tiny_s43_std_r1",
+    "e1|a|flag0.05|poisson|n5|rho0.2",
+    "e3|camelyon_convnext_tiny_s42",
+    "e3|kermany_resnet50_s42_std",
+    "e4|a|densenet121|n20",
+    "e2|n15|rhof0.1|d256",
+    "e1|a|beta|poisson|n5|rho0.1",
+    "e1|a|flag0.3|lognormal|n5|rho0.2",
+    "e3|camelyon_dinov2_vitl14_s42",
+    "e3|breakhis_resnet18_s43_std_r3",
+    "e1|a|flag0.05|poisson|n5|rho0",
+    "e3|isic2019_fm_uni_s42_std",
+    "e1|a|flag0.3|poisson|n20|rho0.05",
+    "e3|dermamnist_fm_conch_v1_5_s42_std",
+    "e1|a|flag0.3|poisson|n5|rho0.05",
+    "e3|breakhis_resnet18_s42_std_r1",
+    "e3|dermamnist_convnext_tiny_s43_std",
+    "e1|a|beta|const|n200|rho0.05",
+    "e1|a|beta|const|n20|rho0.02",
+    "e1|a|flag0.05|lognormal|n50|rho0.4",
+    "e4|a|resnet18|n100",
+    "e2|n15|rhof0.05|d256",
+    "e1|a|flag0.3|const|n5|rho0.2",
+    "e3|isic2019_convnext_tiny_s42_std",
+    "e1|a|flag0.05|lognormal|n5|rho0.2",
+    "e3|breakhis_resnet50_s43_std_r1",
+    "e2|n15|rhof0.2|d16",
+    "e3|kermany_resnet18_s43_std",
+    "e2|n5|rhof0.6|d16",
+    "e1|a|flag0.3|poisson|n50|rho0.1",
+    "e3|breakhis_mobilenet_v3_large_s42_std_r4",
+    "e2|n5|rhof0.1|d1024",
+    "e4|ap|virchow2",
+    "e2|n50|rhof0.6|d256",
+    "e1|a|flag0.3|const|n20|rho0.02",
+    "e3|breakhis_fm_virchow2_s42_std_r0",
+    "e1|a|flag0.3|lognormal|n5|rho0.05",
+    "e3|breakhis_convnext_tiny_s42_std_r3",
+    "e1|a|flag0.05|const|n200|rho0.1",
+    "e1|a|flag0.05|poisson|n50|rho0.02",
+    "e1|a|flag0.3|const|n200|rho0.02",
+    "e1|a|beta|const|n5|rho0.1",
+    "e2|n50|rhof0.05|d4",
+    "e3|breakhis_mobilenet_v3_large_s42_std_r3",
+    "e2|n5|rhof0.05|d16",
+    "e1|a|flag0.05|poisson|n200|rho0.4",
+    "e3|breakhis_resnet50_s42_std_r4",
+    "e1|a|flag0.3|lognormal|n50|rho0.2",
+    "e1|a|beta|lognormal|n5|rho0.02",
+    "e1|a|flag0.3|lognormal|n20|rho0.02",
+    "e4|a|dinov2_vitb14|n20",
+    "e1|a|flag0.3|poisson|n20|rho0.02",
+    "e3|breakhis_resnet50_s43_std_r0",
+    "e1|a|flag0.3|lognormal|n50|rho0.02",
+    "e1|a|beta|lognormal|n200|rho0.05",
+    "e1|a|beta|lognormal|n20|rho0.05",
+    "e1|a|flag0.3|const|n20|rho0.2",
+    "e4|a|uni|n20",
+    "e3|isic2019_fm_conch_v1_5_s42_std",
+    "e4|a|uni|n100",
+    "e3|kermany_convnext_tiny_s42_std",
+    "e3|camelyon_efficientnet_v2_s_s42",
+    "e1|a|flag0.05|poisson|n5|rho0.1",
+    "e1|a|flag0.3|lognormal|n200|rho0.02",
+    "e3|breakhis_fm_uni_s42_std_r1",
+    "e1|a|flag0.05|const|n200|rho0.02",
+    "e4|a|efficientnet_v2_s|n100",
+    "e2|n15|rhof0.3|d64",
+    "e1|a|beta|poisson|n20|rho0.2",
+    "e1|a|flag0.3|lognormal|n50|rho0",
+    "e4|ap|conch_v1_5",
+    "e3|isic2019_regnet_y_3_2gf_s42_std",
+    "e3|breakhis_resnet50_s43_std_r2",
+    "e3|breakhis_resnet18_s43_std_r1",
+    "e1|a|beta|poisson|n200|rho0.05",
+    "e1|a|flag0.05|lognormal|n5|rho0.4",
+    "e1|a|beta|const|n200|rho0.02",
+    "e1|a|beta|const|n5|rho0",
+    "e1|a|flag0.3|const|n50|rho0.02",
+    "e1|a|flag0.3|lognormal|n5|rho0.02",
+    "e1|a|flag0.05|const|n50|rho0.05",
+    "e3|breakhis_convnext_tiny_s43_std_r2",
+    "e1|a|beta|lognormal|n5|rho0.05",
+    "e2|n50|rhof0.2|d256",
+    "e3|breakhis_mobilenet_v3_large_s42_std_r0",
+    "e3|breakhis_densenet121_s42_std_r2",
+    "e1|a|flag0.3|const|n50|rho0.05",
+    "e1|a|flag0.3|lognormal|n200|rho0.4",
+    "e3|kermany_densenet121_s43_std",
+    "e3|breakhis_resnet50_s43_std_r4",
+    "e1|a|flag0.05|lognormal|n5|rho0.02",
+    "e1|a|beta|poisson|n5|rho0.2",
+    "e1|a|beta|const|n20|rho0.1",
+    "e1|a|flag0.05|poisson|n200|rho0.05",
+    "e3|camelyon_regnet_y_3_2gf_s42",
+    "e3|breakhis_mobilenet_v3_large_s42_std_r2",
+    "e1|a|flag0.05|const|n50|rho0.2",
+    "e1|a|flag0.3|poisson|n20|rho0.1",
+    "e1|a|flag0.05|const|n200|rho0.4",
+    "e2|n15|rhof0.1|d64",
+    "e3|dermamnist_fm_dinov2_vitl14_s42_std",
+    "e2|n15|rhof0.05|d1024",
+    "e1|a|beta|lognormal|n5|rho0.4",
+    "e1|a|flag0.3|const|n20|rho0.1",
+    "e1|a|flag0.3|poisson|n5|rho0.2",
+    "e1|a|flag0.3|lognormal|n5|rho0",
+    "e3|breakhis_effb3_s42_std_r4",
+    "e1|a|flag0.3|lognormal|n20|rho0.4",
+    "e3|kermany_resnet50_s43_std",
+    "e4|a|mobilenet_v3_large|n20",
+    "e1|a|beta|poisson|n20|rho0.02",
+    "e1|a|beta|poisson|n20|rho0",
+    "e2|n50|rhof0.3|d64",
+    "e1|a|flag0.05|lognormal|n200|rho0.2",
+    "e4|a|regnet_y_3_2gf|n100",
+    "e1|a|flag0.05|const|n5|rho0.2",
+    "e4|ap|mobilenet_v3_large",
+    "e2|n5|rhof0.6|d256",
+    "e1|a|beta|lognormal|n50|rho0.02",
+    "e1|a|flag0.05|lognormal|n50|rho0.1",
+    "e1|a|beta|poisson|n50|rho0.05",
+    "e4|a|mobilenet_v3_large|n100",
+    "e1|a|flag0.3|const|n200|rho0.4",
+    "e3|isic2019_fm_dinov2_vitl14_s42_std",
+    "e4|a|dinov2_vitl14|n20",
+    "e1|a|flag0.05|const|n200|rho0.2",
+    "e1|a|flag0.3|poisson|n5|rho0.1",
+    "e2|n5|rhof0.6|d4",
+    "e3|breakhis_convnext_tiny_s42_std_r1",
+    "e3|breakhis_regnet_y_3_2gf_s42_std_r0",
+    "e2|n15|rhof0.1|d4",
+    "e4|a|convnext_tiny|n20",
+    "e2|n50|rhof0.1|d1024",
+    "e1|a|flag0.05|lognormal|n20|rho0",
+    "e2|n5|rhof0.05|d1024",
+    "e1|a|flag0.05|lognormal|n200|rho0.1",
+    "e3|dermamnist_fm_uni_s42_std",
+    "e4|a|resnet50|n100",
+    "e2|n15|rhof0.3|d16",
+    "e2|n50|rhof0.1|d16",
+    "e1|a|flag0.3|const|n50|rho0.1",
+    "e2|n15|rhof0.6|d16",
+    "e1|a|flag0.05|lognormal|n20|rho0.02",
+    "e3|breakhis_fm_uni_s42_std_r3",
+    "e3|breakhis_resnet18_s43_std_r2",
+    "e2|n15|rhof0.6|d64",
+    "e3|breakhis_fm_uni_s42_std_r0",
+    "e1|a|beta|lognormal|n20|rho0.2",
+    "e2|n50|rhof0.3|d256",
+    "e3|dermamnist_effb3_s42_std",
+    "e3|dermamnist_resnet18_s42_std",
+    "e3|breakhis_densenet121_s42_std_r4",
+    "e2|n5|rhof0.1|d4",
+    "e2|n5|rhof0.3|d4",
+    "e2|n5|rhof0.2|d64",
+    "e1|a|beta|const|n20|rho0.05",
+    "e1|a|flag0.05|const|n50|rho0.4",
+    "e2|n5|rhof0.6|d64",
+    "e1|a|flag0.3|lognormal|n200|rho0.1",
+    "e4|ap|dinov2_vitb14",
+    "e2|n5|rhof0.2|d16",
+    "e3|breakhis_fm_virchow2_s42_std_r4",
+    "e4|a|virchow2|n100",
+    "e3|breakhis_fm_conch_v1_5_s42_std_r0",
+    "e1|a|flag0.3|poisson|n20|rho0.4",
+    "e2|n15|rhof0.05|d16",
+    "e3|breakhis_fm_dinov2_vitl14_s42_std_r3",
+    "e1|a|flag0.05|lognormal|n200|rho0",
+    "e1|a|beta|const|n50|rho0.1",
+    "e3|dermamnist_densenet121_s43_std",
+    "e1|a|beta|const|n5|rho0.05",
+    "e1|a|beta|poisson|n20|rho0.4",
+    "e1|a|flag0.05|const|n20|rho0.02",
+    "e3|breakhis_regnet_y_3_2gf_s42_std_r4",
+    "e3|breakhis_effb3_s42_std_r2",
+    "e1|a|beta|const|n5|rho0.02",
+    "e3|breakhis_fm_dinov2_vitl14_s42_std_r4",
+    "e1|a|flag0.05|lognormal|n200|rho0.4",
+    "e2|n50|rhof0.2|d16",
+    "e3|breakhis_fm_dinov2_vitl14_s42_std_r2",
+    "e1|a|flag0.3|const|n20|rho0.05",
+    "e3|dermamnist_fm_virchow2_s42_std",
+    "e1|a|flag0.3|const|n20|rho0",
+    "e1|a|beta|poisson|n20|rho0.1",
+    "e1|a|flag0.3|poisson|n5|rho0.02",
+    "e3|isic2019_densenet121_s43_std",
+    "e1|a|flag0.05|const|n200|rho0",
+    "e3|dermamnist_resnet50_s42_std",
+    "e1|a|beta|lognormal|n50|rho0.2",
+    "e3|isic2019_effb3_s42_std",
+    "e3|breakhis_densenet121_s43_std_r0",
+    "e2|n15|rhof0.3|d1024",
+    "e1|a|flag0.3|poisson|n5|rho0",
+    "e1|a|flag0.05|const|n50|rho0.1",
+    "e1|a|beta|const|n5|rho0.4",
+    "e3|breakhis_resnet50_s42_std_r2",
+    "e1|a|beta|lognormal|n20|rho0.02",
+    "e4|ap|effb3",
+    "e1|a|flag0.05|lognormal|n50|rho0.05",
+    "e1|a|flag0.05|lognormal|n5|rho0",
+    "e1|a|beta|poisson|n50|rho0.1",
+    "e1|a|flag0.05|const|n20|rho0",
+    "e1|a|flag0.3|const|n5|rho0.05",
+    "e1|a|flag0.05|poisson|n50|rho0.4",
+    "e3|isic2019_efficientnet_v2_s_s42_std",
+    "e2|n15|rhof0.2|d256",
+    "e1|a|flag0.05|const|n20|rho0.1",
+    "e2|n50|rhof0.2|d64",
+    "e1|a|flag0.3|poisson|n200|rho0.1",
+    "e3|breakhis_resnet50_s43_std_r3",
+    "e3|kermany_regnet_y_3_2gf_s42_std",
+    "e3|breakhis_resnet18_s42_std_r3",
+    "e3|breakhis_mobilenet_v3_large_s42_std_r1"
+   ]
+  },
+  {
+   "item": "E",
+   "list_index_j": 1,
+   "n_lists": 2,
+   "seed": "SeedSequence([20261010, 5, 16, 0]).spawn(2)[1]",
+   "n_units": 67,
+   "sha256_sorted_ids_newline_joined": "74f0798ec67a18276a27b9701dc54d31f6e0ba2a9ada611a0c6b6fe88ba9c2d8",
+   "sorted_ids": [
+    "e1|b|beta|b1|n20|rho0.05",
+    "e1|b|beta|b1|n20|rho0.2",
+    "e1|b|beta|b1|n50|rho0.05",
+    "e1|b|beta|b1|n50|rho0.2",
+    "e1|b|beta|b1|n5|rho0.05",
+    "e1|b|beta|b1|n5|rho0.2",
+    "e1|b|beta|b2|n20|rho0.05",
+    "e1|b|beta|b2|n20|rho0.2",
+    "e1|b|beta|b2|n50|rho0.05",
+    "e1|b|beta|b2|n50|rho0.2",
+    "e1|b|beta|b2|n5|rho0.05",
+    "e1|b|beta|b2|n5|rho0.2",
+    "e1|b|beta|b3|n20|rho0.05",
+    "e1|b|beta|b3|n20|rho0.2",
+    "e1|b|beta|b3|n50|rho0.05",
+    "e1|b|beta|b3|n50|rho0.2",
+    "e1|b|beta|b3|n5|rho0.05",
+    "e1|b|beta|b3|n5|rho0.2",
+    "e1|b|flag0.05|b1|n20|rho0.05",
+    "e1|b|flag0.05|b1|n20|rho0.2",
+    "e1|b|flag0.05|b1|n50|rho0.05",
+    "e1|b|flag0.05|b1|n50|rho0.2",
+    "e1|b|flag0.05|b1|n5|rho0.05",
+    "e1|b|flag0.05|b1|n5|rho0.2",
+    "e1|b|flag0.05|b2|n20|rho0.05",
+    "e1|b|flag0.05|b2|n20|rho0.2",
+    "e1|b|flag0.05|b2|n50|rho0.05",
+    "e1|b|flag0.05|b2|n50|rho0.2",
+    "e1|b|flag0.05|b2|n5|rho0.05",
+    "e1|b|flag0.05|b2|n5|rho0.2",
+    "e1|b|flag0.05|b3|n20|rho0.05",
+    "e1|b|flag0.05|b3|n20|rho0.2",
+    "e1|b|flag0.05|b3|n50|rho0.05",
+    "e1|b|flag0.05|b3|n50|rho0.2",
+    "e1|b|flag0.05|b3|n5|rho0.05",
+    "e1|b|flag0.05|b3|n5|rho0.2",
+    "e1|b|flag0.3|b1|n20|rho0.05",
+    "e1|b|flag0.3|b1|n20|rho0.2",
+    "e1|b|flag0.3|b1|n50|rho0.05",
+    "e1|b|flag0.3|b1|n50|rho0.2",
+    "e1|b|flag0.3|b1|n5|rho0.05",
+    "e1|b|flag0.3|b1|n5|rho0.2",
+    "e1|b|flag0.3|b2|n20|rho0.05",
+    "e1|b|flag0.3|b2|n20|rho0.2",
+    "e1|b|flag0.3|b2|n50|rho0.05",
+    "e1|b|flag0.3|b2|n50|rho0.2",
+    "e1|b|flag0.3|b2|n5|rho0.05",
+    "e1|b|flag0.3|b2|n5|rho0.2",
+    "e1|b|flag0.3|b3|n20|rho0.05",
+    "e1|b|flag0.3|b3|n20|rho0.2",
+    "e1|b|flag0.3|b3|n50|rho0.05",
+    "e1|b|flag0.3|b3|n50|rho0.2",
+    "e1|b|flag0.3|b3|n5|rho0.05",
+    "e1|b|flag0.3|b3|n5|rho0.2",
+    "e4|b|conch_v1_5",
+    "e4|b|convnext_tiny",
+    "e4|b|densenet121",
+    "e4|b|dinov2_vitb14",
+    "e4|b|dinov2_vitl14",
+    "e4|b|effb3",
+    "e4|b|efficientnet_v2_s",
+    "e4|b|mobilenet_v3_large",
+    "e4|b|regnet_y_3_2gf",
+    "e4|b|resnet18",
+    "e4|b|resnet50",
+    "e4|b|uni",
+    "e4|b|virchow2"
+   ],
+   "execution_order": [
+    "e1|b|flag0.05|b2|n20|rho0.05",
+    "e1|b|beta|b3|n20|rho0.2",
+    "e4|b|dinov2_vitl14",
+    "e4|b|resnet18",
+    "e1|b|beta|b2|n20|rho0.05",
+    "e1|b|beta|b1|n20|rho0.05",
+    "e1|b|flag0.05|b1|n20|rho0.2",
+    "e1|b|flag0.05|b1|n50|rho0.05",
+    "e1|b|flag0.05|b3|n50|rho0.05",
+    "e1|b|flag0.05|b2|n50|rho0.05",
+    "e1|b|flag0.3|b1|n50|rho0.05",
+    "e1|b|flag0.3|b1|n5|rho0.05",
+    "e1|b|flag0.05|b2|n20|rho0.2",
+    "e1|b|flag0.3|b3|n50|rho0.05",
+    "e4|b|regnet_y_3_2gf",
+    "e1|b|flag0.05|b3|n5|rho0.2",
+    "e1|b|beta|b3|n50|rho0.05",
+    "e1|b|flag0.3|b3|n5|rho0.2",
+    "e1|b|beta|b2|n50|rho0.2",
+    "e1|b|flag0.3|b3|n20|rho0.05",
+    "e1|b|beta|b1|n5|rho0.05",
+    "e1|b|beta|b1|n50|rho0.05",
+    "e1|b|beta|b2|n50|rho0.05",
+    "e1|b|flag0.3|b2|n20|rho0.2",
+    "e1|b|flag0.05|b1|n5|rho0.2",
+    "e1|b|flag0.05|b1|n5|rho0.05",
+    "e1|b|flag0.05|b2|n5|rho0.05",
+    "e1|b|beta|b3|n50|rho0.2",
+    "e1|b|flag0.05|b3|n20|rho0.05",
+    "e1|b|flag0.3|b3|n50|rho0.2",
+    "e4|b|densenet121",
+    "e1|b|beta|b1|n20|rho0.2",
+    "e1|b|flag0.3|b1|n50|rho0.2",
+    "e1|b|flag0.05|b2|n5|rho0.2",
+    "e1|b|flag0.3|b2|n20|rho0.05",
+    "e1|b|beta|b3|n5|rho0.2",
+    "e4|b|virchow2",
+    "e1|b|beta|b2|n5|rho0.05",
+    "e4|b|efficientnet_v2_s",
+    "e1|b|flag0.3|b2|n50|rho0.05",
+    "e4|b|effb3",
+    "e1|b|beta|b1|n5|rho0.2",
+    "e1|b|flag0.05|b1|n20|rho0.05",
+    "e1|b|flag0.05|b2|n50|rho0.2",
+    "e4|b|resnet50",
+    "e1|b|flag0.3|b1|n20|rho0.05",
+    "e1|b|flag0.3|b2|n5|rho0.05",
+    "e1|b|beta|b2|n5|rho0.2",
+    "e1|b|beta|b3|n5|rho0.05",
+    "e4|b|uni",
+    "e1|b|flag0.05|b3|n20|rho0.2",
+    "e1|b|flag0.05|b3|n5|rho0.05",
+    "e1|b|beta|b2|n20|rho0.2",
+    "e1|b|flag0.3|b1|n5|rho0.2",
+    "e4|b|convnext_tiny",
+    "e1|b|flag0.05|b1|n50|rho0.2",
+    "e4|b|mobilenet_v3_large",
+    "e1|b|beta|b1|n50|rho0.2",
+    "e1|b|flag0.3|b2|n5|rho0.2",
+    "e4|b|conch_v1_5",
+    "e1|b|beta|b3|n20|rho0.05",
+    "e1|b|flag0.3|b1|n20|rho0.2",
+    "e4|b|dinov2_vitb14",
+    "e1|b|flag0.3|b3|n5|rho0.05",
+    "e1|b|flag0.3|b2|n50|rho0.2",
+    "e1|b|flag0.3|b3|n20|rho0.2",
+    "e1|b|flag0.05|b3|n50|rho0.2"
+   ]
+  }
+ ],
+ "unit_params": {
+  "e1|a|flag0.3|const|n5|rho0": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "const",
+   "n": 5,
+   "rho": 0
+  },
+  "e1|a|flag0.3|const|n5|rho0.02": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "const",
+   "n": 5,
+   "rho": 0.02
+  },
+  "e1|a|flag0.3|const|n5|rho0.05": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "const",
+   "n": 5,
+   "rho": 0.05
+  },
+  "e1|a|flag0.3|const|n5|rho0.1": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "const",
+   "n": 5,
+   "rho": 0.1
+  },
+  "e1|a|flag0.3|const|n5|rho0.2": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "const",
+   "n": 5,
+   "rho": 0.2
+  },
+  "e1|a|flag0.3|const|n5|rho0.4": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "const",
+   "n": 5,
+   "rho": 0.4
+  },
+  "e1|a|flag0.3|const|n20|rho0": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "const",
+   "n": 20,
+   "rho": 0
+  },
+  "e1|a|flag0.3|const|n20|rho0.02": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "const",
+   "n": 20,
+   "rho": 0.02
+  },
+  "e1|a|flag0.3|const|n20|rho0.05": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "const",
+   "n": 20,
+   "rho": 0.05
+  },
+  "e1|a|flag0.3|const|n20|rho0.1": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "const",
+   "n": 20,
+   "rho": 0.1
+  },
+  "e1|a|flag0.3|const|n20|rho0.2": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "const",
+   "n": 20,
+   "rho": 0.2
+  },
+  "e1|a|flag0.3|const|n20|rho0.4": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "const",
+   "n": 20,
+   "rho": 0.4
+  },
+  "e1|a|flag0.3|const|n50|rho0": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "const",
+   "n": 50,
+   "rho": 0
+  },
+  "e1|a|flag0.3|const|n50|rho0.02": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "const",
+   "n": 50,
+   "rho": 0.02
+  },
+  "e1|a|flag0.3|const|n50|rho0.05": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "const",
+   "n": 50,
+   "rho": 0.05
+  },
+  "e1|a|flag0.3|const|n50|rho0.1": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "const",
+   "n": 50,
+   "rho": 0.1
+  },
+  "e1|a|flag0.3|const|n50|rho0.2": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "const",
+   "n": 50,
+   "rho": 0.2
+  },
+  "e1|a|flag0.3|const|n50|rho0.4": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "const",
+   "n": 50,
+   "rho": 0.4
+  },
+  "e1|a|flag0.3|const|n200|rho0": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "const",
+   "n": 200,
+   "rho": 0
+  },
+  "e1|a|flag0.3|const|n200|rho0.02": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "const",
+   "n": 200,
+   "rho": 0.02
+  },
+  "e1|a|flag0.3|const|n200|rho0.05": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "const",
+   "n": 200,
+   "rho": 0.05
+  },
+  "e1|a|flag0.3|const|n200|rho0.1": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "const",
+   "n": 200,
+   "rho": 0.1
+  },
+  "e1|a|flag0.3|const|n200|rho0.2": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "const",
+   "n": 200,
+   "rho": 0.2
+  },
+  "e1|a|flag0.3|const|n200|rho0.4": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "const",
+   "n": 200,
+   "rho": 0.4
+  },
+  "e1|a|flag0.3|poisson|n5|rho0": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "poisson",
+   "n": 5,
+   "rho": 0
+  },
+  "e1|a|flag0.3|poisson|n5|rho0.02": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "poisson",
+   "n": 5,
+   "rho": 0.02
+  },
+  "e1|a|flag0.3|poisson|n5|rho0.05": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "poisson",
+   "n": 5,
+   "rho": 0.05
+  },
+  "e1|a|flag0.3|poisson|n5|rho0.1": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "poisson",
+   "n": 5,
+   "rho": 0.1
+  },
+  "e1|a|flag0.3|poisson|n5|rho0.2": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "poisson",
+   "n": 5,
+   "rho": 0.2
+  },
+  "e1|a|flag0.3|poisson|n5|rho0.4": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "poisson",
+   "n": 5,
+   "rho": 0.4
+  },
+  "e1|a|flag0.3|poisson|n20|rho0": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "poisson",
+   "n": 20,
+   "rho": 0
+  },
+  "e1|a|flag0.3|poisson|n20|rho0.02": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "poisson",
+   "n": 20,
+   "rho": 0.02
+  },
+  "e1|a|flag0.3|poisson|n20|rho0.05": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "poisson",
+   "n": 20,
+   "rho": 0.05
+  },
+  "e1|a|flag0.3|poisson|n20|rho0.1": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "poisson",
+   "n": 20,
+   "rho": 0.1
+  },
+  "e1|a|flag0.3|poisson|n20|rho0.2": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "poisson",
+   "n": 20,
+   "rho": 0.2
+  },
+  "e1|a|flag0.3|poisson|n20|rho0.4": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "poisson",
+   "n": 20,
+   "rho": 0.4
+  },
+  "e1|a|flag0.3|poisson|n50|rho0": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "poisson",
+   "n": 50,
+   "rho": 0
+  },
+  "e1|a|flag0.3|poisson|n50|rho0.02": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "poisson",
+   "n": 50,
+   "rho": 0.02
+  },
+  "e1|a|flag0.3|poisson|n50|rho0.05": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "poisson",
+   "n": 50,
+   "rho": 0.05
+  },
+  "e1|a|flag0.3|poisson|n50|rho0.1": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "poisson",
+   "n": 50,
+   "rho": 0.1
+  },
+  "e1|a|flag0.3|poisson|n50|rho0.2": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "poisson",
+   "n": 50,
+   "rho": 0.2
+  },
+  "e1|a|flag0.3|poisson|n50|rho0.4": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "poisson",
+   "n": 50,
+   "rho": 0.4
+  },
+  "e1|a|flag0.3|poisson|n200|rho0": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "poisson",
+   "n": 200,
+   "rho": 0
+  },
+  "e1|a|flag0.3|poisson|n200|rho0.02": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "poisson",
+   "n": 200,
+   "rho": 0.02
+  },
+  "e1|a|flag0.3|poisson|n200|rho0.05": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "poisson",
+   "n": 200,
+   "rho": 0.05
+  },
+  "e1|a|flag0.3|poisson|n200|rho0.1": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "poisson",
+   "n": 200,
+   "rho": 0.1
+  },
+  "e1|a|flag0.3|poisson|n200|rho0.2": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "poisson",
+   "n": 200,
+   "rho": 0.2
+  },
+  "e1|a|flag0.3|poisson|n200|rho0.4": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "poisson",
+   "n": 200,
+   "rho": 0.4
+  },
+  "e1|a|flag0.3|lognormal|n5|rho0": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "lognormal",
+   "n": 5,
+   "rho": 0
+  },
+  "e1|a|flag0.3|lognormal|n5|rho0.02": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "lognormal",
+   "n": 5,
+   "rho": 0.02
+  },
+  "e1|a|flag0.3|lognormal|n5|rho0.05": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "lognormal",
+   "n": 5,
+   "rho": 0.05
+  },
+  "e1|a|flag0.3|lognormal|n5|rho0.1": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "lognormal",
+   "n": 5,
+   "rho": 0.1
+  },
+  "e1|a|flag0.3|lognormal|n5|rho0.2": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "lognormal",
+   "n": 5,
+   "rho": 0.2
+  },
+  "e1|a|flag0.3|lognormal|n5|rho0.4": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "lognormal",
+   "n": 5,
+   "rho": 0.4
+  },
+  "e1|a|flag0.3|lognormal|n20|rho0": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "lognormal",
+   "n": 20,
+   "rho": 0
+  },
+  "e1|a|flag0.3|lognormal|n20|rho0.02": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "lognormal",
+   "n": 20,
+   "rho": 0.02
+  },
+  "e1|a|flag0.3|lognormal|n20|rho0.05": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "lognormal",
+   "n": 20,
+   "rho": 0.05
+  },
+  "e1|a|flag0.3|lognormal|n20|rho0.1": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "lognormal",
+   "n": 20,
+   "rho": 0.1
+  },
+  "e1|a|flag0.3|lognormal|n20|rho0.2": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "lognormal",
+   "n": 20,
+   "rho": 0.2
+  },
+  "e1|a|flag0.3|lognormal|n20|rho0.4": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "lognormal",
+   "n": 20,
+   "rho": 0.4
+  },
+  "e1|a|flag0.3|lognormal|n50|rho0": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "lognormal",
+   "n": 50,
+   "rho": 0
+  },
+  "e1|a|flag0.3|lognormal|n50|rho0.02": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "lognormal",
+   "n": 50,
+   "rho": 0.02
+  },
+  "e1|a|flag0.3|lognormal|n50|rho0.05": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "lognormal",
+   "n": 50,
+   "rho": 0.05
+  },
+  "e1|a|flag0.3|lognormal|n50|rho0.1": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "lognormal",
+   "n": 50,
+   "rho": 0.1
+  },
+  "e1|a|flag0.3|lognormal|n50|rho0.2": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "lognormal",
+   "n": 50,
+   "rho": 0.2
+  },
+  "e1|a|flag0.3|lognormal|n50|rho0.4": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "lognormal",
+   "n": 50,
+   "rho": 0.4
+  },
+  "e1|a|flag0.3|lognormal|n200|rho0": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "lognormal",
+   "n": 200,
+   "rho": 0
+  },
+  "e1|a|flag0.3|lognormal|n200|rho0.02": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "lognormal",
+   "n": 200,
+   "rho": 0.02
+  },
+  "e1|a|flag0.3|lognormal|n200|rho0.05": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "lognormal",
+   "n": 200,
+   "rho": 0.05
+  },
+  "e1|a|flag0.3|lognormal|n200|rho0.1": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "lognormal",
+   "n": 200,
+   "rho": 0.1
+  },
+  "e1|a|flag0.3|lognormal|n200|rho0.2": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "lognormal",
+   "n": 200,
+   "rho": 0.2
+  },
+  "e1|a|flag0.3|lognormal|n200|rho0.4": {
+   "regime": "a",
+   "outcome": "flag0.3",
+   "size": "lognormal",
+   "n": 200,
+   "rho": 0.4
+  },
+  "e1|a|flag0.05|const|n5|rho0": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "const",
+   "n": 5,
+   "rho": 0
+  },
+  "e1|a|flag0.05|const|n5|rho0.02": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "const",
+   "n": 5,
+   "rho": 0.02
+  },
+  "e1|a|flag0.05|const|n5|rho0.05": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "const",
+   "n": 5,
+   "rho": 0.05
+  },
+  "e1|a|flag0.05|const|n5|rho0.1": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "const",
+   "n": 5,
+   "rho": 0.1
+  },
+  "e1|a|flag0.05|const|n5|rho0.2": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "const",
+   "n": 5,
+   "rho": 0.2
+  },
+  "e1|a|flag0.05|const|n5|rho0.4": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "const",
+   "n": 5,
+   "rho": 0.4
+  },
+  "e1|a|flag0.05|const|n20|rho0": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "const",
+   "n": 20,
+   "rho": 0
+  },
+  "e1|a|flag0.05|const|n20|rho0.02": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "const",
+   "n": 20,
+   "rho": 0.02
+  },
+  "e1|a|flag0.05|const|n20|rho0.05": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "const",
+   "n": 20,
+   "rho": 0.05
+  },
+  "e1|a|flag0.05|const|n20|rho0.1": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "const",
+   "n": 20,
+   "rho": 0.1
+  },
+  "e1|a|flag0.05|const|n20|rho0.2": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "const",
+   "n": 20,
+   "rho": 0.2
+  },
+  "e1|a|flag0.05|const|n20|rho0.4": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "const",
+   "n": 20,
+   "rho": 0.4
+  },
+  "e1|a|flag0.05|const|n50|rho0": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "const",
+   "n": 50,
+   "rho": 0
+  },
+  "e1|a|flag0.05|const|n50|rho0.02": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "const",
+   "n": 50,
+   "rho": 0.02
+  },
+  "e1|a|flag0.05|const|n50|rho0.05": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "const",
+   "n": 50,
+   "rho": 0.05
+  },
+  "e1|a|flag0.05|const|n50|rho0.1": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "const",
+   "n": 50,
+   "rho": 0.1
+  },
+  "e1|a|flag0.05|const|n50|rho0.2": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "const",
+   "n": 50,
+   "rho": 0.2
+  },
+  "e1|a|flag0.05|const|n50|rho0.4": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "const",
+   "n": 50,
+   "rho": 0.4
+  },
+  "e1|a|flag0.05|const|n200|rho0": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "const",
+   "n": 200,
+   "rho": 0
+  },
+  "e1|a|flag0.05|const|n200|rho0.02": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "const",
+   "n": 200,
+   "rho": 0.02
+  },
+  "e1|a|flag0.05|const|n200|rho0.05": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "const",
+   "n": 200,
+   "rho": 0.05
+  },
+  "e1|a|flag0.05|const|n200|rho0.1": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "const",
+   "n": 200,
+   "rho": 0.1
+  },
+  "e1|a|flag0.05|const|n200|rho0.2": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "const",
+   "n": 200,
+   "rho": 0.2
+  },
+  "e1|a|flag0.05|const|n200|rho0.4": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "const",
+   "n": 200,
+   "rho": 0.4
+  },
+  "e1|a|flag0.05|poisson|n5|rho0": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "poisson",
+   "n": 5,
+   "rho": 0
+  },
+  "e1|a|flag0.05|poisson|n5|rho0.02": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "poisson",
+   "n": 5,
+   "rho": 0.02
+  },
+  "e1|a|flag0.05|poisson|n5|rho0.05": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "poisson",
+   "n": 5,
+   "rho": 0.05
+  },
+  "e1|a|flag0.05|poisson|n5|rho0.1": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "poisson",
+   "n": 5,
+   "rho": 0.1
+  },
+  "e1|a|flag0.05|poisson|n5|rho0.2": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "poisson",
+   "n": 5,
+   "rho": 0.2
+  },
+  "e1|a|flag0.05|poisson|n5|rho0.4": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "poisson",
+   "n": 5,
+   "rho": 0.4
+  },
+  "e1|a|flag0.05|poisson|n20|rho0": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "poisson",
+   "n": 20,
+   "rho": 0
+  },
+  "e1|a|flag0.05|poisson|n20|rho0.02": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "poisson",
+   "n": 20,
+   "rho": 0.02
+  },
+  "e1|a|flag0.05|poisson|n20|rho0.05": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "poisson",
+   "n": 20,
+   "rho": 0.05
+  },
+  "e1|a|flag0.05|poisson|n20|rho0.1": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "poisson",
+   "n": 20,
+   "rho": 0.1
+  },
+  "e1|a|flag0.05|poisson|n20|rho0.2": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "poisson",
+   "n": 20,
+   "rho": 0.2
+  },
+  "e1|a|flag0.05|poisson|n20|rho0.4": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "poisson",
+   "n": 20,
+   "rho": 0.4
+  },
+  "e1|a|flag0.05|poisson|n50|rho0": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "poisson",
+   "n": 50,
+   "rho": 0
+  },
+  "e1|a|flag0.05|poisson|n50|rho0.02": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "poisson",
+   "n": 50,
+   "rho": 0.02
+  },
+  "e1|a|flag0.05|poisson|n50|rho0.05": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "poisson",
+   "n": 50,
+   "rho": 0.05
+  },
+  "e1|a|flag0.05|poisson|n50|rho0.1": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "poisson",
+   "n": 50,
+   "rho": 0.1
+  },
+  "e1|a|flag0.05|poisson|n50|rho0.2": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "poisson",
+   "n": 50,
+   "rho": 0.2
+  },
+  "e1|a|flag0.05|poisson|n50|rho0.4": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "poisson",
+   "n": 50,
+   "rho": 0.4
+  },
+  "e1|a|flag0.05|poisson|n200|rho0": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "poisson",
+   "n": 200,
+   "rho": 0
+  },
+  "e1|a|flag0.05|poisson|n200|rho0.02": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "poisson",
+   "n": 200,
+   "rho": 0.02
+  },
+  "e1|a|flag0.05|poisson|n200|rho0.05": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "poisson",
+   "n": 200,
+   "rho": 0.05
+  },
+  "e1|a|flag0.05|poisson|n200|rho0.1": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "poisson",
+   "n": 200,
+   "rho": 0.1
+  },
+  "e1|a|flag0.05|poisson|n200|rho0.2": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "poisson",
+   "n": 200,
+   "rho": 0.2
+  },
+  "e1|a|flag0.05|poisson|n200|rho0.4": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "poisson",
+   "n": 200,
+   "rho": 0.4
+  },
+  "e1|a|flag0.05|lognormal|n5|rho0": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "lognormal",
+   "n": 5,
+   "rho": 0
+  },
+  "e1|a|flag0.05|lognormal|n5|rho0.02": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "lognormal",
+   "n": 5,
+   "rho": 0.02
+  },
+  "e1|a|flag0.05|lognormal|n5|rho0.05": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "lognormal",
+   "n": 5,
+   "rho": 0.05
+  },
+  "e1|a|flag0.05|lognormal|n5|rho0.1": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "lognormal",
+   "n": 5,
+   "rho": 0.1
+  },
+  "e1|a|flag0.05|lognormal|n5|rho0.2": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "lognormal",
+   "n": 5,
+   "rho": 0.2
+  },
+  "e1|a|flag0.05|lognormal|n5|rho0.4": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "lognormal",
+   "n": 5,
+   "rho": 0.4
+  },
+  "e1|a|flag0.05|lognormal|n20|rho0": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "lognormal",
+   "n": 20,
+   "rho": 0
+  },
+  "e1|a|flag0.05|lognormal|n20|rho0.02": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "lognormal",
+   "n": 20,
+   "rho": 0.02
+  },
+  "e1|a|flag0.05|lognormal|n20|rho0.05": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "lognormal",
+   "n": 20,
+   "rho": 0.05
+  },
+  "e1|a|flag0.05|lognormal|n20|rho0.1": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "lognormal",
+   "n": 20,
+   "rho": 0.1
+  },
+  "e1|a|flag0.05|lognormal|n20|rho0.2": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "lognormal",
+   "n": 20,
+   "rho": 0.2
+  },
+  "e1|a|flag0.05|lognormal|n20|rho0.4": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "lognormal",
+   "n": 20,
+   "rho": 0.4
+  },
+  "e1|a|flag0.05|lognormal|n50|rho0": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "lognormal",
+   "n": 50,
+   "rho": 0
+  },
+  "e1|a|flag0.05|lognormal|n50|rho0.02": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "lognormal",
+   "n": 50,
+   "rho": 0.02
+  },
+  "e1|a|flag0.05|lognormal|n50|rho0.05": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "lognormal",
+   "n": 50,
+   "rho": 0.05
+  },
+  "e1|a|flag0.05|lognormal|n50|rho0.1": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "lognormal",
+   "n": 50,
+   "rho": 0.1
+  },
+  "e1|a|flag0.05|lognormal|n50|rho0.2": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "lognormal",
+   "n": 50,
+   "rho": 0.2
+  },
+  "e1|a|flag0.05|lognormal|n50|rho0.4": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "lognormal",
+   "n": 50,
+   "rho": 0.4
+  },
+  "e1|a|flag0.05|lognormal|n200|rho0": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "lognormal",
+   "n": 200,
+   "rho": 0
+  },
+  "e1|a|flag0.05|lognormal|n200|rho0.02": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "lognormal",
+   "n": 200,
+   "rho": 0.02
+  },
+  "e1|a|flag0.05|lognormal|n200|rho0.05": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "lognormal",
+   "n": 200,
+   "rho": 0.05
+  },
+  "e1|a|flag0.05|lognormal|n200|rho0.1": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "lognormal",
+   "n": 200,
+   "rho": 0.1
+  },
+  "e1|a|flag0.05|lognormal|n200|rho0.2": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "lognormal",
+   "n": 200,
+   "rho": 0.2
+  },
+  "e1|a|flag0.05|lognormal|n200|rho0.4": {
+   "regime": "a",
+   "outcome": "flag0.05",
+   "size": "lognormal",
+   "n": 200,
+   "rho": 0.4
+  },
+  "e1|a|beta|const|n5|rho0": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "const",
+   "n": 5,
+   "rho": 0
+  },
+  "e1|a|beta|const|n5|rho0.02": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "const",
+   "n": 5,
+   "rho": 0.02
+  },
+  "e1|a|beta|const|n5|rho0.05": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "const",
+   "n": 5,
+   "rho": 0.05
+  },
+  "e1|a|beta|const|n5|rho0.1": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "const",
+   "n": 5,
+   "rho": 0.1
+  },
+  "e1|a|beta|const|n5|rho0.2": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "const",
+   "n": 5,
+   "rho": 0.2
+  },
+  "e1|a|beta|const|n5|rho0.4": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "const",
+   "n": 5,
+   "rho": 0.4
+  },
+  "e1|a|beta|const|n20|rho0": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "const",
+   "n": 20,
+   "rho": 0
+  },
+  "e1|a|beta|const|n20|rho0.02": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "const",
+   "n": 20,
+   "rho": 0.02
+  },
+  "e1|a|beta|const|n20|rho0.05": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "const",
+   "n": 20,
+   "rho": 0.05
+  },
+  "e1|a|beta|const|n20|rho0.1": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "const",
+   "n": 20,
+   "rho": 0.1
+  },
+  "e1|a|beta|const|n20|rho0.2": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "const",
+   "n": 20,
+   "rho": 0.2
+  },
+  "e1|a|beta|const|n20|rho0.4": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "const",
+   "n": 20,
+   "rho": 0.4
+  },
+  "e1|a|beta|const|n50|rho0": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "const",
+   "n": 50,
+   "rho": 0
+  },
+  "e1|a|beta|const|n50|rho0.02": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "const",
+   "n": 50,
+   "rho": 0.02
+  },
+  "e1|a|beta|const|n50|rho0.05": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "const",
+   "n": 50,
+   "rho": 0.05
+  },
+  "e1|a|beta|const|n50|rho0.1": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "const",
+   "n": 50,
+   "rho": 0.1
+  },
+  "e1|a|beta|const|n50|rho0.2": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "const",
+   "n": 50,
+   "rho": 0.2
+  },
+  "e1|a|beta|const|n50|rho0.4": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "const",
+   "n": 50,
+   "rho": 0.4
+  },
+  "e1|a|beta|const|n200|rho0": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "const",
+   "n": 200,
+   "rho": 0
+  },
+  "e1|a|beta|const|n200|rho0.02": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "const",
+   "n": 200,
+   "rho": 0.02
+  },
+  "e1|a|beta|const|n200|rho0.05": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "const",
+   "n": 200,
+   "rho": 0.05
+  },
+  "e1|a|beta|const|n200|rho0.1": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "const",
+   "n": 200,
+   "rho": 0.1
+  },
+  "e1|a|beta|const|n200|rho0.2": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "const",
+   "n": 200,
+   "rho": 0.2
+  },
+  "e1|a|beta|const|n200|rho0.4": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "const",
+   "n": 200,
+   "rho": 0.4
+  },
+  "e1|a|beta|poisson|n5|rho0": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "poisson",
+   "n": 5,
+   "rho": 0
+  },
+  "e1|a|beta|poisson|n5|rho0.02": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "poisson",
+   "n": 5,
+   "rho": 0.02
+  },
+  "e1|a|beta|poisson|n5|rho0.05": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "poisson",
+   "n": 5,
+   "rho": 0.05
+  },
+  "e1|a|beta|poisson|n5|rho0.1": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "poisson",
+   "n": 5,
+   "rho": 0.1
+  },
+  "e1|a|beta|poisson|n5|rho0.2": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "poisson",
+   "n": 5,
+   "rho": 0.2
+  },
+  "e1|a|beta|poisson|n5|rho0.4": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "poisson",
+   "n": 5,
+   "rho": 0.4
+  },
+  "e1|a|beta|poisson|n20|rho0": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "poisson",
+   "n": 20,
+   "rho": 0
+  },
+  "e1|a|beta|poisson|n20|rho0.02": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "poisson",
+   "n": 20,
+   "rho": 0.02
+  },
+  "e1|a|beta|poisson|n20|rho0.05": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "poisson",
+   "n": 20,
+   "rho": 0.05
+  },
+  "e1|a|beta|poisson|n20|rho0.1": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "poisson",
+   "n": 20,
+   "rho": 0.1
+  },
+  "e1|a|beta|poisson|n20|rho0.2": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "poisson",
+   "n": 20,
+   "rho": 0.2
+  },
+  "e1|a|beta|poisson|n20|rho0.4": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "poisson",
+   "n": 20,
+   "rho": 0.4
+  },
+  "e1|a|beta|poisson|n50|rho0": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "poisson",
+   "n": 50,
+   "rho": 0
+  },
+  "e1|a|beta|poisson|n50|rho0.02": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "poisson",
+   "n": 50,
+   "rho": 0.02
+  },
+  "e1|a|beta|poisson|n50|rho0.05": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "poisson",
+   "n": 50,
+   "rho": 0.05
+  },
+  "e1|a|beta|poisson|n50|rho0.1": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "poisson",
+   "n": 50,
+   "rho": 0.1
+  },
+  "e1|a|beta|poisson|n50|rho0.2": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "poisson",
+   "n": 50,
+   "rho": 0.2
+  },
+  "e1|a|beta|poisson|n50|rho0.4": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "poisson",
+   "n": 50,
+   "rho": 0.4
+  },
+  "e1|a|beta|poisson|n200|rho0": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "poisson",
+   "n": 200,
+   "rho": 0
+  },
+  "e1|a|beta|poisson|n200|rho0.02": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "poisson",
+   "n": 200,
+   "rho": 0.02
+  },
+  "e1|a|beta|poisson|n200|rho0.05": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "poisson",
+   "n": 200,
+   "rho": 0.05
+  },
+  "e1|a|beta|poisson|n200|rho0.1": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "poisson",
+   "n": 200,
+   "rho": 0.1
+  },
+  "e1|a|beta|poisson|n200|rho0.2": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "poisson",
+   "n": 200,
+   "rho": 0.2
+  },
+  "e1|a|beta|poisson|n200|rho0.4": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "poisson",
+   "n": 200,
+   "rho": 0.4
+  },
+  "e1|a|beta|lognormal|n5|rho0": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "lognormal",
+   "n": 5,
+   "rho": 0
+  },
+  "e1|a|beta|lognormal|n5|rho0.02": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "lognormal",
+   "n": 5,
+   "rho": 0.02
+  },
+  "e1|a|beta|lognormal|n5|rho0.05": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "lognormal",
+   "n": 5,
+   "rho": 0.05
+  },
+  "e1|a|beta|lognormal|n5|rho0.1": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "lognormal",
+   "n": 5,
+   "rho": 0.1
+  },
+  "e1|a|beta|lognormal|n5|rho0.2": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "lognormal",
+   "n": 5,
+   "rho": 0.2
+  },
+  "e1|a|beta|lognormal|n5|rho0.4": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "lognormal",
+   "n": 5,
+   "rho": 0.4
+  },
+  "e1|a|beta|lognormal|n20|rho0": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "lognormal",
+   "n": 20,
+   "rho": 0
+  },
+  "e1|a|beta|lognormal|n20|rho0.02": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "lognormal",
+   "n": 20,
+   "rho": 0.02
+  },
+  "e1|a|beta|lognormal|n20|rho0.05": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "lognormal",
+   "n": 20,
+   "rho": 0.05
+  },
+  "e1|a|beta|lognormal|n20|rho0.1": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "lognormal",
+   "n": 20,
+   "rho": 0.1
+  },
+  "e1|a|beta|lognormal|n20|rho0.2": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "lognormal",
+   "n": 20,
+   "rho": 0.2
+  },
+  "e1|a|beta|lognormal|n20|rho0.4": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "lognormal",
+   "n": 20,
+   "rho": 0.4
+  },
+  "e1|a|beta|lognormal|n50|rho0": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "lognormal",
+   "n": 50,
+   "rho": 0
+  },
+  "e1|a|beta|lognormal|n50|rho0.02": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "lognormal",
+   "n": 50,
+   "rho": 0.02
+  },
+  "e1|a|beta|lognormal|n50|rho0.05": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "lognormal",
+   "n": 50,
+   "rho": 0.05
+  },
+  "e1|a|beta|lognormal|n50|rho0.1": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "lognormal",
+   "n": 50,
+   "rho": 0.1
+  },
+  "e1|a|beta|lognormal|n50|rho0.2": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "lognormal",
+   "n": 50,
+   "rho": 0.2
+  },
+  "e1|a|beta|lognormal|n50|rho0.4": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "lognormal",
+   "n": 50,
+   "rho": 0.4
+  },
+  "e1|a|beta|lognormal|n200|rho0": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "lognormal",
+   "n": 200,
+   "rho": 0
+  },
+  "e1|a|beta|lognormal|n200|rho0.02": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "lognormal",
+   "n": 200,
+   "rho": 0.02
+  },
+  "e1|a|beta|lognormal|n200|rho0.05": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "lognormal",
+   "n": 200,
+   "rho": 0.05
+  },
+  "e1|a|beta|lognormal|n200|rho0.1": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "lognormal",
+   "n": 200,
+   "rho": 0.1
+  },
+  "e1|a|beta|lognormal|n200|rho0.2": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "lognormal",
+   "n": 200,
+   "rho": 0.2
+  },
+  "e1|a|beta|lognormal|n200|rho0.4": {
+   "regime": "a",
+   "outcome": "beta",
+   "size": "lognormal",
+   "n": 200,
+   "rho": 0.4
+  },
+  "e2|n5|rhof0.05|d4": {
+   "n": 5,
+   "rho_f": 0.05,
+   "d": 4,
+   "G": 60
+  },
+  "e2|n5|rhof0.05|d16": {
+   "n": 5,
+   "rho_f": 0.05,
+   "d": 16,
+   "G": 60
+  },
+  "e2|n5|rhof0.05|d64": {
+   "n": 5,
+   "rho_f": 0.05,
+   "d": 64,
+   "G": 60
+  },
+  "e2|n5|rhof0.05|d256": {
+   "n": 5,
+   "rho_f": 0.05,
+   "d": 256,
+   "G": 60
+  },
+  "e2|n5|rhof0.05|d1024": {
+   "n": 5,
+   "rho_f": 0.05,
+   "d": 1024,
+   "G": 60
+  },
+  "e2|n5|rhof0.1|d4": {
+   "n": 5,
+   "rho_f": 0.1,
+   "d": 4,
+   "G": 60
+  },
+  "e2|n5|rhof0.1|d16": {
+   "n": 5,
+   "rho_f": 0.1,
+   "d": 16,
+   "G": 60
+  },
+  "e2|n5|rhof0.1|d64": {
+   "n": 5,
+   "rho_f": 0.1,
+   "d": 64,
+   "G": 60
+  },
+  "e2|n5|rhof0.1|d256": {
+   "n": 5,
+   "rho_f": 0.1,
+   "d": 256,
+   "G": 60
+  },
+  "e2|n5|rhof0.1|d1024": {
+   "n": 5,
+   "rho_f": 0.1,
+   "d": 1024,
+   "G": 60
+  },
+  "e2|n5|rhof0.2|d4": {
+   "n": 5,
+   "rho_f": 0.2,
+   "d": 4,
+   "G": 60
+  },
+  "e2|n5|rhof0.2|d16": {
+   "n": 5,
+   "rho_f": 0.2,
+   "d": 16,
+   "G": 60
+  },
+  "e2|n5|rhof0.2|d64": {
+   "n": 5,
+   "rho_f": 0.2,
+   "d": 64,
+   "G": 60
+  },
+  "e2|n5|rhof0.2|d256": {
+   "n": 5,
+   "rho_f": 0.2,
+   "d": 256,
+   "G": 60
+  },
+  "e2|n5|rhof0.2|d1024": {
+   "n": 5,
+   "rho_f": 0.2,
+   "d": 1024,
+   "G": 60
+  },
+  "e2|n5|rhof0.3|d4": {
+   "n": 5,
+   "rho_f": 0.3,
+   "d": 4,
+   "G": 60
+  },
+  "e2|n5|rhof0.3|d16": {
+   "n": 5,
+   "rho_f": 0.3,
+   "d": 16,
+   "G": 60
+  },
+  "e2|n5|rhof0.3|d64": {
+   "n": 5,
+   "rho_f": 0.3,
+   "d": 64,
+   "G": 60
+  },
+  "e2|n5|rhof0.3|d256": {
+   "n": 5,
+   "rho_f": 0.3,
+   "d": 256,
+   "G": 60
+  },
+  "e2|n5|rhof0.3|d1024": {
+   "n": 5,
+   "rho_f": 0.3,
+   "d": 1024,
+   "G": 60
+  },
+  "e2|n5|rhof0.6|d4": {
+   "n": 5,
+   "rho_f": 0.6,
+   "d": 4,
+   "G": 60
+  },
+  "e2|n5|rhof0.6|d16": {
+   "n": 5,
+   "rho_f": 0.6,
+   "d": 16,
+   "G": 60
+  },
+  "e2|n5|rhof0.6|d64": {
+   "n": 5,
+   "rho_f": 0.6,
+   "d": 64,
+   "G": 60
+  },
+  "e2|n5|rhof0.6|d256": {
+   "n": 5,
+   "rho_f": 0.6,
+   "d": 256,
+   "G": 60
+  },
+  "e2|n5|rhof0.6|d1024": {
+   "n": 5,
+   "rho_f": 0.6,
+   "d": 1024,
+   "G": 60
+  },
+  "e2|n15|rhof0.05|d4": {
+   "n": 15,
+   "rho_f": 0.05,
+   "d": 4,
+   "G": 60
+  },
+  "e2|n15|rhof0.05|d16": {
+   "n": 15,
+   "rho_f": 0.05,
+   "d": 16,
+   "G": 60
+  },
+  "e2|n15|rhof0.05|d64": {
+   "n": 15,
+   "rho_f": 0.05,
+   "d": 64,
+   "G": 60
+  },
+  "e2|n15|rhof0.05|d256": {
+   "n": 15,
+   "rho_f": 0.05,
+   "d": 256,
+   "G": 60
+  },
+  "e2|n15|rhof0.05|d1024": {
+   "n": 15,
+   "rho_f": 0.05,
+   "d": 1024,
+   "G": 60
+  },
+  "e2|n15|rhof0.1|d4": {
+   "n": 15,
+   "rho_f": 0.1,
+   "d": 4,
+   "G": 60
+  },
+  "e2|n15|rhof0.1|d16": {
+   "n": 15,
+   "rho_f": 0.1,
+   "d": 16,
+   "G": 60
+  },
+  "e2|n15|rhof0.1|d64": {
+   "n": 15,
+   "rho_f": 0.1,
+   "d": 64,
+   "G": 60
+  },
+  "e2|n15|rhof0.1|d256": {
+   "n": 15,
+   "rho_f": 0.1,
+   "d": 256,
+   "G": 60
+  },
+  "e2|n15|rhof0.1|d1024": {
+   "n": 15,
+   "rho_f": 0.1,
+   "d": 1024,
+   "G": 60
+  },
+  "e2|n15|rhof0.2|d4": {
+   "n": 15,
+   "rho_f": 0.2,
+   "d": 4,
+   "G": 60
+  },
+  "e2|n15|rhof0.2|d16": {
+   "n": 15,
+   "rho_f": 0.2,
+   "d": 16,
+   "G": 60
+  },
+  "e2|n15|rhof0.2|d64": {
+   "n": 15,
+   "rho_f": 0.2,
+   "d": 64,
+   "G": 60
+  },
+  "e2|n15|rhof0.2|d256": {
+   "n": 15,
+   "rho_f": 0.2,
+   "d": 256,
+   "G": 60
+  },
+  "e2|n15|rhof0.2|d1024": {
+   "n": 15,
+   "rho_f": 0.2,
+   "d": 1024,
+   "G": 60
+  },
+  "e2|n15|rhof0.3|d4": {
+   "n": 15,
+   "rho_f": 0.3,
+   "d": 4,
+   "G": 60
+  },
+  "e2|n15|rhof0.3|d16": {
+   "n": 15,
+   "rho_f": 0.3,
+   "d": 16,
+   "G": 60
+  },
+  "e2|n15|rhof0.3|d64": {
+   "n": 15,
+   "rho_f": 0.3,
+   "d": 64,
+   "G": 60
+  },
+  "e2|n15|rhof0.3|d256": {
+   "n": 15,
+   "rho_f": 0.3,
+   "d": 256,
+   "G": 60
+  },
+  "e2|n15|rhof0.3|d1024": {
+   "n": 15,
+   "rho_f": 0.3,
+   "d": 1024,
+   "G": 60
+  },
+  "e2|n15|rhof0.6|d4": {
+   "n": 15,
+   "rho_f": 0.6,
+   "d": 4,
+   "G": 60
+  },
+  "e2|n15|rhof0.6|d16": {
+   "n": 15,
+   "rho_f": 0.6,
+   "d": 16,
+   "G": 60
+  },
+  "e2|n15|rhof0.6|d64": {
+   "n": 15,
+   "rho_f": 0.6,
+   "d": 64,
+   "G": 60
+  },
+  "e2|n15|rhof0.6|d256": {
+   "n": 15,
+   "rho_f": 0.6,
+   "d": 256,
+   "G": 60
+  },
+  "e2|n15|rhof0.6|d1024": {
+   "n": 15,
+   "rho_f": 0.6,
+   "d": 1024,
+   "G": 60
+  },
+  "e2|n50|rhof0.05|d4": {
+   "n": 50,
+   "rho_f": 0.05,
+   "d": 4,
+   "G": 60
+  },
+  "e2|n50|rhof0.05|d16": {
+   "n": 50,
+   "rho_f": 0.05,
+   "d": 16,
+   "G": 60
+  },
+  "e2|n50|rhof0.05|d64": {
+   "n": 50,
+   "rho_f": 0.05,
+   "d": 64,
+   "G": 60
+  },
+  "e2|n50|rhof0.05|d256": {
+   "n": 50,
+   "rho_f": 0.05,
+   "d": 256,
+   "G": 60
+  },
+  "e2|n50|rhof0.05|d1024": {
+   "n": 50,
+   "rho_f": 0.05,
+   "d": 1024,
+   "G": 60
+  },
+  "e2|n50|rhof0.1|d4": {
+   "n": 50,
+   "rho_f": 0.1,
+   "d": 4,
+   "G": 60
+  },
+  "e2|n50|rhof0.1|d16": {
+   "n": 50,
+   "rho_f": 0.1,
+   "d": 16,
+   "G": 60
+  },
+  "e2|n50|rhof0.1|d64": {
+   "n": 50,
+   "rho_f": 0.1,
+   "d": 64,
+   "G": 60
+  },
+  "e2|n50|rhof0.1|d256": {
+   "n": 50,
+   "rho_f": 0.1,
+   "d": 256,
+   "G": 60
+  },
+  "e2|n50|rhof0.1|d1024": {
+   "n": 50,
+   "rho_f": 0.1,
+   "d": 1024,
+   "G": 60
+  },
+  "e2|n50|rhof0.2|d4": {
+   "n": 50,
+   "rho_f": 0.2,
+   "d": 4,
+   "G": 60
+  },
+  "e2|n50|rhof0.2|d16": {
+   "n": 50,
+   "rho_f": 0.2,
+   "d": 16,
+   "G": 60
+  },
+  "e2|n50|rhof0.2|d64": {
+   "n": 50,
+   "rho_f": 0.2,
+   "d": 64,
+   "G": 60
+  },
+  "e2|n50|rhof0.2|d256": {
+   "n": 50,
+   "rho_f": 0.2,
+   "d": 256,
+   "G": 60
+  },
+  "e2|n50|rhof0.2|d1024": {
+   "n": 50,
+   "rho_f": 0.2,
+   "d": 1024,
+   "G": 60
+  },
+  "e2|n50|rhof0.3|d4": {
+   "n": 50,
+   "rho_f": 0.3,
+   "d": 4,
+   "G": 60
+  },
+  "e2|n50|rhof0.3|d16": {
+   "n": 50,
+   "rho_f": 0.3,
+   "d": 16,
+   "G": 60
+  },
+  "e2|n50|rhof0.3|d64": {
+   "n": 50,
+   "rho_f": 0.3,
+   "d": 64,
+   "G": 60
+  },
+  "e2|n50|rhof0.3|d256": {
+   "n": 50,
+   "rho_f": 0.3,
+   "d": 256,
+   "G": 60
+  },
+  "e2|n50|rhof0.3|d1024": {
+   "n": 50,
+   "rho_f": 0.3,
+   "d": 1024,
+   "G": 60
+  },
+  "e2|n50|rhof0.6|d4": {
+   "n": 50,
+   "rho_f": 0.6,
+   "d": 4,
+   "G": 60
+  },
+  "e2|n50|rhof0.6|d16": {
+   "n": 50,
+   "rho_f": 0.6,
+   "d": 16,
+   "G": 60
+  },
+  "e2|n50|rhof0.6|d64": {
+   "n": 50,
+   "rho_f": 0.6,
+   "d": 64,
+   "G": 60
+  },
+  "e2|n50|rhof0.6|d256": {
+   "n": 50,
+   "rho_f": 0.6,
+   "d": 256,
+   "G": 60
+  },
+  "e2|n50|rhof0.6|d1024": {
+   "n": 50,
+   "rho_f": 0.6,
+   "d": 1024,
+   "G": 60
+  },
+  "e3|breakhis_convnext_tiny_s42_std_r0": {
+   "cell": "breakhis_convnext_tiny_s42_std_r0"
+  },
+  "e3|breakhis_convnext_tiny_s42_std_r1": {
+   "cell": "breakhis_convnext_tiny_s42_std_r1"
+  },
+  "e3|breakhis_convnext_tiny_s42_std_r2": {
+   "cell": "breakhis_convnext_tiny_s42_std_r2"
+  },
+  "e3|breakhis_convnext_tiny_s42_std_r3": {
+   "cell": "breakhis_convnext_tiny_s42_std_r3"
+  },
+  "e3|breakhis_convnext_tiny_s42_std_r4": {
+   "cell": "breakhis_convnext_tiny_s42_std_r4"
+  },
+  "e3|breakhis_convnext_tiny_s43_std_r0": {
+   "cell": "breakhis_convnext_tiny_s43_std_r0"
+  },
+  "e3|breakhis_convnext_tiny_s43_std_r1": {
+   "cell": "breakhis_convnext_tiny_s43_std_r1"
+  },
+  "e3|breakhis_convnext_tiny_s43_std_r2": {
+   "cell": "breakhis_convnext_tiny_s43_std_r2"
+  },
+  "e3|breakhis_convnext_tiny_s43_std_r3": {
+   "cell": "breakhis_convnext_tiny_s43_std_r3"
+  },
+  "e3|breakhis_convnext_tiny_s43_std_r4": {
+   "cell": "breakhis_convnext_tiny_s43_std_r4"
+  },
+  "e3|breakhis_densenet121_s42_std_r0": {
+   "cell": "breakhis_densenet121_s42_std_r0"
+  },
+  "e3|breakhis_densenet121_s42_std_r1": {
+   "cell": "breakhis_densenet121_s42_std_r1"
+  },
+  "e3|breakhis_densenet121_s42_std_r2": {
+   "cell": "breakhis_densenet121_s42_std_r2"
+  },
+  "e3|breakhis_densenet121_s42_std_r3": {
+   "cell": "breakhis_densenet121_s42_std_r3"
+  },
+  "e3|breakhis_densenet121_s42_std_r4": {
+   "cell": "breakhis_densenet121_s42_std_r4"
+  },
+  "e3|breakhis_densenet121_s43_std_r0": {
+   "cell": "breakhis_densenet121_s43_std_r0"
+  },
+  "e3|breakhis_densenet121_s43_std_r1": {
+   "cell": "breakhis_densenet121_s43_std_r1"
+  },
+  "e3|breakhis_densenet121_s43_std_r2": {
+   "cell": "breakhis_densenet121_s43_std_r2"
+  },
+  "e3|breakhis_densenet121_s43_std_r3": {
+   "cell": "breakhis_densenet121_s43_std_r3"
+  },
+  "e3|breakhis_densenet121_s43_std_r4": {
+   "cell": "breakhis_densenet121_s43_std_r4"
+  },
+  "e3|breakhis_effb3_s42_std_r0": {
+   "cell": "breakhis_effb3_s42_std_r0"
+  },
+  "e3|breakhis_effb3_s42_std_r1": {
+   "cell": "breakhis_effb3_s42_std_r1"
+  },
+  "e3|breakhis_effb3_s42_std_r2": {
+   "cell": "breakhis_effb3_s42_std_r2"
+  },
+  "e3|breakhis_effb3_s42_std_r3": {
+   "cell": "breakhis_effb3_s42_std_r3"
+  },
+  "e3|breakhis_effb3_s42_std_r4": {
+   "cell": "breakhis_effb3_s42_std_r4"
+  },
+  "e3|breakhis_efficientnet_v2_s_s42_std_r0": {
+   "cell": "breakhis_efficientnet_v2_s_s42_std_r0"
+  },
+  "e3|breakhis_efficientnet_v2_s_s42_std_r1": {
+   "cell": "breakhis_efficientnet_v2_s_s42_std_r1"
+  },
+  "e3|breakhis_efficientnet_v2_s_s42_std_r2": {
+   "cell": "breakhis_efficientnet_v2_s_s42_std_r2"
+  },
+  "e3|breakhis_efficientnet_v2_s_s42_std_r3": {
+   "cell": "breakhis_efficientnet_v2_s_s42_std_r3"
+  },
+  "e3|breakhis_efficientnet_v2_s_s42_std_r4": {
+   "cell": "breakhis_efficientnet_v2_s_s42_std_r4"
+  },
+  "e3|breakhis_fm_conch_v1_5_s42_std_r0": {
+   "cell": "breakhis_fm_conch_v1_5_s42_std_r0"
+  },
+  "e3|breakhis_fm_conch_v1_5_s42_std_r1": {
+   "cell": "breakhis_fm_conch_v1_5_s42_std_r1"
+  },
+  "e3|breakhis_fm_conch_v1_5_s42_std_r2": {
+   "cell": "breakhis_fm_conch_v1_5_s42_std_r2"
+  },
+  "e3|breakhis_fm_conch_v1_5_s42_std_r3": {
+   "cell": "breakhis_fm_conch_v1_5_s42_std_r3"
+  },
+  "e3|breakhis_fm_conch_v1_5_s42_std_r4": {
+   "cell": "breakhis_fm_conch_v1_5_s42_std_r4"
+  },
+  "e3|breakhis_fm_dinov2_vitb14_s42_std_r0": {
+   "cell": "breakhis_fm_dinov2_vitb14_s42_std_r0"
+  },
+  "e3|breakhis_fm_dinov2_vitb14_s42_std_r1": {
+   "cell": "breakhis_fm_dinov2_vitb14_s42_std_r1"
+  },
+  "e3|breakhis_fm_dinov2_vitb14_s42_std_r2": {
+   "cell": "breakhis_fm_dinov2_vitb14_s42_std_r2"
+  },
+  "e3|breakhis_fm_dinov2_vitb14_s42_std_r3": {
+   "cell": "breakhis_fm_dinov2_vitb14_s42_std_r3"
+  },
+  "e3|breakhis_fm_dinov2_vitb14_s42_std_r4": {
+   "cell": "breakhis_fm_dinov2_vitb14_s42_std_r4"
+  },
+  "e3|breakhis_fm_dinov2_vitl14_s42_std_r0": {
+   "cell": "breakhis_fm_dinov2_vitl14_s42_std_r0"
+  },
+  "e3|breakhis_fm_dinov2_vitl14_s42_std_r1": {
+   "cell": "breakhis_fm_dinov2_vitl14_s42_std_r1"
+  },
+  "e3|breakhis_fm_dinov2_vitl14_s42_std_r2": {
+   "cell": "breakhis_fm_dinov2_vitl14_s42_std_r2"
+  },
+  "e3|breakhis_fm_dinov2_vitl14_s42_std_r3": {
+   "cell": "breakhis_fm_dinov2_vitl14_s42_std_r3"
+  },
+  "e3|breakhis_fm_dinov2_vitl14_s42_std_r4": {
+   "cell": "breakhis_fm_dinov2_vitl14_s42_std_r4"
+  },
+  "e3|breakhis_fm_uni_s42_std_r0": {
+   "cell": "breakhis_fm_uni_s42_std_r0"
+  },
+  "e3|breakhis_fm_uni_s42_std_r1": {
+   "cell": "breakhis_fm_uni_s42_std_r1"
+  },
+  "e3|breakhis_fm_uni_s42_std_r2": {
+   "cell": "breakhis_fm_uni_s42_std_r2"
+  },
+  "e3|breakhis_fm_uni_s42_std_r3": {
+   "cell": "breakhis_fm_uni_s42_std_r3"
+  },
+  "e3|breakhis_fm_uni_s42_std_r4": {
+   "cell": "breakhis_fm_uni_s42_std_r4"
+  },
+  "e3|breakhis_fm_virchow2_s42_std_r0": {
+   "cell": "breakhis_fm_virchow2_s42_std_r0"
+  },
+  "e3|breakhis_fm_virchow2_s42_std_r1": {
+   "cell": "breakhis_fm_virchow2_s42_std_r1"
+  },
+  "e3|breakhis_fm_virchow2_s42_std_r2": {
+   "cell": "breakhis_fm_virchow2_s42_std_r2"
+  },
+  "e3|breakhis_fm_virchow2_s42_std_r3": {
+   "cell": "breakhis_fm_virchow2_s42_std_r3"
+  },
+  "e3|breakhis_fm_virchow2_s42_std_r4": {
+   "cell": "breakhis_fm_virchow2_s42_std_r4"
+  },
+  "e3|breakhis_mobilenet_v3_large_s42_std_r0": {
+   "cell": "breakhis_mobilenet_v3_large_s42_std_r0"
+  },
+  "e3|breakhis_mobilenet_v3_large_s42_std_r1": {
+   "cell": "breakhis_mobilenet_v3_large_s42_std_r1"
+  },
+  "e3|breakhis_mobilenet_v3_large_s42_std_r2": {
+   "cell": "breakhis_mobilenet_v3_large_s42_std_r2"
+  },
+  "e3|breakhis_mobilenet_v3_large_s42_std_r3": {
+   "cell": "breakhis_mobilenet_v3_large_s42_std_r3"
+  },
+  "e3|breakhis_mobilenet_v3_large_s42_std_r4": {
+   "cell": "breakhis_mobilenet_v3_large_s42_std_r4"
+  },
+  "e3|breakhis_regnet_y_3_2gf_s42_std_r0": {
+   "cell": "breakhis_regnet_y_3_2gf_s42_std_r0"
+  },
+  "e3|breakhis_regnet_y_3_2gf_s42_std_r1": {
+   "cell": "breakhis_regnet_y_3_2gf_s42_std_r1"
+  },
+  "e3|breakhis_regnet_y_3_2gf_s42_std_r2": {
+   "cell": "breakhis_regnet_y_3_2gf_s42_std_r2"
+  },
+  "e3|breakhis_regnet_y_3_2gf_s42_std_r3": {
+   "cell": "breakhis_regnet_y_3_2gf_s42_std_r3"
+  },
+  "e3|breakhis_regnet_y_3_2gf_s42_std_r4": {
+   "cell": "breakhis_regnet_y_3_2gf_s42_std_r4"
+  },
+  "e3|breakhis_resnet18_s42_std_r0": {
+   "cell": "breakhis_resnet18_s42_std_r0"
+  },
+  "e3|breakhis_resnet18_s42_std_r1": {
+   "cell": "breakhis_resnet18_s42_std_r1"
+  },
+  "e3|breakhis_resnet18_s42_std_r2": {
+   "cell": "breakhis_resnet18_s42_std_r2"
+  },
+  "e3|breakhis_resnet18_s42_std_r3": {
+   "cell": "breakhis_resnet18_s42_std_r3"
+  },
+  "e3|breakhis_resnet18_s42_std_r4": {
+   "cell": "breakhis_resnet18_s42_std_r4"
+  },
+  "e3|breakhis_resnet18_s43_std_r0": {
+   "cell": "breakhis_resnet18_s43_std_r0"
+  },
+  "e3|breakhis_resnet18_s43_std_r1": {
+   "cell": "breakhis_resnet18_s43_std_r1"
+  },
+  "e3|breakhis_resnet18_s43_std_r2": {
+   "cell": "breakhis_resnet18_s43_std_r2"
+  },
+  "e3|breakhis_resnet18_s43_std_r3": {
+   "cell": "breakhis_resnet18_s43_std_r3"
+  },
+  "e3|breakhis_resnet18_s43_std_r4": {
+   "cell": "breakhis_resnet18_s43_std_r4"
+  },
+  "e3|breakhis_resnet50_s42_std_r0": {
+   "cell": "breakhis_resnet50_s42_std_r0"
+  },
+  "e3|breakhis_resnet50_s42_std_r1": {
+   "cell": "breakhis_resnet50_s42_std_r1"
+  },
+  "e3|breakhis_resnet50_s42_std_r2": {
+   "cell": "breakhis_resnet50_s42_std_r2"
+  },
+  "e3|breakhis_resnet50_s42_std_r3": {
+   "cell": "breakhis_resnet50_s42_std_r3"
+  },
+  "e3|breakhis_resnet50_s42_std_r4": {
+   "cell": "breakhis_resnet50_s42_std_r4"
+  },
+  "e3|breakhis_resnet50_s43_std_r0": {
+   "cell": "breakhis_resnet50_s43_std_r0"
+  },
+  "e3|breakhis_resnet50_s43_std_r1": {
+   "cell": "breakhis_resnet50_s43_std_r1"
+  },
+  "e3|breakhis_resnet50_s43_std_r2": {
+   "cell": "breakhis_resnet50_s43_std_r2"
+  },
+  "e3|breakhis_resnet50_s43_std_r3": {
+   "cell": "breakhis_resnet50_s43_std_r3"
+  },
+  "e3|breakhis_resnet50_s43_std_r4": {
+   "cell": "breakhis_resnet50_s43_std_r4"
+  },
+  "e3|camelyon_conch_v1_5_s42": {
+   "cell": "camelyon_conch_v1_5_s42"
+  },
+  "e3|camelyon_convnext_tiny_s42": {
+   "cell": "camelyon_convnext_tiny_s42"
+  },
+  "e3|camelyon_densenet121_s42": {
+   "cell": "camelyon_densenet121_s42"
+  },
+  "e3|camelyon_dinov2_vitb14_s42": {
+   "cell": "camelyon_dinov2_vitb14_s42"
+  },
+  "e3|camelyon_dinov2_vitl14_s42": {
+   "cell": "camelyon_dinov2_vitl14_s42"
+  },
+  "e3|camelyon_effb3_s42": {
+   "cell": "camelyon_effb3_s42"
+  },
+  "e3|camelyon_efficientnet_v2_s_s42": {
+   "cell": "camelyon_efficientnet_v2_s_s42"
+  },
+  "e3|camelyon_mobilenet_v3_large_s42": {
+   "cell": "camelyon_mobilenet_v3_large_s42"
+  },
+  "e3|camelyon_regnet_y_3_2gf_s42": {
+   "cell": "camelyon_regnet_y_3_2gf_s42"
+  },
+  "e3|camelyon_resnet18_s42": {
+   "cell": "camelyon_resnet18_s42"
+  },
+  "e3|camelyon_resnet50_s42": {
+   "cell": "camelyon_resnet50_s42"
+  },
+  "e3|camelyon_uni_s42": {
+   "cell": "camelyon_uni_s42"
+  },
+  "e3|camelyon_virchow2_s42": {
+   "cell": "camelyon_virchow2_s42"
+  },
+  "e3|dermamnist_convnext_tiny_s42_std": {
+   "cell": "dermamnist_convnext_tiny_s42_std"
+  },
+  "e3|dermamnist_convnext_tiny_s43_std": {
+   "cell": "dermamnist_convnext_tiny_s43_std"
+  },
+  "e3|dermamnist_densenet121_s42_std": {
+   "cell": "dermamnist_densenet121_s42_std"
+  },
+  "e3|dermamnist_densenet121_s43_std": {
+   "cell": "dermamnist_densenet121_s43_std"
+  },
+  "e3|dermamnist_effb3_s42_std": {
+   "cell": "dermamnist_effb3_s42_std"
+  },
+  "e3|dermamnist_efficientnet_v2_s_s42_std": {
+   "cell": "dermamnist_efficientnet_v2_s_s42_std"
+  },
+  "e3|dermamnist_fm_conch_v1_5_s42_std": {
+   "cell": "dermamnist_fm_conch_v1_5_s42_std"
+  },
+  "e3|dermamnist_fm_dinov2_vitb14_s42_std": {
+   "cell": "dermamnist_fm_dinov2_vitb14_s42_std"
+  },
+  "e3|dermamnist_fm_dinov2_vitl14_s42_std": {
+   "cell": "dermamnist_fm_dinov2_vitl14_s42_std"
+  },
+  "e3|dermamnist_fm_uni_s42_std": {
+   "cell": "dermamnist_fm_uni_s42_std"
+  },
+  "e3|dermamnist_fm_virchow2_s42_std": {
+   "cell": "dermamnist_fm_virchow2_s42_std"
+  },
+  "e3|dermamnist_mobilenet_v3_large_s42_std": {
+   "cell": "dermamnist_mobilenet_v3_large_s42_std"
+  },
+  "e3|dermamnist_regnet_y_3_2gf_s42_std": {
+   "cell": "dermamnist_regnet_y_3_2gf_s42_std"
+  },
+  "e3|dermamnist_resnet18_s42_std": {
+   "cell": "dermamnist_resnet18_s42_std"
+  },
+  "e3|dermamnist_resnet18_s43_std": {
+   "cell": "dermamnist_resnet18_s43_std"
+  },
+  "e3|dermamnist_resnet50_s42_std": {
+   "cell": "dermamnist_resnet50_s42_std"
+  },
+  "e3|dermamnist_resnet50_s43_std": {
+   "cell": "dermamnist_resnet50_s43_std"
+  },
+  "e3|isic2019_convnext_tiny_s42_std": {
+   "cell": "isic2019_convnext_tiny_s42_std"
+  },
+  "e3|isic2019_convnext_tiny_s43_std": {
+   "cell": "isic2019_convnext_tiny_s43_std"
+  },
+  "e3|isic2019_densenet121_s42_std": {
+   "cell": "isic2019_densenet121_s42_std"
+  },
+  "e3|isic2019_densenet121_s43_std": {
+   "cell": "isic2019_densenet121_s43_std"
+  },
+  "e3|isic2019_effb3_s42_std": {
+   "cell": "isic2019_effb3_s42_std"
+  },
+  "e3|isic2019_efficientnet_v2_s_s42_std": {
+   "cell": "isic2019_efficientnet_v2_s_s42_std"
+  },
+  "e3|isic2019_fm_conch_v1_5_s42_std": {
+   "cell": "isic2019_fm_conch_v1_5_s42_std"
+  },
+  "e3|isic2019_fm_dinov2_vitb14_s42_std": {
+   "cell": "isic2019_fm_dinov2_vitb14_s42_std"
+  },
+  "e3|isic2019_fm_dinov2_vitl14_s42_std": {
+   "cell": "isic2019_fm_dinov2_vitl14_s42_std"
+  },
+  "e3|isic2019_fm_uni_s42_std": {
+   "cell": "isic2019_fm_uni_s42_std"
+  },
+  "e3|isic2019_fm_virchow2_s42_std": {
+   "cell": "isic2019_fm_virchow2_s42_std"
+  },
+  "e3|isic2019_mobilenet_v3_large_s42_std": {
+   "cell": "isic2019_mobilenet_v3_large_s42_std"
+  },
+  "e3|isic2019_regnet_y_3_2gf_s42_std": {
+   "cell": "isic2019_regnet_y_3_2gf_s42_std"
+  },
+  "e3|isic2019_resnet18_s42_std": {
+   "cell": "isic2019_resnet18_s42_std"
+  },
+  "e3|isic2019_resnet18_s43_std": {
+   "cell": "isic2019_resnet18_s43_std"
+  },
+  "e3|isic2019_resnet50_s42_std": {
+   "cell": "isic2019_resnet50_s42_std"
+  },
+  "e3|isic2019_resnet50_s43_std": {
+   "cell": "isic2019_resnet50_s43_std"
+  },
+  "e3|kermany_convnext_tiny_s42_std": {
+   "cell": "kermany_convnext_tiny_s42_std"
+  },
+  "e3|kermany_convnext_tiny_s43_std": {
+   "cell": "kermany_convnext_tiny_s43_std"
+  },
+  "e3|kermany_densenet121_s42_std": {
+   "cell": "kermany_densenet121_s42_std"
+  },
+  "e3|kermany_densenet121_s43_std": {
+   "cell": "kermany_densenet121_s43_std"
+  },
+  "e3|kermany_effb3_s42_std": {
+   "cell": "kermany_effb3_s42_std"
+  },
+  "e3|kermany_efficientnet_v2_s_s42_std": {
+   "cell": "kermany_efficientnet_v2_s_s42_std"
+  },
+  "e3|kermany_mobilenet_v3_large_s42_std": {
+   "cell": "kermany_mobilenet_v3_large_s42_std"
+  },
+  "e3|kermany_regnet_y_3_2gf_s42_std": {
+   "cell": "kermany_regnet_y_3_2gf_s42_std"
+  },
+  "e3|kermany_resnet18_s42_std": {
+   "cell": "kermany_resnet18_s42_std"
+  },
+  "e3|kermany_resnet18_s43_std": {
+   "cell": "kermany_resnet18_s43_std"
+  },
+  "e3|kermany_resnet50_s42_std": {
+   "cell": "kermany_resnet50_s42_std"
+  },
+  "e3|kermany_resnet50_s43_std": {
+   "cell": "kermany_resnet50_s43_std"
+  },
+  "e4|a|conch_v1_5|n20": {
+   "backbone": "conch_v1_5",
+   "regime": "a",
+   "n": 20
+  },
+  "e4|a|conch_v1_5|n100": {
+   "backbone": "conch_v1_5",
+   "regime": "a",
+   "n": 100
+  },
+  "e4|ap|conch_v1_5": {
+   "backbone": "conch_v1_5",
+   "regime": "ap"
+  },
+  "e4|a|convnext_tiny|n20": {
+   "backbone": "convnext_tiny",
+   "regime": "a",
+   "n": 20
+  },
+  "e4|a|convnext_tiny|n100": {
+   "backbone": "convnext_tiny",
+   "regime": "a",
+   "n": 100
+  },
+  "e4|ap|convnext_tiny": {
+   "backbone": "convnext_tiny",
+   "regime": "ap"
+  },
+  "e4|a|densenet121|n20": {
+   "backbone": "densenet121",
+   "regime": "a",
+   "n": 20
+  },
+  "e4|a|densenet121|n100": {
+   "backbone": "densenet121",
+   "regime": "a",
+   "n": 100
+  },
+  "e4|ap|densenet121": {
+   "backbone": "densenet121",
+   "regime": "ap"
+  },
+  "e4|a|dinov2_vitb14|n20": {
+   "backbone": "dinov2_vitb14",
+   "regime": "a",
+   "n": 20
+  },
+  "e4|a|dinov2_vitb14|n100": {
+   "backbone": "dinov2_vitb14",
+   "regime": "a",
+   "n": 100
+  },
+  "e4|ap|dinov2_vitb14": {
+   "backbone": "dinov2_vitb14",
+   "regime": "ap"
+  },
+  "e4|a|dinov2_vitl14|n20": {
+   "backbone": "dinov2_vitl14",
+   "regime": "a",
+   "n": 20
+  },
+  "e4|a|dinov2_vitl14|n100": {
+   "backbone": "dinov2_vitl14",
+   "regime": "a",
+   "n": 100
+  },
+  "e4|ap|dinov2_vitl14": {
+   "backbone": "dinov2_vitl14",
+   "regime": "ap"
+  },
+  "e4|a|effb3|n20": {
+   "backbone": "effb3",
+   "regime": "a",
+   "n": 20
+  },
+  "e4|a|effb3|n100": {
+   "backbone": "effb3",
+   "regime": "a",
+   "n": 100
+  },
+  "e4|ap|effb3": {
+   "backbone": "effb3",
+   "regime": "ap"
+  },
+  "e4|a|efficientnet_v2_s|n20": {
+   "backbone": "efficientnet_v2_s",
+   "regime": "a",
+   "n": 20
+  },
+  "e4|a|efficientnet_v2_s|n100": {
+   "backbone": "efficientnet_v2_s",
+   "regime": "a",
+   "n": 100
+  },
+  "e4|ap|efficientnet_v2_s": {
+   "backbone": "efficientnet_v2_s",
+   "regime": "ap"
+  },
+  "e4|a|mobilenet_v3_large|n20": {
+   "backbone": "mobilenet_v3_large",
+   "regime": "a",
+   "n": 20
+  },
+  "e4|a|mobilenet_v3_large|n100": {
+   "backbone": "mobilenet_v3_large",
+   "regime": "a",
+   "n": 100
+  },
+  "e4|ap|mobilenet_v3_large": {
+   "backbone": "mobilenet_v3_large",
+   "regime": "ap"
+  },
+  "e4|a|regnet_y_3_2gf|n20": {
+   "backbone": "regnet_y_3_2gf",
+   "regime": "a",
+   "n": 20
+  },
+  "e4|a|regnet_y_3_2gf|n100": {
+   "backbone": "regnet_y_3_2gf",
+   "regime": "a",
+   "n": 100
+  },
+  "e4|ap|regnet_y_3_2gf": {
+   "backbone": "regnet_y_3_2gf",
+   "regime": "ap"
+  },
+  "e4|a|resnet18|n20": {
+   "backbone": "resnet18",
+   "regime": "a",
+   "n": 20
+  },
+  "e4|a|resnet18|n100": {
+   "backbone": "resnet18",
+   "regime": "a",
+   "n": 100
+  },
+  "e4|ap|resnet18": {
+   "backbone": "resnet18",
+   "regime": "ap"
+  },
+  "e4|a|resnet50|n20": {
+   "backbone": "resnet50",
+   "regime": "a",
+   "n": 20
+  },
+  "e4|a|resnet50|n100": {
+   "backbone": "resnet50",
+   "regime": "a",
+   "n": 100
+  },
+  "e4|ap|resnet50": {
+   "backbone": "resnet50",
+   "regime": "ap"
+  },
+  "e4|a|uni|n20": {
+   "backbone": "uni",
+   "regime": "a",
+   "n": 20
+  },
+  "e4|a|uni|n100": {
+   "backbone": "uni",
+   "regime": "a",
+   "n": 100
+  },
+  "e4|ap|uni": {
+   "backbone": "uni",
+   "regime": "ap"
+  },
+  "e4|a|virchow2|n20": {
+   "backbone": "virchow2",
+   "regime": "a",
+   "n": 20
+  },
+  "e4|a|virchow2|n100": {
+   "backbone": "virchow2",
+   "regime": "a",
+   "n": 100
+  },
+  "e4|ap|virchow2": {
+   "backbone": "virchow2",
+   "regime": "ap"
+  },
+  "e1|b|flag0.3|b1|n5|rho0.05": {
+   "regime": "b",
+   "outcome": "flag0.3",
+   "size": "b1",
+   "n": 5,
+   "rho": 0.05
+  },
+  "e1|b|flag0.3|b1|n5|rho0.2": {
+   "regime": "b",
+   "outcome": "flag0.3",
+   "size": "b1",
+   "n": 5,
+   "rho": 0.2
+  },
+  "e1|b|flag0.3|b1|n20|rho0.05": {
+   "regime": "b",
+   "outcome": "flag0.3",
+   "size": "b1",
+   "n": 20,
+   "rho": 0.05
+  },
+  "e1|b|flag0.3|b1|n20|rho0.2": {
+   "regime": "b",
+   "outcome": "flag0.3",
+   "size": "b1",
+   "n": 20,
+   "rho": 0.2
+  },
+  "e1|b|flag0.3|b1|n50|rho0.05": {
+   "regime": "b",
+   "outcome": "flag0.3",
+   "size": "b1",
+   "n": 50,
+   "rho": 0.05
+  },
+  "e1|b|flag0.3|b1|n50|rho0.2": {
+   "regime": "b",
+   "outcome": "flag0.3",
+   "size": "b1",
+   "n": 50,
+   "rho": 0.2
+  },
+  "e1|b|flag0.3|b2|n5|rho0.05": {
+   "regime": "b",
+   "outcome": "flag0.3",
+   "size": "b2",
+   "n": 5,
+   "rho": 0.05
+  },
+  "e1|b|flag0.3|b2|n5|rho0.2": {
+   "regime": "b",
+   "outcome": "flag0.3",
+   "size": "b2",
+   "n": 5,
+   "rho": 0.2
+  },
+  "e1|b|flag0.3|b2|n20|rho0.05": {
+   "regime": "b",
+   "outcome": "flag0.3",
+   "size": "b2",
+   "n": 20,
+   "rho": 0.05
+  },
+  "e1|b|flag0.3|b2|n20|rho0.2": {
+   "regime": "b",
+   "outcome": "flag0.3",
+   "size": "b2",
+   "n": 20,
+   "rho": 0.2
+  },
+  "e1|b|flag0.3|b2|n50|rho0.05": {
+   "regime": "b",
+   "outcome": "flag0.3",
+   "size": "b2",
+   "n": 50,
+   "rho": 0.05
+  },
+  "e1|b|flag0.3|b2|n50|rho0.2": {
+   "regime": "b",
+   "outcome": "flag0.3",
+   "size": "b2",
+   "n": 50,
+   "rho": 0.2
+  },
+  "e1|b|flag0.3|b3|n5|rho0.05": {
+   "regime": "b",
+   "outcome": "flag0.3",
+   "size": "b3",
+   "n": 5,
+   "rho": 0.05
+  },
+  "e1|b|flag0.3|b3|n5|rho0.2": {
+   "regime": "b",
+   "outcome": "flag0.3",
+   "size": "b3",
+   "n": 5,
+   "rho": 0.2
+  },
+  "e1|b|flag0.3|b3|n20|rho0.05": {
+   "regime": "b",
+   "outcome": "flag0.3",
+   "size": "b3",
+   "n": 20,
+   "rho": 0.05
+  },
+  "e1|b|flag0.3|b3|n20|rho0.2": {
+   "regime": "b",
+   "outcome": "flag0.3",
+   "size": "b3",
+   "n": 20,
+   "rho": 0.2
+  },
+  "e1|b|flag0.3|b3|n50|rho0.05": {
+   "regime": "b",
+   "outcome": "flag0.3",
+   "size": "b3",
+   "n": 50,
+   "rho": 0.05
+  },
+  "e1|b|flag0.3|b3|n50|rho0.2": {
+   "regime": "b",
+   "outcome": "flag0.3",
+   "size": "b3",
+   "n": 50,
+   "rho": 0.2
+  },
+  "e1|b|flag0.05|b1|n5|rho0.05": {
+   "regime": "b",
+   "outcome": "flag0.05",
+   "size": "b1",
+   "n": 5,
+   "rho": 0.05
+  },
+  "e1|b|flag0.05|b1|n5|rho0.2": {
+   "regime": "b",
+   "outcome": "flag0.05",
+   "size": "b1",
+   "n": 5,
+   "rho": 0.2
+  },
+  "e1|b|flag0.05|b1|n20|rho0.05": {
+   "regime": "b",
+   "outcome": "flag0.05",
+   "size": "b1",
+   "n": 20,
+   "rho": 0.05
+  },
+  "e1|b|flag0.05|b1|n20|rho0.2": {
+   "regime": "b",
+   "outcome": "flag0.05",
+   "size": "b1",
+   "n": 20,
+   "rho": 0.2
+  },
+  "e1|b|flag0.05|b1|n50|rho0.05": {
+   "regime": "b",
+   "outcome": "flag0.05",
+   "size": "b1",
+   "n": 50,
+   "rho": 0.05
+  },
+  "e1|b|flag0.05|b1|n50|rho0.2": {
+   "regime": "b",
+   "outcome": "flag0.05",
+   "size": "b1",
+   "n": 50,
+   "rho": 0.2
+  },
+  "e1|b|flag0.05|b2|n5|rho0.05": {
+   "regime": "b",
+   "outcome": "flag0.05",
+   "size": "b2",
+   "n": 5,
+   "rho": 0.05
+  },
+  "e1|b|flag0.05|b2|n5|rho0.2": {
+   "regime": "b",
+   "outcome": "flag0.05",
+   "size": "b2",
+   "n": 5,
+   "rho": 0.2
+  },
+  "e1|b|flag0.05|b2|n20|rho0.05": {
+   "regime": "b",
+   "outcome": "flag0.05",
+   "size": "b2",
+   "n": 20,
+   "rho": 0.05
+  },
+  "e1|b|flag0.05|b2|n20|rho0.2": {
+   "regime": "b",
+   "outcome": "flag0.05",
+   "size": "b2",
+   "n": 20,
+   "rho": 0.2
+  },
+  "e1|b|flag0.05|b2|n50|rho0.05": {
+   "regime": "b",
+   "outcome": "flag0.05",
+   "size": "b2",
+   "n": 50,
+   "rho": 0.05
+  },
+  "e1|b|flag0.05|b2|n50|rho0.2": {
+   "regime": "b",
+   "outcome": "flag0.05",
+   "size": "b2",
+   "n": 50,
+   "rho": 0.2
+  },
+  "e1|b|flag0.05|b3|n5|rho0.05": {
+   "regime": "b",
+   "outcome": "flag0.05",
+   "size": "b3",
+   "n": 5,
+   "rho": 0.05
+  },
+  "e1|b|flag0.05|b3|n5|rho0.2": {
+   "regime": "b",
+   "outcome": "flag0.05",
+   "size": "b3",
+   "n": 5,
+   "rho": 0.2
+  },
+  "e1|b|flag0.05|b3|n20|rho0.05": {
+   "regime": "b",
+   "outcome": "flag0.05",
+   "size": "b3",
+   "n": 20,
+   "rho": 0.05
+  },
+  "e1|b|flag0.05|b3|n20|rho0.2": {
+   "regime": "b",
+   "outcome": "flag0.05",
+   "size": "b3",
+   "n": 20,
+   "rho": 0.2
+  },
+  "e1|b|flag0.05|b3|n50|rho0.05": {
+   "regime": "b",
+   "outcome": "flag0.05",
+   "size": "b3",
+   "n": 50,
+   "rho": 0.05
+  },
+  "e1|b|flag0.05|b3|n50|rho0.2": {
+   "regime": "b",
+   "outcome": "flag0.05",
+   "size": "b3",
+   "n": 50,
+   "rho": 0.2
+  },
+  "e1|b|beta|b1|n5|rho0.05": {
+   "regime": "b",
+   "outcome": "beta",
+   "size": "b1",
+   "n": 5,
+   "rho": 0.05
+  },
+  "e1|b|beta|b1|n5|rho0.2": {
+   "regime": "b",
+   "outcome": "beta",
+   "size": "b1",
+   "n": 5,
+   "rho": 0.2
+  },
+  "e1|b|beta|b1|n20|rho0.05": {
+   "regime": "b",
+   "outcome": "beta",
+   "size": "b1",
+   "n": 20,
+   "rho": 0.05
+  },
+  "e1|b|beta|b1|n20|rho0.2": {
+   "regime": "b",
+   "outcome": "beta",
+   "size": "b1",
+   "n": 20,
+   "rho": 0.2
+  },
+  "e1|b|beta|b1|n50|rho0.05": {
+   "regime": "b",
+   "outcome": "beta",
+   "size": "b1",
+   "n": 50,
+   "rho": 0.05
+  },
+  "e1|b|beta|b1|n50|rho0.2": {
+   "regime": "b",
+   "outcome": "beta",
+   "size": "b1",
+   "n": 50,
+   "rho": 0.2
+  },
+  "e1|b|beta|b2|n5|rho0.05": {
+   "regime": "b",
+   "outcome": "beta",
+   "size": "b2",
+   "n": 5,
+   "rho": 0.05
+  },
+  "e1|b|beta|b2|n5|rho0.2": {
+   "regime": "b",
+   "outcome": "beta",
+   "size": "b2",
+   "n": 5,
+   "rho": 0.2
+  },
+  "e1|b|beta|b2|n20|rho0.05": {
+   "regime": "b",
+   "outcome": "beta",
+   "size": "b2",
+   "n": 20,
+   "rho": 0.05
+  },
+  "e1|b|beta|b2|n20|rho0.2": {
+   "regime": "b",
+   "outcome": "beta",
+   "size": "b2",
+   "n": 20,
+   "rho": 0.2
+  },
+  "e1|b|beta|b2|n50|rho0.05": {
+   "regime": "b",
+   "outcome": "beta",
+   "size": "b2",
+   "n": 50,
+   "rho": 0.05
+  },
+  "e1|b|beta|b2|n50|rho0.2": {
+   "regime": "b",
+   "outcome": "beta",
+   "size": "b2",
+   "n": 50,
+   "rho": 0.2
+  },
+  "e1|b|beta|b3|n5|rho0.05": {
+   "regime": "b",
+   "outcome": "beta",
+   "size": "b3",
+   "n": 5,
+   "rho": 0.05
+  },
+  "e1|b|beta|b3|n5|rho0.2": {
+   "regime": "b",
+   "outcome": "beta",
+   "size": "b3",
+   "n": 5,
+   "rho": 0.2
+  },
+  "e1|b|beta|b3|n20|rho0.05": {
+   "regime": "b",
+   "outcome": "beta",
+   "size": "b3",
+   "n": 20,
+   "rho": 0.05
+  },
+  "e1|b|beta|b3|n20|rho0.2": {
+   "regime": "b",
+   "outcome": "beta",
+   "size": "b3",
+   "n": 20,
+   "rho": 0.2
+  },
+  "e1|b|beta|b3|n50|rho0.05": {
+   "regime": "b",
+   "outcome": "beta",
+   "size": "b3",
+   "n": 50,
+   "rho": 0.05
+  },
+  "e1|b|beta|b3|n50|rho0.2": {
+   "regime": "b",
+   "outcome": "beta",
+   "size": "b3",
+   "n": 50,
+   "rho": 0.2
+  },
+  "e4|b|conch_v1_5": {
+   "backbone": "conch_v1_5",
+   "regime": "b"
+  },
+  "e4|b|convnext_tiny": {
+   "backbone": "convnext_tiny",
+   "regime": "b"
+  },
+  "e4|b|densenet121": {
+   "backbone": "densenet121",
+   "regime": "b"
+  },
+  "e4|b|dinov2_vitb14": {
+   "backbone": "dinov2_vitb14",
+   "regime": "b"
+  },
+  "e4|b|dinov2_vitl14": {
+   "backbone": "dinov2_vitl14",
+   "regime": "b"
+  },
+  "e4|b|effb3": {
+   "backbone": "effb3",
+   "regime": "b"
+  },
+  "e4|b|efficientnet_v2_s": {
+   "backbone": "efficientnet_v2_s",
+   "regime": "b"
+  },
+  "e4|b|mobilenet_v3_large": {
+   "backbone": "mobilenet_v3_large",
+   "regime": "b"
+  },
+  "e4|b|regnet_y_3_2gf": {
+   "backbone": "regnet_y_3_2gf",
+   "regime": "b"
+  },
+  "e4|b|resnet18": {
+   "backbone": "resnet18",
+   "regime": "b"
+  },
+  "e4|b|resnet50": {
+   "backbone": "resnet50",
+   "regime": "b"
+  },
+  "e4|b|uni": {
+   "backbone": "uni",
+   "regime": "b"
+  },
+  "e4|b|virchow2": {
+   "backbone": "virchow2",
+   "regime": "b"
+  }
+ }
+}
