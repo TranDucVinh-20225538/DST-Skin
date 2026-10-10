@@ -1,0 +1,10 @@
+{
+ "n_rows": 52,
+ "n_pass": 52,
+ "failed": [],
+ "s2a_theory_within_1pct": true,
+ "pass_C0": true,
+ "seconds": 130.90265941619873,
+ "gpu": "NVIDIA A100-SXM4-80GB",
+ "precommit": "e326d392fd42ced26fbebe6c0a38ed983267d187"
+}
