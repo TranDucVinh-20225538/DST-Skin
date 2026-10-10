@@ -14,4 +14,4 @@ brute-force kNN 50k × 100k × 2560 with top-200 1.9 s; full Camelyon 2-fold kNN
 | G | G1 frozen ≤ 5; G2 24 fine-tunes (first-run measurement replaces this) | 45–70 | 80 |
 | H | H1 twins of the A1 pipeline, H3 1,000 datasets per design cell | 2–6 | 10 |
 
-Item 0 actual: SLURM job 65255, 1 × A100, ~51 min wall clock (most of it the CPU sklearn reference in the kNN equality check while the GPU was held) ≈ 0.85 GPU-h (to be confirmed from `sacct`), within the cap of 1.
+Item 0 actual: SLURM job 65255, 1 × A100, 54:52 wall clock from `sacct` (most of it the CPU sklearn reference in the kNN equality check while the GPU was held) = 0.91 GPU-h, within the cap of 1.

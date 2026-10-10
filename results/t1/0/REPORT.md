@@ -58,7 +58,7 @@ Paper_2fold Δ through the package's own `_fit_scorer`, R3 GPU scorers (`scripts
 
 ## GPU-hours and wall clock
 
-Estimated 0.5, cap 1. Actual: SLURM job 65255, 1 × A100, ≈ 51 min wall clock ≈ 0.85 GPU-h (`sacct` confirmation pending).
+Estimated 0.5, cap 1. Actual: SLURM job 65255, 1 × A100, 54:52 wall clock (`sacct`) = 0.91 GPU-h.
 Deviations: 8 (`DEVIATIONS.md`).
 
 **Verdict: PASS**
