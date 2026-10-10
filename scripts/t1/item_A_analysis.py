@@ -302,6 +302,23 @@ def a2():
                           D={b: (round(v["mean_D"], 5), round(v["ci_lo"], 5), round(v["ci_hi"], 5)) for b, v in D.items()}), indent=1))
 
 
+def a3():
+    rows = []
+    for p in sorted(glob.glob(str(RAW / "a3_*.json"))):
+        c = json.load(open(p))
+        rows += c["folds"]
+    write_csv(OUT / "a3_audit.csv", rows)
+    cells = sorted({r["cell_id"] for r in rows})
+    flags = {k: sorted({r["cell_id"] for r in rows if r[k]}) for k in ("flag_r_sat_ge_0_9", "flag_delta_ge_0_5", "flag_N_lt_5d")}
+    summ = dict(n_cells=len(cells), n_rows=len(rows), flags={k: dict(n_cells=len(v), cells=v) for k, v in flags.items()},
+                median_rel_se_rho_w=float(np.median([r["se_rho_w"] / abs(r["rho_w"]) for r in rows if r["rho_w"] != 0])),
+                median_rel_se_dq_pred=float(np.median([r["se_dq_pred"] / abs(r["dq_pred"]) for r in rows if r["dq_pred"] != 0])),
+                median_n_w_over_n_bar=float(np.median([r["n_w_over_n_bar"] for r in rows])),
+                max_abs_conversion_effect=float(max(abs(r["dq_pred"] / r["dq_pred_without_conversion"] - 1) for r in rows)))
+    CM.atomic_write_text(OUT / "a3_summary.json", json.dumps(summ, indent=1))
+    print(json.dumps({k: (v if k != "flags" else {kk: vv["n_cells"] for kk, vv in v.items()}) for k, v in summ.items()}, indent=1))
+
+
 def holm(p):
     p = np.asarray(p, float)
     o = np.argsort(p)
@@ -368,7 +385,7 @@ def final():
         verdict = "NO-GO"
     out = dict(verdict=verdict, status=status, a_ii_alt_reading_cell=a_ii_alt, a_iv_alt_reading_cell_fold=a_iv_alt,
                verdict_reading_dependent=bool(a_ii != a_ii_alt or a_iv != a_iv_alt), r_sat_frac_ge_0_9=s1["r_sat_frac_ge_0_9"],
-               a0={k: v.get("pass", v.get("pass_")) for k, v in a0.items()})
+               a0={k: v[f"pass_{k.upper()[0]}{k[1:]}"] for k, v in a0.items()})
     CM.atomic_write_text(OUT / "verdict.json", json.dumps(out, indent=1))
     print(json.dumps(out, indent=1))
 
@@ -418,4 +435,4 @@ def figures():
 
 
 if __name__ == "__main__":
-    {"a1": a1, "a2": a2, "final": final, "figures": figures}[sys.argv[1]]()
+    {"a1": a1, "a2": a2, "a3": a3, "final": final, "figures": figures}[sys.argv[1]]()

@@ -39,7 +39,18 @@ def units_B():
     return {0: [f"b|{c}" for c in registry_cells()]}
 
 
-UNITS = {"A": units_A, "B": units_B}
+def units_C():
+    import c_design
+    return {0: sorted(c_design.all_units())}
+
+
+def params_C():
+    import c_design
+    return c_design.all_units()
+
+
+UNITS = {"A": units_A, "B": units_B, "C": units_C}
+PARAMS = {"C": params_C}
 
 
 def work_list(item, j, n_lists, ids):
@@ -63,8 +74,11 @@ def main(item):
                status=f"Written before any item-{item} computation (no criterion, threshold, seed or grid is changed).",
                unit_id_formats={"A": "a1|<cell_id> (A1 per registry cell), a3|<cell_id> (A3 audit per registry cell), "
                                      "a2|<backbone>|f<fold>|G<G'>|n<n'>|r<repeat> (A2, 13 Camelyon backbones, seed 42)",
-                               "B": "b|<cell_id> (one unit = both paper_2fold folds of one registry cell: kNN k in {1,5,10,20,50,100,200}, descriptors, MTS)"}.get(item),
+                               "B": "b|<cell_id> (one unit = both paper_2fold folds of one registry cell: kNN k in {1,5,10,20,50,100,200}, descriptors, MTS)",
+                               "C": "see the docstring of scripts/t1/c_design.py (c0|..., c1|<i>, c3|..., c4tv|..., c4sc|..., c5|<variant>|<i>); parameters of every unit in unit_params"}.get(item),
                work_lists=wl)
+    if item in PARAMS:
+        rec["unit_params"] = PARAMS[item]()
     out = CM.RES / f"PRECOMMIT_T1_addendum_{item}.json"
     if out.exists():
         sys.exit(f"refusing to overwrite {out}")
