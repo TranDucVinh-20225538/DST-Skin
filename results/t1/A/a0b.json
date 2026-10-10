@@ -1,0 +1,43 @@
+{
+ "rows": [
+  {
+   "cell": "camelyon_resnet50_s42",
+   "scorer": "mahalanobis_l2",
+   "auroc_seen": 0.9267522329106168,
+   "auroc_unseen": 0.71115579206358,
+   "delta_own": 0.21559644084703677,
+   "delta_r3_paper_ci": 0.2155964413804383,
+   "delta_r3_trackA": 0.2155964362356422,
+   "abs_diff": 5.334015173996676e-10,
+   "pass_": true,
+   "seconds": 299.31266474723816
+  },
+  {
+   "cell": "camelyon_uni_s42",
+   "scorer": "mahalanobis_l2",
+   "auroc_seen": 0.999449147270034,
+   "auroc_unseen": 0.9917829858808285,
+   "delta_own": 0.007666161389205506,
+   "delta_r3_paper_ci": 0.0076661613892055,
+   "delta_r3_trackA": 0.0076661598007626,
+   "abs_diff": 6.071532165918825e-18,
+   "pass_": true,
+   "seconds": 5.805653095245361
+  },
+  {
+   "cell": "camelyon_dinov2_vitb14_s42",
+   "scorer": "mahalanobis_l2",
+   "auroc_seen": 0.7221507450025189,
+   "auroc_unseen": 0.6548682893460565,
+   "delta_own": 0.0672824556564624,
+   "delta_r3_paper_ci": 0.0672824556564624,
+   "delta_r3_trackA": 0.0672824540739006,
+   "abs_diff": 0.0,
+   "pass_": true,
+   "seconds": 5.701603651046753
+  }
+ ],
+ "pass_A0b": true,
+ "rule": "|own Delta - R3 item-1 paper_ci Delta| <= 1e-6 (S2 if not)",
+ "reference": "results/r3/1/paper_ci_v2.csv column delta (R3 item-1 paper_ci.csv values, seen = strict)"
+}

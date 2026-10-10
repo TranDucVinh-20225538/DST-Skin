@@ -1,0 +1,15 @@
+{
+ "cell": "camelyon_uni_s42",
+ "fold": 0,
+ "N": 97099,
+ "d": 1024,
+ "delta_hat": 0.0003222562569028876,
+ "mu_hat": 0.0007680004643501996,
+ "lam_eff": 0.00032236013947480947,
+ "rel_frobenius": 1.1793907913908271e-12,
+ "rel_max_abs": 5.397903250925908e-13,
+ "tolerance": 1e-09,
+ "pass_A0c": true,
+ "centring": "class-agnostic (Track A mahalanobis_l2 uses one mean; Camelyon caches have no labels)",
+ "note": "S_hat = covariance the scorer centred and fitted (L2-normalised features, divisor N); P_scorer = package MahalanobisL2Scorer.precision_"
+}
