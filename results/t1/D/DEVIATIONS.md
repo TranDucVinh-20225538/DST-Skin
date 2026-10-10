@@ -1,0 +1,18 @@
+# Item D — DEVIATIONS (rule 12)
+
+Who decided: agent (autonomous mode; the "least invasive reading" rule of the user's instructions). None of these changes a
+criterion, threshold, seed or grid.
+
+| id | what | why | effect on criterion | verdict effect |
+|---|---|---|---|---|
+| DD-1 | D1: 16 replicates per configuration and ω (the D2 replicate count); eval m = 5,000 (round(ω m) seen + rest unseen), fit→fit LOO for min(20,000, N) fit points; Δ_full from 4,000 OOD points (O1, c = 2) | the order fixes the replicate count only for D2 | D-i | none known |
+| DD-2 | τ: Youden's J of the flag T < τ for ω = 1 (positive) vs ω = 0 over every replicate of every TRAIN configuration (d ∈ {32, 512, 2048}), primary T on L2-normalised features; frozen in `d1_tau.json` | the order: "chosen on the TRAIN configs as the value maximising Youden's J for ω = 0 vs ω = 1" | D-i | none |
+| DD-3 | D-i on TEST: sensitivity over all replicates with ω ∈ {0.25, 0.5, 1} of the **material** TEST configs; specificity over the ω = 0 replicates of the same material configs | D-i says "on material configs" for both | D-i | none known |
+| DD-4 | D2 CMA-ES: encoded 12-dimensional space in [0, 1]; initial mean = centroid of the 20 worst feasible random configs, initial σ = their mean coordinate SD; infeasible points (Δ_full < 0.02) get fitness AUC + 1 + 10 (0.02 − Δ_full) | the order fixes population, generations, seed and the start set, not the constraint handling | D-ii | none known |
+| DD-5 | D3: per cell × fold, NN² of every seen / unseen eval point computed once; the 50 subsamples (m = min(5,000, \|eval\|)) and the mixtures (m = min(5,000, \|seen\|, \|unseen\|)) are drawn from them; fit LOO subsample shared by all subsamples of a fold | identical statistic, one neighbour search | D-iii | none |
+| DD-6 | D-iii AUC per Camelyon backbone pooled over the backbone's cells (seeds) × 2 folds × 50 subsamples: P(T_unseen > T_seen) + ½ ties | the order: "AUC(T_seen vs T_unseen) per backbone" | D-iii | none known |
+| DD-7 | D3 correlation of T_unseen with Δ_meas (Maha from A1 `cells.csv`, kNN-k50 from B `cells_knn.csv`): LOBO OLS over the 13 Camelyon backbones vs ICC-only (ρ̂_w), unit bootstrap `default_rng(401)` | "LOBO as A1 vs ICC-only baseline" | report only | none |
+| DD-8 | D4: per fold, the fit set split into random halves ignoring groups (pseudo-fit / pseudo-eval); T for 50 subsamples; the permuted-label check is satisfied by construction (T takes no group argument) and recorded as such | order | D4 (implementation check) | none |
+| DD-9 | D5: group-cluster bootstrap with B = 1,000 (eval groups and fit groups resampled independently; fit groups via the LOO subsample's rows), first subsample of the unseen eval; ratio = bootstrap SE / naive SE | the order does not fix B | D5 (post-hoc) | none |
+| DD-10 | D3–D5 runner (`item_D_real.py`) written and launched in stage 3 after D1 / D2 were queued; work-list units `d3|<cell>` / `d4|<cell>` of addendum D in its execution order; D GPU cap 24 h counted over every D raw file | stage order | none | none |
+| DD-11 | At most 4 GPUs held at once | user decision D0-5 | none | none |
