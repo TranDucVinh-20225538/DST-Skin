@@ -1,0 +1,4942 @@
+{
+ "title": "PRECOMMIT T1 addendum: work list(s) of item H (rule 16)",
+ "written_asia_saigon": "2026-10-11T04:19:16+07:00",
+ "precommit_commit": "e326d392fd42ced26fbebe6c0a38ed983267d187",
+ "registry_sha256": "33fc4e902f5f5b1b701a665db5072f395ae9ebe531d7b4c8eb67927763952a92",
+ "status": "Written before any item-H computation (no criterion, threshold, seed or grid is changed).",
+ "unit_id_formats": "hn1|<cell> (H-N1 Gaussian twin), hn3|<cell> (H-N3 identical split), hn2|<cell> (H-N2 one image per group; datasets with >= 500 groups), h2|<cell> (H2 placebo, 20 within-hospital / within-cell permutations), h3|<design>|...|d<d>|rho<rho> (H3 coverage; Camelyon n_g = real slide counts of each fold, medbench design = n_g of fold 0 of the first registry cell (sorted) of each dataset x d); parameters in unit_params",
+ "work_lists": [
+  {
+   "item": "H",
+   "list_index_j": 0,
+   "n_lists": 1,
+   "seed": "SeedSequence([20261010, 8, 16, 0]).spawn(1)[0]",
+   "n_units": 684,
+   "sha256_sorted_ids_newline_joined": "91966a49fe6cea1b80d623424462c9f32c3e1c3fdcd174acc29fed8082e4d9a9",
+   "sorted_ids": [
+    "h2|breakhis_convnext_tiny_s42_std_r0",
+    "h2|breakhis_convnext_tiny_s42_std_r1",
+    "h2|breakhis_convnext_tiny_s42_std_r2",
+    "h2|breakhis_convnext_tiny_s42_std_r3",
+    "h2|breakhis_convnext_tiny_s42_std_r4",
+    "h2|breakhis_convnext_tiny_s43_std_r0",
+    "h2|breakhis_convnext_tiny_s43_std_r1",
+    "h2|breakhis_convnext_tiny_s43_std_r2",
+    "h2|breakhis_convnext_tiny_s43_std_r3",
+    "h2|breakhis_convnext_tiny_s43_std_r4",
+    "h2|breakhis_densenet121_s42_std_r0",
+    "h2|breakhis_densenet121_s42_std_r1",
+    "h2|breakhis_densenet121_s42_std_r2",
+    "h2|breakhis_densenet121_s42_std_r3",
+    "h2|breakhis_densenet121_s42_std_r4",
+    "h2|breakhis_densenet121_s43_std_r0",
+    "h2|breakhis_densenet121_s43_std_r1",
+    "h2|breakhis_densenet121_s43_std_r2",
+    "h2|breakhis_densenet121_s43_std_r3",
+    "h2|breakhis_densenet121_s43_std_r4",
+    "h2|breakhis_effb3_s42_std_r0",
+    "h2|breakhis_effb3_s42_std_r1",
+    "h2|breakhis_effb3_s42_std_r2",
+    "h2|breakhis_effb3_s42_std_r3",
+    "h2|breakhis_effb3_s42_std_r4",
+    "h2|breakhis_efficientnet_v2_s_s42_std_r0",
+    "h2|breakhis_efficientnet_v2_s_s42_std_r1",
+    "h2|breakhis_efficientnet_v2_s_s42_std_r2",
+    "h2|breakhis_efficientnet_v2_s_s42_std_r3",
+    "h2|breakhis_efficientnet_v2_s_s42_std_r4",
+    "h2|breakhis_fm_conch_v1_5_s42_std_r0",
+    "h2|breakhis_fm_conch_v1_5_s42_std_r1",
+    "h2|breakhis_fm_conch_v1_5_s42_std_r2",
+    "h2|breakhis_fm_conch_v1_5_s42_std_r3",
+    "h2|breakhis_fm_conch_v1_5_s42_std_r4",
+    "h2|breakhis_fm_dinov2_vitb14_s42_std_r0",
+    "h2|breakhis_fm_dinov2_vitb14_s42_std_r1",
+    "h2|breakhis_fm_dinov2_vitb14_s42_std_r2",
+    "h2|breakhis_fm_dinov2_vitb14_s42_std_r3",
+    "h2|breakhis_fm_dinov2_vitb14_s42_std_r4",
+    "h2|breakhis_fm_dinov2_vitl14_s42_std_r0",
+    "h2|breakhis_fm_dinov2_vitl14_s42_std_r1",
+    "h2|breakhis_fm_dinov2_vitl14_s42_std_r2",
+    "h2|breakhis_fm_dinov2_vitl14_s42_std_r3",
+    "h2|breakhis_fm_dinov2_vitl14_s42_std_r4",
+    "h2|breakhis_fm_uni_s42_std_r0",
+    "h2|breakhis_fm_uni_s42_std_r1",
+    "h2|breakhis_fm_uni_s42_std_r2",
+    "h2|breakhis_fm_uni_s42_std_r3",
+    "h2|breakhis_fm_uni_s42_std_r4",
+    "h2|breakhis_fm_virchow2_s42_std_r0",
+    "h2|breakhis_fm_virchow2_s42_std_r1",
+    "h2|breakhis_fm_virchow2_s42_std_r2",
+    "h2|breakhis_fm_virchow2_s42_std_r3",
+    "h2|breakhis_fm_virchow2_s42_std_r4",
+    "h2|breakhis_mobilenet_v3_large_s42_std_r0",
+    "h2|breakhis_mobilenet_v3_large_s42_std_r1",
+    "h2|breakhis_mobilenet_v3_large_s42_std_r2",
+    "h2|breakhis_mobilenet_v3_large_s42_std_r3",
+    "h2|breakhis_mobilenet_v3_large_s42_std_r4",
+    "h2|breakhis_regnet_y_3_2gf_s42_std_r0",
+    "h2|breakhis_regnet_y_3_2gf_s42_std_r1",
+    "h2|breakhis_regnet_y_3_2gf_s42_std_r2",
+    "h2|breakhis_regnet_y_3_2gf_s42_std_r3",
+    "h2|breakhis_regnet_y_3_2gf_s42_std_r4",
+    "h2|breakhis_resnet18_s42_std_r0",
+    "h2|breakhis_resnet18_s42_std_r1",
+    "h2|breakhis_resnet18_s42_std_r2",
+    "h2|breakhis_resnet18_s42_std_r3",
+    "h2|breakhis_resnet18_s42_std_r4",
+    "h2|breakhis_resnet18_s43_std_r0",
+    "h2|breakhis_resnet18_s43_std_r1",
+    "h2|breakhis_resnet18_s43_std_r2",
+    "h2|breakhis_resnet18_s43_std_r3",
+    "h2|breakhis_resnet18_s43_std_r4",
+    "h2|breakhis_resnet50_s42_std_r0",
+    "h2|breakhis_resnet50_s42_std_r1",
+    "h2|breakhis_resnet50_s42_std_r2",
+    "h2|breakhis_resnet50_s42_std_r3",
+    "h2|breakhis_resnet50_s42_std_r4",
+    "h2|breakhis_resnet50_s43_std_r0",
+    "h2|breakhis_resnet50_s43_std_r1",
+    "h2|breakhis_resnet50_s43_std_r2",
+    "h2|breakhis_resnet50_s43_std_r3",
+    "h2|breakhis_resnet50_s43_std_r4",
+    "h2|camelyon_conch_v1_5_s42",
+    "h2|camelyon_conch_v1_5_s43",
+    "h2|camelyon_conch_v1_5_s44",
+    "h2|camelyon_convnext_tiny_s42",
+    "h2|camelyon_convnext_tiny_s43",
+    "h2|camelyon_convnext_tiny_s44",
+    "h2|camelyon_densenet121_s42",
+    "h2|camelyon_dinov2_vitb14_s42",
+    "h2|camelyon_dinov2_vitb14_s43",
+    "h2|camelyon_dinov2_vitb14_s44",
+    "h2|camelyon_dinov2_vitl14_s42",
+    "h2|camelyon_dinov2_vitl14_s43",
+    "h2|camelyon_dinov2_vitl14_s44",
+    "h2|camelyon_effb3_s42",
+    "h2|camelyon_efficientnet_v2_s_s42",
+    "h2|camelyon_mobilenet_v3_large_s42",
+    "h2|camelyon_regnet_y_3_2gf_s42",
+    "h2|camelyon_resnet18_s42",
+    "h2|camelyon_resnet50_s42",
+    "h2|camelyon_resnet50_s43",
+    "h2|camelyon_resnet50_s44",
+    "h2|camelyon_uni_s42",
+    "h2|camelyon_uni_s43",
+    "h2|camelyon_uni_s44",
+    "h2|camelyon_virchow2_s42",
+    "h2|camelyon_virchow2_s43",
+    "h2|camelyon_virchow2_s44",
+    "h2|dermamnist_convnext_tiny_s42_std",
+    "h2|dermamnist_convnext_tiny_s43_std",
+    "h2|dermamnist_densenet121_s42_std",
+    "h2|dermamnist_densenet121_s43_std",
+    "h2|dermamnist_effb3_s42_std",
+    "h2|dermamnist_efficientnet_v2_s_s42_std",
+    "h2|dermamnist_fm_conch_v1_5_s42_std",
+    "h2|dermamnist_fm_dinov2_vitb14_s42_std",
+    "h2|dermamnist_fm_dinov2_vitl14_s42_std",
+    "h2|dermamnist_fm_uni_s42_std",
+    "h2|dermamnist_fm_virchow2_s42_std",
+    "h2|dermamnist_mobilenet_v3_large_s42_std",
+    "h2|dermamnist_regnet_y_3_2gf_s42_std",
+    "h2|dermamnist_resnet18_s42_std",
+    "h2|dermamnist_resnet18_s43_std",
+    "h2|dermamnist_resnet50_s42_std",
+    "h2|dermamnist_resnet50_s43_std",
+    "h2|isic2019_convnext_tiny_s42_std",
+    "h2|isic2019_convnext_tiny_s43_std",
+    "h2|isic2019_densenet121_s42_std",
+    "h2|isic2019_densenet121_s43_std",
+    "h2|isic2019_effb3_s42_std",
+    "h2|isic2019_efficientnet_v2_s_s42_std",
+    "h2|isic2019_fm_conch_v1_5_s42_std",
+    "h2|isic2019_fm_dinov2_vitb14_s42_std",
+    "h2|isic2019_fm_dinov2_vitl14_s42_std",
+    "h2|isic2019_fm_uni_s42_std",
+    "h2|isic2019_fm_virchow2_s42_std",
+    "h2|isic2019_mobilenet_v3_large_s42_std",
+    "h2|isic2019_regnet_y_3_2gf_s42_std",
+    "h2|isic2019_resnet18_s42_std",
+    "h2|isic2019_resnet18_s43_std",
+    "h2|isic2019_resnet50_s42_std",
+    "h2|isic2019_resnet50_s43_std",
+    "h2|kermany_convnext_tiny_s42_std",
+    "h2|kermany_convnext_tiny_s43_std",
+    "h2|kermany_densenet121_s42_std",
+    "h2|kermany_densenet121_s43_std",
+    "h2|kermany_effb3_s42_std",
+    "h2|kermany_efficientnet_v2_s_s42_std",
+    "h2|kermany_mobilenet_v3_large_s42_std",
+    "h2|kermany_regnet_y_3_2gf_s42_std",
+    "h2|kermany_resnet18_s42_std",
+    "h2|kermany_resnet18_s43_std",
+    "h2|kermany_resnet50_s42_std",
+    "h2|kermany_resnet50_s43_std",
+    "h3|breakhis|d1024|rho0.02",
+    "h3|breakhis|d1024|rho0.05",
+    "h3|breakhis|d1024|rho0.1",
+    "h3|breakhis|d1024|rho0.2",
+    "h3|breakhis|d1280|rho0.02",
+    "h3|breakhis|d1280|rho0.05",
+    "h3|breakhis|d1280|rho0.1",
+    "h3|breakhis|d1280|rho0.2",
+    "h3|breakhis|d1512|rho0.02",
+    "h3|breakhis|d1512|rho0.05",
+    "h3|breakhis|d1512|rho0.1",
+    "h3|breakhis|d1512|rho0.2",
+    "h3|breakhis|d1536|rho0.02",
+    "h3|breakhis|d1536|rho0.05",
+    "h3|breakhis|d1536|rho0.1",
+    "h3|breakhis|d1536|rho0.2",
+    "h3|breakhis|d2048|rho0.02",
+    "h3|breakhis|d2048|rho0.05",
+    "h3|breakhis|d2048|rho0.1",
+    "h3|breakhis|d2048|rho0.2",
+    "h3|breakhis|d2560|rho0.02",
+    "h3|breakhis|d2560|rho0.05",
+    "h3|breakhis|d2560|rho0.1",
+    "h3|breakhis|d2560|rho0.2",
+    "h3|breakhis|d512|rho0.02",
+    "h3|breakhis|d512|rho0.05",
+    "h3|breakhis|d512|rho0.1",
+    "h3|breakhis|d512|rho0.2",
+    "h3|breakhis|d768|rho0.02",
+    "h3|breakhis|d768|rho0.05",
+    "h3|breakhis|d768|rho0.1",
+    "h3|breakhis|d768|rho0.2",
+    "h3|breakhis|d960|rho0.02",
+    "h3|breakhis|d960|rho0.05",
+    "h3|breakhis|d960|rho0.1",
+    "h3|breakhis|d960|rho0.2",
+    "h3|camelyon|f0|d1024|rho0.02",
+    "h3|camelyon|f0|d1024|rho0.05",
+    "h3|camelyon|f0|d1024|rho0.1",
+    "h3|camelyon|f0|d1024|rho0.2",
+    "h3|camelyon|f0|d2560|rho0.02",
+    "h3|camelyon|f0|d2560|rho0.05",
+    "h3|camelyon|f0|d2560|rho0.1",
+    "h3|camelyon|f0|d2560|rho0.2",
+    "h3|camelyon|f0|d768|rho0.02",
+    "h3|camelyon|f0|d768|rho0.05",
+    "h3|camelyon|f0|d768|rho0.1",
+    "h3|camelyon|f0|d768|rho0.2",
+    "h3|camelyon|f1|d1024|rho0.02",
+    "h3|camelyon|f1|d1024|rho0.05",
+    "h3|camelyon|f1|d1024|rho0.1",
+    "h3|camelyon|f1|d1024|rho0.2",
+    "h3|camelyon|f1|d2560|rho0.02",
+    "h3|camelyon|f1|d2560|rho0.05",
+    "h3|camelyon|f1|d2560|rho0.1",
+    "h3|camelyon|f1|d2560|rho0.2",
+    "h3|camelyon|f1|d768|rho0.02",
+    "h3|camelyon|f1|d768|rho0.05",
+    "h3|camelyon|f1|d768|rho0.1",
+    "h3|camelyon|f1|d768|rho0.2",
+    "h3|dermamnist|d1024|rho0.02",
+    "h3|dermamnist|d1024|rho0.05",
+    "h3|dermamnist|d1024|rho0.1",
+    "h3|dermamnist|d1024|rho0.2",
+    "h3|dermamnist|d1280|rho0.02",
+    "h3|dermamnist|d1280|rho0.05",
+    "h3|dermamnist|d1280|rho0.1",
+    "h3|dermamnist|d1280|rho0.2",
+    "h3|dermamnist|d1512|rho0.02",
+    "h3|dermamnist|d1512|rho0.05",
+    "h3|dermamnist|d1512|rho0.1",
+    "h3|dermamnist|d1512|rho0.2",
+    "h3|dermamnist|d1536|rho0.02",
+    "h3|dermamnist|d1536|rho0.05",
+    "h3|dermamnist|d1536|rho0.1",
+    "h3|dermamnist|d1536|rho0.2",
+    "h3|dermamnist|d2048|rho0.02",
+    "h3|dermamnist|d2048|rho0.05",
+    "h3|dermamnist|d2048|rho0.1",
+    "h3|dermamnist|d2048|rho0.2",
+    "h3|dermamnist|d2560|rho0.02",
+    "h3|dermamnist|d2560|rho0.05",
+    "h3|dermamnist|d2560|rho0.1",
+    "h3|dermamnist|d2560|rho0.2",
+    "h3|dermamnist|d512|rho0.02",
+    "h3|dermamnist|d512|rho0.05",
+    "h3|dermamnist|d512|rho0.1",
+    "h3|dermamnist|d512|rho0.2",
+    "h3|dermamnist|d768|rho0.02",
+    "h3|dermamnist|d768|rho0.05",
+    "h3|dermamnist|d768|rho0.1",
+    "h3|dermamnist|d768|rho0.2",
+    "h3|dermamnist|d960|rho0.02",
+    "h3|dermamnist|d960|rho0.05",
+    "h3|dermamnist|d960|rho0.1",
+    "h3|dermamnist|d960|rho0.2",
+    "h3|isic2019|d1024|rho0.02",
+    "h3|isic2019|d1024|rho0.05",
+    "h3|isic2019|d1024|rho0.1",
+    "h3|isic2019|d1024|rho0.2",
+    "h3|isic2019|d1280|rho0.02",
+    "h3|isic2019|d1280|rho0.05",
+    "h3|isic2019|d1280|rho0.1",
+    "h3|isic2019|d1280|rho0.2",
+    "h3|isic2019|d1512|rho0.02",
+    "h3|isic2019|d1512|rho0.05",
+    "h3|isic2019|d1512|rho0.1",
+    "h3|isic2019|d1512|rho0.2",
+    "h3|isic2019|d1536|rho0.02",
+    "h3|isic2019|d1536|rho0.05",
+    "h3|isic2019|d1536|rho0.1",
+    "h3|isic2019|d1536|rho0.2",
+    "h3|isic2019|d2048|rho0.02",
+    "h3|isic2019|d2048|rho0.05",
+    "h3|isic2019|d2048|rho0.1",
+    "h3|isic2019|d2048|rho0.2",
+    "h3|isic2019|d2560|rho0.02",
+    "h3|isic2019|d2560|rho0.05",
+    "h3|isic2019|d2560|rho0.1",
+    "h3|isic2019|d2560|rho0.2",
+    "h3|isic2019|d512|rho0.02",
+    "h3|isic2019|d512|rho0.05",
+    "h3|isic2019|d512|rho0.1",
+    "h3|isic2019|d512|rho0.2",
+    "h3|isic2019|d768|rho0.02",
+    "h3|isic2019|d768|rho0.05",
+    "h3|isic2019|d768|rho0.1",
+    "h3|isic2019|d768|rho0.2",
+    "h3|isic2019|d960|rho0.02",
+    "h3|isic2019|d960|rho0.05",
+    "h3|isic2019|d960|rho0.1",
+    "h3|isic2019|d960|rho0.2",
+    "h3|kermany|d1024|rho0.02",
+    "h3|kermany|d1024|rho0.05",
+    "h3|kermany|d1024|rho0.1",
+    "h3|kermany|d1024|rho0.2",
+    "h3|kermany|d1280|rho0.02",
+    "h3|kermany|d1280|rho0.05",
+    "h3|kermany|d1280|rho0.1",
+    "h3|kermany|d1280|rho0.2",
+    "h3|kermany|d1512|rho0.02",
+    "h3|kermany|d1512|rho0.05",
+    "h3|kermany|d1512|rho0.1",
+    "h3|kermany|d1512|rho0.2",
+    "h3|kermany|d1536|rho0.02",
+    "h3|kermany|d1536|rho0.05",
+    "h3|kermany|d1536|rho0.1",
+    "h3|kermany|d1536|rho0.2",
+    "h3|kermany|d2048|rho0.02",
+    "h3|kermany|d2048|rho0.05",
+    "h3|kermany|d2048|rho0.1",
+    "h3|kermany|d2048|rho0.2",
+    "h3|kermany|d512|rho0.02",
+    "h3|kermany|d512|rho0.05",
+    "h3|kermany|d512|rho0.1",
+    "h3|kermany|d512|rho0.2",
+    "h3|kermany|d768|rho0.02",
+    "h3|kermany|d768|rho0.05",
+    "h3|kermany|d768|rho0.1",
+    "h3|kermany|d768|rho0.2",
+    "h3|kermany|d960|rho0.02",
+    "h3|kermany|d960|rho0.05",
+    "h3|kermany|d960|rho0.1",
+    "h3|kermany|d960|rho0.2",
+    "hn1|breakhis_convnext_tiny_s42_std_r0",
+    "hn1|breakhis_convnext_tiny_s42_std_r1",
+    "hn1|breakhis_convnext_tiny_s42_std_r2",
+    "hn1|breakhis_convnext_tiny_s42_std_r3",
+    "hn1|breakhis_convnext_tiny_s42_std_r4",
+    "hn1|breakhis_convnext_tiny_s43_std_r0",
+    "hn1|breakhis_convnext_tiny_s43_std_r1",
+    "hn1|breakhis_convnext_tiny_s43_std_r2",
+    "hn1|breakhis_convnext_tiny_s43_std_r3",
+    "hn1|breakhis_convnext_tiny_s43_std_r4",
+    "hn1|breakhis_densenet121_s42_std_r0",
+    "hn1|breakhis_densenet121_s42_std_r1",
+    "hn1|breakhis_densenet121_s42_std_r2",
+    "hn1|breakhis_densenet121_s42_std_r3",
+    "hn1|breakhis_densenet121_s42_std_r4",
+    "hn1|breakhis_densenet121_s43_std_r0",
+    "hn1|breakhis_densenet121_s43_std_r1",
+    "hn1|breakhis_densenet121_s43_std_r2",
+    "hn1|breakhis_densenet121_s43_std_r3",
+    "hn1|breakhis_densenet121_s43_std_r4",
+    "hn1|breakhis_effb3_s42_std_r0",
+    "hn1|breakhis_effb3_s42_std_r1",
+    "hn1|breakhis_effb3_s42_std_r2",
+    "hn1|breakhis_effb3_s42_std_r3",
+    "hn1|breakhis_effb3_s42_std_r4",
+    "hn1|breakhis_efficientnet_v2_s_s42_std_r0",
+    "hn1|breakhis_efficientnet_v2_s_s42_std_r1",
+    "hn1|breakhis_efficientnet_v2_s_s42_std_r2",
+    "hn1|breakhis_efficientnet_v2_s_s42_std_r3",
+    "hn1|breakhis_efficientnet_v2_s_s42_std_r4",
+    "hn1|breakhis_fm_conch_v1_5_s42_std_r0",
+    "hn1|breakhis_fm_conch_v1_5_s42_std_r1",
+    "hn1|breakhis_fm_conch_v1_5_s42_std_r2",
+    "hn1|breakhis_fm_conch_v1_5_s42_std_r3",
+    "hn1|breakhis_fm_conch_v1_5_s42_std_r4",
+    "hn1|breakhis_fm_dinov2_vitb14_s42_std_r0",
+    "hn1|breakhis_fm_dinov2_vitb14_s42_std_r1",
+    "hn1|breakhis_fm_dinov2_vitb14_s42_std_r2",
+    "hn1|breakhis_fm_dinov2_vitb14_s42_std_r3",
+    "hn1|breakhis_fm_dinov2_vitb14_s42_std_r4",
+    "hn1|breakhis_fm_dinov2_vitl14_s42_std_r0",
+    "hn1|breakhis_fm_dinov2_vitl14_s42_std_r1",
+    "hn1|breakhis_fm_dinov2_vitl14_s42_std_r2",
+    "hn1|breakhis_fm_dinov2_vitl14_s42_std_r3",
+    "hn1|breakhis_fm_dinov2_vitl14_s42_std_r4",
+    "hn1|breakhis_fm_uni_s42_std_r0",
+    "hn1|breakhis_fm_uni_s42_std_r1",
+    "hn1|breakhis_fm_uni_s42_std_r2",
+    "hn1|breakhis_fm_uni_s42_std_r3",
+    "hn1|breakhis_fm_uni_s42_std_r4",
+    "hn1|breakhis_fm_virchow2_s42_std_r0",
+    "hn1|breakhis_fm_virchow2_s42_std_r1",
+    "hn1|breakhis_fm_virchow2_s42_std_r2",
+    "hn1|breakhis_fm_virchow2_s42_std_r3",
+    "hn1|breakhis_fm_virchow2_s42_std_r4",
+    "hn1|breakhis_mobilenet_v3_large_s42_std_r0",
+    "hn1|breakhis_mobilenet_v3_large_s42_std_r1",
+    "hn1|breakhis_mobilenet_v3_large_s42_std_r2",
+    "hn1|breakhis_mobilenet_v3_large_s42_std_r3",
+    "hn1|breakhis_mobilenet_v3_large_s42_std_r4",
+    "hn1|breakhis_regnet_y_3_2gf_s42_std_r0",
+    "hn1|breakhis_regnet_y_3_2gf_s42_std_r1",
+    "hn1|breakhis_regnet_y_3_2gf_s42_std_r2",
+    "hn1|breakhis_regnet_y_3_2gf_s42_std_r3",
+    "hn1|breakhis_regnet_y_3_2gf_s42_std_r4",
+    "hn1|breakhis_resnet18_s42_std_r0",
+    "hn1|breakhis_resnet18_s42_std_r1",
+    "hn1|breakhis_resnet18_s42_std_r2",
+    "hn1|breakhis_resnet18_s42_std_r3",
+    "hn1|breakhis_resnet18_s42_std_r4",
+    "hn1|breakhis_resnet18_s43_std_r0",
+    "hn1|breakhis_resnet18_s43_std_r1",
+    "hn1|breakhis_resnet18_s43_std_r2",
+    "hn1|breakhis_resnet18_s43_std_r3",
+    "hn1|breakhis_resnet18_s43_std_r4",
+    "hn1|breakhis_resnet50_s42_std_r0",
+    "hn1|breakhis_resnet50_s42_std_r1",
+    "hn1|breakhis_resnet50_s42_std_r2",
+    "hn1|breakhis_resnet50_s42_std_r3",
+    "hn1|breakhis_resnet50_s42_std_r4",
+    "hn1|breakhis_resnet50_s43_std_r0",
+    "hn1|breakhis_resnet50_s43_std_r1",
+    "hn1|breakhis_resnet50_s43_std_r2",
+    "hn1|breakhis_resnet50_s43_std_r3",
+    "hn1|breakhis_resnet50_s43_std_r4",
+    "hn1|camelyon_conch_v1_5_s42",
+    "hn1|camelyon_conch_v1_5_s43",
+    "hn1|camelyon_conch_v1_5_s44",
+    "hn1|camelyon_convnext_tiny_s42",
+    "hn1|camelyon_convnext_tiny_s43",
+    "hn1|camelyon_convnext_tiny_s44",
+    "hn1|camelyon_densenet121_s42",
+    "hn1|camelyon_dinov2_vitb14_s42",
+    "hn1|camelyon_dinov2_vitb14_s43",
+    "hn1|camelyon_dinov2_vitb14_s44",
+    "hn1|camelyon_dinov2_vitl14_s42",
+    "hn1|camelyon_dinov2_vitl14_s43",
+    "hn1|camelyon_dinov2_vitl14_s44",
+    "hn1|camelyon_effb3_s42",
+    "hn1|camelyon_efficientnet_v2_s_s42",
+    "hn1|camelyon_mobilenet_v3_large_s42",
+    "hn1|camelyon_regnet_y_3_2gf_s42",
+    "hn1|camelyon_resnet18_s42",
+    "hn1|camelyon_resnet50_s42",
+    "hn1|camelyon_resnet50_s43",
+    "hn1|camelyon_resnet50_s44",
+    "hn1|camelyon_uni_s42",
+    "hn1|camelyon_uni_s43",
+    "hn1|camelyon_uni_s44",
+    "hn1|camelyon_virchow2_s42",
+    "hn1|camelyon_virchow2_s43",
+    "hn1|camelyon_virchow2_s44",
+    "hn1|dermamnist_convnext_tiny_s42_std",
+    "hn1|dermamnist_convnext_tiny_s43_std",
+    "hn1|dermamnist_densenet121_s42_std",
+    "hn1|dermamnist_densenet121_s43_std",
+    "hn1|dermamnist_effb3_s42_std",
+    "hn1|dermamnist_efficientnet_v2_s_s42_std",
+    "hn1|dermamnist_fm_conch_v1_5_s42_std",
+    "hn1|dermamnist_fm_dinov2_vitb14_s42_std",
+    "hn1|dermamnist_fm_dinov2_vitl14_s42_std",
+    "hn1|dermamnist_fm_uni_s42_std",
+    "hn1|dermamnist_fm_virchow2_s42_std",
+    "hn1|dermamnist_mobilenet_v3_large_s42_std",
+    "hn1|dermamnist_regnet_y_3_2gf_s42_std",
+    "hn1|dermamnist_resnet18_s42_std",
+    "hn1|dermamnist_resnet18_s43_std",
+    "hn1|dermamnist_resnet50_s42_std",
+    "hn1|dermamnist_resnet50_s43_std",
+    "hn1|isic2019_convnext_tiny_s42_std",
+    "hn1|isic2019_convnext_tiny_s43_std",
+    "hn1|isic2019_densenet121_s42_std",
+    "hn1|isic2019_densenet121_s43_std",
+    "hn1|isic2019_effb3_s42_std",
+    "hn1|isic2019_efficientnet_v2_s_s42_std",
+    "hn1|isic2019_fm_conch_v1_5_s42_std",
+    "hn1|isic2019_fm_dinov2_vitb14_s42_std",
+    "hn1|isic2019_fm_dinov2_vitl14_s42_std",
+    "hn1|isic2019_fm_uni_s42_std",
+    "hn1|isic2019_fm_virchow2_s42_std",
+    "hn1|isic2019_mobilenet_v3_large_s42_std",
+    "hn1|isic2019_regnet_y_3_2gf_s42_std",
+    "hn1|isic2019_resnet18_s42_std",
+    "hn1|isic2019_resnet18_s43_std",
+    "hn1|isic2019_resnet50_s42_std",
+    "hn1|isic2019_resnet50_s43_std",
+    "hn1|kermany_convnext_tiny_s42_std",
+    "hn1|kermany_convnext_tiny_s43_std",
+    "hn1|kermany_densenet121_s42_std",
+    "hn1|kermany_densenet121_s43_std",
+    "hn1|kermany_effb3_s42_std",
+    "hn1|kermany_efficientnet_v2_s_s42_std",
+    "hn1|kermany_mobilenet_v3_large_s42_std",
+    "hn1|kermany_regnet_y_3_2gf_s42_std",
+    "hn1|kermany_resnet18_s42_std",
+    "hn1|kermany_resnet18_s43_std",
+    "hn1|kermany_resnet50_s42_std",
+    "hn1|kermany_resnet50_s43_std",
+    "hn2|dermamnist_convnext_tiny_s42_std",
+    "hn2|dermamnist_convnext_tiny_s43_std",
+    "hn2|dermamnist_densenet121_s42_std",
+    "hn2|dermamnist_densenet121_s43_std",
+    "hn2|dermamnist_effb3_s42_std",
+    "hn2|dermamnist_efficientnet_v2_s_s42_std",
+    "hn2|dermamnist_fm_conch_v1_5_s42_std",
+    "hn2|dermamnist_fm_dinov2_vitb14_s42_std",
+    "hn2|dermamnist_fm_dinov2_vitl14_s42_std",
+    "hn2|dermamnist_fm_uni_s42_std",
+    "hn2|dermamnist_fm_virchow2_s42_std",
+    "hn2|dermamnist_mobilenet_v3_large_s42_std",
+    "hn2|dermamnist_regnet_y_3_2gf_s42_std",
+    "hn2|dermamnist_resnet18_s42_std",
+    "hn2|dermamnist_resnet18_s43_std",
+    "hn2|dermamnist_resnet50_s42_std",
+    "hn2|dermamnist_resnet50_s43_std",
+    "hn2|isic2019_convnext_tiny_s42_std",
+    "hn2|isic2019_convnext_tiny_s43_std",
+    "hn2|isic2019_densenet121_s42_std",
+    "hn2|isic2019_densenet121_s43_std",
+    "hn2|isic2019_effb3_s42_std",
+    "hn2|isic2019_efficientnet_v2_s_s42_std",
+    "hn2|isic2019_fm_conch_v1_5_s42_std",
+    "hn2|isic2019_fm_dinov2_vitb14_s42_std",
+    "hn2|isic2019_fm_dinov2_vitl14_s42_std",
+    "hn2|isic2019_fm_uni_s42_std",
+    "hn2|isic2019_fm_virchow2_s42_std",
+    "hn2|isic2019_mobilenet_v3_large_s42_std",
+    "hn2|isic2019_regnet_y_3_2gf_s42_std",
+    "hn2|isic2019_resnet18_s42_std",
+    "hn2|isic2019_resnet18_s43_std",
+    "hn2|isic2019_resnet50_s42_std",
+    "hn2|isic2019_resnet50_s43_std",
+    "hn2|kermany_convnext_tiny_s42_std",
+    "hn2|kermany_convnext_tiny_s43_std",
+    "hn2|kermany_densenet121_s42_std",
+    "hn2|kermany_densenet121_s43_std",
+    "hn2|kermany_effb3_s42_std",
+    "hn2|kermany_efficientnet_v2_s_s42_std",
+    "hn2|kermany_mobilenet_v3_large_s42_std",
+    "hn2|kermany_regnet_y_3_2gf_s42_std",
+    "hn2|kermany_resnet18_s42_std",
+    "hn2|kermany_resnet18_s43_std",
+    "hn2|kermany_resnet50_s42_std",
+    "hn2|kermany_resnet50_s43_std",
+    "hn3|breakhis_convnext_tiny_s42_std_r0",
+    "hn3|breakhis_convnext_tiny_s42_std_r1",
+    "hn3|breakhis_convnext_tiny_s42_std_r2",
+    "hn3|breakhis_convnext_tiny_s42_std_r3",
+    "hn3|breakhis_convnext_tiny_s42_std_r4",
+    "hn3|breakhis_convnext_tiny_s43_std_r0",
+    "hn3|breakhis_convnext_tiny_s43_std_r1",
+    "hn3|breakhis_convnext_tiny_s43_std_r2",
+    "hn3|breakhis_convnext_tiny_s43_std_r3",
+    "hn3|breakhis_convnext_tiny_s43_std_r4",
+    "hn3|breakhis_densenet121_s42_std_r0",
+    "hn3|breakhis_densenet121_s42_std_r1",
+    "hn3|breakhis_densenet121_s42_std_r2",
+    "hn3|breakhis_densenet121_s42_std_r3",
+    "hn3|breakhis_densenet121_s42_std_r4",
+    "hn3|breakhis_densenet121_s43_std_r0",
+    "hn3|breakhis_densenet121_s43_std_r1",
+    "hn3|breakhis_densenet121_s43_std_r2",
+    "hn3|breakhis_densenet121_s43_std_r3",
+    "hn3|breakhis_densenet121_s43_std_r4",
+    "hn3|breakhis_effb3_s42_std_r0",
+    "hn3|breakhis_effb3_s42_std_r1",
+    "hn3|breakhis_effb3_s42_std_r2",
+    "hn3|breakhis_effb3_s42_std_r3",
+    "hn3|breakhis_effb3_s42_std_r4",
+    "hn3|breakhis_efficientnet_v2_s_s42_std_r0",
+    "hn3|breakhis_efficientnet_v2_s_s42_std_r1",
+    "hn3|breakhis_efficientnet_v2_s_s42_std_r2",
+    "hn3|breakhis_efficientnet_v2_s_s42_std_r3",
+    "hn3|breakhis_efficientnet_v2_s_s42_std_r4",
+    "hn3|breakhis_fm_conch_v1_5_s42_std_r0",
+    "hn3|breakhis_fm_conch_v1_5_s42_std_r1",
+    "hn3|breakhis_fm_conch_v1_5_s42_std_r2",
+    "hn3|breakhis_fm_conch_v1_5_s42_std_r3",
+    "hn3|breakhis_fm_conch_v1_5_s42_std_r4",
+    "hn3|breakhis_fm_dinov2_vitb14_s42_std_r0",
+    "hn3|breakhis_fm_dinov2_vitb14_s42_std_r1",
+    "hn3|breakhis_fm_dinov2_vitb14_s42_std_r2",
+    "hn3|breakhis_fm_dinov2_vitb14_s42_std_r3",
+    "hn3|breakhis_fm_dinov2_vitb14_s42_std_r4",
+    "hn3|breakhis_fm_dinov2_vitl14_s42_std_r0",
+    "hn3|breakhis_fm_dinov2_vitl14_s42_std_r1",
+    "hn3|breakhis_fm_dinov2_vitl14_s42_std_r2",
+    "hn3|breakhis_fm_dinov2_vitl14_s42_std_r3",
+    "hn3|breakhis_fm_dinov2_vitl14_s42_std_r4",
+    "hn3|breakhis_fm_uni_s42_std_r0",
+    "hn3|breakhis_fm_uni_s42_std_r1",
+    "hn3|breakhis_fm_uni_s42_std_r2",
+    "hn3|breakhis_fm_uni_s42_std_r3",
+    "hn3|breakhis_fm_uni_s42_std_r4",
+    "hn3|breakhis_fm_virchow2_s42_std_r0",
+    "hn3|breakhis_fm_virchow2_s42_std_r1",
+    "hn3|breakhis_fm_virchow2_s42_std_r2",
+    "hn3|breakhis_fm_virchow2_s42_std_r3",
+    "hn3|breakhis_fm_virchow2_s42_std_r4",
+    "hn3|breakhis_mobilenet_v3_large_s42_std_r0",
+    "hn3|breakhis_mobilenet_v3_large_s42_std_r1",
+    "hn3|breakhis_mobilenet_v3_large_s42_std_r2",
+    "hn3|breakhis_mobilenet_v3_large_s42_std_r3",
+    "hn3|breakhis_mobilenet_v3_large_s42_std_r4",
+    "hn3|breakhis_regnet_y_3_2gf_s42_std_r0",
+    "hn3|breakhis_regnet_y_3_2gf_s42_std_r1",
+    "hn3|breakhis_regnet_y_3_2gf_s42_std_r2",
+    "hn3|breakhis_regnet_y_3_2gf_s42_std_r3",
+    "hn3|breakhis_regnet_y_3_2gf_s42_std_r4",
+    "hn3|breakhis_resnet18_s42_std_r0",
+    "hn3|breakhis_resnet18_s42_std_r1",
+    "hn3|breakhis_resnet18_s42_std_r2",
+    "hn3|breakhis_resnet18_s42_std_r3",
+    "hn3|breakhis_resnet18_s42_std_r4",
+    "hn3|breakhis_resnet18_s43_std_r0",
+    "hn3|breakhis_resnet18_s43_std_r1",
+    "hn3|breakhis_resnet18_s43_std_r2",
+    "hn3|breakhis_resnet18_s43_std_r3",
+    "hn3|breakhis_resnet18_s43_std_r4",
+    "hn3|breakhis_resnet50_s42_std_r0",
+    "hn3|breakhis_resnet50_s42_std_r1",
+    "hn3|breakhis_resnet50_s42_std_r2",
+    "hn3|breakhis_resnet50_s42_std_r3",
+    "hn3|breakhis_resnet50_s42_std_r4",
+    "hn3|breakhis_resnet50_s43_std_r0",
+    "hn3|breakhis_resnet50_s43_std_r1",
+    "hn3|breakhis_resnet50_s43_std_r2",
+    "hn3|breakhis_resnet50_s43_std_r3",
+    "hn3|breakhis_resnet50_s43_std_r4",
+    "hn3|camelyon_conch_v1_5_s42",
+    "hn3|camelyon_conch_v1_5_s43",
+    "hn3|camelyon_conch_v1_5_s44",
+    "hn3|camelyon_convnext_tiny_s42",
+    "hn3|camelyon_convnext_tiny_s43",
+    "hn3|camelyon_convnext_tiny_s44",
+    "hn3|camelyon_densenet121_s42",
+    "hn3|camelyon_dinov2_vitb14_s42",
+    "hn3|camelyon_dinov2_vitb14_s43",
+    "hn3|camelyon_dinov2_vitb14_s44",
+    "hn3|camelyon_dinov2_vitl14_s42",
+    "hn3|camelyon_dinov2_vitl14_s43",
+    "hn3|camelyon_dinov2_vitl14_s44",
+    "hn3|camelyon_effb3_s42",
+    "hn3|camelyon_efficientnet_v2_s_s42",
+    "hn3|camelyon_mobilenet_v3_large_s42",
+    "hn3|camelyon_regnet_y_3_2gf_s42",
+    "hn3|camelyon_resnet18_s42",
+    "hn3|camelyon_resnet50_s42",
+    "hn3|camelyon_resnet50_s43",
+    "hn3|camelyon_resnet50_s44",
+    "hn3|camelyon_uni_s42",
+    "hn3|camelyon_uni_s43",
+    "hn3|camelyon_uni_s44",
+    "hn3|camelyon_virchow2_s42",
+    "hn3|camelyon_virchow2_s43",
+    "hn3|camelyon_virchow2_s44",
+    "hn3|dermamnist_convnext_tiny_s42_std",
+    "hn3|dermamnist_convnext_tiny_s43_std",
+    "hn3|dermamnist_densenet121_s42_std",
+    "hn3|dermamnist_densenet121_s43_std",
+    "hn3|dermamnist_effb3_s42_std",
+    "hn3|dermamnist_efficientnet_v2_s_s42_std",
+    "hn3|dermamnist_fm_conch_v1_5_s42_std",
+    "hn3|dermamnist_fm_dinov2_vitb14_s42_std",
+    "hn3|dermamnist_fm_dinov2_vitl14_s42_std",
+    "hn3|dermamnist_fm_uni_s42_std",
+    "hn3|dermamnist_fm_virchow2_s42_std",
+    "hn3|dermamnist_mobilenet_v3_large_s42_std",
+    "hn3|dermamnist_regnet_y_3_2gf_s42_std",
+    "hn3|dermamnist_resnet18_s42_std",
+    "hn3|dermamnist_resnet18_s43_std",
+    "hn3|dermamnist_resnet50_s42_std",
+    "hn3|dermamnist_resnet50_s43_std",
+    "hn3|isic2019_convnext_tiny_s42_std",
+    "hn3|isic2019_convnext_tiny_s43_std",
+    "hn3|isic2019_densenet121_s42_std",
+    "hn3|isic2019_densenet121_s43_std",
+    "hn3|isic2019_effb3_s42_std",
+    "hn3|isic2019_efficientnet_v2_s_s42_std",
+    "hn3|isic2019_fm_conch_v1_5_s42_std",
+    "hn3|isic2019_fm_dinov2_vitb14_s42_std",
+    "hn3|isic2019_fm_dinov2_vitl14_s42_std",
+    "hn3|isic2019_fm_uni_s42_std",
+    "hn3|isic2019_fm_virchow2_s42_std",
+    "hn3|isic2019_mobilenet_v3_large_s42_std",
+    "hn3|isic2019_regnet_y_3_2gf_s42_std",
+    "hn3|isic2019_resnet18_s42_std",
+    "hn3|isic2019_resnet18_s43_std",
+    "hn3|isic2019_resnet50_s42_std",
+    "hn3|isic2019_resnet50_s43_std",
+    "hn3|kermany_convnext_tiny_s42_std",
+    "hn3|kermany_convnext_tiny_s43_std",
+    "hn3|kermany_densenet121_s42_std",
+    "hn3|kermany_densenet121_s43_std",
+    "hn3|kermany_effb3_s42_std",
+    "hn3|kermany_efficientnet_v2_s_s42_std",
+    "hn3|kermany_mobilenet_v3_large_s42_std",
+    "hn3|kermany_regnet_y_3_2gf_s42_std",
+    "hn3|kermany_resnet18_s42_std",
+    "hn3|kermany_resnet18_s43_std",
+    "hn3|kermany_resnet50_s42_std",
+    "hn3|kermany_resnet50_s43_std"
+   ],
+   "execution_order": [
+    "hn3|breakhis_fm_dinov2_vitl14_s42_std_r4",
+    "hn3|breakhis_resnet18_s42_std_r4",
+    "hn1|breakhis_fm_conch_v1_5_s42_std_r1",
+    "h3|isic2019|d1024|rho0.02",
+    "h2|camelyon_dinov2_vitb14_s43",
+    "h2|isic2019_resnet18_s43_std",
+    "hn3|breakhis_effb3_s42_std_r4",
+    "h2|isic2019_resnet50_s43_std",
+    "h3|breakhis|d2560|rho0.02",
+    "h2|isic2019_densenet121_s42_std",
+    "hn1|breakhis_densenet121_s42_std_r2",
+    "hn1|breakhis_effb3_s42_std_r1",
+    "h3|kermany|d1512|rho0.02",
+    "h3|dermamnist|d960|rho0.1",
+    "h2|breakhis_fm_conch_v1_5_s42_std_r0",
+    "h2|isic2019_fm_conch_v1_5_s42_std",
+    "hn1|isic2019_resnet50_s43_std",
+    "h3|breakhis|d512|rho0.2",
+    "h2|breakhis_resnet50_s42_std_r1",
+    "hn3|dermamnist_resnet18_s43_std",
+    "hn2|dermamnist_mobilenet_v3_large_s42_std",
+    "h2|breakhis_resnet18_s42_std_r4",
+    "h3|dermamnist|d1280|rho0.1",
+    "h2|breakhis_resnet18_s42_std_r3",
+    "h2|breakhis_densenet121_s42_std_r1",
+    "hn1|breakhis_fm_dinov2_vitl14_s42_std_r0",
+    "h3|isic2019|d2560|rho0.02",
+    "hn3|breakhis_convnext_tiny_s43_std_r2",
+    "h3|breakhis|d1024|rho0.02",
+    "h2|breakhis_fm_dinov2_vitl14_s42_std_r4",
+    "hn1|breakhis_densenet121_s42_std_r1",
+    "h2|breakhis_effb3_s42_std_r1",
+    "hn1|isic2019_resnet18_s42_std",
+    "hn3|kermany_densenet121_s42_std",
+    "hn3|breakhis_efficientnet_v2_s_s42_std_r0",
+    "hn2|dermamnist_densenet121_s42_std",
+    "hn1|breakhis_regnet_y_3_2gf_s42_std_r4",
+    "h2|breakhis_resnet50_s42_std_r4",
+    "h2|breakhis_fm_dinov2_vitl14_s42_std_r0",
+    "h3|isic2019|d960|rho0.1",
+    "h2|breakhis_fm_uni_s42_std_r2",
+    "h2|breakhis_regnet_y_3_2gf_s42_std_r1",
+    "hn1|breakhis_fm_uni_s42_std_r0",
+    "hn1|camelyon_conch_v1_5_s44",
+    "hn3|dermamnist_fm_uni_s42_std",
+    "hn2|isic2019_resnet50_s42_std",
+    "hn3|dermamnist_convnext_tiny_s42_std",
+    "hn1|camelyon_convnext_tiny_s44",
+    "hn3|camelyon_virchow2_s42",
+    "h3|dermamnist|d768|rho0.2",
+    "hn2|kermany_regnet_y_3_2gf_s42_std",
+    "hn1|breakhis_densenet121_s43_std_r2",
+    "hn2|isic2019_fm_dinov2_vitb14_s42_std",
+    "h3|isic2019|d1536|rho0.02",
+    "hn3|breakhis_regnet_y_3_2gf_s42_std_r4",
+    "h2|dermamnist_resnet50_s43_std",
+    "hn1|camelyon_virchow2_s42",
+    "hn3|breakhis_fm_conch_v1_5_s42_std_r3",
+    "hn1|camelyon_convnext_tiny_s42",
+    "hn3|isic2019_convnext_tiny_s42_std",
+    "h2|breakhis_convnext_tiny_s43_std_r1",
+    "h2|dermamnist_efficientnet_v2_s_s42_std",
+    "h2|breakhis_regnet_y_3_2gf_s42_std_r0",
+    "hn1|breakhis_efficientnet_v2_s_s42_std_r3",
+    "hn1|isic2019_efficientnet_v2_s_s42_std",
+    "h2|breakhis_densenet121_s42_std_r4",
+    "hn3|breakhis_effb3_s42_std_r3",
+    "h3|kermany|d1536|rho0.05",
+    "h2|isic2019_regnet_y_3_2gf_s42_std",
+    "hn3|kermany_mobilenet_v3_large_s42_std",
+    "hn1|breakhis_densenet121_s43_std_r0",
+    "hn1|breakhis_resnet18_s43_std_r3",
+    "h3|breakhis|d512|rho0.05",
+    "hn1|breakhis_convnext_tiny_s43_std_r3",
+    "hn2|dermamnist_efficientnet_v2_s_s42_std",
+    "hn3|breakhis_fm_dinov2_vitb14_s42_std_r2",
+    "hn1|isic2019_mobilenet_v3_large_s42_std",
+    "h2|breakhis_densenet121_s42_std_r0",
+    "hn3|dermamnist_effb3_s42_std",
+    "h2|isic2019_fm_dinov2_vitb14_s42_std",
+    "hn1|breakhis_resnet50_s43_std_r4",
+    "hn3|camelyon_dinov2_vitl14_s44",
+    "h3|breakhis|d2560|rho0.05",
+    "hn1|dermamnist_densenet121_s42_std",
+    "h3|kermany|d1024|rho0.02",
+    "h2|camelyon_virchow2_s44",
+    "h3|kermany|d1024|rho0.2",
+    "hn3|breakhis_fm_virchow2_s42_std_r1",
+    "h2|dermamnist_resnet18_s42_std",
+    "hn3|breakhis_convnext_tiny_s43_std_r3",
+    "hn1|isic2019_fm_virchow2_s42_std",
+    "hn3|kermany_convnext_tiny_s42_std",
+    "h2|breakhis_fm_dinov2_vitl14_s42_std_r3",
+    "h3|isic2019|d960|rho0.02",
+    "hn3|breakhis_densenet121_s42_std_r3",
+    "hn2|dermamnist_convnext_tiny_s43_std",
+    "h2|dermamnist_fm_uni_s42_std",
+    "h3|breakhis|d1512|rho0.2",
+    "h3|kermany|d1280|rho0.05",
+    "h2|breakhis_efficientnet_v2_s_s42_std_r4",
+    "h3|camelyon|f0|d2560|rho0.05",
+    "h2|breakhis_fm_dinov2_vitb14_s42_std_r3",
+    "h3|dermamnist|d512|rho0.2",
+    "hn3|breakhis_fm_virchow2_s42_std_r4",
+    "hn3|kermany_regnet_y_3_2gf_s42_std",
+    "hn1|breakhis_fm_virchow2_s42_std_r4",
+    "h3|kermany|d512|rho0.1",
+    "hn1|breakhis_fm_virchow2_s42_std_r1",
+    "hn3|breakhis_fm_dinov2_vitl14_s42_std_r3",
+    "h2|breakhis_resnet50_s43_std_r3",
+    "hn1|breakhis_fm_dinov2_vitb14_s42_std_r1",
+    "hn3|isic2019_fm_virchow2_s42_std",
+    "h3|dermamnist|d512|rho0.1",
+    "h3|isic2019|d2048|rho0.2",
+    "h3|isic2019|d512|rho0.05",
+    "hn1|breakhis_mobilenet_v3_large_s42_std_r4",
+    "h3|dermamnist|d1024|rho0.02",
+    "h2|camelyon_resnet50_s43",
+    "hn3|kermany_resnet18_s43_std",
+    "hn3|dermamnist_mobilenet_v3_large_s42_std",
+    "hn1|breakhis_fm_conch_v1_5_s42_std_r0",
+    "h3|kermany|d1536|rho0.1",
+    "hn3|breakhis_efficientnet_v2_s_s42_std_r3",
+    "hn1|breakhis_densenet121_s43_std_r1",
+    "hn1|dermamnist_fm_conch_v1_5_s42_std",
+    "hn3|isic2019_fm_dinov2_vitl14_s42_std",
+    "h3|breakhis|d1024|rho0.2",
+    "h2|camelyon_efficientnet_v2_s_s42",
+    "h2|breakhis_effb3_s42_std_r2",
+    "h2|camelyon_virchow2_s42",
+    "hn1|breakhis_convnext_tiny_s43_std_r2",
+    "h3|kermany|d1280|rho0.1",
+    "h3|isic2019|d1280|rho0.1",
+    "hn3|breakhis_densenet121_s43_std_r1",
+    "hn1|kermany_densenet121_s43_std",
+    "hn3|camelyon_dinov2_vitl14_s43",
+    "hn3|breakhis_fm_dinov2_vitb14_s42_std_r1",
+    "hn2|dermamnist_resnet18_s42_std",
+    "hn3|breakhis_resnet18_s42_std_r0",
+    "h2|dermamnist_mobilenet_v3_large_s42_std",
+    "hn3|camelyon_uni_s44",
+    "h2|breakhis_fm_dinov2_vitb14_s42_std_r0",
+    "h2|kermany_resnet50_s43_std",
+    "hn1|breakhis_efficientnet_v2_s_s42_std_r2",
+    "hn2|dermamnist_convnext_tiny_s42_std",
+    "h3|isic2019|d768|rho0.2",
+    "hn3|breakhis_regnet_y_3_2gf_s42_std_r2",
+    "hn3|breakhis_densenet121_s42_std_r4",
+    "hn2|kermany_resnet18_s42_std",
+    "h2|isic2019_convnext_tiny_s43_std",
+    "h2|camelyon_dinov2_vitl14_s44",
+    "h2|dermamnist_convnext_tiny_s43_std",
+    "h2|isic2019_fm_virchow2_s42_std",
+    "hn1|kermany_resnet18_s43_std",
+    "h2|breakhis_fm_virchow2_s42_std_r3",
+    "h3|kermany|d1280|rho0.2",
+    "hn1|kermany_effb3_s42_std",
+    "hn2|isic2019_densenet121_s42_std",
+    "hn3|breakhis_resnet18_s42_std_r2",
+    "hn1|breakhis_resnet18_s42_std_r0",
+    "hn3|camelyon_dinov2_vitb14_s43",
+    "h2|breakhis_fm_dinov2_vitl14_s42_std_r2",
+    "h2|breakhis_fm_conch_v1_5_s42_std_r4",
+    "hn3|breakhis_resnet50_s42_std_r1",
+    "h2|isic2019_convnext_tiny_s42_std",
+    "h2|camelyon_convnext_tiny_s43",
+    "h3|camelyon|f1|d768|rho0.05",
+    "h3|isic2019|d1512|rho0.2",
+    "h2|camelyon_convnext_tiny_s44",
+    "hn3|isic2019_resnet18_s43_std",
+    "hn1|breakhis_fm_dinov2_vitl14_s42_std_r4",
+    "hn1|camelyon_dinov2_vitb14_s44",
+    "h3|breakhis|d2048|rho0.2",
+    "h3|kermany|d2048|rho0.05",
+    "hn1|dermamnist_efficientnet_v2_s_s42_std",
+    "h3|dermamnist|d1512|rho0.2",
+    "h3|isic2019|d2048|rho0.05",
+    "h2|camelyon_dinov2_vitb14_s42",
+    "hn1|breakhis_fm_uni_s42_std_r1",
+    "hn3|isic2019_resnet50_s42_std",
+    "h3|camelyon|f1|d768|rho0.1",
+    "hn2|kermany_resnet18_s43_std",
+    "hn3|breakhis_resnet50_s42_std_r2",
+    "hn1|breakhis_fm_virchow2_s42_std_r2",
+    "h2|breakhis_fm_dinov2_vitb14_s42_std_r1",
+    "hn3|isic2019_convnext_tiny_s43_std",
+    "h2|isic2019_resnet18_s42_std",
+    "h2|kermany_resnet50_s42_std",
+    "h3|isic2019|d1536|rho0.1",
+    "hn1|breakhis_resnet18_s43_std_r1",
+    "hn1|isic2019_convnext_tiny_s42_std",
+    "hn1|camelyon_uni_s43",
+    "h3|dermamnist|d1536|rho0.05",
+    "hn3|dermamnist_densenet121_s43_std",
+    "h3|breakhis|d768|rho0.02",
+    "hn2|isic2019_fm_conch_v1_5_s42_std",
+    "hn1|breakhis_fm_dinov2_vitb14_s42_std_r2",
+    "h2|breakhis_fm_uni_s42_std_r1",
+    "hn1|breakhis_densenet121_s43_std_r3",
+    "h2|breakhis_convnext_tiny_s42_std_r1",
+    "hn3|breakhis_densenet121_s42_std_r1",
+    "h3|kermany|d768|rho0.1",
+    "h2|breakhis_resnet18_s42_std_r2",
+    "hn3|breakhis_fm_uni_s42_std_r0",
+    "hn1|breakhis_mobilenet_v3_large_s42_std_r0",
+    "hn3|kermany_densenet121_s43_std",
+    "hn3|breakhis_fm_conch_v1_5_s42_std_r4",
+    "h3|isic2019|d1280|rho0.2",
+    "hn3|isic2019_resnet50_s43_std",
+    "h3|breakhis|d512|rho0.02",
+    "hn2|dermamnist_regnet_y_3_2gf_s42_std",
+    "h2|breakhis_mobilenet_v3_large_s42_std_r0",
+    "hn1|breakhis_resnet50_s43_std_r3",
+    "hn3|camelyon_dinov2_vitb14_s44",
+    "hn3|breakhis_densenet121_s42_std_r0",
+    "hn3|breakhis_resnet18_s42_std_r3",
+    "hn3|breakhis_mobilenet_v3_large_s42_std_r0",
+    "h2|camelyon_dinov2_vitl14_s42",
+    "h2|breakhis_mobilenet_v3_large_s42_std_r1",
+    "hn3|isic2019_densenet121_s42_std",
+    "h3|breakhis|d2048|rho0.05",
+    "hn1|breakhis_fm_conch_v1_5_s42_std_r4",
+    "h2|breakhis_resnet50_s43_std_r4",
+    "h3|dermamnist|d2560|rho0.05",
+    "hn1|camelyon_resnet50_s42",
+    "hn3|breakhis_convnext_tiny_s42_std_r3",
+    "h2|camelyon_conch_v1_5_s44",
+    "h3|kermany|d2048|rho0.2",
+    "h2|dermamnist_fm_conch_v1_5_s42_std",
+    "hn3|camelyon_densenet121_s42",
+    "h3|kermany|d512|rho0.02",
+    "hn1|dermamnist_effb3_s42_std",
+    "hn2|dermamnist_resnet18_s43_std",
+    "hn2|dermamnist_effb3_s42_std",
+    "hn3|breakhis_fm_dinov2_vitb14_s42_std_r0",
+    "hn1|breakhis_convnext_tiny_s43_std_r1",
+    "hn3|breakhis_fm_conch_v1_5_s42_std_r2",
+    "h2|breakhis_regnet_y_3_2gf_s42_std_r2",
+    "h2|camelyon_uni_s43",
+    "hn2|dermamnist_fm_virchow2_s42_std",
+    "h2|breakhis_fm_conch_v1_5_s42_std_r3",
+    "h3|camelyon|f1|d1024|rho0.02",
+    "h3|breakhis|d1024|rho0.05",
+    "h3|camelyon|f0|d2560|rho0.02",
+    "h3|breakhis|d1536|rho0.1",
+    "hn3|camelyon_effb3_s42",
+    "hn1|kermany_mobilenet_v3_large_s42_std",
+    "h2|kermany_densenet121_s43_std",
+    "hn2|isic2019_regnet_y_3_2gf_s42_std",
+    "hn3|camelyon_conch_v1_5_s44",
+    "h3|isic2019|d2048|rho0.1",
+    "h2|breakhis_resnet50_s42_std_r3",
+    "hn3|breakhis_fm_conch_v1_5_s42_std_r0",
+    "hn3|breakhis_mobilenet_v3_large_s42_std_r4",
+    "h2|breakhis_mobilenet_v3_large_s42_std_r4",
+    "h2|isic2019_mobilenet_v3_large_s42_std",
+    "h2|dermamnist_resnet18_s43_std",
+    "hn3|breakhis_fm_dinov2_vitl14_s42_std_r2",
+    "h3|dermamnist|d2560|rho0.2",
+    "hn3|breakhis_convnext_tiny_s43_std_r1",
+    "h2|breakhis_resnet50_s43_std_r0",
+    "hn2|kermany_resnet50_s43_std",
+    "h2|camelyon_dinov2_vitb14_s44",
+    "h2|breakhis_resnet50_s43_std_r2",
+    "h2|breakhis_densenet121_s43_std_r1",
+    "h3|breakhis|d960|rho0.05",
+    "h3|breakhis|d768|rho0.2",
+    "h2|breakhis_fm_uni_s42_std_r4",
+    "hn1|breakhis_fm_dinov2_vitl14_s42_std_r1",
+    "hn3|breakhis_fm_dinov2_vitb14_s42_std_r4",
+    "hn3|breakhis_convnext_tiny_s42_std_r2",
+    "h3|dermamnist|d960|rho0.05",
+    "h2|breakhis_fm_virchow2_s42_std_r1",
+    "h3|dermamnist|d768|rho0.1",
+    "hn3|breakhis_fm_uni_s42_std_r2",
+    "hn3|breakhis_effb3_s42_std_r1",
+    "h3|dermamnist|d512|rho0.02",
+    "hn3|dermamnist_fm_conch_v1_5_s42_std",
+    "hn3|breakhis_fm_virchow2_s42_std_r3",
+    "hn2|isic2019_mobilenet_v3_large_s42_std",
+    "hn3|breakhis_resnet18_s43_std_r2",
+    "h2|camelyon_resnet18_s42",
+    "h2|isic2019_resnet50_s42_std",
+    "hn3|breakhis_fm_virchow2_s42_std_r0",
+    "hn3|breakhis_densenet121_s43_std_r2",
+    "hn1|breakhis_resnet18_s43_std_r4",
+    "hn1|isic2019_fm_uni_s42_std",
+    "hn3|camelyon_dinov2_vitb14_s42",
+    "hn1|breakhis_effb3_s42_std_r2",
+    "hn3|breakhis_regnet_y_3_2gf_s42_std_r1",
+    "h2|breakhis_convnext_tiny_s42_std_r2",
+    "hn2|kermany_densenet121_s42_std",
+    "hn1|breakhis_densenet121_s43_std_r4",
+    "hn1|camelyon_dinov2_vitl14_s43",
+    "hn1|camelyon_dinov2_vitl14_s42",
+    "h3|camelyon|f1|d1024|rho0.05",
+    "h3|isic2019|d2560|rho0.05",
+    "h2|kermany_densenet121_s42_std",
+    "h2|breakhis_convnext_tiny_s43_std_r0",
+    "hn3|breakhis_fm_dinov2_vitl14_s42_std_r0",
+    "hn3|isic2019_regnet_y_3_2gf_s42_std",
+    "h3|kermany|d512|rho0.2",
+    "h2|breakhis_fm_uni_s42_std_r0",
+    "h3|camelyon|f0|d768|rho0.02",
+    "h3|dermamnist|d1512|rho0.1",
+    "hn1|breakhis_resnet18_s43_std_r0",
+    "h3|dermamnist|d1536|rho0.02",
+    "h2|breakhis_fm_dinov2_vitb14_s42_std_r4",
+    "h3|kermany|d2048|rho0.1",
+    "hn3|dermamnist_fm_dinov2_vitb14_s42_std",
+    "h2|breakhis_fm_conch_v1_5_s42_std_r2",
+    "hn1|camelyon_effb3_s42",
+    "hn3|breakhis_resnet50_s43_std_r4",
+    "hn3|breakhis_convnext_tiny_s43_std_r0",
+    "hn3|breakhis_fm_dinov2_vitl14_s42_std_r1",
+    "h3|isic2019|d2560|rho0.2",
+    "hn1|kermany_resnet18_s42_std",
+    "hn1|breakhis_resnet50_s43_std_r1",
+    "hn3|breakhis_mobilenet_v3_large_s42_std_r2",
+    "hn1|breakhis_resnet18_s42_std_r4",
+    "hn1|breakhis_regnet_y_3_2gf_s42_std_r2",
+    "hn1|breakhis_resnet50_s43_std_r0",
+    "hn3|camelyon_dinov2_vitl14_s42",
+    "hn1|dermamnist_convnext_tiny_s42_std",
+    "hn3|breakhis_densenet121_s43_std_r0",
+    "hn1|breakhis_densenet121_s42_std_r3",
+    "hn1|breakhis_mobilenet_v3_large_s42_std_r1",
+    "h3|isic2019|d1024|rho0.2",
+    "h3|breakhis|d2048|rho0.02",
+    "h2|breakhis_convnext_tiny_s42_std_r3",
+    "hn1|camelyon_efficientnet_v2_s_s42",
+    "h2|breakhis_densenet121_s42_std_r2",
+    "h2|dermamnist_regnet_y_3_2gf_s42_std",
+    "h2|camelyon_densenet121_s42",
+    "hn1|breakhis_convnext_tiny_s43_std_r4",
+    "hn1|breakhis_resnet18_s43_std_r2",
+    "h2|breakhis_efficientnet_v2_s_s42_std_r0",
+    "hn3|camelyon_convnext_tiny_s43",
+    "h3|breakhis|d1536|rho0.02",
+    "h3|isic2019|d1536|rho0.2",
+    "h2|breakhis_resnet18_s43_std_r1",
+    "hn3|breakhis_resnet18_s43_std_r0",
+    "h3|dermamnist|d960|rho0.02",
+    "h2|kermany_resnet18_s42_std",
+    "hn3|camelyon_resnet50_s42",
+    "h3|isic2019|d512|rho0.2",
+    "h3|isic2019|d1024|rho0.05",
+    "h2|dermamnist_fm_dinov2_vitb14_s42_std",
+    "h3|kermany|d768|rho0.2",
+    "hn1|isic2019_regnet_y_3_2gf_s42_std",
+    "hn1|camelyon_virchow2_s43",
+    "h2|isic2019_densenet121_s43_std",
+    "hn2|dermamnist_fm_dinov2_vitl14_s42_std",
+    "h2|breakhis_mobilenet_v3_large_s42_std_r2",
+    "hn2|kermany_effb3_s42_std",
+    "hn2|isic2019_resnet50_s43_std",
+    "h3|kermany|d960|rho0.1",
+    "hn2|isic2019_convnext_tiny_s43_std",
+    "h3|dermamnist|d1024|rho0.2",
+    "h2|breakhis_convnext_tiny_s43_std_r3",
+    "hn3|camelyon_uni_s42",
+    "hn3|breakhis_fm_virchow2_s42_std_r2",
+    "h2|breakhis_convnext_tiny_s43_std_r4",
+    "hn3|camelyon_regnet_y_3_2gf_s42",
+    "hn1|breakhis_fm_virchow2_s42_std_r3",
+    "h2|isic2019_efficientnet_v2_s_s42_std",
+    "hn1|breakhis_resnet18_s42_std_r3",
+    "hn2|kermany_mobilenet_v3_large_s42_std",
+    "h2|isic2019_fm_dinov2_vitl14_s42_std",
+    "hn1|camelyon_uni_s42",
+    "h2|kermany_convnext_tiny_s43_std",
+    "hn3|breakhis_resnet18_s43_std_r3",
+    "h3|camelyon|f0|d2560|rho0.2",
+    "hn1|breakhis_fm_dinov2_vitb14_s42_std_r3",
+    "hn2|isic2019_fm_dinov2_vitl14_s42_std",
+    "hn1|breakhis_convnext_tiny_s43_std_r0",
+    "hn3|breakhis_resnet50_s43_std_r0",
+    "h2|camelyon_uni_s44",
+    "h2|kermany_effb3_s42_std",
+    "h3|isic2019|d1512|rho0.02",
+    "hn3|breakhis_efficientnet_v2_s_s42_std_r4",
+    "h3|breakhis|d1536|rho0.05",
+    "hn1|breakhis_fm_virchow2_s42_std_r0",
+    "hn1|dermamnist_resnet50_s42_std",
+    "h2|breakhis_resnet18_s42_std_r1",
+    "h3|isic2019|d1512|rho0.1",
+    "h2|breakhis_effb3_s42_std_r0",
+    "h2|dermamnist_resnet50_s42_std",
+    "hn2|dermamnist_fm_dinov2_vitb14_s42_std",
+    "hn1|breakhis_convnext_tiny_s42_std_r4",
+    "h2|breakhis_regnet_y_3_2gf_s42_std_r4",
+    "hn1|breakhis_fm_uni_s42_std_r4",
+    "h3|breakhis|d768|rho0.1",
+    "h3|dermamnist|d2048|rho0.02",
+    "hn3|dermamnist_resnet50_s43_std",
+    "h2|breakhis_convnext_tiny_s42_std_r4",
+    "hn2|isic2019_fm_uni_s42_std",
+    "hn3|breakhis_densenet121_s43_std_r3",
+    "hn3|camelyon_convnext_tiny_s44",
+    "h2|breakhis_efficientnet_v2_s_s42_std_r2",
+    "h2|camelyon_conch_v1_5_s43",
+    "h3|camelyon|f0|d1024|rho0.02",
+    "h3|isic2019|d2560|rho0.1",
+    "hn1|isic2019_fm_conch_v1_5_s42_std",
+    "h3|dermamnist|d1024|rho0.05",
+    "h3|breakhis|d2560|rho0.2",
+    "hn1|isic2019_fm_dinov2_vitl14_s42_std",
+    "h3|camelyon|f1|d2560|rho0.02",
+    "h3|breakhis|d512|rho0.1",
+    "h3|kermany|d1280|rho0.02",
+    "hn3|camelyon_mobilenet_v3_large_s42",
+    "hn1|breakhis_resnet50_s42_std_r0",
+    "hn2|isic2019_convnext_tiny_s42_std",
+    "hn1|isic2019_resnet50_s42_std",
+    "hn1|camelyon_resnet18_s42",
+    "hn3|dermamnist_resnet18_s42_std",
+    "h3|dermamnist|d2048|rho0.2",
+    "h2|breakhis_resnet18_s43_std_r4",
+    "h2|kermany_regnet_y_3_2gf_s42_std",
+    "h3|isic2019|d768|rho0.1",
+    "hn3|camelyon_virchow2_s43",
+    "hn1|breakhis_resnet50_s42_std_r3",
+    "h3|dermamnist|d2048|rho0.1",
+    "hn1|breakhis_regnet_y_3_2gf_s42_std_r3",
+    "hn3|breakhis_fm_conch_v1_5_s42_std_r1",
+    "h3|kermany|d960|rho0.2",
+    "hn3|kermany_resnet50_s43_std",
+    "h2|breakhis_mobilenet_v3_large_s42_std_r3",
+    "hn3|dermamnist_fm_virchow2_s42_std",
+    "hn2|dermamnist_resnet50_s43_std",
+    "hn1|camelyon_conch_v1_5_s42",
+    "h2|camelyon_virchow2_s43",
+    "h3|breakhis|d1536|rho0.2",
+    "hn2|dermamnist_fm_uni_s42_std",
+    "hn1|camelyon_densenet121_s42",
+    "hn1|breakhis_fm_dinov2_vitl14_s42_std_r3",
+    "h3|camelyon|f1|d768|rho0.2",
+    "hn1|breakhis_fm_dinov2_vitb14_s42_std_r0",
+    "h3|kermany|d1512|rho0.05",
+    "hn1|breakhis_efficientnet_v2_s_s42_std_r0",
+    "h3|kermany|d960|rho0.02",
+    "h3|dermamnist|d1280|rho0.05",
+    "hn1|breakhis_resnet18_s42_std_r2",
+    "hn3|dermamnist_densenet121_s42_std",
+    "hn1|breakhis_densenet121_s42_std_r4",
+    "hn3|isic2019_densenet121_s43_std",
+    "h2|breakhis_resnet50_s42_std_r2",
+    "hn1|dermamnist_densenet121_s43_std",
+    "hn1|breakhis_convnext_tiny_s42_std_r1",
+    "h3|isic2019|d512|rho0.1",
+    "h3|dermamnist|d1512|rho0.05",
+    "hn3|breakhis_resnet50_s42_std_r0",
+    "h3|dermamnist|d1512|rho0.02",
+    "hn3|camelyon_conch_v1_5_s42",
+    "hn3|isic2019_effb3_s42_std",
+    "hn1|breakhis_effb3_s42_std_r4",
+    "hn1|breakhis_effb3_s42_std_r3",
+    "h2|dermamnist_densenet121_s42_std",
+    "h3|breakhis|d1280|rho0.2",
+    "hn1|breakhis_resnet50_s42_std_r1",
+    "h3|breakhis|d1280|rho0.1",
+    "h3|kermany|d1512|rho0.2",
+    "hn3|dermamnist_resnet50_s42_std",
+    "h3|kermany|d1024|rho0.1",
+    "h2|breakhis_resnet18_s43_std_r2",
+    "hn3|breakhis_mobilenet_v3_large_s42_std_r1",
+    "hn3|breakhis_resnet18_s43_std_r1",
+    "hn2|kermany_densenet121_s43_std",
+    "hn1|breakhis_regnet_y_3_2gf_s42_std_r1",
+    "h2|breakhis_effb3_s42_std_r4",
+    "h2|isic2019_fm_uni_s42_std",
+    "hn2|isic2019_densenet121_s43_std",
+    "h2|dermamnist_fm_dinov2_vitl14_s42_std",
+    "h3|camelyon|f0|d768|rho0.05",
+    "h2|camelyon_conch_v1_5_s42",
+    "h3|dermamnist|d2048|rho0.05",
+    "h3|camelyon|f0|d768|rho0.2",
+    "h3|camelyon|f0|d1024|rho0.1",
+    "hn1|camelyon_uni_s44",
+    "hn3|breakhis_densenet121_s43_std_r4",
+    "h3|camelyon|f0|d768|rho0.1",
+    "hn1|breakhis_fm_dinov2_vitb14_s42_std_r4",
+    "hn1|camelyon_convnext_tiny_s43",
+    "hn2|dermamnist_fm_conch_v1_5_s42_std",
+    "hn3|camelyon_resnet50_s43",
+    "hn1|camelyon_virchow2_s44",
+    "h3|dermamnist|d2560|rho0.1",
+    "h2|breakhis_fm_conch_v1_5_s42_std_r1",
+    "h3|dermamnist|d768|rho0.02",
+    "hn2|kermany_efficientnet_v2_s_s42_std",
+    "h2|breakhis_fm_virchow2_s42_std_r0",
+    "h3|dermamnist|d960|rho0.2",
+    "hn3|camelyon_convnext_tiny_s42",
+    "hn3|breakhis_densenet121_s42_std_r2",
+    "hn3|dermamnist_fm_dinov2_vitl14_s42_std",
+    "h3|kermany|d1536|rho0.2",
+    "h2|breakhis_densenet121_s42_std_r3",
+    "hn1|breakhis_resnet50_s42_std_r2",
+    "hn2|dermamnist_resnet50_s42_std",
+    "hn1|camelyon_dinov2_vitb14_s42",
+    "hn1|isic2019_densenet121_s42_std",
+    "h2|breakhis_convnext_tiny_s42_std_r0",
+    "hn3|isic2019_efficientnet_v2_s_s42_std",
+    "hn3|breakhis_fm_dinov2_vitb14_s42_std_r3",
+    "h2|kermany_mobilenet_v3_large_s42_std",
+    "hn1|camelyon_dinov2_vitb14_s43",
+    "h2|breakhis_fm_dinov2_vitb14_s42_std_r2",
+    "hn1|kermany_efficientnet_v2_s_s42_std",
+    "h2|dermamnist_effb3_s42_std",
+    "h3|breakhis|d1512|rho0.05",
+    "h3|breakhis|d2048|rho0.1",
+    "hn3|isic2019_fm_dinov2_vitb14_s42_std",
+    "h3|dermamnist|d1536|rho0.2",
+    "hn2|isic2019_effb3_s42_std",
+    "hn3|breakhis_resnet18_s42_std_r1",
+    "h2|breakhis_densenet121_s43_std_r0",
+    "h2|kermany_efficientnet_v2_s_s42_std",
+    "h3|camelyon|f1|d768|rho0.02",
+    "h3|breakhis|d768|rho0.05",
+    "h2|breakhis_resnet18_s43_std_r0",
+    "hn3|isic2019_resnet18_s42_std",
+    "h3|isic2019|d1536|rho0.05",
+    "h2|dermamnist_fm_virchow2_s42_std",
+    "h3|kermany|d2048|rho0.02",
+    "hn1|isic2019_effb3_s42_std",
+    "hn1|dermamnist_resnet18_s42_std",
+    "hn1|breakhis_convnext_tiny_s42_std_r0",
+    "hn1|breakhis_densenet121_s42_std_r0",
+    "h3|dermamnist|d1536|rho0.1",
+    "h3|camelyon|f1|d1024|rho0.1",
+    "hn3|breakhis_effb3_s42_std_r2",
+    "hn2|isic2019_resnet18_s43_std",
+    "hn1|breakhis_convnext_tiny_s42_std_r3",
+    "hn1|breakhis_fm_conch_v1_5_s42_std_r2",
+    "hn3|dermamnist_convnext_tiny_s43_std",
+    "h3|camelyon|f0|d1024|rho0.05",
+    "hn1|dermamnist_fm_virchow2_s42_std",
+    "hn2|dermamnist_densenet121_s43_std",
+    "h2|breakhis_fm_dinov2_vitl14_s42_std_r1",
+    "hn3|dermamnist_regnet_y_3_2gf_s42_std",
+    "h3|kermany|d1024|rho0.05",
+    "h3|isic2019|d768|rho0.05",
+    "hn1|kermany_regnet_y_3_2gf_s42_std",
+    "hn3|breakhis_convnext_tiny_s42_std_r1",
+    "hn1|camelyon_regnet_y_3_2gf_s42",
+    "hn1|camelyon_conch_v1_5_s43",
+    "h2|breakhis_efficientnet_v2_s_s42_std_r3",
+    "hn2|kermany_convnext_tiny_s43_std",
+    "h2|camelyon_uni_s42",
+    "h2|breakhis_resnet50_s42_std_r0",
+    "h3|kermany|d960|rho0.05",
+    "h3|kermany|d512|rho0.05",
+    "h3|dermamnist|d1280|rho0.02",
+    "h3|isic2019|d768|rho0.02",
+    "hn1|breakhis_fm_uni_s42_std_r2",
+    "h3|breakhis|d960|rho0.2",
+    "h3|breakhis|d1512|rho0.02",
+    "h3|isic2019|d960|rho0.05",
+    "h3|dermamnist|d2560|rho0.02",
+    "hn3|kermany_efficientnet_v2_s_s42_std",
+    "hn3|breakhis_mobilenet_v3_large_s42_std_r3",
+    "hn1|isic2019_convnext_tiny_s43_std",
+    "hn1|breakhis_resnet18_s42_std_r1",
+    "hn1|isic2019_resnet18_s43_std",
+    "hn1|isic2019_fm_dinov2_vitb14_s42_std",
+    "h2|breakhis_fm_uni_s42_std_r3",
+    "hn2|isic2019_fm_virchow2_s42_std",
+    "hn1|breakhis_efficientnet_v2_s_s42_std_r1",
+    "hn1|dermamnist_mobilenet_v3_large_s42_std",
+    "h3|isic2019|d2048|rho0.02",
+    "h3|breakhis|d1280|rho0.02",
+    "h2|camelyon_convnext_tiny_s42",
+    "h2|breakhis_densenet121_s43_std_r2",
+    "h2|breakhis_effb3_s42_std_r3",
+    "hn3|breakhis_resnet50_s42_std_r3",
+    "h3|breakhis|d960|rho0.02",
+    "h2|breakhis_densenet121_s43_std_r4",
+    "h3|breakhis|d2560|rho0.1",
+    "h3|breakhis|d960|rho0.1",
+    "h2|dermamnist_convnext_tiny_s42_std",
+    "h2|breakhis_resnet18_s43_std_r3",
+    "hn1|breakhis_regnet_y_3_2gf_s42_std_r0",
+    "hn3|camelyon_efficientnet_v2_s_s42",
+    "hn3|breakhis_resnet50_s43_std_r1",
+    "hn1|breakhis_fm_uni_s42_std_r3",
+    "hn1|camelyon_mobilenet_v3_large_s42",
+    "hn1|kermany_convnext_tiny_s42_std",
+    "hn3|breakhis_fm_uni_s42_std_r1",
+    "hn3|breakhis_efficientnet_v2_s_s42_std_r2",
+    "hn1|dermamnist_regnet_y_3_2gf_s42_std",
+    "hn3|breakhis_resnet50_s43_std_r2",
+    "hn3|camelyon_resnet18_s42",
+    "hn3|kermany_effb3_s42_std",
+    "h2|breakhis_regnet_y_3_2gf_s42_std_r3",
+    "hn3|camelyon_uni_s43",
+    "hn3|breakhis_resnet50_s43_std_r3",
+    "h3|kermany|d768|rho0.05",
+    "hn2|kermany_resnet50_s42_std",
+    "hn3|kermany_resnet50_s42_std",
+    "h3|camelyon|f0|d2560|rho0.1",
+    "h2|camelyon_resnet50_s44",
+    "hn1|breakhis_mobilenet_v3_large_s42_std_r3",
+    "h3|dermamnist|d1280|rho0.2",
+    "hn1|camelyon_dinov2_vitl14_s44",
+    "hn3|breakhis_fm_uni_s42_std_r3",
+    "hn3|kermany_resnet18_s42_std",
+    "hn3|breakhis_convnext_tiny_s42_std_r0",
+    "hn3|camelyon_resnet50_s44",
+    "h3|breakhis|d1512|rho0.1",
+    "hn3|breakhis_regnet_y_3_2gf_s42_std_r3",
+    "h3|isic2019|d1280|rho0.02",
+    "h3|dermamnist|d1024|rho0.1",
+    "h2|kermany_convnext_tiny_s42_std",
+    "hn1|camelyon_resnet50_s44",
+    "hn1|breakhis_fm_conch_v1_5_s42_std_r3",
+    "hn3|camelyon_virchow2_s44",
+    "hn1|dermamnist_fm_uni_s42_std",
+    "hn2|isic2019_efficientnet_v2_s_s42_std",
+    "hn3|isic2019_fm_uni_s42_std",
+    "h3|isic2019|d1024|rho0.1",
+    "hn1|breakhis_resnet50_s42_std_r4",
+    "h3|breakhis|d1280|rho0.05",
+    "hn1|dermamnist_resnet50_s43_std",
+    "hn3|isic2019_fm_conch_v1_5_s42_std",
+    "h2|camelyon_effb3_s42",
+    "hn1|breakhis_effb3_s42_std_r0",
+    "hn3|breakhis_effb3_s42_std_r0",
+    "hn1|breakhis_fm_dinov2_vitl14_s42_std_r2",
+    "h3|isic2019|d1512|rho0.05",
+    "hn1|camelyon_resnet50_s43",
+    "h2|kermany_resnet18_s43_std",
+    "h3|camelyon|f1|d1024|rho0.2",
+    "hn3|camelyon_conch_v1_5_s43",
+    "h3|dermamnist|d768|rho0.05",
+    "hn1|isic2019_densenet121_s43_std",
+    "hn3|breakhis_efficientnet_v2_s_s42_std_r1",
+    "h2|isic2019_effb3_s42_std",
+    "hn3|breakhis_regnet_y_3_2gf_s42_std_r0",
+    "hn2|kermany_convnext_tiny_s42_std",
+    "hn3|breakhis_convnext_tiny_s43_std_r4",
+    "h3|camelyon|f1|d2560|rho0.1",
+    "h3|camelyon|f1|d2560|rho0.05",
+    "hn1|kermany_convnext_tiny_s43_std",
+    "hn1|dermamnist_fm_dinov2_vitl14_s42_std",
+    "h2|breakhis_efficientnet_v2_s_s42_std_r1",
+    "hn3|dermamnist_efficientnet_v2_s_s42_std",
+    "h3|camelyon|f1|d2560|rho0.2",
+    "hn1|breakhis_mobilenet_v3_large_s42_std_r2",
+    "h3|isic2019|d960|rho0.2",
+    "h2|camelyon_dinov2_vitl14_s43",
+    "hn1|breakhis_resnet50_s43_std_r2",
+    "hn3|breakhis_resnet50_s42_std_r4",
+    "h2|camelyon_resnet50_s42",
+    "h3|kermany|d768|rho0.02",
+    "h2|breakhis_resnet18_s42_std_r0",
+    "hn3|breakhis_fm_uni_s42_std_r4",
+    "h3|breakhis|d1024|rho0.1",
+    "hn1|kermany_resnet50_s42_std",
+    "h2|breakhis_convnext_tiny_s43_std_r2",
+    "h2|breakhis_fm_virchow2_s42_std_r2",
+    "hn3|breakhis_convnext_tiny_s42_std_r4",
+    "h3|isic2019|d1280|rho0.05",
+    "h3|camelyon|f0|d1024|rho0.2",
+    "hn1|dermamnist_resnet18_s43_std",
+    "hn1|kermany_resnet50_s43_std",
+    "hn3|isic2019_mobilenet_v3_large_s42_std",
+    "h3|kermany|d1536|rho0.02",
+    "hn1|breakhis_efficientnet_v2_s_s42_std_r4",
+    "hn1|breakhis_convnext_tiny_s42_std_r2",
+    "h3|isic2019|d512|rho0.02",
+    "hn3|breakhis_resnet18_s43_std_r4",
+    "h2|dermamnist_densenet121_s43_std",
+    "h2|breakhis_fm_virchow2_s42_std_r4",
+    "hn2|isic2019_resnet18_s42_std",
+    "hn1|kermany_densenet121_s42_std",
+    "hn1|dermamnist_fm_dinov2_vitb14_s42_std",
+    "h2|breakhis_resnet50_s43_std_r1",
+    "h3|kermany|d1512|rho0.1",
+    "h3|dermamnist|d512|rho0.05",
+    "h2|camelyon_mobilenet_v3_large_s42",
+    "hn3|kermany_convnext_tiny_s43_std",
+    "h2|breakhis_densenet121_s43_std_r3",
+    "hn1|dermamnist_convnext_tiny_s43_std",
+    "h2|camelyon_regnet_y_3_2gf_s42"
+   ]
+  }
+ ],
+ "unit_params": {
+  "hn1|breakhis_convnext_tiny_s42_std_r0": {
+   "kind": "hn1",
+   "cell": "breakhis_convnext_tiny_s42_std_r0"
+  },
+  "hn1|breakhis_convnext_tiny_s42_std_r1": {
+   "kind": "hn1",
+   "cell": "breakhis_convnext_tiny_s42_std_r1"
+  },
+  "hn1|breakhis_convnext_tiny_s42_std_r2": {
+   "kind": "hn1",
+   "cell": "breakhis_convnext_tiny_s42_std_r2"
+  },
+  "hn1|breakhis_convnext_tiny_s42_std_r3": {
+   "kind": "hn1",
+   "cell": "breakhis_convnext_tiny_s42_std_r3"
+  },
+  "hn1|breakhis_convnext_tiny_s42_std_r4": {
+   "kind": "hn1",
+   "cell": "breakhis_convnext_tiny_s42_std_r4"
+  },
+  "hn1|breakhis_convnext_tiny_s43_std_r0": {
+   "kind": "hn1",
+   "cell": "breakhis_convnext_tiny_s43_std_r0"
+  },
+  "hn1|breakhis_convnext_tiny_s43_std_r1": {
+   "kind": "hn1",
+   "cell": "breakhis_convnext_tiny_s43_std_r1"
+  },
+  "hn1|breakhis_convnext_tiny_s43_std_r2": {
+   "kind": "hn1",
+   "cell": "breakhis_convnext_tiny_s43_std_r2"
+  },
+  "hn1|breakhis_convnext_tiny_s43_std_r3": {
+   "kind": "hn1",
+   "cell": "breakhis_convnext_tiny_s43_std_r3"
+  },
+  "hn1|breakhis_convnext_tiny_s43_std_r4": {
+   "kind": "hn1",
+   "cell": "breakhis_convnext_tiny_s43_std_r4"
+  },
+  "hn1|breakhis_densenet121_s42_std_r0": {
+   "kind": "hn1",
+   "cell": "breakhis_densenet121_s42_std_r0"
+  },
+  "hn1|breakhis_densenet121_s42_std_r1": {
+   "kind": "hn1",
+   "cell": "breakhis_densenet121_s42_std_r1"
+  },
+  "hn1|breakhis_densenet121_s42_std_r2": {
+   "kind": "hn1",
+   "cell": "breakhis_densenet121_s42_std_r2"
+  },
+  "hn1|breakhis_densenet121_s42_std_r3": {
+   "kind": "hn1",
+   "cell": "breakhis_densenet121_s42_std_r3"
+  },
+  "hn1|breakhis_densenet121_s42_std_r4": {
+   "kind": "hn1",
+   "cell": "breakhis_densenet121_s42_std_r4"
+  },
+  "hn1|breakhis_densenet121_s43_std_r0": {
+   "kind": "hn1",
+   "cell": "breakhis_densenet121_s43_std_r0"
+  },
+  "hn1|breakhis_densenet121_s43_std_r1": {
+   "kind": "hn1",
+   "cell": "breakhis_densenet121_s43_std_r1"
+  },
+  "hn1|breakhis_densenet121_s43_std_r2": {
+   "kind": "hn1",
+   "cell": "breakhis_densenet121_s43_std_r2"
+  },
+  "hn1|breakhis_densenet121_s43_std_r3": {
+   "kind": "hn1",
+   "cell": "breakhis_densenet121_s43_std_r3"
+  },
+  "hn1|breakhis_densenet121_s43_std_r4": {
+   "kind": "hn1",
+   "cell": "breakhis_densenet121_s43_std_r4"
+  },
+  "hn1|breakhis_effb3_s42_std_r0": {
+   "kind": "hn1",
+   "cell": "breakhis_effb3_s42_std_r0"
+  },
+  "hn1|breakhis_effb3_s42_std_r1": {
+   "kind": "hn1",
+   "cell": "breakhis_effb3_s42_std_r1"
+  },
+  "hn1|breakhis_effb3_s42_std_r2": {
+   "kind": "hn1",
+   "cell": "breakhis_effb3_s42_std_r2"
+  },
+  "hn1|breakhis_effb3_s42_std_r3": {
+   "kind": "hn1",
+   "cell": "breakhis_effb3_s42_std_r3"
+  },
+  "hn1|breakhis_effb3_s42_std_r4": {
+   "kind": "hn1",
+   "cell": "breakhis_effb3_s42_std_r4"
+  },
+  "hn1|breakhis_efficientnet_v2_s_s42_std_r0": {
+   "kind": "hn1",
+   "cell": "breakhis_efficientnet_v2_s_s42_std_r0"
+  },
+  "hn1|breakhis_efficientnet_v2_s_s42_std_r1": {
+   "kind": "hn1",
+   "cell": "breakhis_efficientnet_v2_s_s42_std_r1"
+  },
+  "hn1|breakhis_efficientnet_v2_s_s42_std_r2": {
+   "kind": "hn1",
+   "cell": "breakhis_efficientnet_v2_s_s42_std_r2"
+  },
+  "hn1|breakhis_efficientnet_v2_s_s42_std_r3": {
+   "kind": "hn1",
+   "cell": "breakhis_efficientnet_v2_s_s42_std_r3"
+  },
+  "hn1|breakhis_efficientnet_v2_s_s42_std_r4": {
+   "kind": "hn1",
+   "cell": "breakhis_efficientnet_v2_s_s42_std_r4"
+  },
+  "hn1|breakhis_fm_conch_v1_5_s42_std_r0": {
+   "kind": "hn1",
+   "cell": "breakhis_fm_conch_v1_5_s42_std_r0"
+  },
+  "hn1|breakhis_fm_conch_v1_5_s42_std_r1": {
+   "kind": "hn1",
+   "cell": "breakhis_fm_conch_v1_5_s42_std_r1"
+  },
+  "hn1|breakhis_fm_conch_v1_5_s42_std_r2": {
+   "kind": "hn1",
+   "cell": "breakhis_fm_conch_v1_5_s42_std_r2"
+  },
+  "hn1|breakhis_fm_conch_v1_5_s42_std_r3": {
+   "kind": "hn1",
+   "cell": "breakhis_fm_conch_v1_5_s42_std_r3"
+  },
+  "hn1|breakhis_fm_conch_v1_5_s42_std_r4": {
+   "kind": "hn1",
+   "cell": "breakhis_fm_conch_v1_5_s42_std_r4"
+  },
+  "hn1|breakhis_fm_dinov2_vitb14_s42_std_r0": {
+   "kind": "hn1",
+   "cell": "breakhis_fm_dinov2_vitb14_s42_std_r0"
+  },
+  "hn1|breakhis_fm_dinov2_vitb14_s42_std_r1": {
+   "kind": "hn1",
+   "cell": "breakhis_fm_dinov2_vitb14_s42_std_r1"
+  },
+  "hn1|breakhis_fm_dinov2_vitb14_s42_std_r2": {
+   "kind": "hn1",
+   "cell": "breakhis_fm_dinov2_vitb14_s42_std_r2"
+  },
+  "hn1|breakhis_fm_dinov2_vitb14_s42_std_r3": {
+   "kind": "hn1",
+   "cell": "breakhis_fm_dinov2_vitb14_s42_std_r3"
+  },
+  "hn1|breakhis_fm_dinov2_vitb14_s42_std_r4": {
+   "kind": "hn1",
+   "cell": "breakhis_fm_dinov2_vitb14_s42_std_r4"
+  },
+  "hn1|breakhis_fm_dinov2_vitl14_s42_std_r0": {
+   "kind": "hn1",
+   "cell": "breakhis_fm_dinov2_vitl14_s42_std_r0"
+  },
+  "hn1|breakhis_fm_dinov2_vitl14_s42_std_r1": {
+   "kind": "hn1",
+   "cell": "breakhis_fm_dinov2_vitl14_s42_std_r1"
+  },
+  "hn1|breakhis_fm_dinov2_vitl14_s42_std_r2": {
+   "kind": "hn1",
+   "cell": "breakhis_fm_dinov2_vitl14_s42_std_r2"
+  },
+  "hn1|breakhis_fm_dinov2_vitl14_s42_std_r3": {
+   "kind": "hn1",
+   "cell": "breakhis_fm_dinov2_vitl14_s42_std_r3"
+  },
+  "hn1|breakhis_fm_dinov2_vitl14_s42_std_r4": {
+   "kind": "hn1",
+   "cell": "breakhis_fm_dinov2_vitl14_s42_std_r4"
+  },
+  "hn1|breakhis_fm_uni_s42_std_r0": {
+   "kind": "hn1",
+   "cell": "breakhis_fm_uni_s42_std_r0"
+  },
+  "hn1|breakhis_fm_uni_s42_std_r1": {
+   "kind": "hn1",
+   "cell": "breakhis_fm_uni_s42_std_r1"
+  },
+  "hn1|breakhis_fm_uni_s42_std_r2": {
+   "kind": "hn1",
+   "cell": "breakhis_fm_uni_s42_std_r2"
+  },
+  "hn1|breakhis_fm_uni_s42_std_r3": {
+   "kind": "hn1",
+   "cell": "breakhis_fm_uni_s42_std_r3"
+  },
+  "hn1|breakhis_fm_uni_s42_std_r4": {
+   "kind": "hn1",
+   "cell": "breakhis_fm_uni_s42_std_r4"
+  },
+  "hn1|breakhis_fm_virchow2_s42_std_r0": {
+   "kind": "hn1",
+   "cell": "breakhis_fm_virchow2_s42_std_r0"
+  },
+  "hn1|breakhis_fm_virchow2_s42_std_r1": {
+   "kind": "hn1",
+   "cell": "breakhis_fm_virchow2_s42_std_r1"
+  },
+  "hn1|breakhis_fm_virchow2_s42_std_r2": {
+   "kind": "hn1",
+   "cell": "breakhis_fm_virchow2_s42_std_r2"
+  },
+  "hn1|breakhis_fm_virchow2_s42_std_r3": {
+   "kind": "hn1",
+   "cell": "breakhis_fm_virchow2_s42_std_r3"
+  },
+  "hn1|breakhis_fm_virchow2_s42_std_r4": {
+   "kind": "hn1",
+   "cell": "breakhis_fm_virchow2_s42_std_r4"
+  },
+  "hn1|breakhis_mobilenet_v3_large_s42_std_r0": {
+   "kind": "hn1",
+   "cell": "breakhis_mobilenet_v3_large_s42_std_r0"
+  },
+  "hn1|breakhis_mobilenet_v3_large_s42_std_r1": {
+   "kind": "hn1",
+   "cell": "breakhis_mobilenet_v3_large_s42_std_r1"
+  },
+  "hn1|breakhis_mobilenet_v3_large_s42_std_r2": {
+   "kind": "hn1",
+   "cell": "breakhis_mobilenet_v3_large_s42_std_r2"
+  },
+  "hn1|breakhis_mobilenet_v3_large_s42_std_r3": {
+   "kind": "hn1",
+   "cell": "breakhis_mobilenet_v3_large_s42_std_r3"
+  },
+  "hn1|breakhis_mobilenet_v3_large_s42_std_r4": {
+   "kind": "hn1",
+   "cell": "breakhis_mobilenet_v3_large_s42_std_r4"
+  },
+  "hn1|breakhis_regnet_y_3_2gf_s42_std_r0": {
+   "kind": "hn1",
+   "cell": "breakhis_regnet_y_3_2gf_s42_std_r0"
+  },
+  "hn1|breakhis_regnet_y_3_2gf_s42_std_r1": {
+   "kind": "hn1",
+   "cell": "breakhis_regnet_y_3_2gf_s42_std_r1"
+  },
+  "hn1|breakhis_regnet_y_3_2gf_s42_std_r2": {
+   "kind": "hn1",
+   "cell": "breakhis_regnet_y_3_2gf_s42_std_r2"
+  },
+  "hn1|breakhis_regnet_y_3_2gf_s42_std_r3": {
+   "kind": "hn1",
+   "cell": "breakhis_regnet_y_3_2gf_s42_std_r3"
+  },
+  "hn1|breakhis_regnet_y_3_2gf_s42_std_r4": {
+   "kind": "hn1",
+   "cell": "breakhis_regnet_y_3_2gf_s42_std_r4"
+  },
+  "hn1|breakhis_resnet18_s42_std_r0": {
+   "kind": "hn1",
+   "cell": "breakhis_resnet18_s42_std_r0"
+  },
+  "hn1|breakhis_resnet18_s42_std_r1": {
+   "kind": "hn1",
+   "cell": "breakhis_resnet18_s42_std_r1"
+  },
+  "hn1|breakhis_resnet18_s42_std_r2": {
+   "kind": "hn1",
+   "cell": "breakhis_resnet18_s42_std_r2"
+  },
+  "hn1|breakhis_resnet18_s42_std_r3": {
+   "kind": "hn1",
+   "cell": "breakhis_resnet18_s42_std_r3"
+  },
+  "hn1|breakhis_resnet18_s42_std_r4": {
+   "kind": "hn1",
+   "cell": "breakhis_resnet18_s42_std_r4"
+  },
+  "hn1|breakhis_resnet18_s43_std_r0": {
+   "kind": "hn1",
+   "cell": "breakhis_resnet18_s43_std_r0"
+  },
+  "hn1|breakhis_resnet18_s43_std_r1": {
+   "kind": "hn1",
+   "cell": "breakhis_resnet18_s43_std_r1"
+  },
+  "hn1|breakhis_resnet18_s43_std_r2": {
+   "kind": "hn1",
+   "cell": "breakhis_resnet18_s43_std_r2"
+  },
+  "hn1|breakhis_resnet18_s43_std_r3": {
+   "kind": "hn1",
+   "cell": "breakhis_resnet18_s43_std_r3"
+  },
+  "hn1|breakhis_resnet18_s43_std_r4": {
+   "kind": "hn1",
+   "cell": "breakhis_resnet18_s43_std_r4"
+  },
+  "hn1|breakhis_resnet50_s42_std_r0": {
+   "kind": "hn1",
+   "cell": "breakhis_resnet50_s42_std_r0"
+  },
+  "hn1|breakhis_resnet50_s42_std_r1": {
+   "kind": "hn1",
+   "cell": "breakhis_resnet50_s42_std_r1"
+  },
+  "hn1|breakhis_resnet50_s42_std_r2": {
+   "kind": "hn1",
+   "cell": "breakhis_resnet50_s42_std_r2"
+  },
+  "hn1|breakhis_resnet50_s42_std_r3": {
+   "kind": "hn1",
+   "cell": "breakhis_resnet50_s42_std_r3"
+  },
+  "hn1|breakhis_resnet50_s42_std_r4": {
+   "kind": "hn1",
+   "cell": "breakhis_resnet50_s42_std_r4"
+  },
+  "hn1|breakhis_resnet50_s43_std_r0": {
+   "kind": "hn1",
+   "cell": "breakhis_resnet50_s43_std_r0"
+  },
+  "hn1|breakhis_resnet50_s43_std_r1": {
+   "kind": "hn1",
+   "cell": "breakhis_resnet50_s43_std_r1"
+  },
+  "hn1|breakhis_resnet50_s43_std_r2": {
+   "kind": "hn1",
+   "cell": "breakhis_resnet50_s43_std_r2"
+  },
+  "hn1|breakhis_resnet50_s43_std_r3": {
+   "kind": "hn1",
+   "cell": "breakhis_resnet50_s43_std_r3"
+  },
+  "hn1|breakhis_resnet50_s43_std_r4": {
+   "kind": "hn1",
+   "cell": "breakhis_resnet50_s43_std_r4"
+  },
+  "hn1|camelyon_conch_v1_5_s42": {
+   "kind": "hn1",
+   "cell": "camelyon_conch_v1_5_s42"
+  },
+  "hn1|camelyon_conch_v1_5_s43": {
+   "kind": "hn1",
+   "cell": "camelyon_conch_v1_5_s43"
+  },
+  "hn1|camelyon_conch_v1_5_s44": {
+   "kind": "hn1",
+   "cell": "camelyon_conch_v1_5_s44"
+  },
+  "hn1|camelyon_convnext_tiny_s42": {
+   "kind": "hn1",
+   "cell": "camelyon_convnext_tiny_s42"
+  },
+  "hn1|camelyon_convnext_tiny_s43": {
+   "kind": "hn1",
+   "cell": "camelyon_convnext_tiny_s43"
+  },
+  "hn1|camelyon_convnext_tiny_s44": {
+   "kind": "hn1",
+   "cell": "camelyon_convnext_tiny_s44"
+  },
+  "hn1|camelyon_densenet121_s42": {
+   "kind": "hn1",
+   "cell": "camelyon_densenet121_s42"
+  },
+  "hn1|camelyon_dinov2_vitb14_s42": {
+   "kind": "hn1",
+   "cell": "camelyon_dinov2_vitb14_s42"
+  },
+  "hn1|camelyon_dinov2_vitb14_s43": {
+   "kind": "hn1",
+   "cell": "camelyon_dinov2_vitb14_s43"
+  },
+  "hn1|camelyon_dinov2_vitb14_s44": {
+   "kind": "hn1",
+   "cell": "camelyon_dinov2_vitb14_s44"
+  },
+  "hn1|camelyon_dinov2_vitl14_s42": {
+   "kind": "hn1",
+   "cell": "camelyon_dinov2_vitl14_s42"
+  },
+  "hn1|camelyon_dinov2_vitl14_s43": {
+   "kind": "hn1",
+   "cell": "camelyon_dinov2_vitl14_s43"
+  },
+  "hn1|camelyon_dinov2_vitl14_s44": {
+   "kind": "hn1",
+   "cell": "camelyon_dinov2_vitl14_s44"
+  },
+  "hn1|camelyon_effb3_s42": {
+   "kind": "hn1",
+   "cell": "camelyon_effb3_s42"
+  },
+  "hn1|camelyon_efficientnet_v2_s_s42": {
+   "kind": "hn1",
+   "cell": "camelyon_efficientnet_v2_s_s42"
+  },
+  "hn1|camelyon_mobilenet_v3_large_s42": {
+   "kind": "hn1",
+   "cell": "camelyon_mobilenet_v3_large_s42"
+  },
+  "hn1|camelyon_regnet_y_3_2gf_s42": {
+   "kind": "hn1",
+   "cell": "camelyon_regnet_y_3_2gf_s42"
+  },
+  "hn1|camelyon_resnet18_s42": {
+   "kind": "hn1",
+   "cell": "camelyon_resnet18_s42"
+  },
+  "hn1|camelyon_resnet50_s42": {
+   "kind": "hn1",
+   "cell": "camelyon_resnet50_s42"
+  },
+  "hn1|camelyon_resnet50_s43": {
+   "kind": "hn1",
+   "cell": "camelyon_resnet50_s43"
+  },
+  "hn1|camelyon_resnet50_s44": {
+   "kind": "hn1",
+   "cell": "camelyon_resnet50_s44"
+  },
+  "hn1|camelyon_uni_s42": {
+   "kind": "hn1",
+   "cell": "camelyon_uni_s42"
+  },
+  "hn1|camelyon_uni_s43": {
+   "kind": "hn1",
+   "cell": "camelyon_uni_s43"
+  },
+  "hn1|camelyon_uni_s44": {
+   "kind": "hn1",
+   "cell": "camelyon_uni_s44"
+  },
+  "hn1|camelyon_virchow2_s42": {
+   "kind": "hn1",
+   "cell": "camelyon_virchow2_s42"
+  },
+  "hn1|camelyon_virchow2_s43": {
+   "kind": "hn1",
+   "cell": "camelyon_virchow2_s43"
+  },
+  "hn1|camelyon_virchow2_s44": {
+   "kind": "hn1",
+   "cell": "camelyon_virchow2_s44"
+  },
+  "hn1|dermamnist_convnext_tiny_s42_std": {
+   "kind": "hn1",
+   "cell": "dermamnist_convnext_tiny_s42_std"
+  },
+  "hn1|dermamnist_convnext_tiny_s43_std": {
+   "kind": "hn1",
+   "cell": "dermamnist_convnext_tiny_s43_std"
+  },
+  "hn1|dermamnist_densenet121_s42_std": {
+   "kind": "hn1",
+   "cell": "dermamnist_densenet121_s42_std"
+  },
+  "hn1|dermamnist_densenet121_s43_std": {
+   "kind": "hn1",
+   "cell": "dermamnist_densenet121_s43_std"
+  },
+  "hn1|dermamnist_effb3_s42_std": {
+   "kind": "hn1",
+   "cell": "dermamnist_effb3_s42_std"
+  },
+  "hn1|dermamnist_efficientnet_v2_s_s42_std": {
+   "kind": "hn1",
+   "cell": "dermamnist_efficientnet_v2_s_s42_std"
+  },
+  "hn1|dermamnist_fm_conch_v1_5_s42_std": {
+   "kind": "hn1",
+   "cell": "dermamnist_fm_conch_v1_5_s42_std"
+  },
+  "hn1|dermamnist_fm_dinov2_vitb14_s42_std": {
+   "kind": "hn1",
+   "cell": "dermamnist_fm_dinov2_vitb14_s42_std"
+  },
+  "hn1|dermamnist_fm_dinov2_vitl14_s42_std": {
+   "kind": "hn1",
+   "cell": "dermamnist_fm_dinov2_vitl14_s42_std"
+  },
+  "hn1|dermamnist_fm_uni_s42_std": {
+   "kind": "hn1",
+   "cell": "dermamnist_fm_uni_s42_std"
+  },
+  "hn1|dermamnist_fm_virchow2_s42_std": {
+   "kind": "hn1",
+   "cell": "dermamnist_fm_virchow2_s42_std"
+  },
+  "hn1|dermamnist_mobilenet_v3_large_s42_std": {
+   "kind": "hn1",
+   "cell": "dermamnist_mobilenet_v3_large_s42_std"
+  },
+  "hn1|dermamnist_regnet_y_3_2gf_s42_std": {
+   "kind": "hn1",
+   "cell": "dermamnist_regnet_y_3_2gf_s42_std"
+  },
+  "hn1|dermamnist_resnet18_s42_std": {
+   "kind": "hn1",
+   "cell": "dermamnist_resnet18_s42_std"
+  },
+  "hn1|dermamnist_resnet18_s43_std": {
+   "kind": "hn1",
+   "cell": "dermamnist_resnet18_s43_std"
+  },
+  "hn1|dermamnist_resnet50_s42_std": {
+   "kind": "hn1",
+   "cell": "dermamnist_resnet50_s42_std"
+  },
+  "hn1|dermamnist_resnet50_s43_std": {
+   "kind": "hn1",
+   "cell": "dermamnist_resnet50_s43_std"
+  },
+  "hn1|isic2019_convnext_tiny_s42_std": {
+   "kind": "hn1",
+   "cell": "isic2019_convnext_tiny_s42_std"
+  },
+  "hn1|isic2019_convnext_tiny_s43_std": {
+   "kind": "hn1",
+   "cell": "isic2019_convnext_tiny_s43_std"
+  },
+  "hn1|isic2019_densenet121_s42_std": {
+   "kind": "hn1",
+   "cell": "isic2019_densenet121_s42_std"
+  },
+  "hn1|isic2019_densenet121_s43_std": {
+   "kind": "hn1",
+   "cell": "isic2019_densenet121_s43_std"
+  },
+  "hn1|isic2019_effb3_s42_std": {
+   "kind": "hn1",
+   "cell": "isic2019_effb3_s42_std"
+  },
+  "hn1|isic2019_efficientnet_v2_s_s42_std": {
+   "kind": "hn1",
+   "cell": "isic2019_efficientnet_v2_s_s42_std"
+  },
+  "hn1|isic2019_fm_conch_v1_5_s42_std": {
+   "kind": "hn1",
+   "cell": "isic2019_fm_conch_v1_5_s42_std"
+  },
+  "hn1|isic2019_fm_dinov2_vitb14_s42_std": {
+   "kind": "hn1",
+   "cell": "isic2019_fm_dinov2_vitb14_s42_std"
+  },
+  "hn1|isic2019_fm_dinov2_vitl14_s42_std": {
+   "kind": "hn1",
+   "cell": "isic2019_fm_dinov2_vitl14_s42_std"
+  },
+  "hn1|isic2019_fm_uni_s42_std": {
+   "kind": "hn1",
+   "cell": "isic2019_fm_uni_s42_std"
+  },
+  "hn1|isic2019_fm_virchow2_s42_std": {
+   "kind": "hn1",
+   "cell": "isic2019_fm_virchow2_s42_std"
+  },
+  "hn1|isic2019_mobilenet_v3_large_s42_std": {
+   "kind": "hn1",
+   "cell": "isic2019_mobilenet_v3_large_s42_std"
+  },
+  "hn1|isic2019_regnet_y_3_2gf_s42_std": {
+   "kind": "hn1",
+   "cell": "isic2019_regnet_y_3_2gf_s42_std"
+  },
+  "hn1|isic2019_resnet18_s42_std": {
+   "kind": "hn1",
+   "cell": "isic2019_resnet18_s42_std"
+  },
+  "hn1|isic2019_resnet18_s43_std": {
+   "kind": "hn1",
+   "cell": "isic2019_resnet18_s43_std"
+  },
+  "hn1|isic2019_resnet50_s42_std": {
+   "kind": "hn1",
+   "cell": "isic2019_resnet50_s42_std"
+  },
+  "hn1|isic2019_resnet50_s43_std": {
+   "kind": "hn1",
+   "cell": "isic2019_resnet50_s43_std"
+  },
+  "hn1|kermany_convnext_tiny_s42_std": {
+   "kind": "hn1",
+   "cell": "kermany_convnext_tiny_s42_std"
+  },
+  "hn1|kermany_convnext_tiny_s43_std": {
+   "kind": "hn1",
+   "cell": "kermany_convnext_tiny_s43_std"
+  },
+  "hn1|kermany_densenet121_s42_std": {
+   "kind": "hn1",
+   "cell": "kermany_densenet121_s42_std"
+  },
+  "hn1|kermany_densenet121_s43_std": {
+   "kind": "hn1",
+   "cell": "kermany_densenet121_s43_std"
+  },
+  "hn1|kermany_effb3_s42_std": {
+   "kind": "hn1",
+   "cell": "kermany_effb3_s42_std"
+  },
+  "hn1|kermany_efficientnet_v2_s_s42_std": {
+   "kind": "hn1",
+   "cell": "kermany_efficientnet_v2_s_s42_std"
+  },
+  "hn1|kermany_mobilenet_v3_large_s42_std": {
+   "kind": "hn1",
+   "cell": "kermany_mobilenet_v3_large_s42_std"
+  },
+  "hn1|kermany_regnet_y_3_2gf_s42_std": {
+   "kind": "hn1",
+   "cell": "kermany_regnet_y_3_2gf_s42_std"
+  },
+  "hn1|kermany_resnet18_s42_std": {
+   "kind": "hn1",
+   "cell": "kermany_resnet18_s42_std"
+  },
+  "hn1|kermany_resnet18_s43_std": {
+   "kind": "hn1",
+   "cell": "kermany_resnet18_s43_std"
+  },
+  "hn1|kermany_resnet50_s42_std": {
+   "kind": "hn1",
+   "cell": "kermany_resnet50_s42_std"
+  },
+  "hn1|kermany_resnet50_s43_std": {
+   "kind": "hn1",
+   "cell": "kermany_resnet50_s43_std"
+  },
+  "hn3|breakhis_convnext_tiny_s42_std_r0": {
+   "kind": "hn3",
+   "cell": "breakhis_convnext_tiny_s42_std_r0"
+  },
+  "hn3|breakhis_convnext_tiny_s42_std_r1": {
+   "kind": "hn3",
+   "cell": "breakhis_convnext_tiny_s42_std_r1"
+  },
+  "hn3|breakhis_convnext_tiny_s42_std_r2": {
+   "kind": "hn3",
+   "cell": "breakhis_convnext_tiny_s42_std_r2"
+  },
+  "hn3|breakhis_convnext_tiny_s42_std_r3": {
+   "kind": "hn3",
+   "cell": "breakhis_convnext_tiny_s42_std_r3"
+  },
+  "hn3|breakhis_convnext_tiny_s42_std_r4": {
+   "kind": "hn3",
+   "cell": "breakhis_convnext_tiny_s42_std_r4"
+  },
+  "hn3|breakhis_convnext_tiny_s43_std_r0": {
+   "kind": "hn3",
+   "cell": "breakhis_convnext_tiny_s43_std_r0"
+  },
+  "hn3|breakhis_convnext_tiny_s43_std_r1": {
+   "kind": "hn3",
+   "cell": "breakhis_convnext_tiny_s43_std_r1"
+  },
+  "hn3|breakhis_convnext_tiny_s43_std_r2": {
+   "kind": "hn3",
+   "cell": "breakhis_convnext_tiny_s43_std_r2"
+  },
+  "hn3|breakhis_convnext_tiny_s43_std_r3": {
+   "kind": "hn3",
+   "cell": "breakhis_convnext_tiny_s43_std_r3"
+  },
+  "hn3|breakhis_convnext_tiny_s43_std_r4": {
+   "kind": "hn3",
+   "cell": "breakhis_convnext_tiny_s43_std_r4"
+  },
+  "hn3|breakhis_densenet121_s42_std_r0": {
+   "kind": "hn3",
+   "cell": "breakhis_densenet121_s42_std_r0"
+  },
+  "hn3|breakhis_densenet121_s42_std_r1": {
+   "kind": "hn3",
+   "cell": "breakhis_densenet121_s42_std_r1"
+  },
+  "hn3|breakhis_densenet121_s42_std_r2": {
+   "kind": "hn3",
+   "cell": "breakhis_densenet121_s42_std_r2"
+  },
+  "hn3|breakhis_densenet121_s42_std_r3": {
+   "kind": "hn3",
+   "cell": "breakhis_densenet121_s42_std_r3"
+  },
+  "hn3|breakhis_densenet121_s42_std_r4": {
+   "kind": "hn3",
+   "cell": "breakhis_densenet121_s42_std_r4"
+  },
+  "hn3|breakhis_densenet121_s43_std_r0": {
+   "kind": "hn3",
+   "cell": "breakhis_densenet121_s43_std_r0"
+  },
+  "hn3|breakhis_densenet121_s43_std_r1": {
+   "kind": "hn3",
+   "cell": "breakhis_densenet121_s43_std_r1"
+  },
+  "hn3|breakhis_densenet121_s43_std_r2": {
+   "kind": "hn3",
+   "cell": "breakhis_densenet121_s43_std_r2"
+  },
+  "hn3|breakhis_densenet121_s43_std_r3": {
+   "kind": "hn3",
+   "cell": "breakhis_densenet121_s43_std_r3"
+  },
+  "hn3|breakhis_densenet121_s43_std_r4": {
+   "kind": "hn3",
+   "cell": "breakhis_densenet121_s43_std_r4"
+  },
+  "hn3|breakhis_effb3_s42_std_r0": {
+   "kind": "hn3",
+   "cell": "breakhis_effb3_s42_std_r0"
+  },
+  "hn3|breakhis_effb3_s42_std_r1": {
+   "kind": "hn3",
+   "cell": "breakhis_effb3_s42_std_r1"
+  },
+  "hn3|breakhis_effb3_s42_std_r2": {
+   "kind": "hn3",
+   "cell": "breakhis_effb3_s42_std_r2"
+  },
+  "hn3|breakhis_effb3_s42_std_r3": {
+   "kind": "hn3",
+   "cell": "breakhis_effb3_s42_std_r3"
+  },
+  "hn3|breakhis_effb3_s42_std_r4": {
+   "kind": "hn3",
+   "cell": "breakhis_effb3_s42_std_r4"
+  },
+  "hn3|breakhis_efficientnet_v2_s_s42_std_r0": {
+   "kind": "hn3",
+   "cell": "breakhis_efficientnet_v2_s_s42_std_r0"
+  },
+  "hn3|breakhis_efficientnet_v2_s_s42_std_r1": {
+   "kind": "hn3",
+   "cell": "breakhis_efficientnet_v2_s_s42_std_r1"
+  },
+  "hn3|breakhis_efficientnet_v2_s_s42_std_r2": {
+   "kind": "hn3",
+   "cell": "breakhis_efficientnet_v2_s_s42_std_r2"
+  },
+  "hn3|breakhis_efficientnet_v2_s_s42_std_r3": {
+   "kind": "hn3",
+   "cell": "breakhis_efficientnet_v2_s_s42_std_r3"
+  },
+  "hn3|breakhis_efficientnet_v2_s_s42_std_r4": {
+   "kind": "hn3",
+   "cell": "breakhis_efficientnet_v2_s_s42_std_r4"
+  },
+  "hn3|breakhis_fm_conch_v1_5_s42_std_r0": {
+   "kind": "hn3",
+   "cell": "breakhis_fm_conch_v1_5_s42_std_r0"
+  },
+  "hn3|breakhis_fm_conch_v1_5_s42_std_r1": {
+   "kind": "hn3",
+   "cell": "breakhis_fm_conch_v1_5_s42_std_r1"
+  },
+  "hn3|breakhis_fm_conch_v1_5_s42_std_r2": {
+   "kind": "hn3",
+   "cell": "breakhis_fm_conch_v1_5_s42_std_r2"
+  },
+  "hn3|breakhis_fm_conch_v1_5_s42_std_r3": {
+   "kind": "hn3",
+   "cell": "breakhis_fm_conch_v1_5_s42_std_r3"
+  },
+  "hn3|breakhis_fm_conch_v1_5_s42_std_r4": {
+   "kind": "hn3",
+   "cell": "breakhis_fm_conch_v1_5_s42_std_r4"
+  },
+  "hn3|breakhis_fm_dinov2_vitb14_s42_std_r0": {
+   "kind": "hn3",
+   "cell": "breakhis_fm_dinov2_vitb14_s42_std_r0"
+  },
+  "hn3|breakhis_fm_dinov2_vitb14_s42_std_r1": {
+   "kind": "hn3",
+   "cell": "breakhis_fm_dinov2_vitb14_s42_std_r1"
+  },
+  "hn3|breakhis_fm_dinov2_vitb14_s42_std_r2": {
+   "kind": "hn3",
+   "cell": "breakhis_fm_dinov2_vitb14_s42_std_r2"
+  },
+  "hn3|breakhis_fm_dinov2_vitb14_s42_std_r3": {
+   "kind": "hn3",
+   "cell": "breakhis_fm_dinov2_vitb14_s42_std_r3"
+  },
+  "hn3|breakhis_fm_dinov2_vitb14_s42_std_r4": {
+   "kind": "hn3",
+   "cell": "breakhis_fm_dinov2_vitb14_s42_std_r4"
+  },
+  "hn3|breakhis_fm_dinov2_vitl14_s42_std_r0": {
+   "kind": "hn3",
+   "cell": "breakhis_fm_dinov2_vitl14_s42_std_r0"
+  },
+  "hn3|breakhis_fm_dinov2_vitl14_s42_std_r1": {
+   "kind": "hn3",
+   "cell": "breakhis_fm_dinov2_vitl14_s42_std_r1"
+  },
+  "hn3|breakhis_fm_dinov2_vitl14_s42_std_r2": {
+   "kind": "hn3",
+   "cell": "breakhis_fm_dinov2_vitl14_s42_std_r2"
+  },
+  "hn3|breakhis_fm_dinov2_vitl14_s42_std_r3": {
+   "kind": "hn3",
+   "cell": "breakhis_fm_dinov2_vitl14_s42_std_r3"
+  },
+  "hn3|breakhis_fm_dinov2_vitl14_s42_std_r4": {
+   "kind": "hn3",
+   "cell": "breakhis_fm_dinov2_vitl14_s42_std_r4"
+  },
+  "hn3|breakhis_fm_uni_s42_std_r0": {
+   "kind": "hn3",
+   "cell": "breakhis_fm_uni_s42_std_r0"
+  },
+  "hn3|breakhis_fm_uni_s42_std_r1": {
+   "kind": "hn3",
+   "cell": "breakhis_fm_uni_s42_std_r1"
+  },
+  "hn3|breakhis_fm_uni_s42_std_r2": {
+   "kind": "hn3",
+   "cell": "breakhis_fm_uni_s42_std_r2"
+  },
+  "hn3|breakhis_fm_uni_s42_std_r3": {
+   "kind": "hn3",
+   "cell": "breakhis_fm_uni_s42_std_r3"
+  },
+  "hn3|breakhis_fm_uni_s42_std_r4": {
+   "kind": "hn3",
+   "cell": "breakhis_fm_uni_s42_std_r4"
+  },
+  "hn3|breakhis_fm_virchow2_s42_std_r0": {
+   "kind": "hn3",
+   "cell": "breakhis_fm_virchow2_s42_std_r0"
+  },
+  "hn3|breakhis_fm_virchow2_s42_std_r1": {
+   "kind": "hn3",
+   "cell": "breakhis_fm_virchow2_s42_std_r1"
+  },
+  "hn3|breakhis_fm_virchow2_s42_std_r2": {
+   "kind": "hn3",
+   "cell": "breakhis_fm_virchow2_s42_std_r2"
+  },
+  "hn3|breakhis_fm_virchow2_s42_std_r3": {
+   "kind": "hn3",
+   "cell": "breakhis_fm_virchow2_s42_std_r3"
+  },
+  "hn3|breakhis_fm_virchow2_s42_std_r4": {
+   "kind": "hn3",
+   "cell": "breakhis_fm_virchow2_s42_std_r4"
+  },
+  "hn3|breakhis_mobilenet_v3_large_s42_std_r0": {
+   "kind": "hn3",
+   "cell": "breakhis_mobilenet_v3_large_s42_std_r0"
+  },
+  "hn3|breakhis_mobilenet_v3_large_s42_std_r1": {
+   "kind": "hn3",
+   "cell": "breakhis_mobilenet_v3_large_s42_std_r1"
+  },
+  "hn3|breakhis_mobilenet_v3_large_s42_std_r2": {
+   "kind": "hn3",
+   "cell": "breakhis_mobilenet_v3_large_s42_std_r2"
+  },
+  "hn3|breakhis_mobilenet_v3_large_s42_std_r3": {
+   "kind": "hn3",
+   "cell": "breakhis_mobilenet_v3_large_s42_std_r3"
+  },
+  "hn3|breakhis_mobilenet_v3_large_s42_std_r4": {
+   "kind": "hn3",
+   "cell": "breakhis_mobilenet_v3_large_s42_std_r4"
+  },
+  "hn3|breakhis_regnet_y_3_2gf_s42_std_r0": {
+   "kind": "hn3",
+   "cell": "breakhis_regnet_y_3_2gf_s42_std_r0"
+  },
+  "hn3|breakhis_regnet_y_3_2gf_s42_std_r1": {
+   "kind": "hn3",
+   "cell": "breakhis_regnet_y_3_2gf_s42_std_r1"
+  },
+  "hn3|breakhis_regnet_y_3_2gf_s42_std_r2": {
+   "kind": "hn3",
+   "cell": "breakhis_regnet_y_3_2gf_s42_std_r2"
+  },
+  "hn3|breakhis_regnet_y_3_2gf_s42_std_r3": {
+   "kind": "hn3",
+   "cell": "breakhis_regnet_y_3_2gf_s42_std_r3"
+  },
+  "hn3|breakhis_regnet_y_3_2gf_s42_std_r4": {
+   "kind": "hn3",
+   "cell": "breakhis_regnet_y_3_2gf_s42_std_r4"
+  },
+  "hn3|breakhis_resnet18_s42_std_r0": {
+   "kind": "hn3",
+   "cell": "breakhis_resnet18_s42_std_r0"
+  },
+  "hn3|breakhis_resnet18_s42_std_r1": {
+   "kind": "hn3",
+   "cell": "breakhis_resnet18_s42_std_r1"
+  },
+  "hn3|breakhis_resnet18_s42_std_r2": {
+   "kind": "hn3",
+   "cell": "breakhis_resnet18_s42_std_r2"
+  },
+  "hn3|breakhis_resnet18_s42_std_r3": {
+   "kind": "hn3",
+   "cell": "breakhis_resnet18_s42_std_r3"
+  },
+  "hn3|breakhis_resnet18_s42_std_r4": {
+   "kind": "hn3",
+   "cell": "breakhis_resnet18_s42_std_r4"
+  },
+  "hn3|breakhis_resnet18_s43_std_r0": {
+   "kind": "hn3",
+   "cell": "breakhis_resnet18_s43_std_r0"
+  },
+  "hn3|breakhis_resnet18_s43_std_r1": {
+   "kind": "hn3",
+   "cell": "breakhis_resnet18_s43_std_r1"
+  },
+  "hn3|breakhis_resnet18_s43_std_r2": {
+   "kind": "hn3",
+   "cell": "breakhis_resnet18_s43_std_r2"
+  },
+  "hn3|breakhis_resnet18_s43_std_r3": {
+   "kind": "hn3",
+   "cell": "breakhis_resnet18_s43_std_r3"
+  },
+  "hn3|breakhis_resnet18_s43_std_r4": {
+   "kind": "hn3",
+   "cell": "breakhis_resnet18_s43_std_r4"
+  },
+  "hn3|breakhis_resnet50_s42_std_r0": {
+   "kind": "hn3",
+   "cell": "breakhis_resnet50_s42_std_r0"
+  },
+  "hn3|breakhis_resnet50_s42_std_r1": {
+   "kind": "hn3",
+   "cell": "breakhis_resnet50_s42_std_r1"
+  },
+  "hn3|breakhis_resnet50_s42_std_r2": {
+   "kind": "hn3",
+   "cell": "breakhis_resnet50_s42_std_r2"
+  },
+  "hn3|breakhis_resnet50_s42_std_r3": {
+   "kind": "hn3",
+   "cell": "breakhis_resnet50_s42_std_r3"
+  },
+  "hn3|breakhis_resnet50_s42_std_r4": {
+   "kind": "hn3",
+   "cell": "breakhis_resnet50_s42_std_r4"
+  },
+  "hn3|breakhis_resnet50_s43_std_r0": {
+   "kind": "hn3",
+   "cell": "breakhis_resnet50_s43_std_r0"
+  },
+  "hn3|breakhis_resnet50_s43_std_r1": {
+   "kind": "hn3",
+   "cell": "breakhis_resnet50_s43_std_r1"
+  },
+  "hn3|breakhis_resnet50_s43_std_r2": {
+   "kind": "hn3",
+   "cell": "breakhis_resnet50_s43_std_r2"
+  },
+  "hn3|breakhis_resnet50_s43_std_r3": {
+   "kind": "hn3",
+   "cell": "breakhis_resnet50_s43_std_r3"
+  },
+  "hn3|breakhis_resnet50_s43_std_r4": {
+   "kind": "hn3",
+   "cell": "breakhis_resnet50_s43_std_r4"
+  },
+  "hn3|camelyon_conch_v1_5_s42": {
+   "kind": "hn3",
+   "cell": "camelyon_conch_v1_5_s42"
+  },
+  "hn3|camelyon_conch_v1_5_s43": {
+   "kind": "hn3",
+   "cell": "camelyon_conch_v1_5_s43"
+  },
+  "hn3|camelyon_conch_v1_5_s44": {
+   "kind": "hn3",
+   "cell": "camelyon_conch_v1_5_s44"
+  },
+  "hn3|camelyon_convnext_tiny_s42": {
+   "kind": "hn3",
+   "cell": "camelyon_convnext_tiny_s42"
+  },
+  "hn3|camelyon_convnext_tiny_s43": {
+   "kind": "hn3",
+   "cell": "camelyon_convnext_tiny_s43"
+  },
+  "hn3|camelyon_convnext_tiny_s44": {
+   "kind": "hn3",
+   "cell": "camelyon_convnext_tiny_s44"
+  },
+  "hn3|camelyon_densenet121_s42": {
+   "kind": "hn3",
+   "cell": "camelyon_densenet121_s42"
+  },
+  "hn3|camelyon_dinov2_vitb14_s42": {
+   "kind": "hn3",
+   "cell": "camelyon_dinov2_vitb14_s42"
+  },
+  "hn3|camelyon_dinov2_vitb14_s43": {
+   "kind": "hn3",
+   "cell": "camelyon_dinov2_vitb14_s43"
+  },
+  "hn3|camelyon_dinov2_vitb14_s44": {
+   "kind": "hn3",
+   "cell": "camelyon_dinov2_vitb14_s44"
+  },
+  "hn3|camelyon_dinov2_vitl14_s42": {
+   "kind": "hn3",
+   "cell": "camelyon_dinov2_vitl14_s42"
+  },
+  "hn3|camelyon_dinov2_vitl14_s43": {
+   "kind": "hn3",
+   "cell": "camelyon_dinov2_vitl14_s43"
+  },
+  "hn3|camelyon_dinov2_vitl14_s44": {
+   "kind": "hn3",
+   "cell": "camelyon_dinov2_vitl14_s44"
+  },
+  "hn3|camelyon_effb3_s42": {
+   "kind": "hn3",
+   "cell": "camelyon_effb3_s42"
+  },
+  "hn3|camelyon_efficientnet_v2_s_s42": {
+   "kind": "hn3",
+   "cell": "camelyon_efficientnet_v2_s_s42"
+  },
+  "hn3|camelyon_mobilenet_v3_large_s42": {
+   "kind": "hn3",
+   "cell": "camelyon_mobilenet_v3_large_s42"
+  },
+  "hn3|camelyon_regnet_y_3_2gf_s42": {
+   "kind": "hn3",
+   "cell": "camelyon_regnet_y_3_2gf_s42"
+  },
+  "hn3|camelyon_resnet18_s42": {
+   "kind": "hn3",
+   "cell": "camelyon_resnet18_s42"
+  },
+  "hn3|camelyon_resnet50_s42": {
+   "kind": "hn3",
+   "cell": "camelyon_resnet50_s42"
+  },
+  "hn3|camelyon_resnet50_s43": {
+   "kind": "hn3",
+   "cell": "camelyon_resnet50_s43"
+  },
+  "hn3|camelyon_resnet50_s44": {
+   "kind": "hn3",
+   "cell": "camelyon_resnet50_s44"
+  },
+  "hn3|camelyon_uni_s42": {
+   "kind": "hn3",
+   "cell": "camelyon_uni_s42"
+  },
+  "hn3|camelyon_uni_s43": {
+   "kind": "hn3",
+   "cell": "camelyon_uni_s43"
+  },
+  "hn3|camelyon_uni_s44": {
+   "kind": "hn3",
+   "cell": "camelyon_uni_s44"
+  },
+  "hn3|camelyon_virchow2_s42": {
+   "kind": "hn3",
+   "cell": "camelyon_virchow2_s42"
+  },
+  "hn3|camelyon_virchow2_s43": {
+   "kind": "hn3",
+   "cell": "camelyon_virchow2_s43"
+  },
+  "hn3|camelyon_virchow2_s44": {
+   "kind": "hn3",
+   "cell": "camelyon_virchow2_s44"
+  },
+  "hn3|dermamnist_convnext_tiny_s42_std": {
+   "kind": "hn3",
+   "cell": "dermamnist_convnext_tiny_s42_std"
+  },
+  "hn3|dermamnist_convnext_tiny_s43_std": {
+   "kind": "hn3",
+   "cell": "dermamnist_convnext_tiny_s43_std"
+  },
+  "hn3|dermamnist_densenet121_s42_std": {
+   "kind": "hn3",
+   "cell": "dermamnist_densenet121_s42_std"
+  },
+  "hn3|dermamnist_densenet121_s43_std": {
+   "kind": "hn3",
+   "cell": "dermamnist_densenet121_s43_std"
+  },
+  "hn3|dermamnist_effb3_s42_std": {
+   "kind": "hn3",
+   "cell": "dermamnist_effb3_s42_std"
+  },
+  "hn3|dermamnist_efficientnet_v2_s_s42_std": {
+   "kind": "hn3",
+   "cell": "dermamnist_efficientnet_v2_s_s42_std"
+  },
+  "hn3|dermamnist_fm_conch_v1_5_s42_std": {
+   "kind": "hn3",
+   "cell": "dermamnist_fm_conch_v1_5_s42_std"
+  },
+  "hn3|dermamnist_fm_dinov2_vitb14_s42_std": {
+   "kind": "hn3",
+   "cell": "dermamnist_fm_dinov2_vitb14_s42_std"
+  },
+  "hn3|dermamnist_fm_dinov2_vitl14_s42_std": {
+   "kind": "hn3",
+   "cell": "dermamnist_fm_dinov2_vitl14_s42_std"
+  },
+  "hn3|dermamnist_fm_uni_s42_std": {
+   "kind": "hn3",
+   "cell": "dermamnist_fm_uni_s42_std"
+  },
+  "hn3|dermamnist_fm_virchow2_s42_std": {
+   "kind": "hn3",
+   "cell": "dermamnist_fm_virchow2_s42_std"
+  },
+  "hn3|dermamnist_mobilenet_v3_large_s42_std": {
+   "kind": "hn3",
+   "cell": "dermamnist_mobilenet_v3_large_s42_std"
+  },
+  "hn3|dermamnist_regnet_y_3_2gf_s42_std": {
+   "kind": "hn3",
+   "cell": "dermamnist_regnet_y_3_2gf_s42_std"
+  },
+  "hn3|dermamnist_resnet18_s42_std": {
+   "kind": "hn3",
+   "cell": "dermamnist_resnet18_s42_std"
+  },
+  "hn3|dermamnist_resnet18_s43_std": {
+   "kind": "hn3",
+   "cell": "dermamnist_resnet18_s43_std"
+  },
+  "hn3|dermamnist_resnet50_s42_std": {
+   "kind": "hn3",
+   "cell": "dermamnist_resnet50_s42_std"
+  },
+  "hn3|dermamnist_resnet50_s43_std": {
+   "kind": "hn3",
+   "cell": "dermamnist_resnet50_s43_std"
+  },
+  "hn3|isic2019_convnext_tiny_s42_std": {
+   "kind": "hn3",
+   "cell": "isic2019_convnext_tiny_s42_std"
+  },
+  "hn3|isic2019_convnext_tiny_s43_std": {
+   "kind": "hn3",
+   "cell": "isic2019_convnext_tiny_s43_std"
+  },
+  "hn3|isic2019_densenet121_s42_std": {
+   "kind": "hn3",
+   "cell": "isic2019_densenet121_s42_std"
+  },
+  "hn3|isic2019_densenet121_s43_std": {
+   "kind": "hn3",
+   "cell": "isic2019_densenet121_s43_std"
+  },
+  "hn3|isic2019_effb3_s42_std": {
+   "kind": "hn3",
+   "cell": "isic2019_effb3_s42_std"
+  },
+  "hn3|isic2019_efficientnet_v2_s_s42_std": {
+   "kind": "hn3",
+   "cell": "isic2019_efficientnet_v2_s_s42_std"
+  },
+  "hn3|isic2019_fm_conch_v1_5_s42_std": {
+   "kind": "hn3",
+   "cell": "isic2019_fm_conch_v1_5_s42_std"
+  },
+  "hn3|isic2019_fm_dinov2_vitb14_s42_std": {
+   "kind": "hn3",
+   "cell": "isic2019_fm_dinov2_vitb14_s42_std"
+  },
+  "hn3|isic2019_fm_dinov2_vitl14_s42_std": {
+   "kind": "hn3",
+   "cell": "isic2019_fm_dinov2_vitl14_s42_std"
+  },
+  "hn3|isic2019_fm_uni_s42_std": {
+   "kind": "hn3",
+   "cell": "isic2019_fm_uni_s42_std"
+  },
+  "hn3|isic2019_fm_virchow2_s42_std": {
+   "kind": "hn3",
+   "cell": "isic2019_fm_virchow2_s42_std"
+  },
+  "hn3|isic2019_mobilenet_v3_large_s42_std": {
+   "kind": "hn3",
+   "cell": "isic2019_mobilenet_v3_large_s42_std"
+  },
+  "hn3|isic2019_regnet_y_3_2gf_s42_std": {
+   "kind": "hn3",
+   "cell": "isic2019_regnet_y_3_2gf_s42_std"
+  },
+  "hn3|isic2019_resnet18_s42_std": {
+   "kind": "hn3",
+   "cell": "isic2019_resnet18_s42_std"
+  },
+  "hn3|isic2019_resnet18_s43_std": {
+   "kind": "hn3",
+   "cell": "isic2019_resnet18_s43_std"
+  },
+  "hn3|isic2019_resnet50_s42_std": {
+   "kind": "hn3",
+   "cell": "isic2019_resnet50_s42_std"
+  },
+  "hn3|isic2019_resnet50_s43_std": {
+   "kind": "hn3",
+   "cell": "isic2019_resnet50_s43_std"
+  },
+  "hn3|kermany_convnext_tiny_s42_std": {
+   "kind": "hn3",
+   "cell": "kermany_convnext_tiny_s42_std"
+  },
+  "hn3|kermany_convnext_tiny_s43_std": {
+   "kind": "hn3",
+   "cell": "kermany_convnext_tiny_s43_std"
+  },
+  "hn3|kermany_densenet121_s42_std": {
+   "kind": "hn3",
+   "cell": "kermany_densenet121_s42_std"
+  },
+  "hn3|kermany_densenet121_s43_std": {
+   "kind": "hn3",
+   "cell": "kermany_densenet121_s43_std"
+  },
+  "hn3|kermany_effb3_s42_std": {
+   "kind": "hn3",
+   "cell": "kermany_effb3_s42_std"
+  },
+  "hn3|kermany_efficientnet_v2_s_s42_std": {
+   "kind": "hn3",
+   "cell": "kermany_efficientnet_v2_s_s42_std"
+  },
+  "hn3|kermany_mobilenet_v3_large_s42_std": {
+   "kind": "hn3",
+   "cell": "kermany_mobilenet_v3_large_s42_std"
+  },
+  "hn3|kermany_regnet_y_3_2gf_s42_std": {
+   "kind": "hn3",
+   "cell": "kermany_regnet_y_3_2gf_s42_std"
+  },
+  "hn3|kermany_resnet18_s42_std": {
+   "kind": "hn3",
+   "cell": "kermany_resnet18_s42_std"
+  },
+  "hn3|kermany_resnet18_s43_std": {
+   "kind": "hn3",
+   "cell": "kermany_resnet18_s43_std"
+  },
+  "hn3|kermany_resnet50_s42_std": {
+   "kind": "hn3",
+   "cell": "kermany_resnet50_s42_std"
+  },
+  "hn3|kermany_resnet50_s43_std": {
+   "kind": "hn3",
+   "cell": "kermany_resnet50_s43_std"
+  },
+  "hn2|dermamnist_convnext_tiny_s42_std": {
+   "kind": "hn2",
+   "cell": "dermamnist_convnext_tiny_s42_std"
+  },
+  "hn2|dermamnist_convnext_tiny_s43_std": {
+   "kind": "hn2",
+   "cell": "dermamnist_convnext_tiny_s43_std"
+  },
+  "hn2|dermamnist_densenet121_s42_std": {
+   "kind": "hn2",
+   "cell": "dermamnist_densenet121_s42_std"
+  },
+  "hn2|dermamnist_densenet121_s43_std": {
+   "kind": "hn2",
+   "cell": "dermamnist_densenet121_s43_std"
+  },
+  "hn2|dermamnist_effb3_s42_std": {
+   "kind": "hn2",
+   "cell": "dermamnist_effb3_s42_std"
+  },
+  "hn2|dermamnist_efficientnet_v2_s_s42_std": {
+   "kind": "hn2",
+   "cell": "dermamnist_efficientnet_v2_s_s42_std"
+  },
+  "hn2|dermamnist_fm_conch_v1_5_s42_std": {
+   "kind": "hn2",
+   "cell": "dermamnist_fm_conch_v1_5_s42_std"
+  },
+  "hn2|dermamnist_fm_dinov2_vitb14_s42_std": {
+   "kind": "hn2",
+   "cell": "dermamnist_fm_dinov2_vitb14_s42_std"
+  },
+  "hn2|dermamnist_fm_dinov2_vitl14_s42_std": {
+   "kind": "hn2",
+   "cell": "dermamnist_fm_dinov2_vitl14_s42_std"
+  },
+  "hn2|dermamnist_fm_uni_s42_std": {
+   "kind": "hn2",
+   "cell": "dermamnist_fm_uni_s42_std"
+  },
+  "hn2|dermamnist_fm_virchow2_s42_std": {
+   "kind": "hn2",
+   "cell": "dermamnist_fm_virchow2_s42_std"
+  },
+  "hn2|dermamnist_mobilenet_v3_large_s42_std": {
+   "kind": "hn2",
+   "cell": "dermamnist_mobilenet_v3_large_s42_std"
+  },
+  "hn2|dermamnist_regnet_y_3_2gf_s42_std": {
+   "kind": "hn2",
+   "cell": "dermamnist_regnet_y_3_2gf_s42_std"
+  },
+  "hn2|dermamnist_resnet18_s42_std": {
+   "kind": "hn2",
+   "cell": "dermamnist_resnet18_s42_std"
+  },
+  "hn2|dermamnist_resnet18_s43_std": {
+   "kind": "hn2",
+   "cell": "dermamnist_resnet18_s43_std"
+  },
+  "hn2|dermamnist_resnet50_s42_std": {
+   "kind": "hn2",
+   "cell": "dermamnist_resnet50_s42_std"
+  },
+  "hn2|dermamnist_resnet50_s43_std": {
+   "kind": "hn2",
+   "cell": "dermamnist_resnet50_s43_std"
+  },
+  "hn2|isic2019_convnext_tiny_s42_std": {
+   "kind": "hn2",
+   "cell": "isic2019_convnext_tiny_s42_std"
+  },
+  "hn2|isic2019_convnext_tiny_s43_std": {
+   "kind": "hn2",
+   "cell": "isic2019_convnext_tiny_s43_std"
+  },
+  "hn2|isic2019_densenet121_s42_std": {
+   "kind": "hn2",
+   "cell": "isic2019_densenet121_s42_std"
+  },
+  "hn2|isic2019_densenet121_s43_std": {
+   "kind": "hn2",
+   "cell": "isic2019_densenet121_s43_std"
+  },
+  "hn2|isic2019_effb3_s42_std": {
+   "kind": "hn2",
+   "cell": "isic2019_effb3_s42_std"
+  },
+  "hn2|isic2019_efficientnet_v2_s_s42_std": {
+   "kind": "hn2",
+   "cell": "isic2019_efficientnet_v2_s_s42_std"
+  },
+  "hn2|isic2019_fm_conch_v1_5_s42_std": {
+   "kind": "hn2",
+   "cell": "isic2019_fm_conch_v1_5_s42_std"
+  },
+  "hn2|isic2019_fm_dinov2_vitb14_s42_std": {
+   "kind": "hn2",
+   "cell": "isic2019_fm_dinov2_vitb14_s42_std"
+  },
+  "hn2|isic2019_fm_dinov2_vitl14_s42_std": {
+   "kind": "hn2",
+   "cell": "isic2019_fm_dinov2_vitl14_s42_std"
+  },
+  "hn2|isic2019_fm_uni_s42_std": {
+   "kind": "hn2",
+   "cell": "isic2019_fm_uni_s42_std"
+  },
+  "hn2|isic2019_fm_virchow2_s42_std": {
+   "kind": "hn2",
+   "cell": "isic2019_fm_virchow2_s42_std"
+  },
+  "hn2|isic2019_mobilenet_v3_large_s42_std": {
+   "kind": "hn2",
+   "cell": "isic2019_mobilenet_v3_large_s42_std"
+  },
+  "hn2|isic2019_regnet_y_3_2gf_s42_std": {
+   "kind": "hn2",
+   "cell": "isic2019_regnet_y_3_2gf_s42_std"
+  },
+  "hn2|isic2019_resnet18_s42_std": {
+   "kind": "hn2",
+   "cell": "isic2019_resnet18_s42_std"
+  },
+  "hn2|isic2019_resnet18_s43_std": {
+   "kind": "hn2",
+   "cell": "isic2019_resnet18_s43_std"
+  },
+  "hn2|isic2019_resnet50_s42_std": {
+   "kind": "hn2",
+   "cell": "isic2019_resnet50_s42_std"
+  },
+  "hn2|isic2019_resnet50_s43_std": {
+   "kind": "hn2",
+   "cell": "isic2019_resnet50_s43_std"
+  },
+  "hn2|kermany_convnext_tiny_s42_std": {
+   "kind": "hn2",
+   "cell": "kermany_convnext_tiny_s42_std"
+  },
+  "hn2|kermany_convnext_tiny_s43_std": {
+   "kind": "hn2",
+   "cell": "kermany_convnext_tiny_s43_std"
+  },
+  "hn2|kermany_densenet121_s42_std": {
+   "kind": "hn2",
+   "cell": "kermany_densenet121_s42_std"
+  },
+  "hn2|kermany_densenet121_s43_std": {
+   "kind": "hn2",
+   "cell": "kermany_densenet121_s43_std"
+  },
+  "hn2|kermany_effb3_s42_std": {
+   "kind": "hn2",
+   "cell": "kermany_effb3_s42_std"
+  },
+  "hn2|kermany_efficientnet_v2_s_s42_std": {
+   "kind": "hn2",
+   "cell": "kermany_efficientnet_v2_s_s42_std"
+  },
+  "hn2|kermany_mobilenet_v3_large_s42_std": {
+   "kind": "hn2",
+   "cell": "kermany_mobilenet_v3_large_s42_std"
+  },
+  "hn2|kermany_regnet_y_3_2gf_s42_std": {
+   "kind": "hn2",
+   "cell": "kermany_regnet_y_3_2gf_s42_std"
+  },
+  "hn2|kermany_resnet18_s42_std": {
+   "kind": "hn2",
+   "cell": "kermany_resnet18_s42_std"
+  },
+  "hn2|kermany_resnet18_s43_std": {
+   "kind": "hn2",
+   "cell": "kermany_resnet18_s43_std"
+  },
+  "hn2|kermany_resnet50_s42_std": {
+   "kind": "hn2",
+   "cell": "kermany_resnet50_s42_std"
+  },
+  "hn2|kermany_resnet50_s43_std": {
+   "kind": "hn2",
+   "cell": "kermany_resnet50_s43_std"
+  },
+  "h2|breakhis_convnext_tiny_s42_std_r0": {
+   "kind": "h2",
+   "cell": "breakhis_convnext_tiny_s42_std_r0",
+   "n_perm": 20
+  },
+  "h2|breakhis_convnext_tiny_s42_std_r1": {
+   "kind": "h2",
+   "cell": "breakhis_convnext_tiny_s42_std_r1",
+   "n_perm": 20
+  },
+  "h2|breakhis_convnext_tiny_s42_std_r2": {
+   "kind": "h2",
+   "cell": "breakhis_convnext_tiny_s42_std_r2",
+   "n_perm": 20
+  },
+  "h2|breakhis_convnext_tiny_s42_std_r3": {
+   "kind": "h2",
+   "cell": "breakhis_convnext_tiny_s42_std_r3",
+   "n_perm": 20
+  },
+  "h2|breakhis_convnext_tiny_s42_std_r4": {
+   "kind": "h2",
+   "cell": "breakhis_convnext_tiny_s42_std_r4",
+   "n_perm": 20
+  },
+  "h2|breakhis_convnext_tiny_s43_std_r0": {
+   "kind": "h2",
+   "cell": "breakhis_convnext_tiny_s43_std_r0",
+   "n_perm": 20
+  },
+  "h2|breakhis_convnext_tiny_s43_std_r1": {
+   "kind": "h2",
+   "cell": "breakhis_convnext_tiny_s43_std_r1",
+   "n_perm": 20
+  },
+  "h2|breakhis_convnext_tiny_s43_std_r2": {
+   "kind": "h2",
+   "cell": "breakhis_convnext_tiny_s43_std_r2",
+   "n_perm": 20
+  },
+  "h2|breakhis_convnext_tiny_s43_std_r3": {
+   "kind": "h2",
+   "cell": "breakhis_convnext_tiny_s43_std_r3",
+   "n_perm": 20
+  },
+  "h2|breakhis_convnext_tiny_s43_std_r4": {
+   "kind": "h2",
+   "cell": "breakhis_convnext_tiny_s43_std_r4",
+   "n_perm": 20
+  },
+  "h2|breakhis_densenet121_s42_std_r0": {
+   "kind": "h2",
+   "cell": "breakhis_densenet121_s42_std_r0",
+   "n_perm": 20
+  },
+  "h2|breakhis_densenet121_s42_std_r1": {
+   "kind": "h2",
+   "cell": "breakhis_densenet121_s42_std_r1",
+   "n_perm": 20
+  },
+  "h2|breakhis_densenet121_s42_std_r2": {
+   "kind": "h2",
+   "cell": "breakhis_densenet121_s42_std_r2",
+   "n_perm": 20
+  },
+  "h2|breakhis_densenet121_s42_std_r3": {
+   "kind": "h2",
+   "cell": "breakhis_densenet121_s42_std_r3",
+   "n_perm": 20
+  },
+  "h2|breakhis_densenet121_s42_std_r4": {
+   "kind": "h2",
+   "cell": "breakhis_densenet121_s42_std_r4",
+   "n_perm": 20
+  },
+  "h2|breakhis_densenet121_s43_std_r0": {
+   "kind": "h2",
+   "cell": "breakhis_densenet121_s43_std_r0",
+   "n_perm": 20
+  },
+  "h2|breakhis_densenet121_s43_std_r1": {
+   "kind": "h2",
+   "cell": "breakhis_densenet121_s43_std_r1",
+   "n_perm": 20
+  },
+  "h2|breakhis_densenet121_s43_std_r2": {
+   "kind": "h2",
+   "cell": "breakhis_densenet121_s43_std_r2",
+   "n_perm": 20
+  },
+  "h2|breakhis_densenet121_s43_std_r3": {
+   "kind": "h2",
+   "cell": "breakhis_densenet121_s43_std_r3",
+   "n_perm": 20
+  },
+  "h2|breakhis_densenet121_s43_std_r4": {
+   "kind": "h2",
+   "cell": "breakhis_densenet121_s43_std_r4",
+   "n_perm": 20
+  },
+  "h2|breakhis_effb3_s42_std_r0": {
+   "kind": "h2",
+   "cell": "breakhis_effb3_s42_std_r0",
+   "n_perm": 20
+  },
+  "h2|breakhis_effb3_s42_std_r1": {
+   "kind": "h2",
+   "cell": "breakhis_effb3_s42_std_r1",
+   "n_perm": 20
+  },
+  "h2|breakhis_effb3_s42_std_r2": {
+   "kind": "h2",
+   "cell": "breakhis_effb3_s42_std_r2",
+   "n_perm": 20
+  },
+  "h2|breakhis_effb3_s42_std_r3": {
+   "kind": "h2",
+   "cell": "breakhis_effb3_s42_std_r3",
+   "n_perm": 20
+  },
+  "h2|breakhis_effb3_s42_std_r4": {
+   "kind": "h2",
+   "cell": "breakhis_effb3_s42_std_r4",
+   "n_perm": 20
+  },
+  "h2|breakhis_efficientnet_v2_s_s42_std_r0": {
+   "kind": "h2",
+   "cell": "breakhis_efficientnet_v2_s_s42_std_r0",
+   "n_perm": 20
+  },
+  "h2|breakhis_efficientnet_v2_s_s42_std_r1": {
+   "kind": "h2",
+   "cell": "breakhis_efficientnet_v2_s_s42_std_r1",
+   "n_perm": 20
+  },
+  "h2|breakhis_efficientnet_v2_s_s42_std_r2": {
+   "kind": "h2",
+   "cell": "breakhis_efficientnet_v2_s_s42_std_r2",
+   "n_perm": 20
+  },
+  "h2|breakhis_efficientnet_v2_s_s42_std_r3": {
+   "kind": "h2",
+   "cell": "breakhis_efficientnet_v2_s_s42_std_r3",
+   "n_perm": 20
+  },
+  "h2|breakhis_efficientnet_v2_s_s42_std_r4": {
+   "kind": "h2",
+   "cell": "breakhis_efficientnet_v2_s_s42_std_r4",
+   "n_perm": 20
+  },
+  "h2|breakhis_fm_conch_v1_5_s42_std_r0": {
+   "kind": "h2",
+   "cell": "breakhis_fm_conch_v1_5_s42_std_r0",
+   "n_perm": 20
+  },
+  "h2|breakhis_fm_conch_v1_5_s42_std_r1": {
+   "kind": "h2",
+   "cell": "breakhis_fm_conch_v1_5_s42_std_r1",
+   "n_perm": 20
+  },
+  "h2|breakhis_fm_conch_v1_5_s42_std_r2": {
+   "kind": "h2",
+   "cell": "breakhis_fm_conch_v1_5_s42_std_r2",
+   "n_perm": 20
+  },
+  "h2|breakhis_fm_conch_v1_5_s42_std_r3": {
+   "kind": "h2",
+   "cell": "breakhis_fm_conch_v1_5_s42_std_r3",
+   "n_perm": 20
+  },
+  "h2|breakhis_fm_conch_v1_5_s42_std_r4": {
+   "kind": "h2",
+   "cell": "breakhis_fm_conch_v1_5_s42_std_r4",
+   "n_perm": 20
+  },
+  "h2|breakhis_fm_dinov2_vitb14_s42_std_r0": {
+   "kind": "h2",
+   "cell": "breakhis_fm_dinov2_vitb14_s42_std_r0",
+   "n_perm": 20
+  },
+  "h2|breakhis_fm_dinov2_vitb14_s42_std_r1": {
+   "kind": "h2",
+   "cell": "breakhis_fm_dinov2_vitb14_s42_std_r1",
+   "n_perm": 20
+  },
+  "h2|breakhis_fm_dinov2_vitb14_s42_std_r2": {
+   "kind": "h2",
+   "cell": "breakhis_fm_dinov2_vitb14_s42_std_r2",
+   "n_perm": 20
+  },
+  "h2|breakhis_fm_dinov2_vitb14_s42_std_r3": {
+   "kind": "h2",
+   "cell": "breakhis_fm_dinov2_vitb14_s42_std_r3",
+   "n_perm": 20
+  },
+  "h2|breakhis_fm_dinov2_vitb14_s42_std_r4": {
+   "kind": "h2",
+   "cell": "breakhis_fm_dinov2_vitb14_s42_std_r4",
+   "n_perm": 20
+  },
+  "h2|breakhis_fm_dinov2_vitl14_s42_std_r0": {
+   "kind": "h2",
+   "cell": "breakhis_fm_dinov2_vitl14_s42_std_r0",
+   "n_perm": 20
+  },
+  "h2|breakhis_fm_dinov2_vitl14_s42_std_r1": {
+   "kind": "h2",
+   "cell": "breakhis_fm_dinov2_vitl14_s42_std_r1",
+   "n_perm": 20
+  },
+  "h2|breakhis_fm_dinov2_vitl14_s42_std_r2": {
+   "kind": "h2",
+   "cell": "breakhis_fm_dinov2_vitl14_s42_std_r2",
+   "n_perm": 20
+  },
+  "h2|breakhis_fm_dinov2_vitl14_s42_std_r3": {
+   "kind": "h2",
+   "cell": "breakhis_fm_dinov2_vitl14_s42_std_r3",
+   "n_perm": 20
+  },
+  "h2|breakhis_fm_dinov2_vitl14_s42_std_r4": {
+   "kind": "h2",
+   "cell": "breakhis_fm_dinov2_vitl14_s42_std_r4",
+   "n_perm": 20
+  },
+  "h2|breakhis_fm_uni_s42_std_r0": {
+   "kind": "h2",
+   "cell": "breakhis_fm_uni_s42_std_r0",
+   "n_perm": 20
+  },
+  "h2|breakhis_fm_uni_s42_std_r1": {
+   "kind": "h2",
+   "cell": "breakhis_fm_uni_s42_std_r1",
+   "n_perm": 20
+  },
+  "h2|breakhis_fm_uni_s42_std_r2": {
+   "kind": "h2",
+   "cell": "breakhis_fm_uni_s42_std_r2",
+   "n_perm": 20
+  },
+  "h2|breakhis_fm_uni_s42_std_r3": {
+   "kind": "h2",
+   "cell": "breakhis_fm_uni_s42_std_r3",
+   "n_perm": 20
+  },
+  "h2|breakhis_fm_uni_s42_std_r4": {
+   "kind": "h2",
+   "cell": "breakhis_fm_uni_s42_std_r4",
+   "n_perm": 20
+  },
+  "h2|breakhis_fm_virchow2_s42_std_r0": {
+   "kind": "h2",
+   "cell": "breakhis_fm_virchow2_s42_std_r0",
+   "n_perm": 20
+  },
+  "h2|breakhis_fm_virchow2_s42_std_r1": {
+   "kind": "h2",
+   "cell": "breakhis_fm_virchow2_s42_std_r1",
+   "n_perm": 20
+  },
+  "h2|breakhis_fm_virchow2_s42_std_r2": {
+   "kind": "h2",
+   "cell": "breakhis_fm_virchow2_s42_std_r2",
+   "n_perm": 20
+  },
+  "h2|breakhis_fm_virchow2_s42_std_r3": {
+   "kind": "h2",
+   "cell": "breakhis_fm_virchow2_s42_std_r3",
+   "n_perm": 20
+  },
+  "h2|breakhis_fm_virchow2_s42_std_r4": {
+   "kind": "h2",
+   "cell": "breakhis_fm_virchow2_s42_std_r4",
+   "n_perm": 20
+  },
+  "h2|breakhis_mobilenet_v3_large_s42_std_r0": {
+   "kind": "h2",
+   "cell": "breakhis_mobilenet_v3_large_s42_std_r0",
+   "n_perm": 20
+  },
+  "h2|breakhis_mobilenet_v3_large_s42_std_r1": {
+   "kind": "h2",
+   "cell": "breakhis_mobilenet_v3_large_s42_std_r1",
+   "n_perm": 20
+  },
+  "h2|breakhis_mobilenet_v3_large_s42_std_r2": {
+   "kind": "h2",
+   "cell": "breakhis_mobilenet_v3_large_s42_std_r2",
+   "n_perm": 20
+  },
+  "h2|breakhis_mobilenet_v3_large_s42_std_r3": {
+   "kind": "h2",
+   "cell": "breakhis_mobilenet_v3_large_s42_std_r3",
+   "n_perm": 20
+  },
+  "h2|breakhis_mobilenet_v3_large_s42_std_r4": {
+   "kind": "h2",
+   "cell": "breakhis_mobilenet_v3_large_s42_std_r4",
+   "n_perm": 20
+  },
+  "h2|breakhis_regnet_y_3_2gf_s42_std_r0": {
+   "kind": "h2",
+   "cell": "breakhis_regnet_y_3_2gf_s42_std_r0",
+   "n_perm": 20
+  },
+  "h2|breakhis_regnet_y_3_2gf_s42_std_r1": {
+   "kind": "h2",
+   "cell": "breakhis_regnet_y_3_2gf_s42_std_r1",
+   "n_perm": 20
+  },
+  "h2|breakhis_regnet_y_3_2gf_s42_std_r2": {
+   "kind": "h2",
+   "cell": "breakhis_regnet_y_3_2gf_s42_std_r2",
+   "n_perm": 20
+  },
+  "h2|breakhis_regnet_y_3_2gf_s42_std_r3": {
+   "kind": "h2",
+   "cell": "breakhis_regnet_y_3_2gf_s42_std_r3",
+   "n_perm": 20
+  },
+  "h2|breakhis_regnet_y_3_2gf_s42_std_r4": {
+   "kind": "h2",
+   "cell": "breakhis_regnet_y_3_2gf_s42_std_r4",
+   "n_perm": 20
+  },
+  "h2|breakhis_resnet18_s42_std_r0": {
+   "kind": "h2",
+   "cell": "breakhis_resnet18_s42_std_r0",
+   "n_perm": 20
+  },
+  "h2|breakhis_resnet18_s42_std_r1": {
+   "kind": "h2",
+   "cell": "breakhis_resnet18_s42_std_r1",
+   "n_perm": 20
+  },
+  "h2|breakhis_resnet18_s42_std_r2": {
+   "kind": "h2",
+   "cell": "breakhis_resnet18_s42_std_r2",
+   "n_perm": 20
+  },
+  "h2|breakhis_resnet18_s42_std_r3": {
+   "kind": "h2",
+   "cell": "breakhis_resnet18_s42_std_r3",
+   "n_perm": 20
+  },
+  "h2|breakhis_resnet18_s42_std_r4": {
+   "kind": "h2",
+   "cell": "breakhis_resnet18_s42_std_r4",
+   "n_perm": 20
+  },
+  "h2|breakhis_resnet18_s43_std_r0": {
+   "kind": "h2",
+   "cell": "breakhis_resnet18_s43_std_r0",
+   "n_perm": 20
+  },
+  "h2|breakhis_resnet18_s43_std_r1": {
+   "kind": "h2",
+   "cell": "breakhis_resnet18_s43_std_r1",
+   "n_perm": 20
+  },
+  "h2|breakhis_resnet18_s43_std_r2": {
+   "kind": "h2",
+   "cell": "breakhis_resnet18_s43_std_r2",
+   "n_perm": 20
+  },
+  "h2|breakhis_resnet18_s43_std_r3": {
+   "kind": "h2",
+   "cell": "breakhis_resnet18_s43_std_r3",
+   "n_perm": 20
+  },
+  "h2|breakhis_resnet18_s43_std_r4": {
+   "kind": "h2",
+   "cell": "breakhis_resnet18_s43_std_r4",
+   "n_perm": 20
+  },
+  "h2|breakhis_resnet50_s42_std_r0": {
+   "kind": "h2",
+   "cell": "breakhis_resnet50_s42_std_r0",
+   "n_perm": 20
+  },
+  "h2|breakhis_resnet50_s42_std_r1": {
+   "kind": "h2",
+   "cell": "breakhis_resnet50_s42_std_r1",
+   "n_perm": 20
+  },
+  "h2|breakhis_resnet50_s42_std_r2": {
+   "kind": "h2",
+   "cell": "breakhis_resnet50_s42_std_r2",
+   "n_perm": 20
+  },
+  "h2|breakhis_resnet50_s42_std_r3": {
+   "kind": "h2",
+   "cell": "breakhis_resnet50_s42_std_r3",
+   "n_perm": 20
+  },
+  "h2|breakhis_resnet50_s42_std_r4": {
+   "kind": "h2",
+   "cell": "breakhis_resnet50_s42_std_r4",
+   "n_perm": 20
+  },
+  "h2|breakhis_resnet50_s43_std_r0": {
+   "kind": "h2",
+   "cell": "breakhis_resnet50_s43_std_r0",
+   "n_perm": 20
+  },
+  "h2|breakhis_resnet50_s43_std_r1": {
+   "kind": "h2",
+   "cell": "breakhis_resnet50_s43_std_r1",
+   "n_perm": 20
+  },
+  "h2|breakhis_resnet50_s43_std_r2": {
+   "kind": "h2",
+   "cell": "breakhis_resnet50_s43_std_r2",
+   "n_perm": 20
+  },
+  "h2|breakhis_resnet50_s43_std_r3": {
+   "kind": "h2",
+   "cell": "breakhis_resnet50_s43_std_r3",
+   "n_perm": 20
+  },
+  "h2|breakhis_resnet50_s43_std_r4": {
+   "kind": "h2",
+   "cell": "breakhis_resnet50_s43_std_r4",
+   "n_perm": 20
+  },
+  "h2|camelyon_conch_v1_5_s42": {
+   "kind": "h2",
+   "cell": "camelyon_conch_v1_5_s42",
+   "n_perm": 20
+  },
+  "h2|camelyon_conch_v1_5_s43": {
+   "kind": "h2",
+   "cell": "camelyon_conch_v1_5_s43",
+   "n_perm": 20
+  },
+  "h2|camelyon_conch_v1_5_s44": {
+   "kind": "h2",
+   "cell": "camelyon_conch_v1_5_s44",
+   "n_perm": 20
+  },
+  "h2|camelyon_convnext_tiny_s42": {
+   "kind": "h2",
+   "cell": "camelyon_convnext_tiny_s42",
+   "n_perm": 20
+  },
+  "h2|camelyon_convnext_tiny_s43": {
+   "kind": "h2",
+   "cell": "camelyon_convnext_tiny_s43",
+   "n_perm": 20
+  },
+  "h2|camelyon_convnext_tiny_s44": {
+   "kind": "h2",
+   "cell": "camelyon_convnext_tiny_s44",
+   "n_perm": 20
+  },
+  "h2|camelyon_densenet121_s42": {
+   "kind": "h2",
+   "cell": "camelyon_densenet121_s42",
+   "n_perm": 20
+  },
+  "h2|camelyon_dinov2_vitb14_s42": {
+   "kind": "h2",
+   "cell": "camelyon_dinov2_vitb14_s42",
+   "n_perm": 20
+  },
+  "h2|camelyon_dinov2_vitb14_s43": {
+   "kind": "h2",
+   "cell": "camelyon_dinov2_vitb14_s43",
+   "n_perm": 20
+  },
+  "h2|camelyon_dinov2_vitb14_s44": {
+   "kind": "h2",
+   "cell": "camelyon_dinov2_vitb14_s44",
+   "n_perm": 20
+  },
+  "h2|camelyon_dinov2_vitl14_s42": {
+   "kind": "h2",
+   "cell": "camelyon_dinov2_vitl14_s42",
+   "n_perm": 20
+  },
+  "h2|camelyon_dinov2_vitl14_s43": {
+   "kind": "h2",
+   "cell": "camelyon_dinov2_vitl14_s43",
+   "n_perm": 20
+  },
+  "h2|camelyon_dinov2_vitl14_s44": {
+   "kind": "h2",
+   "cell": "camelyon_dinov2_vitl14_s44",
+   "n_perm": 20
+  },
+  "h2|camelyon_effb3_s42": {
+   "kind": "h2",
+   "cell": "camelyon_effb3_s42",
+   "n_perm": 20
+  },
+  "h2|camelyon_efficientnet_v2_s_s42": {
+   "kind": "h2",
+   "cell": "camelyon_efficientnet_v2_s_s42",
+   "n_perm": 20
+  },
+  "h2|camelyon_mobilenet_v3_large_s42": {
+   "kind": "h2",
+   "cell": "camelyon_mobilenet_v3_large_s42",
+   "n_perm": 20
+  },
+  "h2|camelyon_regnet_y_3_2gf_s42": {
+   "kind": "h2",
+   "cell": "camelyon_regnet_y_3_2gf_s42",
+   "n_perm": 20
+  },
+  "h2|camelyon_resnet18_s42": {
+   "kind": "h2",
+   "cell": "camelyon_resnet18_s42",
+   "n_perm": 20
+  },
+  "h2|camelyon_resnet50_s42": {
+   "kind": "h2",
+   "cell": "camelyon_resnet50_s42",
+   "n_perm": 20
+  },
+  "h2|camelyon_resnet50_s43": {
+   "kind": "h2",
+   "cell": "camelyon_resnet50_s43",
+   "n_perm": 20
+  },
+  "h2|camelyon_resnet50_s44": {
+   "kind": "h2",
+   "cell": "camelyon_resnet50_s44",
+   "n_perm": 20
+  },
+  "h2|camelyon_uni_s42": {
+   "kind": "h2",
+   "cell": "camelyon_uni_s42",
+   "n_perm": 20
+  },
+  "h2|camelyon_uni_s43": {
+   "kind": "h2",
+   "cell": "camelyon_uni_s43",
+   "n_perm": 20
+  },
+  "h2|camelyon_uni_s44": {
+   "kind": "h2",
+   "cell": "camelyon_uni_s44",
+   "n_perm": 20
+  },
+  "h2|camelyon_virchow2_s42": {
+   "kind": "h2",
+   "cell": "camelyon_virchow2_s42",
+   "n_perm": 20
+  },
+  "h2|camelyon_virchow2_s43": {
+   "kind": "h2",
+   "cell": "camelyon_virchow2_s43",
+   "n_perm": 20
+  },
+  "h2|camelyon_virchow2_s44": {
+   "kind": "h2",
+   "cell": "camelyon_virchow2_s44",
+   "n_perm": 20
+  },
+  "h2|dermamnist_convnext_tiny_s42_std": {
+   "kind": "h2",
+   "cell": "dermamnist_convnext_tiny_s42_std",
+   "n_perm": 20
+  },
+  "h2|dermamnist_convnext_tiny_s43_std": {
+   "kind": "h2",
+   "cell": "dermamnist_convnext_tiny_s43_std",
+   "n_perm": 20
+  },
+  "h2|dermamnist_densenet121_s42_std": {
+   "kind": "h2",
+   "cell": "dermamnist_densenet121_s42_std",
+   "n_perm": 20
+  },
+  "h2|dermamnist_densenet121_s43_std": {
+   "kind": "h2",
+   "cell": "dermamnist_densenet121_s43_std",
+   "n_perm": 20
+  },
+  "h2|dermamnist_effb3_s42_std": {
+   "kind": "h2",
+   "cell": "dermamnist_effb3_s42_std",
+   "n_perm": 20
+  },
+  "h2|dermamnist_efficientnet_v2_s_s42_std": {
+   "kind": "h2",
+   "cell": "dermamnist_efficientnet_v2_s_s42_std",
+   "n_perm": 20
+  },
+  "h2|dermamnist_fm_conch_v1_5_s42_std": {
+   "kind": "h2",
+   "cell": "dermamnist_fm_conch_v1_5_s42_std",
+   "n_perm": 20
+  },
+  "h2|dermamnist_fm_dinov2_vitb14_s42_std": {
+   "kind": "h2",
+   "cell": "dermamnist_fm_dinov2_vitb14_s42_std",
+   "n_perm": 20
+  },
+  "h2|dermamnist_fm_dinov2_vitl14_s42_std": {
+   "kind": "h2",
+   "cell": "dermamnist_fm_dinov2_vitl14_s42_std",
+   "n_perm": 20
+  },
+  "h2|dermamnist_fm_uni_s42_std": {
+   "kind": "h2",
+   "cell": "dermamnist_fm_uni_s42_std",
+   "n_perm": 20
+  },
+  "h2|dermamnist_fm_virchow2_s42_std": {
+   "kind": "h2",
+   "cell": "dermamnist_fm_virchow2_s42_std",
+   "n_perm": 20
+  },
+  "h2|dermamnist_mobilenet_v3_large_s42_std": {
+   "kind": "h2",
+   "cell": "dermamnist_mobilenet_v3_large_s42_std",
+   "n_perm": 20
+  },
+  "h2|dermamnist_regnet_y_3_2gf_s42_std": {
+   "kind": "h2",
+   "cell": "dermamnist_regnet_y_3_2gf_s42_std",
+   "n_perm": 20
+  },
+  "h2|dermamnist_resnet18_s42_std": {
+   "kind": "h2",
+   "cell": "dermamnist_resnet18_s42_std",
+   "n_perm": 20
+  },
+  "h2|dermamnist_resnet18_s43_std": {
+   "kind": "h2",
+   "cell": "dermamnist_resnet18_s43_std",
+   "n_perm": 20
+  },
+  "h2|dermamnist_resnet50_s42_std": {
+   "kind": "h2",
+   "cell": "dermamnist_resnet50_s42_std",
+   "n_perm": 20
+  },
+  "h2|dermamnist_resnet50_s43_std": {
+   "kind": "h2",
+   "cell": "dermamnist_resnet50_s43_std",
+   "n_perm": 20
+  },
+  "h2|isic2019_convnext_tiny_s42_std": {
+   "kind": "h2",
+   "cell": "isic2019_convnext_tiny_s42_std",
+   "n_perm": 20
+  },
+  "h2|isic2019_convnext_tiny_s43_std": {
+   "kind": "h2",
+   "cell": "isic2019_convnext_tiny_s43_std",
+   "n_perm": 20
+  },
+  "h2|isic2019_densenet121_s42_std": {
+   "kind": "h2",
+   "cell": "isic2019_densenet121_s42_std",
+   "n_perm": 20
+  },
+  "h2|isic2019_densenet121_s43_std": {
+   "kind": "h2",
+   "cell": "isic2019_densenet121_s43_std",
+   "n_perm": 20
+  },
+  "h2|isic2019_effb3_s42_std": {
+   "kind": "h2",
+   "cell": "isic2019_effb3_s42_std",
+   "n_perm": 20
+  },
+  "h2|isic2019_efficientnet_v2_s_s42_std": {
+   "kind": "h2",
+   "cell": "isic2019_efficientnet_v2_s_s42_std",
+   "n_perm": 20
+  },
+  "h2|isic2019_fm_conch_v1_5_s42_std": {
+   "kind": "h2",
+   "cell": "isic2019_fm_conch_v1_5_s42_std",
+   "n_perm": 20
+  },
+  "h2|isic2019_fm_dinov2_vitb14_s42_std": {
+   "kind": "h2",
+   "cell": "isic2019_fm_dinov2_vitb14_s42_std",
+   "n_perm": 20
+  },
+  "h2|isic2019_fm_dinov2_vitl14_s42_std": {
+   "kind": "h2",
+   "cell": "isic2019_fm_dinov2_vitl14_s42_std",
+   "n_perm": 20
+  },
+  "h2|isic2019_fm_uni_s42_std": {
+   "kind": "h2",
+   "cell": "isic2019_fm_uni_s42_std",
+   "n_perm": 20
+  },
+  "h2|isic2019_fm_virchow2_s42_std": {
+   "kind": "h2",
+   "cell": "isic2019_fm_virchow2_s42_std",
+   "n_perm": 20
+  },
+  "h2|isic2019_mobilenet_v3_large_s42_std": {
+   "kind": "h2",
+   "cell": "isic2019_mobilenet_v3_large_s42_std",
+   "n_perm": 20
+  },
+  "h2|isic2019_regnet_y_3_2gf_s42_std": {
+   "kind": "h2",
+   "cell": "isic2019_regnet_y_3_2gf_s42_std",
+   "n_perm": 20
+  },
+  "h2|isic2019_resnet18_s42_std": {
+   "kind": "h2",
+   "cell": "isic2019_resnet18_s42_std",
+   "n_perm": 20
+  },
+  "h2|isic2019_resnet18_s43_std": {
+   "kind": "h2",
+   "cell": "isic2019_resnet18_s43_std",
+   "n_perm": 20
+  },
+  "h2|isic2019_resnet50_s42_std": {
+   "kind": "h2",
+   "cell": "isic2019_resnet50_s42_std",
+   "n_perm": 20
+  },
+  "h2|isic2019_resnet50_s43_std": {
+   "kind": "h2",
+   "cell": "isic2019_resnet50_s43_std",
+   "n_perm": 20
+  },
+  "h2|kermany_convnext_tiny_s42_std": {
+   "kind": "h2",
+   "cell": "kermany_convnext_tiny_s42_std",
+   "n_perm": 20
+  },
+  "h2|kermany_convnext_tiny_s43_std": {
+   "kind": "h2",
+   "cell": "kermany_convnext_tiny_s43_std",
+   "n_perm": 20
+  },
+  "h2|kermany_densenet121_s42_std": {
+   "kind": "h2",
+   "cell": "kermany_densenet121_s42_std",
+   "n_perm": 20
+  },
+  "h2|kermany_densenet121_s43_std": {
+   "kind": "h2",
+   "cell": "kermany_densenet121_s43_std",
+   "n_perm": 20
+  },
+  "h2|kermany_effb3_s42_std": {
+   "kind": "h2",
+   "cell": "kermany_effb3_s42_std",
+   "n_perm": 20
+  },
+  "h2|kermany_efficientnet_v2_s_s42_std": {
+   "kind": "h2",
+   "cell": "kermany_efficientnet_v2_s_s42_std",
+   "n_perm": 20
+  },
+  "h2|kermany_mobilenet_v3_large_s42_std": {
+   "kind": "h2",
+   "cell": "kermany_mobilenet_v3_large_s42_std",
+   "n_perm": 20
+  },
+  "h2|kermany_regnet_y_3_2gf_s42_std": {
+   "kind": "h2",
+   "cell": "kermany_regnet_y_3_2gf_s42_std",
+   "n_perm": 20
+  },
+  "h2|kermany_resnet18_s42_std": {
+   "kind": "h2",
+   "cell": "kermany_resnet18_s42_std",
+   "n_perm": 20
+  },
+  "h2|kermany_resnet18_s43_std": {
+   "kind": "h2",
+   "cell": "kermany_resnet18_s43_std",
+   "n_perm": 20
+  },
+  "h2|kermany_resnet50_s42_std": {
+   "kind": "h2",
+   "cell": "kermany_resnet50_s42_std",
+   "n_perm": 20
+  },
+  "h2|kermany_resnet50_s43_std": {
+   "kind": "h2",
+   "cell": "kermany_resnet50_s43_std",
+   "n_perm": 20
+  },
+  "h3|camelyon|f0|d768|rho0.02": {
+   "kind": "h3",
+   "design": "camelyon",
+   "n_g_from": "camelyon_resnet50_s42",
+   "fold": 0,
+   "d": 768,
+   "rho": 0.02
+  },
+  "h3|camelyon|f0|d768|rho0.05": {
+   "kind": "h3",
+   "design": "camelyon",
+   "n_g_from": "camelyon_resnet50_s42",
+   "fold": 0,
+   "d": 768,
+   "rho": 0.05
+  },
+  "h3|camelyon|f0|d768|rho0.1": {
+   "kind": "h3",
+   "design": "camelyon",
+   "n_g_from": "camelyon_resnet50_s42",
+   "fold": 0,
+   "d": 768,
+   "rho": 0.1
+  },
+  "h3|camelyon|f0|d768|rho0.2": {
+   "kind": "h3",
+   "design": "camelyon",
+   "n_g_from": "camelyon_resnet50_s42",
+   "fold": 0,
+   "d": 768,
+   "rho": 0.2
+  },
+  "h3|camelyon|f0|d1024|rho0.02": {
+   "kind": "h3",
+   "design": "camelyon",
+   "n_g_from": "camelyon_resnet50_s42",
+   "fold": 0,
+   "d": 1024,
+   "rho": 0.02
+  },
+  "h3|camelyon|f0|d1024|rho0.05": {
+   "kind": "h3",
+   "design": "camelyon",
+   "n_g_from": "camelyon_resnet50_s42",
+   "fold": 0,
+   "d": 1024,
+   "rho": 0.05
+  },
+  "h3|camelyon|f0|d1024|rho0.1": {
+   "kind": "h3",
+   "design": "camelyon",
+   "n_g_from": "camelyon_resnet50_s42",
+   "fold": 0,
+   "d": 1024,
+   "rho": 0.1
+  },
+  "h3|camelyon|f0|d1024|rho0.2": {
+   "kind": "h3",
+   "design": "camelyon",
+   "n_g_from": "camelyon_resnet50_s42",
+   "fold": 0,
+   "d": 1024,
+   "rho": 0.2
+  },
+  "h3|camelyon|f0|d2560|rho0.02": {
+   "kind": "h3",
+   "design": "camelyon",
+   "n_g_from": "camelyon_resnet50_s42",
+   "fold": 0,
+   "d": 2560,
+   "rho": 0.02
+  },
+  "h3|camelyon|f0|d2560|rho0.05": {
+   "kind": "h3",
+   "design": "camelyon",
+   "n_g_from": "camelyon_resnet50_s42",
+   "fold": 0,
+   "d": 2560,
+   "rho": 0.05
+  },
+  "h3|camelyon|f0|d2560|rho0.1": {
+   "kind": "h3",
+   "design": "camelyon",
+   "n_g_from": "camelyon_resnet50_s42",
+   "fold": 0,
+   "d": 2560,
+   "rho": 0.1
+  },
+  "h3|camelyon|f0|d2560|rho0.2": {
+   "kind": "h3",
+   "design": "camelyon",
+   "n_g_from": "camelyon_resnet50_s42",
+   "fold": 0,
+   "d": 2560,
+   "rho": 0.2
+  },
+  "h3|camelyon|f1|d768|rho0.02": {
+   "kind": "h3",
+   "design": "camelyon",
+   "n_g_from": "camelyon_resnet50_s42",
+   "fold": 1,
+   "d": 768,
+   "rho": 0.02
+  },
+  "h3|camelyon|f1|d768|rho0.05": {
+   "kind": "h3",
+   "design": "camelyon",
+   "n_g_from": "camelyon_resnet50_s42",
+   "fold": 1,
+   "d": 768,
+   "rho": 0.05
+  },
+  "h3|camelyon|f1|d768|rho0.1": {
+   "kind": "h3",
+   "design": "camelyon",
+   "n_g_from": "camelyon_resnet50_s42",
+   "fold": 1,
+   "d": 768,
+   "rho": 0.1
+  },
+  "h3|camelyon|f1|d768|rho0.2": {
+   "kind": "h3",
+   "design": "camelyon",
+   "n_g_from": "camelyon_resnet50_s42",
+   "fold": 1,
+   "d": 768,
+   "rho": 0.2
+  },
+  "h3|camelyon|f1|d1024|rho0.02": {
+   "kind": "h3",
+   "design": "camelyon",
+   "n_g_from": "camelyon_resnet50_s42",
+   "fold": 1,
+   "d": 1024,
+   "rho": 0.02
+  },
+  "h3|camelyon|f1|d1024|rho0.05": {
+   "kind": "h3",
+   "design": "camelyon",
+   "n_g_from": "camelyon_resnet50_s42",
+   "fold": 1,
+   "d": 1024,
+   "rho": 0.05
+  },
+  "h3|camelyon|f1|d1024|rho0.1": {
+   "kind": "h3",
+   "design": "camelyon",
+   "n_g_from": "camelyon_resnet50_s42",
+   "fold": 1,
+   "d": 1024,
+   "rho": 0.1
+  },
+  "h3|camelyon|f1|d1024|rho0.2": {
+   "kind": "h3",
+   "design": "camelyon",
+   "n_g_from": "camelyon_resnet50_s42",
+   "fold": 1,
+   "d": 1024,
+   "rho": 0.2
+  },
+  "h3|camelyon|f1|d2560|rho0.02": {
+   "kind": "h3",
+   "design": "camelyon",
+   "n_g_from": "camelyon_resnet50_s42",
+   "fold": 1,
+   "d": 2560,
+   "rho": 0.02
+  },
+  "h3|camelyon|f1|d2560|rho0.05": {
+   "kind": "h3",
+   "design": "camelyon",
+   "n_g_from": "camelyon_resnet50_s42",
+   "fold": 1,
+   "d": 2560,
+   "rho": 0.05
+  },
+  "h3|camelyon|f1|d2560|rho0.1": {
+   "kind": "h3",
+   "design": "camelyon",
+   "n_g_from": "camelyon_resnet50_s42",
+   "fold": 1,
+   "d": 2560,
+   "rho": 0.1
+  },
+  "h3|camelyon|f1|d2560|rho0.2": {
+   "kind": "h3",
+   "design": "camelyon",
+   "n_g_from": "camelyon_resnet50_s42",
+   "fold": 1,
+   "d": 2560,
+   "rho": 0.2
+  },
+  "h3|breakhis|d512|rho0.02": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_resnet18_s42_std_r0",
+   "fold": 0,
+   "d": 512,
+   "rho": 0.02
+  },
+  "h3|breakhis|d512|rho0.05": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_resnet18_s42_std_r0",
+   "fold": 0,
+   "d": 512,
+   "rho": 0.05
+  },
+  "h3|breakhis|d512|rho0.1": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_resnet18_s42_std_r0",
+   "fold": 0,
+   "d": 512,
+   "rho": 0.1
+  },
+  "h3|breakhis|d512|rho0.2": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_resnet18_s42_std_r0",
+   "fold": 0,
+   "d": 512,
+   "rho": 0.2
+  },
+  "h3|breakhis|d768|rho0.02": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_convnext_tiny_s42_std_r0",
+   "fold": 0,
+   "d": 768,
+   "rho": 0.02
+  },
+  "h3|breakhis|d768|rho0.05": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_convnext_tiny_s42_std_r0",
+   "fold": 0,
+   "d": 768,
+   "rho": 0.05
+  },
+  "h3|breakhis|d768|rho0.1": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_convnext_tiny_s42_std_r0",
+   "fold": 0,
+   "d": 768,
+   "rho": 0.1
+  },
+  "h3|breakhis|d768|rho0.2": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_convnext_tiny_s42_std_r0",
+   "fold": 0,
+   "d": 768,
+   "rho": 0.2
+  },
+  "h3|breakhis|d960|rho0.02": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_mobilenet_v3_large_s42_std_r0",
+   "fold": 0,
+   "d": 960,
+   "rho": 0.02
+  },
+  "h3|breakhis|d960|rho0.05": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_mobilenet_v3_large_s42_std_r0",
+   "fold": 0,
+   "d": 960,
+   "rho": 0.05
+  },
+  "h3|breakhis|d960|rho0.1": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_mobilenet_v3_large_s42_std_r0",
+   "fold": 0,
+   "d": 960,
+   "rho": 0.1
+  },
+  "h3|breakhis|d960|rho0.2": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_mobilenet_v3_large_s42_std_r0",
+   "fold": 0,
+   "d": 960,
+   "rho": 0.2
+  },
+  "h3|breakhis|d1024|rho0.02": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_densenet121_s42_std_r0",
+   "fold": 0,
+   "d": 1024,
+   "rho": 0.02
+  },
+  "h3|breakhis|d1024|rho0.05": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_densenet121_s42_std_r0",
+   "fold": 0,
+   "d": 1024,
+   "rho": 0.05
+  },
+  "h3|breakhis|d1024|rho0.1": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_densenet121_s42_std_r0",
+   "fold": 0,
+   "d": 1024,
+   "rho": 0.1
+  },
+  "h3|breakhis|d1024|rho0.2": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_densenet121_s42_std_r0",
+   "fold": 0,
+   "d": 1024,
+   "rho": 0.2
+  },
+  "h3|breakhis|d1280|rho0.02": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_efficientnet_v2_s_s42_std_r0",
+   "fold": 0,
+   "d": 1280,
+   "rho": 0.02
+  },
+  "h3|breakhis|d1280|rho0.05": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_efficientnet_v2_s_s42_std_r0",
+   "fold": 0,
+   "d": 1280,
+   "rho": 0.05
+  },
+  "h3|breakhis|d1280|rho0.1": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_efficientnet_v2_s_s42_std_r0",
+   "fold": 0,
+   "d": 1280,
+   "rho": 0.1
+  },
+  "h3|breakhis|d1280|rho0.2": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_efficientnet_v2_s_s42_std_r0",
+   "fold": 0,
+   "d": 1280,
+   "rho": 0.2
+  },
+  "h3|breakhis|d1512|rho0.02": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_regnet_y_3_2gf_s42_std_r0",
+   "fold": 0,
+   "d": 1512,
+   "rho": 0.02
+  },
+  "h3|breakhis|d1512|rho0.05": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_regnet_y_3_2gf_s42_std_r0",
+   "fold": 0,
+   "d": 1512,
+   "rho": 0.05
+  },
+  "h3|breakhis|d1512|rho0.1": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_regnet_y_3_2gf_s42_std_r0",
+   "fold": 0,
+   "d": 1512,
+   "rho": 0.1
+  },
+  "h3|breakhis|d1512|rho0.2": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_regnet_y_3_2gf_s42_std_r0",
+   "fold": 0,
+   "d": 1512,
+   "rho": 0.2
+  },
+  "h3|breakhis|d1536|rho0.02": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_effb3_s42_std_r0",
+   "fold": 0,
+   "d": 1536,
+   "rho": 0.02
+  },
+  "h3|breakhis|d1536|rho0.05": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_effb3_s42_std_r0",
+   "fold": 0,
+   "d": 1536,
+   "rho": 0.05
+  },
+  "h3|breakhis|d1536|rho0.1": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_effb3_s42_std_r0",
+   "fold": 0,
+   "d": 1536,
+   "rho": 0.1
+  },
+  "h3|breakhis|d1536|rho0.2": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_effb3_s42_std_r0",
+   "fold": 0,
+   "d": 1536,
+   "rho": 0.2
+  },
+  "h3|breakhis|d2048|rho0.02": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_resnet50_s42_std_r0",
+   "fold": 0,
+   "d": 2048,
+   "rho": 0.02
+  },
+  "h3|breakhis|d2048|rho0.05": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_resnet50_s42_std_r0",
+   "fold": 0,
+   "d": 2048,
+   "rho": 0.05
+  },
+  "h3|breakhis|d2048|rho0.1": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_resnet50_s42_std_r0",
+   "fold": 0,
+   "d": 2048,
+   "rho": 0.1
+  },
+  "h3|breakhis|d2048|rho0.2": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_resnet50_s42_std_r0",
+   "fold": 0,
+   "d": 2048,
+   "rho": 0.2
+  },
+  "h3|breakhis|d2560|rho0.02": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_fm_virchow2_s42_std_r0",
+   "fold": 0,
+   "d": 2560,
+   "rho": 0.02
+  },
+  "h3|breakhis|d2560|rho0.05": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_fm_virchow2_s42_std_r0",
+   "fold": 0,
+   "d": 2560,
+   "rho": 0.05
+  },
+  "h3|breakhis|d2560|rho0.1": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_fm_virchow2_s42_std_r0",
+   "fold": 0,
+   "d": 2560,
+   "rho": 0.1
+  },
+  "h3|breakhis|d2560|rho0.2": {
+   "kind": "h3",
+   "design": "breakhis",
+   "n_g_from": "breakhis_fm_virchow2_s42_std_r0",
+   "fold": 0,
+   "d": 2560,
+   "rho": 0.2
+  },
+  "h3|dermamnist|d512|rho0.02": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_resnet18_s42_std",
+   "fold": 0,
+   "d": 512,
+   "rho": 0.02
+  },
+  "h3|dermamnist|d512|rho0.05": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_resnet18_s42_std",
+   "fold": 0,
+   "d": 512,
+   "rho": 0.05
+  },
+  "h3|dermamnist|d512|rho0.1": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_resnet18_s42_std",
+   "fold": 0,
+   "d": 512,
+   "rho": 0.1
+  },
+  "h3|dermamnist|d512|rho0.2": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_resnet18_s42_std",
+   "fold": 0,
+   "d": 512,
+   "rho": 0.2
+  },
+  "h3|dermamnist|d768|rho0.02": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_convnext_tiny_s42_std",
+   "fold": 0,
+   "d": 768,
+   "rho": 0.02
+  },
+  "h3|dermamnist|d768|rho0.05": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_convnext_tiny_s42_std",
+   "fold": 0,
+   "d": 768,
+   "rho": 0.05
+  },
+  "h3|dermamnist|d768|rho0.1": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_convnext_tiny_s42_std",
+   "fold": 0,
+   "d": 768,
+   "rho": 0.1
+  },
+  "h3|dermamnist|d768|rho0.2": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_convnext_tiny_s42_std",
+   "fold": 0,
+   "d": 768,
+   "rho": 0.2
+  },
+  "h3|dermamnist|d960|rho0.02": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_mobilenet_v3_large_s42_std",
+   "fold": 0,
+   "d": 960,
+   "rho": 0.02
+  },
+  "h3|dermamnist|d960|rho0.05": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_mobilenet_v3_large_s42_std",
+   "fold": 0,
+   "d": 960,
+   "rho": 0.05
+  },
+  "h3|dermamnist|d960|rho0.1": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_mobilenet_v3_large_s42_std",
+   "fold": 0,
+   "d": 960,
+   "rho": 0.1
+  },
+  "h3|dermamnist|d960|rho0.2": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_mobilenet_v3_large_s42_std",
+   "fold": 0,
+   "d": 960,
+   "rho": 0.2
+  },
+  "h3|dermamnist|d1024|rho0.02": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_densenet121_s42_std",
+   "fold": 0,
+   "d": 1024,
+   "rho": 0.02
+  },
+  "h3|dermamnist|d1024|rho0.05": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_densenet121_s42_std",
+   "fold": 0,
+   "d": 1024,
+   "rho": 0.05
+  },
+  "h3|dermamnist|d1024|rho0.1": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_densenet121_s42_std",
+   "fold": 0,
+   "d": 1024,
+   "rho": 0.1
+  },
+  "h3|dermamnist|d1024|rho0.2": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_densenet121_s42_std",
+   "fold": 0,
+   "d": 1024,
+   "rho": 0.2
+  },
+  "h3|dermamnist|d1280|rho0.02": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_efficientnet_v2_s_s42_std",
+   "fold": 0,
+   "d": 1280,
+   "rho": 0.02
+  },
+  "h3|dermamnist|d1280|rho0.05": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_efficientnet_v2_s_s42_std",
+   "fold": 0,
+   "d": 1280,
+   "rho": 0.05
+  },
+  "h3|dermamnist|d1280|rho0.1": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_efficientnet_v2_s_s42_std",
+   "fold": 0,
+   "d": 1280,
+   "rho": 0.1
+  },
+  "h3|dermamnist|d1280|rho0.2": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_efficientnet_v2_s_s42_std",
+   "fold": 0,
+   "d": 1280,
+   "rho": 0.2
+  },
+  "h3|dermamnist|d1512|rho0.02": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_regnet_y_3_2gf_s42_std",
+   "fold": 0,
+   "d": 1512,
+   "rho": 0.02
+  },
+  "h3|dermamnist|d1512|rho0.05": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_regnet_y_3_2gf_s42_std",
+   "fold": 0,
+   "d": 1512,
+   "rho": 0.05
+  },
+  "h3|dermamnist|d1512|rho0.1": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_regnet_y_3_2gf_s42_std",
+   "fold": 0,
+   "d": 1512,
+   "rho": 0.1
+  },
+  "h3|dermamnist|d1512|rho0.2": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_regnet_y_3_2gf_s42_std",
+   "fold": 0,
+   "d": 1512,
+   "rho": 0.2
+  },
+  "h3|dermamnist|d1536|rho0.02": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_effb3_s42_std",
+   "fold": 0,
+   "d": 1536,
+   "rho": 0.02
+  },
+  "h3|dermamnist|d1536|rho0.05": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_effb3_s42_std",
+   "fold": 0,
+   "d": 1536,
+   "rho": 0.05
+  },
+  "h3|dermamnist|d1536|rho0.1": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_effb3_s42_std",
+   "fold": 0,
+   "d": 1536,
+   "rho": 0.1
+  },
+  "h3|dermamnist|d1536|rho0.2": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_effb3_s42_std",
+   "fold": 0,
+   "d": 1536,
+   "rho": 0.2
+  },
+  "h3|dermamnist|d2048|rho0.02": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_resnet50_s42_std",
+   "fold": 0,
+   "d": 2048,
+   "rho": 0.02
+  },
+  "h3|dermamnist|d2048|rho0.05": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_resnet50_s42_std",
+   "fold": 0,
+   "d": 2048,
+   "rho": 0.05
+  },
+  "h3|dermamnist|d2048|rho0.1": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_resnet50_s42_std",
+   "fold": 0,
+   "d": 2048,
+   "rho": 0.1
+  },
+  "h3|dermamnist|d2048|rho0.2": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_resnet50_s42_std",
+   "fold": 0,
+   "d": 2048,
+   "rho": 0.2
+  },
+  "h3|dermamnist|d2560|rho0.02": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_fm_virchow2_s42_std",
+   "fold": 0,
+   "d": 2560,
+   "rho": 0.02
+  },
+  "h3|dermamnist|d2560|rho0.05": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_fm_virchow2_s42_std",
+   "fold": 0,
+   "d": 2560,
+   "rho": 0.05
+  },
+  "h3|dermamnist|d2560|rho0.1": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_fm_virchow2_s42_std",
+   "fold": 0,
+   "d": 2560,
+   "rho": 0.1
+  },
+  "h3|dermamnist|d2560|rho0.2": {
+   "kind": "h3",
+   "design": "dermamnist",
+   "n_g_from": "dermamnist_fm_virchow2_s42_std",
+   "fold": 0,
+   "d": 2560,
+   "rho": 0.2
+  },
+  "h3|isic2019|d512|rho0.02": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_resnet18_s42_std",
+   "fold": 0,
+   "d": 512,
+   "rho": 0.02
+  },
+  "h3|isic2019|d512|rho0.05": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_resnet18_s42_std",
+   "fold": 0,
+   "d": 512,
+   "rho": 0.05
+  },
+  "h3|isic2019|d512|rho0.1": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_resnet18_s42_std",
+   "fold": 0,
+   "d": 512,
+   "rho": 0.1
+  },
+  "h3|isic2019|d512|rho0.2": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_resnet18_s42_std",
+   "fold": 0,
+   "d": 512,
+   "rho": 0.2
+  },
+  "h3|isic2019|d768|rho0.02": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_convnext_tiny_s42_std",
+   "fold": 0,
+   "d": 768,
+   "rho": 0.02
+  },
+  "h3|isic2019|d768|rho0.05": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_convnext_tiny_s42_std",
+   "fold": 0,
+   "d": 768,
+   "rho": 0.05
+  },
+  "h3|isic2019|d768|rho0.1": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_convnext_tiny_s42_std",
+   "fold": 0,
+   "d": 768,
+   "rho": 0.1
+  },
+  "h3|isic2019|d768|rho0.2": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_convnext_tiny_s42_std",
+   "fold": 0,
+   "d": 768,
+   "rho": 0.2
+  },
+  "h3|isic2019|d960|rho0.02": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_mobilenet_v3_large_s42_std",
+   "fold": 0,
+   "d": 960,
+   "rho": 0.02
+  },
+  "h3|isic2019|d960|rho0.05": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_mobilenet_v3_large_s42_std",
+   "fold": 0,
+   "d": 960,
+   "rho": 0.05
+  },
+  "h3|isic2019|d960|rho0.1": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_mobilenet_v3_large_s42_std",
+   "fold": 0,
+   "d": 960,
+   "rho": 0.1
+  },
+  "h3|isic2019|d960|rho0.2": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_mobilenet_v3_large_s42_std",
+   "fold": 0,
+   "d": 960,
+   "rho": 0.2
+  },
+  "h3|isic2019|d1024|rho0.02": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_densenet121_s42_std",
+   "fold": 0,
+   "d": 1024,
+   "rho": 0.02
+  },
+  "h3|isic2019|d1024|rho0.05": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_densenet121_s42_std",
+   "fold": 0,
+   "d": 1024,
+   "rho": 0.05
+  },
+  "h3|isic2019|d1024|rho0.1": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_densenet121_s42_std",
+   "fold": 0,
+   "d": 1024,
+   "rho": 0.1
+  },
+  "h3|isic2019|d1024|rho0.2": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_densenet121_s42_std",
+   "fold": 0,
+   "d": 1024,
+   "rho": 0.2
+  },
+  "h3|isic2019|d1280|rho0.02": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_efficientnet_v2_s_s42_std",
+   "fold": 0,
+   "d": 1280,
+   "rho": 0.02
+  },
+  "h3|isic2019|d1280|rho0.05": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_efficientnet_v2_s_s42_std",
+   "fold": 0,
+   "d": 1280,
+   "rho": 0.05
+  },
+  "h3|isic2019|d1280|rho0.1": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_efficientnet_v2_s_s42_std",
+   "fold": 0,
+   "d": 1280,
+   "rho": 0.1
+  },
+  "h3|isic2019|d1280|rho0.2": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_efficientnet_v2_s_s42_std",
+   "fold": 0,
+   "d": 1280,
+   "rho": 0.2
+  },
+  "h3|isic2019|d1512|rho0.02": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_regnet_y_3_2gf_s42_std",
+   "fold": 0,
+   "d": 1512,
+   "rho": 0.02
+  },
+  "h3|isic2019|d1512|rho0.05": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_regnet_y_3_2gf_s42_std",
+   "fold": 0,
+   "d": 1512,
+   "rho": 0.05
+  },
+  "h3|isic2019|d1512|rho0.1": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_regnet_y_3_2gf_s42_std",
+   "fold": 0,
+   "d": 1512,
+   "rho": 0.1
+  },
+  "h3|isic2019|d1512|rho0.2": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_regnet_y_3_2gf_s42_std",
+   "fold": 0,
+   "d": 1512,
+   "rho": 0.2
+  },
+  "h3|isic2019|d1536|rho0.02": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_effb3_s42_std",
+   "fold": 0,
+   "d": 1536,
+   "rho": 0.02
+  },
+  "h3|isic2019|d1536|rho0.05": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_effb3_s42_std",
+   "fold": 0,
+   "d": 1536,
+   "rho": 0.05
+  },
+  "h3|isic2019|d1536|rho0.1": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_effb3_s42_std",
+   "fold": 0,
+   "d": 1536,
+   "rho": 0.1
+  },
+  "h3|isic2019|d1536|rho0.2": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_effb3_s42_std",
+   "fold": 0,
+   "d": 1536,
+   "rho": 0.2
+  },
+  "h3|isic2019|d2048|rho0.02": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_resnet50_s42_std",
+   "fold": 0,
+   "d": 2048,
+   "rho": 0.02
+  },
+  "h3|isic2019|d2048|rho0.05": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_resnet50_s42_std",
+   "fold": 0,
+   "d": 2048,
+   "rho": 0.05
+  },
+  "h3|isic2019|d2048|rho0.1": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_resnet50_s42_std",
+   "fold": 0,
+   "d": 2048,
+   "rho": 0.1
+  },
+  "h3|isic2019|d2048|rho0.2": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_resnet50_s42_std",
+   "fold": 0,
+   "d": 2048,
+   "rho": 0.2
+  },
+  "h3|isic2019|d2560|rho0.02": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_fm_virchow2_s42_std",
+   "fold": 0,
+   "d": 2560,
+   "rho": 0.02
+  },
+  "h3|isic2019|d2560|rho0.05": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_fm_virchow2_s42_std",
+   "fold": 0,
+   "d": 2560,
+   "rho": 0.05
+  },
+  "h3|isic2019|d2560|rho0.1": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_fm_virchow2_s42_std",
+   "fold": 0,
+   "d": 2560,
+   "rho": 0.1
+  },
+  "h3|isic2019|d2560|rho0.2": {
+   "kind": "h3",
+   "design": "isic2019",
+   "n_g_from": "isic2019_fm_virchow2_s42_std",
+   "fold": 0,
+   "d": 2560,
+   "rho": 0.2
+  },
+  "h3|kermany|d512|rho0.02": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_resnet18_s42_std",
+   "fold": 0,
+   "d": 512,
+   "rho": 0.02
+  },
+  "h3|kermany|d512|rho0.05": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_resnet18_s42_std",
+   "fold": 0,
+   "d": 512,
+   "rho": 0.05
+  },
+  "h3|kermany|d512|rho0.1": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_resnet18_s42_std",
+   "fold": 0,
+   "d": 512,
+   "rho": 0.1
+  },
+  "h3|kermany|d512|rho0.2": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_resnet18_s42_std",
+   "fold": 0,
+   "d": 512,
+   "rho": 0.2
+  },
+  "h3|kermany|d768|rho0.02": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_convnext_tiny_s42_std",
+   "fold": 0,
+   "d": 768,
+   "rho": 0.02
+  },
+  "h3|kermany|d768|rho0.05": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_convnext_tiny_s42_std",
+   "fold": 0,
+   "d": 768,
+   "rho": 0.05
+  },
+  "h3|kermany|d768|rho0.1": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_convnext_tiny_s42_std",
+   "fold": 0,
+   "d": 768,
+   "rho": 0.1
+  },
+  "h3|kermany|d768|rho0.2": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_convnext_tiny_s42_std",
+   "fold": 0,
+   "d": 768,
+   "rho": 0.2
+  },
+  "h3|kermany|d960|rho0.02": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_mobilenet_v3_large_s42_std",
+   "fold": 0,
+   "d": 960,
+   "rho": 0.02
+  },
+  "h3|kermany|d960|rho0.05": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_mobilenet_v3_large_s42_std",
+   "fold": 0,
+   "d": 960,
+   "rho": 0.05
+  },
+  "h3|kermany|d960|rho0.1": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_mobilenet_v3_large_s42_std",
+   "fold": 0,
+   "d": 960,
+   "rho": 0.1
+  },
+  "h3|kermany|d960|rho0.2": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_mobilenet_v3_large_s42_std",
+   "fold": 0,
+   "d": 960,
+   "rho": 0.2
+  },
+  "h3|kermany|d1024|rho0.02": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_densenet121_s42_std",
+   "fold": 0,
+   "d": 1024,
+   "rho": 0.02
+  },
+  "h3|kermany|d1024|rho0.05": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_densenet121_s42_std",
+   "fold": 0,
+   "d": 1024,
+   "rho": 0.05
+  },
+  "h3|kermany|d1024|rho0.1": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_densenet121_s42_std",
+   "fold": 0,
+   "d": 1024,
+   "rho": 0.1
+  },
+  "h3|kermany|d1024|rho0.2": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_densenet121_s42_std",
+   "fold": 0,
+   "d": 1024,
+   "rho": 0.2
+  },
+  "h3|kermany|d1280|rho0.02": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_efficientnet_v2_s_s42_std",
+   "fold": 0,
+   "d": 1280,
+   "rho": 0.02
+  },
+  "h3|kermany|d1280|rho0.05": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_efficientnet_v2_s_s42_std",
+   "fold": 0,
+   "d": 1280,
+   "rho": 0.05
+  },
+  "h3|kermany|d1280|rho0.1": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_efficientnet_v2_s_s42_std",
+   "fold": 0,
+   "d": 1280,
+   "rho": 0.1
+  },
+  "h3|kermany|d1280|rho0.2": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_efficientnet_v2_s_s42_std",
+   "fold": 0,
+   "d": 1280,
+   "rho": 0.2
+  },
+  "h3|kermany|d1512|rho0.02": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_regnet_y_3_2gf_s42_std",
+   "fold": 0,
+   "d": 1512,
+   "rho": 0.02
+  },
+  "h3|kermany|d1512|rho0.05": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_regnet_y_3_2gf_s42_std",
+   "fold": 0,
+   "d": 1512,
+   "rho": 0.05
+  },
+  "h3|kermany|d1512|rho0.1": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_regnet_y_3_2gf_s42_std",
+   "fold": 0,
+   "d": 1512,
+   "rho": 0.1
+  },
+  "h3|kermany|d1512|rho0.2": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_regnet_y_3_2gf_s42_std",
+   "fold": 0,
+   "d": 1512,
+   "rho": 0.2
+  },
+  "h3|kermany|d1536|rho0.02": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_effb3_s42_std",
+   "fold": 0,
+   "d": 1536,
+   "rho": 0.02
+  },
+  "h3|kermany|d1536|rho0.05": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_effb3_s42_std",
+   "fold": 0,
+   "d": 1536,
+   "rho": 0.05
+  },
+  "h3|kermany|d1536|rho0.1": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_effb3_s42_std",
+   "fold": 0,
+   "d": 1536,
+   "rho": 0.1
+  },
+  "h3|kermany|d1536|rho0.2": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_effb3_s42_std",
+   "fold": 0,
+   "d": 1536,
+   "rho": 0.2
+  },
+  "h3|kermany|d2048|rho0.02": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_resnet50_s42_std",
+   "fold": 0,
+   "d": 2048,
+   "rho": 0.02
+  },
+  "h3|kermany|d2048|rho0.05": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_resnet50_s42_std",
+   "fold": 0,
+   "d": 2048,
+   "rho": 0.05
+  },
+  "h3|kermany|d2048|rho0.1": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_resnet50_s42_std",
+   "fold": 0,
+   "d": 2048,
+   "rho": 0.1
+  },
+  "h3|kermany|d2048|rho0.2": {
+   "kind": "h3",
+   "design": "kermany",
+   "n_g_from": "kermany_resnet50_s42_std",
+   "fold": 0,
+   "d": 2048,
+   "rho": 0.2
+  }
+ }
+}
