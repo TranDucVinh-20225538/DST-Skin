@@ -141,7 +141,7 @@ def main():
         r = R[u]
         row = {k: v for k, v in r.items() if k not in ("params", "precommit")}
         row.setdefault("status", "ok")
-        row.update({k: r["params"].get(k) for k in ("dataset", "fold", "n_g_from")})
+        row.update({k: r["params"].get(k) for k in ("design", "fold", "n_g_from")})
         h3.append(row)
         if row["status"] != "ok":
             nr.append(u)
