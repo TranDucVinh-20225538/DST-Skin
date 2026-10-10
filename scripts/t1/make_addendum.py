@@ -35,7 +35,11 @@ def units_A():
     return {0: u}
 
 
-UNITS = {"A": units_A}
+def units_B():
+    return {0: [f"b|{c}" for c in registry_cells()]}
+
+
+UNITS = {"A": units_A, "B": units_B}
 
 
 def work_list(item, j, n_lists, ids):
@@ -56,9 +60,10 @@ def main(item):
     date = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=7))).isoformat(timespec="seconds")
     rec = dict(title=f"PRECOMMIT T1 addendum: work list(s) of item {item} (rule 16)", written_asia_saigon=date,
                precommit_commit=CM.precommit_hash(), registry_sha256=CM.sha256_file(CM.RES / "I" / "registry.csv"),
-               status=f"Written before any item-{item} computation other than A0 (A0 outputs exist; no criterion, threshold, seed or grid is changed).",
+               status=f"Written before any item-{item} computation (no criterion, threshold, seed or grid is changed).",
                unit_id_formats={"A": "a1|<cell_id> (A1 per registry cell), a3|<cell_id> (A3 audit per registry cell), "
-                                     "a2|<backbone>|f<fold>|G<G'>|n<n'>|r<repeat> (A2, 13 Camelyon backbones, seed 42)"}.get(item),
+                                     "a2|<backbone>|f<fold>|G<G'>|n<n'>|r<repeat> (A2, 13 Camelyon backbones, seed 42)",
+                               "B": "b|<cell_id> (one unit = both paper_2fold folds of one registry cell: kNN k in {1,5,10,20,50,100,200}, descriptors, MTS)"}.get(item),
                work_lists=wl)
     out = CM.RES / f"PRECOMMIT_T1_addendum_{item}.json"
     if out.exists():

@@ -226,5 +226,196 @@ def a1():
     print({b: (round(v["mean_D"], 5), round(v["ci_lo"], 5), round(v["ci_hi"], 5)) for b, v in D.items()})
 
 
+def load_a2():
+    rows = []
+    for p in sorted(glob.glob(str(RAW / "a2_*.jsonl"))):
+        for line in open(p):
+            r = json.loads(line)
+            r["design"] = f"G{r['G_prime']:02d}|n{r['n_prime']}"
+            r["log_G"] = float(np.log(r["G_prime"]))
+            r["log_n"] = float(np.log(r["N"] / r["G_prime"]))
+            r["rho_w_sq"] = r["rho_w"] ** 2
+            r["rho_w_s_logo"] = r["rho_w"] * r["s_logo"]
+            rows.append(r)
+    return rows
+
+
+A2_BASELINES = {"B0": None, "B3": ["d_over_N"], "B4": ["rho_w_sq"], "B5": ["rho_w_s_logo"],
+                "B6": ["rho_w", "log_G", "log_n", "d_over_N"]}
+
+
+def a2():
+    rows = load_a2()
+    bbs = sorted({r["backbone"] for r in rows})
+    complete, s5 = [], []
+    for b in bbs:
+        n_units = len({r["unit"] for r in rows if r["backbone"] == b})
+        for f in (0, 1):
+            a1 = json.load(open(RAW / f"a1_camelyon_{b}_s42.json"))
+            ref = [x for x in a1["folds"] if x["fold"] == f][0]["delta_meas_fold"]
+            full = [r["delta_meas"] for r in rows if r["backbone"] == b and r["fold"] == f and r["design"] == "G15|nall"]
+            dev = max(abs(v - ref) for v in full) if full else float("nan")
+            s5.append(dict(backbone=b, fold=f, a1_fold_delta=ref, n_full_design=len(full), max_abs_dev=dev, ok=bool(full) and dev <= 1e-6))
+        if n_units == 600 and all(x["ok"] for x in s5 if x["backbone"] == b):
+            complete.append(b)
+    use = [r for r in rows if r["backbone"] in complete]
+    y = np.array([r["delta_meas"] for r in use])
+    unit = np.array([r["backbone"] for r in use])
+    preds = {"P": lobo_points(y, [r["p_delta"] for r in use], unit), "P_zero_param": np.array([r["p_delta"] for r in use])}
+    for b, ks in A2_BASELINES.items():
+        preds[b] = lobo_points(y, None if ks is None else [[r[k] for k in ks] for r in use], unit)
+    err = {k: np.abs(y - v) for k, v in preds.items()}
+    eb = {k: np.array([v[unit == b].mean() for b in complete]) for k, v in err.items()}
+    lobo_rows = [dict(block="A2_LOBO", predictor=k, n_backbones=len(complete), n_points=len(y), pooled_mae=float(err[k].mean()),
+                      r2_oos_vs_B0=r2_oos(y, preds[k], preds["B0"])) for k in preds]
+    D = {}
+    for b in ("B3", "B4", "B5", "B6"):
+        db = eb[b] - eb["P"]
+        lo, hi, p = boot_mean_ci(db, 101)
+        D[b] = dict(mean_D=float(db.mean()), ci_lo=lo, ci_hi=hi, p_boot_one_sided=p, D_b=db.tolist())
+        lobo_rows.append(dict(block="A2_LOBO", predictor=f"D_b_vs_{b}", n_backbones=len(complete), mean_D=D[b]["mean_D"], ci_lo=lo, ci_hi=hi))
+    designs = sorted({r["design"] for r in use})
+    des_rows, sp = [], []
+    for b in complete:
+        mp, mm = [], []
+        for d in designs:
+            rs = [r for r in use if r["backbone"] == b and r["design"] == d]
+            row = dict(backbone=b, design=d, G_prime=rs[0]["G_prime"], n_prime=rs[0]["n_prime"], n_points=len(rs))
+            for k in ("delta_meas", "p_delta", "dq_pred", "dq_meas", "rho_w", "rho_raw", "s_logo", "r_sat", "lw_delta", "N", "d_over_N"):
+                row[k] = float(np.mean([r[k] for r in rs]))
+            des_rows.append(row)
+            mp.append(row["p_delta"])
+            mm.append(row["delta_meas"])
+        sp.append(float(spearmanr(mp, mm).correlation))
+    sp = np.array(sp)
+    lo, hi, _ = boot_mean_ci(sp, 101)
+    spear = dict(per_backbone=dict(zip(complete, sp.tolist())), mean=float(sp.mean()), ci_lo=lo, ci_hi=hi)
+    a_iii_eval = len(complete) >= 8
+    a_iii = dict(evaluable=a_iii_eval, n_complete=len(complete), D=D, spearman=spear,
+                 pass_=(bool(D["B6"]["ci_lo"] > 0 and D["B5"]["ci_lo"] > 0 and spear["mean"] > 0 and spear["ci_lo"] > 0)
+                        if a_iii_eval else None))
+    write_csv(OUT / "a2_designs.csv", des_rows)
+    write_csv(OUT / "a2_lobo.csv", lobo_rows)
+    write_csv(OUT / "a2_s5.csv", s5)
+    CM.atomic_write_text(OUT / "a2_summary.json", json.dumps(dict(complete=complete, A_iii=a_iii), indent=1))
+    print(json.dumps(dict(complete=len(complete), s5_fail=[x for x in s5 if not x["ok"]], A_iii={k: v for k, v in a_iii.items() if k != "D"},
+                          D={b: (round(v["mean_D"], 5), round(v["ci_lo"], 5), round(v["ci_hi"], 5)) for b, v in D.items()}), indent=1))
+
+
+def holm(p):
+    p = np.asarray(p, float)
+    o = np.argsort(p)
+    adj = np.empty(len(p))
+    run = 0.0
+    for i, j in enumerate(o):
+        run = max(run, (len(p) - i) * p[j])
+        adj[j] = min(1.0, run)
+    return adj
+
+
+def final():
+    s1 = json.load(open(OUT / "a1_summary.json"))
+    s2 = json.load(open(OUT / "a2_summary.json"))
+    a0 = {k: json.load(open(OUT / f"{k}.json")) for k in ("a0a", "a0b", "a0c")}
+    tests = []
+    for b in ("B1", "B1w", "B3", "B4", "B5"):
+        v = s1["D"][b]
+        tests.append(dict(test_id=f"A1_D_vs_{b}", item="A", quantity=f"mean D_b (e_{b} - e_P), Camelyon LOBO", n_units=13,
+                          statistic=v["mean_D"], null="0", p_raw=v["p_boot_one_sided"], ci_lo=v["ci_lo"], ci_hi=v["ci_hi"], status="prereg"))
+    for b in ("B5", "B6"):
+        v = s2["A_iii"]["D"][b]
+        tests.append(dict(test_id=f"A2_D_vs_{b}", item="A", quantity=f"mean D_b (e_{b} - e_P), A2 LOBO pooled over designs",
+                          n_units=s2["A_iii"]["n_complete"], statistic=v["mean_D"], null="0", p_raw=v["p_boot_one_sided"],
+                          ci_lo=v["ci_lo"], ci_hi=v["ci_hi"], status="prereg"))
+    sp = s2["A_iii"]["spearman"]
+    tests.append(dict(test_id="A2_within_backbone_spearman", item="A", quantity="mean within-backbone Spearman(P_delta, Delta_meas) over 30 designs",
+                      n_units=s2["A_iii"]["n_complete"], statistic=sp["mean"], null="0", p_raw="", ci_lo=sp["ci_lo"], ci_hi=sp["ci_hi"], status="prereg"))
+    tests.append(dict(test_id="A1_dq_median_rel_err", item="A", quantity="median |dQ_pred/dQ_meas - 1| over Camelyon cells (zero-parameter)",
+                      n_units=s1["n_camelyon_cells"], statistic=s1["A_iv"]["median_rel_err_cell"], null="<= 0.35", p_raw="", ci_lo="", ci_hi="", status="prereg"))
+    tests.append(dict(test_id="A1_dq_r2_oos", item="A", quantity="pooled R2_oos of LOBO-calibrated dQ_pred vs B0", n_units=13,
+                      statistic=s1["A_iv"]["r2_oos_dq_vs_B0"], null="0", p_raw="", ci_lo="", ci_hi="", status="prereg"))
+    pr = [t["p_raw"] for t in tests if t["p_raw"] != ""]
+    adj = iter(holm(pr))
+    for t in tests:
+        t["p_holm"] = float(next(adj)) if t["p_raw"] != "" else ""
+    a_i = s1["A_i"]["pass_"]
+    a_ii = s1["A_ii_cell_fold"]["pass_"]
+    a_ii_alt = s1["A_ii_cell"]["pass_"]
+    a_iii = s2["A_iii"]["pass_"]
+    a_iv = s1["A_iv"]["pass_cell"]
+    a_iv_alt = s1["A_iv"]["pass_cell_fold"]
+    status = {k: ("not evaluable" if v is None else ("pass" if v else "fail")) for k, v in
+              dict(A_i=a_i, A_ii=a_ii, A_iii=a_iii, A_iv=a_iv).items()}
+    for t in tests:
+        t["pass"] = {"A1_D_vs_B1": s1["D"]["B1"]["ci_lo"] > 0, "A1_D_vs_B1w": s1["D"]["B1w"]["ci_lo"] > 0,
+                     "A1_D_vs_B3": s1["D"]["B3"]["ci_lo"] > 0, "A1_D_vs_B4": s1["D"]["B4"]["ci_lo"] > 0,
+                     "A1_D_vs_B5": s1["D"]["B5"]["ci_lo"] > 0,
+                     "A2_D_vs_B5": s2["A_iii"]["D"]["B5"]["ci_lo"] > 0, "A2_D_vs_B6": s2["A_iii"]["D"]["B6"]["ci_lo"] > 0,
+                     "A2_within_backbone_spearman": sp["mean"] > 0 and sp["ci_lo"] > 0,
+                     "A1_dq_median_rel_err": s1["A_iv"]["median_rel_err_cell"] <= 0.35,
+                     "A1_dq_r2_oos": s1["A_iv"]["r2_oos_dq_vs_B0"] > 0}[t["test_id"]]
+        if not s2["A_iii"]["evaluable"] and t["test_id"].startswith("A2_"):
+            t["pass"] = "na"
+    write_csv(OUT / "tests.csv", tests)
+    frac_ge = s1["r_sat_frac_ge_0_9"]["cell"]
+    if a_i and a_ii and a_iii and a_iv:
+        verdict = "GO"
+    elif (a_i and (a_iii or a_iv)) or (a_iii and a_iv and not a_i):
+        verdict = "PARTIAL"
+    elif frac_ge >= 0.8 and a_iii is None:
+        verdict = "INCONCLUSIVE"
+    else:
+        verdict = "NO-GO"
+    out = dict(verdict=verdict, status=status, a_ii_alt_reading_cell=a_ii_alt, a_iv_alt_reading_cell_fold=a_iv_alt,
+               verdict_reading_dependent=bool(a_ii != a_ii_alt or a_iv != a_iv_alt), r_sat_frac_ge_0_9=s1["r_sat_frac_ge_0_9"],
+               a0={k: v.get("pass", v.get("pass_")) for k, v in a0.items()})
+    CM.atomic_write_text(OUT / "verdict.json", json.dumps(out, indent=1))
+    print(json.dumps(out, indent=1))
+
+
+def figures():
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    tab = list(csv.DictReader(open(OUT / "a1_backbones.csv")))
+    _, rows = load_a1()
+    cam = [r for r in rows if r["dataset"] == "camelyon"]
+    fig, ax = plt.subplots(figsize=(5, 4.5))
+    for ds, mk in (("camelyon", "o"), ("breakhis", "s"), ("dermamnist", "^"), ("isic2019", "v"), ("kermany", "D")):
+        rs = [r for r in rows if r["dataset"] == ds]
+        ax.scatter([-r["dq_meas"] for r in rs], [-r["dq_pred"] for r in rs], s=10, marker=mk, label=ds, alpha=0.7)
+    lim = [1e-1, 1e5]
+    ax.plot(lim, lim, "k--", lw=0.8)
+    ax.set(xscale="log", yscale="log", xlabel="-dQ measured (scorer units)", ylabel="-dQ predicted (P_dQ)", title="A1: dQ, cell x fold")
+    ax.legend(fontsize=7)
+    fig.tight_layout()
+    fig.savefig(OUT / "scatter_dq.png", dpi=150)
+    plt.close(fig)
+    fig, ax = plt.subplots(figsize=(5, 4.5))
+    ax.scatter([float(t["delta_meas"]) for t in tab], [float(t["p_delta"]) for t in tab], c="C0", label="P_delta (zero-param)")
+    ax.scatter([float(t["delta_meas"]) for t in tab], [float(t["pred_P"]) for t in tab], c="C1", marker="x", label="P_delta LOBO-calibrated")
+    for t in tab:
+        ax.annotate(t["unit"], (float(t["delta_meas"]), float(t["p_delta"])), fontsize=6)
+    ax.plot([0, 0.25], [0, 0.25], "k--", lw=0.8)
+    ax.set(xlabel="Delta measured (backbone mean)", ylabel="Delta predicted", title="A1: Camelyon, 13 backbones")
+    ax.legend(fontsize=7)
+    fig.tight_layout()
+    fig.savefig(OUT / "scatter_delta.png", dpi=150)
+    plt.close(fig)
+    des = list(csv.DictReader(open(OUT / "a2_designs.csv")))
+    fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+    for b in sorted({r["backbone"] for r in des}):
+        rs = [r for r in des if r["backbone"] == b and r["n_prime"] == "all"]
+        rs.sort(key=lambda r: int(r["G_prime"]))
+        axes[0].plot([int(r["G_prime"]) for r in rs], [float(r["delta_meas"]) for r in rs], "-o", ms=3, label=b)
+        axes[1].plot([int(r["G_prime"]) for r in rs], [float(r["p_delta"]) for r in rs], "-o", ms=3)
+    axes[0].set(xlabel="G' (n' = all)", ylabel="Delta measured", title="A2 measured")
+    axes[1].set(xlabel="G' (n' = all)", ylabel="P_delta", title="A2 predicted (zero-param)")
+    axes[0].legend(fontsize=6, ncol=2)
+    fig.tight_layout()
+    fig.savefig(OUT / "a2_dose.png", dpi=150)
+    plt.close(fig)
+
+
 if __name__ == "__main__":
-    {"a1": a1}[sys.argv[1]]()
+    {"a1": a1, "a2": a2, "final": final, "figures": figures}[sys.argv[1]]()
