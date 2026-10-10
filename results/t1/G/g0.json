@@ -1,0 +1,112 @@
+{
+ "aborts": [],
+ "warns": [],
+ "totals": {
+  "train": 302436,
+  "id_val": 33560,
+  "ood": 85054
+ },
+ "documented": {
+  "train": 302436,
+  "id_val": 33560,
+  "ood": 85054
+ },
+ "sha256": "e2d7e7bb70af8afcb865a87aeaa170c71bcb8247dea2a9858cc4b13d715d6ff5",
+ "per_slide_train_min": 1430,
+ "per_slide_train_max": 55149,
+ "blocks": {
+  "U": {
+   "slides": [
+    "0",
+    "36",
+    "39",
+    "40",
+    "44",
+    "5"
+   ],
+   "n_train": 47810,
+   "n_heldout": 14342,
+   "n_fit_eligible": 33468
+  },
+  "T": {
+   "slides": [
+    "1",
+    "31",
+    "32",
+    "33",
+    "34",
+    "41",
+    "45",
+    "46",
+    "48",
+    "7",
+    "8",
+    "9"
+   ],
+   "n_train": 115468,
+   "n_heldout": 0,
+   "n_fit_eligible": 115468
+  },
+  "E1": {
+   "slides": [
+    "3",
+    "30",
+    "47"
+   ],
+   "n_train": 35093,
+   "n_heldout": 10527,
+   "n_fit_eligible": 24566
+  },
+  "E2": {
+   "slides": [
+    "37",
+    "4",
+    "49"
+   ],
+   "n_train": 26008,
+   "n_heldout": 7802,
+   "n_fit_eligible": 18206
+  },
+  "E3": {
+   "slides": [
+    "2",
+    "35",
+    "43"
+   ],
+   "n_train": 16238,
+   "n_heldout": 4871,
+   "n_fit_eligible": 11367
+  },
+  "E4": {
+   "slides": [
+    "38",
+    "42",
+    "6"
+   ],
+   "n_train": 61819,
+   "n_heldout": 18546,
+   "n_fit_eligible": 43273
+  }
+ },
+ "counts": {
+  "0|U": 2,
+  "0|T": 4,
+  "0|E1": 1,
+  "0|E2": 1,
+  "0|E3": 1,
+  "0|E4": 1,
+  "3|U": 2,
+  "3|T": 4,
+  "3|E1": 1,
+  "3|E2": 1,
+  "3|E3": 1,
+  "3|E4": 1,
+  "4|U": 2,
+  "4|T": 4,
+  "4|E1": 1,
+  "4|E2": 1,
+  "4|E3": 1,
+  "4|E4": 1
+ },
+ "manifest_I_ok": true
+}
