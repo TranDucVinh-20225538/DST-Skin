@@ -1,0 +1,13 @@
+file: decisions/precommit_t1_2026-10-11.md
+sha256: fa7f1076be634c85c0a4eddd45491a4542e777ab47824b50507893ceef8b0e15
+file: results/t1/PRECOMMIT_T1.json
+sha256: d7732251491c675454d861a6a8ae0ea6d39192a2eab493a99817db4fbc300791
+commit: e326d392fd42ced26fbebe6c0a38ed983267d187 (branch t1)
+utc: 2026-10-10T18:36:46Z
+
+Paste:
+Precommit T1 (WORK ORDER T1 v2.5, DST-Skin branch t1), 2026-10-11.
+sha256(precommit_t1_2026-10-11.md) = fa7f1076be634c85c0a4eddd45491a4542e777ab47824b50507893ceef8b0e15
+sha256(PRECOMMIT_T1.json) = d7732251491c675454d861a6a8ae0ea6d39192a2eab493a99817db4fbc300791
+order sha256 4dec41ec184ce07c811c9ff9c6434bbcd382228b49a192bde7bb00c5cd5c3096
+Committed in e326d392fd42ced26fbebe6c0a38ed983267d187 on 2026-10-10T18:36:46Z, before any T1 computation.
