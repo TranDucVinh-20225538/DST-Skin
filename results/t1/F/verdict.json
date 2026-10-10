@@ -1,0 +1,9 @@
+{
+ "item": "F",
+ "verdict": "INCONCLUSIVE",
+ "F_i": "fail",
+ "F_ii": "not run",
+ "F_iii": "not run",
+ "F_iv": "not run",
+ "rule": "rule 18: F-i failed with F-iv not failed (not run) -> INCONCLUSIVE; order F1: fail -> F items stop"
+}

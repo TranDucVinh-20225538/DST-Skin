@@ -1,0 +1,51 @@
+{
+ "n_checks": 29,
+ "n_pass": 26,
+ "corr_all_ge_0_995": true,
+ "pass_F1": false,
+ "failed": [
+  {
+   "block": "s3_sign_law",
+   "d": 8,
+   "scorer": "maha",
+   "n": 240,
+   "value": 0.9833333333333333,
+   "reference": 0.963,
+   "tol": 0.02,
+   "pass_": false,
+   "corr_auroc_phi_z": 0.9958234678675261,
+   "corr_pass": true,
+   "mae_auroc_phi_z": 0.009850166841137887,
+   "frac_inverted": 0.575,
+   "frac_blind": 0.0625
+  },
+  {
+   "block": "s3_sign_law",
+   "d": 32,
+   "scorer": "vimres",
+   "n": 240,
+   "value": 1.0,
+   "reference": 0.979,
+   "tol": 0.02,
+   "pass_": false,
+   "corr_auroc_phi_z": 0.998732473673596,
+   "corr_pass": true,
+   "mae_auroc_phi_z": 0.008008392547217897,
+   "frac_inverted": 0.49583333333333335,
+   "frac_blind": 0.09166666666666666
+  },
+  {
+   "block": "s3c_cf_pred_mean",
+   "d": 8,
+   "scorer": "maha",
+   "n": 48,
+   "value": 0.49200824527116693,
+   "reference": 0.486,
+   "tol": 0.005,
+   "pass_": false,
+   "sign_agreement_cf": 0.75
+  }
+ ],
+ "corr_below_0_995": [],
+ "precommit": "e326d392fd42ced26fbebe6c0a38ed983267d187"
+}

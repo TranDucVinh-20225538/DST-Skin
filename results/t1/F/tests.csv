@@ -1,0 +1,5 @@
+test,status,value,reference,pass
+F-i: F1 reproduced within tolerance (29 gated rows),fail,26/29,all within tolerance,False
+F-ii: sign law on real cells (F2),not run,,,na
+F-iii: Edgeworth + balanced (F3),not run,,,na
+F-iv: blind-but-detectable (F3),not run,,,na

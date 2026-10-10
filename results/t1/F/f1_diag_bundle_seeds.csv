@@ -1,0 +1,16 @@
+block,d,scorer,value,reference
+s3_sign_law,8,maha,0.9625,0.963
+s3_sign_law,8,euclid,0.975,0.975
+s3_sign_law,8,vimres,0.9833333333333333,0.983
+s3_sign_law,32,maha,0.9875,0.988
+s3_sign_law,32,euclid,0.9833333333333333,0.983
+s3_sign_law,32,vimres,0.9791666666666666,0.979
+s3_sign_law,128,maha,0.9895833333333334,0.99
+s3_sign_law,128,euclid,0.9791666666666666,0.979
+s3_sign_law,128,vimres,1.0,1.0
+s3c_balanced_mean_auroc,8,maha,0.489225151953125,0.489
+s3c_cf_pred_mean,8,maha,0.486105016129641,0.486
+s3c_balanced_mean_auroc,32,maha,0.4912728585546875,0.491
+s3c_cf_pred_mean,32,maha,0.4901725864800139,0.49
+s3c_balanced_mean_auroc,128,maha,0.49500223994791676,0.495
+s3c_cf_pred_mean,128,maha,0.49511221698156466,0.495

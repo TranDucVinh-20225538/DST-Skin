@@ -1,0 +1,38 @@
+block,d,scorer,n,value,reference,tol,pass_,corr_auroc_phi_z,corr_pass,mae_auroc_phi_z,frac_inverted,frac_blind,sign_agreement_cf,a2
+s3_sign_law,8,maha,240,0.9833333333333333,0.963,0.02,False,0.9958234678675261,True,0.009850166841137887,0.575,0.0625,,
+s3_sign_law,8,euclid,240,0.9875,0.975,0.02,True,0.9956387648794623,True,0.011149015512455134,0.5708333333333333,0.09583333333333334,,
+s3_sign_law,8,vimres,240,0.9791666666666666,0.983,0.02,True,0.9962380637868992,True,0.008432522314408933,0.5583333333333333,0.0875,,
+s3_sign_law,32,maha,240,0.9791666666666666,0.988,0.02,True,0.9988623802643404,True,0.008282111129525361,0.525,0.04583333333333333,,
+s3_sign_law,32,euclid,240,0.9875,0.983,0.02,True,0.9986193019749313,True,0.01473569182272989,0.5125,0.058333333333333334,,
+s3_sign_law,32,vimres,240,1.0,0.979,0.02,False,0.998732473673596,True,0.008008392547217897,0.49583333333333335,0.09166666666666666,,
+s3_sign_law,128,maha,96,1.0,0.99,0.02,True,0.999684524434494,True,0.005900157780091415,0.5416666666666666,0.020833333333333332,,
+s3_sign_law,128,euclid,96,0.9895833333333334,0.979,0.02,True,0.9996853901671855,True,0.01967775901744373,0.4791666666666667,0.08333333333333333,,
+s3_sign_law,128,vimres,96,1.0,1.0,0.02,True,0.999687320664723,True,0.00649177126577451,0.53125,0.03125,,
+s3c_balanced_mean_auroc,8,maha,48,0.49372623803385424,0.489,0.005,True,,,,,,,
+s3c_cf_pred_mean,8,maha,48,0.49200824527116693,0.486,0.005,False,,,,,,0.75,
+s3c_balanced_mean_auroc,32,maha,47,0.48887946247340425,0.491,0.005,True,,,,,,,
+s3c_cf_pred_mean,32,maha,47,0.4871788398408322,0.49,0.005,True,,,,,,0.8085106382978723,
+s3c_balanced_mean_auroc,128,maha,48,0.49461045354166666,0.495,0.005,True,,,,,,,
+s3c_cf_pred_mean,128,maha,48,0.4937742463329214,0.495,0.005,True,,,,,,0.7708333333333334,
+s3b_balanced_own_scorer,32,maha,60,0.48513706171875004,0.486,0.005,True,,,,,,,
+s3b_balanced_own_scorer,32,euclid,60,0.49386236484374996,0.494,0.005,True,,,,,,,
+s3b_balanced_own_scorer,32,vimres,60,0.487224021875,0.488,0.005,True,,,,,,,
+s3b_balanced_own_scorer,128,maha,60,0.489704478125,0.491,0.005,True,,,,,,,
+s3b_balanced_own_scorer,128,euclid,60,0.49684663255208333,0.496,0.005,True,,,,,,,
+s3b_balanced_own_scorer,128,vimres,60,0.4928917440104167,0.493,0.005,True,,,,,,,
+s3b_twoblock_maha,8,maha,12,0.49547888916666666,0.4959,0.005,True,,,,,,,1.3
+s3b_twoblock_contrast (report only),8,half_contrast,12,0.6607620289583332,0.6603,,na,,,,,,,1.3
+s3b_twoblock_maha,8,maha,12,0.4819857554166667,0.4826,0.005,True,,,,,,,1.6
+s3b_twoblock_contrast (report only),8,half_contrast,12,0.7944692968750001,0.795,,na,,,,,,,1.6
+s3b_twoblock_maha,32,maha,12,0.4981062789583334,0.4964,0.005,True,,,,,,,1.3
+s3b_twoblock_contrast (report only),32,half_contrast,12,0.7993737041666665,0.7997,,na,,,,,,,1.3
+s3b_twoblock_maha,32,maha,12,0.48966247312499994,0.4894,0.005,True,,,,,,,1.6
+s3b_twoblock_contrast (report only),32,half_contrast,12,0.9503796764583335,0.9508,,na,,,,,,,1.6
+s3b_twoblock_maha,128,maha,12,0.49837513958333335,0.499,0.005,True,,,,,,,1.3
+s3b_twoblock_contrast (report only),128,half_contrast,12,0.9540642527083332,0.9539,,na,,,,,,,1.3
+s3b_twoblock_maha,128,maha,12,0.4938333320833333,0.4955,0.005,True,,,,,,,1.6
+s3b_twoblock_contrast (report only),128,half_contrast,12,0.9994747714583334,0.9995,,na,,,,,,,1.6
+s3b_twoblock_maha,512,maha,12,0.499232100625,0.4994,0.005,True,,,,,,,1.3
+s3b_twoblock_contrast (report only),512,half_contrast,12,0.9996100210416666,0.9996,,na,,,,,,,1.3
+s3b_twoblock_maha,512,maha,12,0.4979343639583333,0.4974,0.005,True,,,,,,,1.6
+s3b_twoblock_contrast (report only),512,half_contrast,12,1.0,1.0,,na,,,,,,,1.6
