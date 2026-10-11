@@ -1,0 +1,42 @@
+{
+ "norm": {
+  "tau": 1.490125128208144,
+  "train_J": 0.828125,
+  "train_sens": 0.9797916666666666,
+  "train_spec": 0.8483333333333334,
+  "n_train_configs": 600,
+  "n_test_configs": 400,
+  "n_test_material": 271,
+  "test_sens": 0.45940959409594095,
+  "test_spec": 0.9404981549815498,
+  "test_auc_median": 1.0,
+  "test_auc_material_min": 0.0,
+  "size_rho0_mean": 0.18796875,
+  "sens_by_omega": {
+   "0.25": 0.16928044280442806,
+   "0.5": 0.21517527675276754,
+   "1": 0.9937730627306273
+  }
+ },
+ "raw": {
+  "tau": 0.9846802274607545,
+  "train_J": 0.6754166666666666,
+  "train_sens": 0.9230208333333333,
+  "train_spec": 0.7523958333333334,
+  "n_train_configs": 600,
+  "n_test_configs": 400,
+  "n_test_material": 271,
+  "test_sens": 0.47862853628536284,
+  "test_spec": 0.9123616236162362,
+  "test_auc_median": 1.0,
+  "test_auc_material_min": 0.0,
+  "size_rho0_mean": 0.13515625,
+  "sens_by_omega": {
+   "0.25": 0.22324723247232472,
+   "0.5": 0.27559963099630996,
+   "1": 0.9370387453874539
+  }
+ },
+ "training_set": "every replicate (16 per config) of the TRAIN configs d in {32, 512, 2048}, omega = 0 vs omega = 1",
+ "missing_units": 0
+}

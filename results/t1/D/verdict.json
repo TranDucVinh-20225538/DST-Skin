@@ -1,0 +1,92 @@
+{
+ "item": "D",
+ "verdict": "NO-GO",
+ "D_i": "fail",
+ "D_ii": "fail",
+ "D_iii": "pass",
+ "d1": {
+  "norm": {
+   "tau": 1.490125128208144,
+   "train_J": 0.828125,
+   "train_sens": 0.9797916666666666,
+   "train_spec": 0.8483333333333334,
+   "n_train_configs": 600,
+   "n_test_configs": 400,
+   "n_test_material": 271,
+   "test_sens": 0.45940959409594095,
+   "test_spec": 0.9404981549815498,
+   "test_auc_median": 1.0,
+   "test_auc_material_min": 0.0,
+   "size_rho0_mean": 0.18796875,
+   "sens_by_omega": {
+    "0.25": 0.16928044280442806,
+    "0.5": 0.21517527675276754,
+    "1": 0.9937730627306273
+   }
+  },
+  "raw": {
+   "tau": 0.9846802274607545,
+   "train_J": 0.6754166666666666,
+   "train_sens": 0.9230208333333333,
+   "train_spec": 0.7523958333333334,
+   "n_train_configs": 600,
+   "n_test_configs": 400,
+   "n_test_material": 271,
+   "test_sens": 0.47862853628536284,
+   "test_spec": 0.9123616236162362,
+   "test_auc_median": 1.0,
+   "test_auc_material_min": 0.0,
+   "size_rho0_mean": 0.13515625,
+   "sens_by_omega": {
+    "0.25": 0.22324723247232472,
+    "0.5": 0.27559963099630996,
+    "1": 0.9370387453874539
+   }
+  },
+  "training_set": "every replicate (16 per config) of the TRAIN configs d in {32, 512, 2048}, omega = 0 vs omega = 1",
+  "missing_units": 0
+ },
+ "n_falsifiers": 996,
+ "d3": {
+  "per_backbone_auc": {
+   "conch_v1_5": 1.0,
+   "convnext_tiny": 1.0,
+   "densenet121": 1.0,
+   "dinov2_vitb14": 0.9997,
+   "dinov2_vitl14": 0.8332444444444445,
+   "effb3": 1.0,
+   "efficientnet_v2_s": 1.0,
+   "mobilenet_v3_large": 1.0,
+   "regnet_y_3_2gf": 1.0,
+   "resnet18": 1.0,
+   "resnet50": 1.0,
+   "uni": 1.0,
+   "virchow2": 1.0
+  },
+  "missing": 0,
+  "T_unseen_vs_delta": {
+   "maha": {
+    "spearman_T_unseen_vs_delta": -0.08241758241758242,
+    "mae_T": 0.045836060215888486,
+    "mae_icc": 0.03284481668961585,
+    "mean_D": -0.012991243526272648,
+    "D_ci95": [
+     -0.022325785015676693,
+     -0.0033334309009363234
+    ]
+   },
+   "knn50": {
+    "spearman_T_unseen_vs_delta": 0.12087912087912088,
+    "mae_T": 0.024667736558101963,
+    "mae_icc": 0.024537210893709256,
+    "mean_D": -0.00013052566439270103,
+    "D_ci95": [
+     -0.004435538671725147,
+     0.0032496710295630083
+    ]
+   }
+  }
+ },
+ "gpu_seconds": 10144.425464391708,
+ "rule": "D-i or D-iii fail -> NO-GO; a criterion not evaluable -> INCONCLUSIVE (rule 18); all pass -> GO; D-i, D-iii pass and D-ii falsifier -> PARTIAL"
+}

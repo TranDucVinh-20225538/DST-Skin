@@ -1,0 +1,7 @@
+test,status,value,reference,pass
+"D-i: TEST sensitivity >= 0.90 and specificity >= 0.90 on material configs (T normalised, frozen tau)",fail,"sens 0.459, spec 0.940 (tau 1.490; 271 material TEST configs)",>= 0.90 both,False
+"D1 report: naive z-score size at rho = 0 (|T| > 1.96), TEST configs, normalised",report-only,0.188,0.05 nominal,na
+"D1 secondary: raw-feature T, TEST sens / spec",report-only,"sens 0.479, spec 0.912",>= 0.90,na
+"D-ii: no configuration with Delta_full >= 0.02 and AUC(T) < 0.8 (3,000 random + CMA-ES)",fail,"996 falsifiers among 4280 evaluations (3000 random, 1280 CMA-ES)",none found,False
+D-iii: AUC(T_seen vs T_unseen) >= 0.90 in >= 11 of 13 Camelyon backbones,pass,12/13,>= 11/13,True
+D5 (post-hoc): cluster-bootstrap SE / naive SE of the mean NN^2 difference,post-hoc,"median 3.11, IQR [1.46, 3.96] over 316 cell-folds",1 = naive calibrated,na
